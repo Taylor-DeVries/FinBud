@@ -9,7 +9,7 @@ import {
   NodeType,
   updateAnswers,
 } from "./../../quiz-logic/quiz-functions";
-import CalculatorComponent from "@/components/Calculator";
+// import CalculatorComponent from "@/components/Calculator";
 
 export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(testData);

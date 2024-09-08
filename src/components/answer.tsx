@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../app/quiz/quiz.module.css";
 
 interface AnswerProps {
   result: string;
