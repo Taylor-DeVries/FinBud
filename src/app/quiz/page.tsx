@@ -8,7 +8,7 @@ import {
   Node,
   NodeType,
   updateAnswers,
-} from "../../libs/quiz-logic/quiz-functions";
+} from "./../../quiz-logic/quiz-functions";
 import CalculatorComponent from "@/components/Calculator";
 
 export default function QuizPage() {
