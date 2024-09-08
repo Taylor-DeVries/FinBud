@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Description 💸
 
-## Getting Started
+Virtual Finance Buddy is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.
 
-First, run the development server:
+![linkedin banners](https://github.com/user-attachments/assets/1e549331-aa51-4e61-9ed5-ddd970d24dab)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### LinkedIn - https://www.linkedin.com/company/virtual-finance-buddy
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Instagram - https://www.instagram.com/virtual_finance_buddy/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# What the Site Does 🌟
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Simple Guidance 📋: Asks one straightforward question at a time and provides clear, step-by-step answers.
+- Lazy-Proof Design 🛋️: Ensures ease of use for individuals who find traditional financial planning too complex or time-consuming.
+- Ongoing Support 🔄: Adapts to users’ needs, offering relevant guidance whether they are just starting or looking to refine their financial strategies.
 
-## Learn More
+![image](https://github.com/user-attachments/assets/bc264066-8090-4875-9a50-04296a2da19d)
 
-To learn more about Next.js, take a look at the following resources:
+# Why It Does It ❓
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Many young people struggle with personal finance due to the complexity and overwhelming nature of traditional methods. Virtual Finance Buddy aims to address this by providing a user-friendly, lazy-proof approach that makes financial literacy accessible and actionable for everyone.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Meet Fin 🐧
 
-## Deploy on Vercel
+He has your best interest at heart! Fin's mission is to make the world more more financially literate!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Financial Literacy                                                                           | Financial Ignorance                                                                        |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| ![FinHappy](https://github.com/user-attachments/assets/fecd31e0-ce1f-475f-a2ca-cfdeca5020ff) | ![FinSad](https://github.com/user-attachments/assets/8a1ef5b1-aad1-486a-8cb6-629ead2e8058) |
