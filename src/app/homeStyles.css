@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
+.journey-button {
+  background-color: #5298b8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+  margin: 70px auto 10px auto;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 50%;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.journey-button:hover {
+  background-color: #86b7ce;
+  transform: scale(1.05);
+}
+
+.container {
+  position: relative;
+}
+
+.overlayImage {
+  position: absolute;
+  top: 70px;
+  left: 850px;
+  z-index: 3;
+  max-width: 650px;
+  height: auto;
+}

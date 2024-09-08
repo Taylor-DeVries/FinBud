@@ -1,0 +1,26 @@
+.navbar-custom {
+  background-color: #ededed; /* Replace with your desired background color */
+  border-bottom: solid #d9d9d9 2px;
+}
+
+.navbar-icon,
+.navbar-profile-text {
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-right: 5px;
+  font-family: "Inter", sans-serif;
+  text-shadow: #66686b;
+}
+
+.navbar-icon:hover,
+.navbar-profile-text:hover .navbar-profile:hover {
+  color: #66686b;
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #000000;
+}
