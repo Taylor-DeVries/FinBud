@@ -4,6 +4,8 @@ Virtual Finance Buddy is an innovative platform designed to simplify personal fi
 
 ![linkedin banners](https://github.com/user-attachments/assets/1e549331-aa51-4e61-9ed5-ddd970d24dab)
 
+### Access it here - https://main.d3buoyj6s1tc6p.amplifyapp.com/
+
 ### LinkedIn - https://www.linkedin.com/company/virtual-finance-buddy
 
 ### Instagram - https://www.instagram.com/virtual_finance_buddy/
