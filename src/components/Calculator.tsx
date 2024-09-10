@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import React from 'react';
 import TFSAvars from "./tfsaInterface"
+import  tfsaMath  from "./tfsaMath"
 
 export default function CalculatorComponent() {
   const [radioValue, setRadioValue] = useState('0');
@@ -12,20 +13,21 @@ export default function CalculatorComponent() {
 
   const input = new TFSAvars();
   
+  const [checked, setChecked] = React.useState(false);
+
+  const handleChange = () => {
+    setChecked(!checked);
+  };
   
   
-  
-  const radios = [
-    { name: 'No', value: '0' },
-    { name: 'Yes', value: '1' },
-  ];
+  const radio = 0;
+    
   
   function displayVals(theClass: TFSAvars){
     let temp = theClass.getTFSAProps(theClass);
-    for (let i=0; i < temp.length; i++) {
-      console.log(temp[i]);
-    }
-    
+    let contributionRoom = tfsaMath(temp);
+    console.log(contributionRoom);
+    console.log(checked.toString());
   }
   
   return (
@@ -42,8 +44,22 @@ export default function CalculatorComponent() {
             <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onChange={input.resident.focusTextInput} />
             
           </Form.Group>
-          {/*
-          <Form.Group className="mb-3" controlId="over18">
+          {
+            <Form.Group className="mb-3">
+                <Form.Check type="switch" 
+                label="I am over 18."
+                id="check18"
+                checked={checked}
+                onChange={handleChange}
+                >
+                
+                </Form.Check>
+                
+              
+            
+            </Form.Group>
+            
+          /*<Form.Group className="mb-3" controlId="over18">
             <Form.Label>Are you over 18?</Form.Label>
             <Form.Check
               type="switch"
@@ -51,7 +67,8 @@ export default function CalculatorComponent() {
               label="Yes"
             />
           </Form.Group>
-          */}
+          */
+          }
           {/*<Form.Group className="mb-3" controlId="over18">
             <Form.Label>Are you over 18?</Form.Label>
             <br />
