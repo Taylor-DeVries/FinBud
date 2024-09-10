@@ -9,7 +9,7 @@ import {
   NodeType,
   updateAnswers,
 } from "./../../quiz-logic/quiz-functions";
-// import CalculatorComponent from "@/components/Calculator";
+import CalculatorComponent from "@/components/Calculator";
 
 export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(testData);
@@ -63,7 +63,7 @@ export default function QuizPage() {
               </button>
             ))}
           </div>
-          {/* <CalculatorComponent /> */}
+          { <CalculatorComponent /> }
         </Col>
         <Col xs={2} className={styles.overlayImage}>
           <img
