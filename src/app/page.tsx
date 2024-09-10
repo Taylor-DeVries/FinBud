@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <Row className="text-center">
-        <Col xs={10}>
+        <Col xl={6} lg={12}>
           {" "}
           <h2>
             Hi! I’m Fin, your Virtual Finance Buddy. I’m here to guide you
@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
             Start My Journey!
           </button>
         </Col>
-        <Col xs={2}>
+        <Col xl={6} lg={12} className="overlayContainer">
           <img src="/images/Fin.png" alt="Logo" className="overlayImage" />
         </Col>
       </Row>
