@@ -10,24 +10,38 @@ import  tfsaMath  from "./tfsaMath"
 export default function CalculatorComponent() {
   const [radioValue, setRadioValue] = useState('0');
   
-
+  const contributionRoom: number = 0;
   const input = new TFSAvars();
-  
   const [checked, setChecked] = React.useState(false);
+  const [showResults, setShowResults] = React.useState(false);
 
+  
   const handleChange = () => {
     setChecked(!checked);
   };
   
-  
+  const Results = () => {
+    return (
+    <div id="results" className="search-results">
+    Your TFSA contribution limit is: 
+    </div> );
+  }
   const radio = 0;
     
   
-  function displayVals(theClass: TFSAvars){
+  function displayVals(theClass: TFSAvars, contributionRoom: number){
+    
     let temp = theClass.getTFSAProps(theClass);
-    let contributionRoom = tfsaMath(temp);
+    contributionRoom = tfsaMath(temp);
     console.log(contributionRoom);
     console.log(checked.toString());
+    setShowResults(true);
+    const element = document.getElementById("calculation")!;
+    if(element ==null){
+      alert("oops");
+    }
+    
+    element.textContent = contributionRoom.toString();
   }
   
   return (
@@ -108,11 +122,13 @@ export default function CalculatorComponent() {
 
 
 
-          <Button variant="dark" type="button" onClick={() => displayVals(input)}>
+          <Button variant="dark" type="button" onClick={() => displayVals(input, contributionRoom)}>
             Submit
           </Button>
 
         </Form>
+        <div> { showResults ? <Results /> : null } </div>
+        <div id="calculation"></div>
       </Card.Body>
     </Card>
   );
