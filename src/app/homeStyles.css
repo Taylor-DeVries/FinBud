@@ -30,14 +30,3 @@
 .container {
   position: relative;
 }
-
-.overlayContainer {
-  display: flex;
-  align-items: center;
-  min-height: 40rem;
-}
-
-.overlayImage {
-  width: 100%;
-  height: auto;
-}

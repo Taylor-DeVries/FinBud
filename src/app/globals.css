@@ -30,9 +30,20 @@ h2 {
   font-size: 60px;
   background-color: #5298b8;
   border-radius: 50px;
-  width: 75%;
-  margin: 0 auto;
+  /* width: 100%;*/
+  /* margin: 0 auto; */
   text-align: left;
   padding: 30px 30px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.overlayContainer {
+  display: grid;
+  place-items: center;
+  min-height: 40rem;
+}
+
+.overlayImage {
+  width: 100%;
+  height: auto;
 }

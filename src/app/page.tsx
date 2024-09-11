@@ -11,8 +11,8 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
-      <Row className="text-center">
-        <Col xl={6} lg={12}>
+      <Row className="text-center justify-content-lg-center">
+        <Col xxl={7} xl={6} lg={12}>
           {" "}
           <h2>
             Hi! I’m Fin, your Virtual Finance Buddy. I’m here to guide you
@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
             Start My Journey!
           </button>
         </Col>
-        <Col xl={6} lg={12} className="overlayContainer">
+        <Col xxl={5} xl={6} lg={8} md={12} className="overlayContainer">
           <img src="/images/Fin.png" alt="Logo" className="overlayImage" />
         </Col>
       </Row>
