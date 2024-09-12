@@ -40,9 +40,11 @@ export default function QuizPage() {
 
   return (
     <>
-      <Row className="text-center">
-        <Col xs={10}>
-          <h1 className={styles.textBox}>
+      <Row className="text-center justify-content-lg-center">
+        <Col xxl={1} xl={0}></Col>
+
+        <Col xxl={6} xl={6} lg={12}>
+          <h2>
             {currentNode?.question}
             {currentNode?.answer}
             {currentNode?.link !== undefined ? (
@@ -50,7 +52,7 @@ export default function QuizPage() {
             ) : (
               <></>
             )}
-          </h1>
+          </h2>
 
           <div className={styles["button-container"]}>
             {answers.map((answer, index) => (
@@ -65,11 +67,12 @@ export default function QuizPage() {
           </div>
           {/* <CalculatorComponent /> */}
         </Col>
-        <Col xs={2} className={styles.overlayImage}>
+
+        <Col xxl={5} xl={6} lg={8} md={12} className="overlayContainer">
           <img
             src="/images/Fin.png"
             alt="Logo"
-            className={styles.overlayImage}
+            className="overlayImage"
           />
         </Col>
       </Row>
