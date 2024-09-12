@@ -12,7 +12,8 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <Row className="text-center justify-content-lg-center">
-        <Col xxl={7} xl={6} lg={12}>
+        <Col xxl={1} xl={0}></Col>
+        <Col xxl={6} xl={6} lg={12}>
           {" "}
           <h2>
             Hi! I’m Fin, your Virtual Finance Buddy. I’m here to guide you
