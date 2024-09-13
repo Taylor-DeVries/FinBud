@@ -55,7 +55,7 @@ export default function QuizPage() {
               )}
             </h3>
           </div>
-          <div>
+          <div className={styles["button-container"]}>
             {answers.map((answer, index) => (
               <button
                 className={styles["grey-button"]}

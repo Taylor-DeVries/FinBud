@@ -19,22 +19,25 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 30px 30px;
+  margin: 5px 30px;
   cursor: pointer;
   border-radius: 30px;
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-@media only screen and (max-width: 768px) {
-  .grey-button {
-    margin: 10px 20px;
-  }
+  max-width: 80%;
+  min-width: 80%;
 }
 
 .grey-button:hover {
   background-color: #86b7ce;
   transform: scale(1.05);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
