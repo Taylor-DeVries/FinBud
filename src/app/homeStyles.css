@@ -3,27 +3,22 @@
 
 .journey-button {
   background-color: #5298b8;
-  color: white;
   border: none;
   padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 3.5rem;
   margin: 50px auto 10px auto;
   cursor: pointer;
   border-radius: 30px;
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
-  font-family: "Inter", sans-serif;
-  font-weight: bold;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (max-width: 768px) {
   .journey-button {
-    font-size: 2.5rem;
     margin: 30px auto 30px auto;
   }
 }

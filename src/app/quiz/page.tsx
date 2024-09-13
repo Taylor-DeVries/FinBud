@@ -44,24 +44,25 @@ export default function QuizPage() {
         <Col xxl={1} xl={0}></Col>
 
         <Col xxl={6} xl={6} lg={12}>
-          <h2>
-            {currentNode?.question}
-            {currentNode?.answer}
-            {currentNode?.link !== undefined ? (
-              <a href={currentNode.link.link}>{currentNode.link.text}</a>
-            ) : (
-              <></>
-            )}
-          </h2>
-
-          <div className={styles["button-container"]}>
+          <div className="blue_bubble">
+            <h3>
+              {currentNode?.question}
+              {currentNode?.answer}
+              {currentNode?.link !== undefined ? (
+                <a href={currentNode.link.link}>{currentNode.link.text}</a>
+              ) : (
+                <></>
+              )}
+            </h3>
+          </div>
+          <div>
             {answers.map((answer, index) => (
               <button
                 className={styles["grey-button"]}
                 key={index}
                 onClick={() => nextAnswer(answer)}
               >
-                {answer}
+                <h3>{answer}</h3>
               </button>
             ))}
           </div>
