@@ -3,37 +3,27 @@
 
 .journey-button {
   background-color: #5298b8;
-  color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 40px;
-  margin: 70px auto 10px auto;
+  margin: 50px auto 10px auto;
   cursor: pointer;
   border-radius: 30px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  width: 50%;
-  font-family: "Inter", sans-serif;
-  font-weight: bold;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 768px) {
+  .journey-button {
+    margin: 30px auto 30px auto;
+  }
 }
 
 .journey-button:hover {
   background-color: #86b7ce;
   transform: scale(1.05);
-}
-
-.container {
-  position: relative;
-}
-
-.overlayImage {
-  position: absolute;
-  top: 70px;
-  left: 850px;
-  z-index: 3;
-  max-width: 650px;
-  height: auto;
 }

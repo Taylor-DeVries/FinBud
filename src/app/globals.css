@@ -1,7 +1,7 @@
 :root {
-  --foreground-rgb: 0, 0, 100;
-  --background-end-rgb: 231, 253, 255;
-  --background-start-rgb: 231, 246, 255;
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
 }
 
 html,
@@ -23,16 +23,65 @@ body {
   margin-top: 40px;
 }
 
+.blue_bubble {
+  background-color: #5298b8;
+  border-radius: 50px;
+  text-align: left;
+  padding: 30px 30px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 0px 30px 0px;
+}
+
 h2 {
   font-family: "Inter", sans-serif;
   color: white;
   font-weight: bold;
-  font-size: 60px;
-  background-color: #5298b8;
-  border-radius: 50px;
-  width: 75%;
-  margin: 0 auto;
-  text-align: left;
-  padding: 30px 30px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  font-size: 3.5rem;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  color: white;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .blue_bubble {
+    margin: 0px;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.overlayContainer {
+  display: grid;
+  place-items: center;
+  min-height: 40rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .overlayContainer {
+    place-items: start center;
+  }
+}
+
+.overlayImage {
+  width: 110%;
+  height: auto;
 }

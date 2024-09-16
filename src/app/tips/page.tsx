@@ -1,9 +1,13 @@
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 export default function AboutPage() {
   return (
     <Row className="text-center">
-      <h2>Work in Progress</h2>
+      <Col>
+        <div className="blue_bubble text-center">
+          <h2>Work in Progress</h2>
+        </div>
+      </Col>
     </Row>
   );
 }
