@@ -2,7 +2,7 @@
 
 
 export default function tfsaMath(inputArray: string[]) {
-    let inputs = [Number(inputArray[0]), Number(inputArray[1]), Number(inputArray[2]), Number(inputArray[3])];
+    let inputs = [Math.floor(Number(inputArray[0])), Math.floor(Number(inputArray[1])), Math.floor(Number(inputArray[2])), Math.floor(Number(inputArray[3]))];
     let yearlyRate = [7000,6500,6000,6000,6000,6000,5500,5500,5500,10000,5500,5500,5000,5000,5000,5000];
     let total = 0;
     if (inputs[1] > 2006) {

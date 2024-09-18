@@ -6,7 +6,7 @@ interface TFSA {
     resident: RefInput;
     contributed: RefInput;
     withdrawn: RefInput;
-  }
+}
 
   class TFSAvars implements TFSA {
     resident: RefInput;
@@ -18,8 +18,7 @@ interface TFSA {
             this.resident = new RefInput(),
             this.born = new RefInput(),
             this.contributed = new RefInput(),
-            this.withdrawn = new RefInput()
-        
+            this.withdrawn = new RefInput();
     }
 
     

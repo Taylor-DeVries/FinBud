@@ -2,24 +2,57 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import React from 'react';
-import TFSAvars from "./tfsaInterface"
-import  tfsaMath  from "./tfsaMath"
+import TFSAvars from "./tfsaInterface";
+import  tfsaMath  from "./tfsaMath";
+import Overlay from "react-bootstrap/Overlay";
 
 export default function CalculatorComponent() {
   const [radioValue, setRadioValue] = useState('0');
-  
+  const buttonRef = useRef(null);
   const contributionRoom: number = 0;
   const input = new TFSAvars();
   const [checked, setChecked] = React.useState(false);
   const [showResults, setShowResults] = React.useState(false);
+  const badInputFlag: boolean[] = [false, false, false, false]
+  const [showSwitch, setShowSwitch] = React.useState(false);
 
   
-  const handleChange = () => {
+  const handleSwitchChange = () => {
     setChecked(!checked);
   };
   
+  const handleBornChange = () => {
+    input.born.focusTextInput;
+    const element = document.getElementById("bornError")!;
+    if(input.born.textInput.current){
+        const temp = Number(input.born.textInput.current.value);
+        if(temp >= 1900 && temp < 2025) {
+          element.textContent = null;
+          if(temp == 2006){
+              setShowSwitch(true);
+          } else setShowSwitch(false);
+          badInputFlag[0] = false;
+          return;
+        }
+    }
+    badInputFlag[0] = true;
+    element.textContent = "Oops! Please enter a number between 1900-2024";
+    }
+  
+  const Switch = () => {
+    return (
+                <Form.Check type="switch" 
+                label="I am over 18."
+                id="check18"
+                checked={checked}
+                onChange={handleSwitchChange}
+                >
+                </Form.Check> )
+
+  }
+
   const Results = () => {
     return (
     <div id="results" className="search-results">
@@ -53,24 +86,15 @@ export default function CalculatorComponent() {
       style={{ textAlign: "left" }}>
       <Card.Body>
         <Form>
-        <Form.Group className="mb-3" controlId="canadianResidentYear">
-            <Form.Label>Since what year have you been a Canadian Resident?</Form.Label>
-            <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onChange={input.resident.focusTextInput} />
-            
+        <Form.Group className="mb-3" controlId="birthYear">
+            <Form.Label>What year were you born?</Form.Label>
+            <Form.Control type="number" placeholder="XXXX" ref={input.born.textInput} onBlur={handleBornChange} />
+            <Form.Text className="errorMessage" id="bornError" muted> </Form.Text>
           </Form.Group>
+        
           {
-            <Form.Group className="mb-3">
-                <Form.Check type="switch" 
-                label="I am over 18."
-                id="check18"
-                checked={checked}
-                onChange={handleChange}
-                >
-                
-                </Form.Check>
-                
-              
-            
+            <Form.Group className="mb-3" >
+            {showSwitch ? < Switch /> : null }
             </Form.Group>
             
           /*<Form.Group className="mb-3" controlId="over18">
@@ -105,9 +129,13 @@ export default function CalculatorComponent() {
           </Form.Group>*/
         }
 
-          <Form.Group className="mb-3" controlId="birthYear">
-            <Form.Label>What year were you born?</Form.Label>
-            <Form.Control type="number" placeholder="XXXX" ref={input.born.textInput} onChange={input.born.focusTextInput} />
+          
+
+          <Form.Group className="mb-3" controlId="canadianResidentYear">
+            <Form.Label>Since what year have you been a Canadian Resident?</Form.Label>
+            <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onChange={input.resident.focusTextInput} />
+            
+            
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="tfsaContributed">
