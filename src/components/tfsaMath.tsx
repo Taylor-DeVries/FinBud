@@ -2,6 +2,7 @@
 
 
 export default function tfsaMath(inputArray: string[]) {
+    if(inputArray[0] == "keyword") return 0;
     let inputs = [Math.floor(Number(inputArray[0])), Math.floor(Number(inputArray[1])), Math.floor(Number(inputArray[2])), Math.floor(Number(inputArray[3]))];
     let yearlyRate = [7000,6500,6000,6000,6000,6000,5500,5500,5500,10000,5500,5500,5000,5000,5000,5000];
     let total = 0;
@@ -22,6 +23,7 @@ export default function tfsaMath(inputArray: string[]) {
     }
 
     total = total - inputs[2] + inputs[3];
+    if (total < 0) total = 0;
     console.log(total);
     return total;
     
