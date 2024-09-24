@@ -14,6 +14,7 @@ import {
 export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(testData);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [tip, setTip] = useState<number>(0);
 
   //Runs everytime currentJson changes
   useEffect(() => {
@@ -38,6 +39,11 @@ export default function QuizPage() {
     setCurrentNode(currentNode.answers[answer]);
   }
 
+  //Move to the next tooltip
+  function nextTip(currentTip: number) {
+    setTip(currentTip + 1);
+  }
+
   return (
     <>
       <Row className="text-center justify-content-lg-center">
@@ -45,15 +51,29 @@ export default function QuizPage() {
 
         <Col xxl={6} xl={6} lg={12}>
           <div className="blue_bubble">
-            <h3>
-              {currentNode?.question}
-              {currentNode?.answer}
-              {currentNode?.link !== undefined ? (
-                <a href={currentNode.link.link}>{currentNode.link.text}</a>
-              ) : (
-                <></>
-              )}
-            </h3>
+            {tip === 0 ? (
+              <h3>
+                {currentNode?.question}
+                {currentNode?.answer}
+                {currentNode?.link !== undefined ? (
+                  <a href={currentNode.link.link}>{currentNode.link.text}</a>
+                ) : (
+                  <></>
+                )}
+              </h3>
+            ) : (
+              <h3>
+                {currentNode?.moreInfo?.[tip - 1]}
+              </h3>
+            )}
+
+            <button
+              className={styles["grey-button"]}
+              onClick={() => nextTip(tip)}
+            >
+              <h3>Next</h3>
+            </button>
+
           </div>
           <div className={styles["button-container"]}>
             {answers.map((answer, index) => (
