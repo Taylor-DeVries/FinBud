@@ -28,7 +28,7 @@ export default function CalculatorComponent() {
   const handleBornChange = () => {
     input.born.focusTextInput;
     const element = document.getElementById("bornError")!;
-    if(input.born.textInput.current && input.resident.textInput.current){
+    if(input.born.textInput.current && input.resident.textInput.current && input.contributed.textInput.current){
         const temp = Number(input.born.textInput.current.value);
         if(temp >= 1900 && temp < 2025) {
           element.textContent = null;
@@ -39,7 +39,8 @@ export default function CalculatorComponent() {
           badInputFlag[0] = false;
           let num:number = 0;
           displayVals(input, num);
-          if(badInputFlag[1] || (Math.floor(Number(input.born.textInput.current.value)) > Math.floor(Number(input.resident.textInput.current.value)))) handleResidentChange();
+          handleResidentChange();
+          handleContributionChange();
           return;
         }
     }
@@ -54,17 +55,17 @@ export default function CalculatorComponent() {
     input.resident.focusTextInput;
     const element = document.getElementById("residentError")!;
     if(input.resident.textInput.current && input.born.textInput.current){
+      if(bornFlag == false) {
+        element.textContent = null;
+        return;
+      }
       const temp = Number(input.resident.textInput.current.value);
       if(temp >= Number(input.born.textInput.current.value) && temp < 2025) {
+        handleContributionChange();
         badInputFlag[1] = false;
         element.textContent = null;
         let num:number = 0;
         displayVals(input, num);
-        return;
-      }
-      if(temp == 0 && bornFlag == false) {
-        setBornFlag(true);
-        element.textContent = null;
         return;
       }
     }
@@ -101,6 +102,11 @@ export default function CalculatorComponent() {
     let maxRoom = tfsaMath(temparray);
     let num: number = 0;
     if(input.contributed.textInput.current && input.withdrawn.textInput.current) {
+      if(contributeFlag == false) {
+        element.textContent = null;
+        return;
+      }
+      
       
       if(Math.floor(Number(input.contributed.textInput.current.value)) <= maxRoom && Math.floor(Number(input.contributed.textInput.current.value)) >= 0) {
         badInputFlag[2] = false;
@@ -213,7 +219,7 @@ export default function CalculatorComponent() {
 
           <Form.Group className="mb-3" controlId="canadianResidentYear">
             <Form.Label>Since what year have you been a Canadian Resident?</Form.Label>
-            <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onBlur={handleResidentChange} />
+            <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onClick={() => setBornFlag(true)} onBlur={handleResidentChange} />
             <Form.Text className="errorMessage" id="residentError"  muted> </Form.Text>
             
             
@@ -221,7 +227,7 @@ export default function CalculatorComponent() {
 
           <Form.Group className="mb-3" controlId="tfsaContributed">
             <Form.Label>How much have you contributed to your TFSA so far?</Form.Label>
-            <Form.Control type="number" ref={input.contributed.textInput} onBlur={handleContributionChange}/>
+            <Form.Control type="number" ref={input.contributed.textInput} onClick={() => setContributeFlag(true)} onBlur={handleContributionChange}/>
             <Form.Text className="errorMessage" id="contributedError" muted></Form.Text>
           </Form.Group>
 
