@@ -15,12 +15,17 @@ export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(testData);
   const [answers, setAnswers] = useState<string[]>([]);
   const [tip, setTip] = useState<number>(0);
+  const [showNextTip, setShowNextTip] = useState<boolean>(false);
+  const [showPrevTip, setShowPrevTip] = useState<boolean>(false);
 
   //Runs everytime currentJson changes
   useEffect(() => {
     setAnswers(updateAnswers(currentNode));
 
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
     setTip(0);
 
@@ -33,6 +38,25 @@ export default function QuizPage() {
       setCurrentNode(newCurrentNode);
     }
   }, [currentNode]);
+
+  useEffect(() => {
+
+    //Check if next tip exists
+    if (currentNode?.moreInfo?.[tip - 1 + 1] !== undefined) {
+      setShowNextTip(true);
+    }
+    else {
+      setShowNextTip(false);
+    }
+    if (currentNode?.moreInfo?.[tip - 1] !== undefined) {
+      setShowPrevTip(true);
+    }
+    else {
+      setShowPrevTip(false);
+    }
+
+
+  }, [tip])
 
   // Runs everytime a answer is pressed
   function nextAnswer(answer: string) {
@@ -51,7 +75,10 @@ export default function QuizPage() {
     else {
       setTip(currentTip - 1);
     }
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 
 
@@ -78,19 +105,32 @@ export default function QuizPage() {
               </h3>
             )}
 
-            <button
-              className={styles["grey-button"]}
-              onClick={() => nextTip(tip, true)}
-            >
-              <h3>Next</h3>
-            </button>
+            {showNextTip ? (
+              <button
+                className={styles["grey-button"]}
+                onClick={() => nextTip(tip, true)}
+              >
+                <h3>Next</h3>
+              </button>
 
-            <button
-              className={styles["grey-button"]}
-              onClick={() => nextTip(tip, false)}
-            >
-              <h3>Previous</h3>
-            </button>
+
+            ) : (
+              <></>
+            )}
+
+            {showPrevTip ? (
+              <button
+                className={styles["grey-button"]}
+                onClick={() => nextTip(tip, false)}
+              >
+                <h3>Previous</h3>
+              </button>
+
+            ) : (
+              <></>
+            )}
+
+
 
           </div>
           <div className={styles["button-container"]}>
