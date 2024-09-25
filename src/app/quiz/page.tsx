@@ -20,6 +20,10 @@ export default function QuizPage() {
   useEffect(() => {
     setAnswers(updateAnswers(currentNode));
 
+    window.scrollTo(0, 0);
+
+    setTip(0);
+
     if (
       currentNode.nodeType === NodeType.Link &&
       currentNode.connect_id !== undefined
@@ -40,9 +44,16 @@ export default function QuizPage() {
   }
 
   //Move to the next tooltip
-  function nextTip(currentTip: number) {
-    setTip(currentTip + 1);
+  function nextTip(currentTip: number, increase: boolean) {
+    if (increase) {
+      setTip(currentTip + 1);
+    }
+    else {
+      setTip(currentTip - 1);
+    }
+    window.scrollTo(0, 0);
   }
+
 
   return (
     <>
@@ -69,9 +80,16 @@ export default function QuizPage() {
 
             <button
               className={styles["grey-button"]}
-              onClick={() => nextTip(tip)}
+              onClick={() => nextTip(tip, true)}
             >
               <h3>Next</h3>
+            </button>
+
+            <button
+              className={styles["grey-button"]}
+              onClick={() => nextTip(tip, false)}
+            >
+              <h3>Previous</h3>
             </button>
 
           </div>
