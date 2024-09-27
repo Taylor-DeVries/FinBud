@@ -9,6 +9,7 @@ import {
   NodeType,
   updateAnswers,
 } from "./../../quiz-logic/quiz-functions";
+import { FaAngleRight, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 // import CalculatorComponent from "@/components/Calculator";
 
 export default function QuizPage() {
@@ -110,7 +111,7 @@ export default function QuizPage() {
                 className={styles["grey-button"]}
                 onClick={() => nextTip(tip, true)}
               >
-                <h3>Next</h3>
+                <h3><FaAngleRight /></h3>
               </button>
 
 
@@ -123,7 +124,7 @@ export default function QuizPage() {
                 className={styles["grey-button"]}
                 onClick={() => nextTip(tip, false)}
               >
-                <h3>Previous</h3>
+                <h3><FaArrowCircleLeft /></h3>
               </button>
 
             ) : (
