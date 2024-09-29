@@ -3,7 +3,6 @@ import {
     IconStar,
     IconPaw,
     IconSettings,
-    IconFocus2,
     IconUser,
 } from "@tabler/icons-react";
 
@@ -34,9 +33,9 @@ export const sidebarLinks: SidebarLink[] = [
         route: "/settingsPage",
         label: "Settings",
     },
-    {
-        imgURL: IconUser,
-        route: "/profile",
-        label: "Profile",
-    },
+    // {
+    //     imgURL: IconUser,
+    //     route: "/profile",
+    //     label: "Profile",
+    // },
 ];

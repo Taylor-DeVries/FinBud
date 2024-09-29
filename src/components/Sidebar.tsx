@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
-import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
+import { IconLayoutSidebarRightCollapse, IconUser } from "@tabler/icons-react";
 import { sidebarLinks } from "@/constants/SidebarLinks";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const isMobile = () => {
     if (typeof window === "undefined") return false;
@@ -63,6 +64,7 @@ export const Navigation = ({
         <div className="flex flex-col space-y-1">
             <div className="flex flex-col space-y-1 my-16 relative z-[100]">
                 {sidebarLinks.map((link) => (
+                    // Creating the link for every sidebar item
                     <Link
                         key={link.route}
                         href={link.route}
@@ -81,10 +83,36 @@ export const Navigation = ({
                             >
                                 <link.imgURL />
                             </div>
-                            <span className="ml-4">{link.label}</span>
+                            <span className="ml-4 ">{link.label}</span>
                         </div>
                     </Link>
                 ))}
+                {/* Creating the sign up link only if user is not logged in */}
+                <SignedOut>
+                    <Link
+                        href="/profile"
+                        className={twMerge(
+                            "text-slate-500 hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
+                        )}
+                    >
+                        <div className="flex flex-row my-2">
+                            <SignInButton mode="modal">
+                                <div className="flex flex-row">
+                                    <IconUser className="" />
+
+                                    <span className="ml-2">Signup / Login</span>
+                                </div>
+                            </SignInButton>
+                        </div>
+                    </Link>
+                </SignedOut>
+
+                <div className="text-slate-500 hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm">
+                    <SignedIn>
+                        <UserButton />
+                    </SignedIn>
+                    <SignedOut></SignedOut>
+                </div>
             </div>
         </div>
     );
