@@ -44,3 +44,22 @@
   align-items: center;
   margin-top: 20px;
 }
+
+.thin-button {
+  background-color: #5298b8;
+  border: solid 5px white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px 5px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.thin-button:hover {
+  transform: scale(1.05);
+}

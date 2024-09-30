@@ -1,5 +1,5 @@
 "use client";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import testData from "../../data/easier.json";
 import { useEffect, useState } from "react";
 import styles from "./quiz.module.css";
@@ -9,7 +9,7 @@ import {
   NodeType,
   updateAnswers,
 } from "./../../quiz-logic/quiz-functions";
-import { FaAngleRight, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 // import CalculatorComponent from "@/components/Calculator";
 
 export default function QuizPage() {
@@ -57,7 +57,7 @@ export default function QuizPage() {
     }
 
 
-  }, [tip])
+  }, [tip, currentNode])
 
   // Runs everytime a answer is pressed
   function nextAnswer(answer: string) {
@@ -106,30 +106,37 @@ export default function QuizPage() {
               </h3>
             )}
 
-            {showNextTip ? (
-              <button
-                className={styles["grey-button"]}
-                onClick={() => nextTip(tip, true)}
-              >
-                <h3><FaAngleRight /></h3>
-              </button>
+            <Container>
+              <Row className="text-center justify-content-end">
+                <Col className="float-end">
+                  {showPrevTip ? (
+                    <button
+                      className={styles["thin-button"]}
+                      onClick={() => nextTip(tip, false)}
+                    >
+                      <h3><FaAngleLeft /></h3>
+                    </button>
+
+                  ) : (
+                    <></>
+                  )}
+                  {showNextTip ? (
+                    <button
+                      className={styles["thin-button"]}
+                      onClick={() => nextTip(tip, true)}
+                    >
+                      <h3><FaAngleRight /></h3>
+                    </button>
 
 
-            ) : (
-              <></>
-            )}
+                  ) : (
+                    <></>
+                  )}
 
-            {showPrevTip ? (
-              <button
-                className={styles["grey-button"]}
-                onClick={() => nextTip(tip, false)}
-              >
-                <h3><FaArrowCircleLeft /></h3>
-              </button>
+                </Col>
+              </Row>
+            </Container>
 
-            ) : (
-              <></>
-            )}
 
 
 
@@ -137,7 +144,7 @@ export default function QuizPage() {
           <div className={styles["button-container"]}>
             {answers.map((answer, index) => (
               <button
-                className={styles["grey-button"]}
+                className={[styles["grey-button"], styles["width80"]].join(' ')}
                 key={index}
                 onClick={() => nextAnswer(answer)}
               >
