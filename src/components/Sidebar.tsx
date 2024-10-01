@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
-import { IconLayoutSidebarRightCollapse, IconUser } from "@tabler/icons-react";
+import { IconMenu2, IconUser } from "@tabler/icons-react";
 import { sidebarLinks } from "@/constants/SidebarLinks";
 import {
     SignedIn,
@@ -21,7 +21,7 @@ const isMobile = () => {
 };
 
 export const Sidebar = () => {
-    const [open, setOpen] = useState(isMobile() ? false : true);
+    const [open, setOpen] = useState(isMobile() ? true : false);
 
     // Set open/close state based on window resize to handle mobile
     useEffect(() => {
@@ -48,10 +48,10 @@ export const Sidebar = () => {
 
             {/* Button to toggle the sidebar only visible on mobile */}
             <button
-                className="fixed lg:hidden top-4 right-4 h-[60px] w-[60px] border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-50"
+                className="fixed lg:hidden top-4 right-4 h-[45px] w-[45px] border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-50"
                 onClick={() => setOpen(!open)}
             >
-                <IconLayoutSidebarRightCollapse className="h-[50px] w-[50px] text-secondary" />
+                <IconMenu2 className="h-[35px] w-[35px] text-secondary" />
             </button>
         </div>
     );

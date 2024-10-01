@@ -6,7 +6,7 @@ interface ResponsiveImageProps {
 
 const ResponsiveImage = ({ children }: ResponsiveImageProps) => {
     return (
-        <div className="relative w-full h-full ">
+        <div className="relative w-full h-full max-w-[2520px] sm:mx-auto xl:px-20 md:px-10 sm:px-2 px-4">
             {/* Background image for xl screens */}
             <div className="hidden xl:block absolute inset-0 bg-[url('/images/bg-xl.png')] bg-cover bg-center z-0 opacity-60"></div>
 
