@@ -6,7 +6,13 @@ import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { IconLayoutSidebarRightCollapse, IconUser } from "@tabler/icons-react";
 import { sidebarLinks } from "@/constants/SidebarLinks";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import {
+    SignedIn,
+    SignedOut,
+    SignInButton,
+    UserButton,
+    useUser,
+} from "@clerk/nextjs";
 
 const isMobile = () => {
     if (typeof window === "undefined") return false;
@@ -28,7 +34,7 @@ export const Sidebar = () => {
     }, []);
 
     return (
-        <div className="flex-shrink-0 lg:w-[18rem] bg-zinc-100 h-screen lg:static fixed z-40">
+        <div className="flex-shrink-0 lg:w-[18rem] bg-zinc-100 h-full lg:static fixed z-40">
             <div
                 className={`lg:flex lg:flex-col lg:px-6 lg:py-6 lg:h-full ${
                     open ? "flex flex-col px-6 py-6" : "hidden"
@@ -57,6 +63,7 @@ export const Navigation = ({
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     const pathname = usePathname();
+    const { user } = useUser();
 
     const isActive = (href: string) => pathname === href;
 
@@ -98,7 +105,7 @@ export const Navigation = ({
                         <div className="flex flex-row my-2">
                             <SignInButton mode="modal">
                                 <div className="flex flex-row">
-                                    <IconUser className="" />
+                                    <IconUser />
 
                                     <span className="ml-2">Signup / Login</span>
                                 </div>
@@ -109,9 +116,18 @@ export const Navigation = ({
 
                 <div className="text-slate-500 hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm">
                     <SignedIn>
-                        <UserButton />
+                        {/* Custom container to make both the icon and name clickable */}
+                        <div className="flex items-center cursor-pointer space-x-2">
+                            {/* Wrapping the name and UserButton in one container */}
+                            <UserButton userProfileMode="modal" />
+                            {/* User's name displayed beside the UserButton */}
+                            {user && (
+                                <span>
+                                    {user.firstName} {user.lastName}
+                                </span>
+                            )}
+                        </div>
                     </SignedIn>
-                    <SignedOut></SignedOut>
                 </div>
             </div>
         </div>
