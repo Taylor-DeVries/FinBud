@@ -83,6 +83,7 @@ export default function QuizPage() {
                         width={300}
                         height={300}
                         className="sm:w-auto sm:h-auto "
+                        unoptimized={true}
                     />
                 </div>
             </div>
