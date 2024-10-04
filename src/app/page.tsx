@@ -20,6 +20,7 @@ const HomePage: React.FC = () => {
                         width={300}
                         height={300}
                         className="w-auto h-auto"
+                        unoptimized={true}
                     />
                 </div>
 
