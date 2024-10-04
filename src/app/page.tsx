@@ -1,35 +1,55 @@
 "use client";
 
 import React from "react";
-import { Row, Col } from "react-bootstrap";
-import "./homeStyles.css";
+import Image from "next/image";
 
 const HomePage: React.FC = () => {
-  const navigateToQuiz = () => {
-    window.location.href = "/quiz";
-  };
+    const navigateToQuiz = () => {
+        window.location.href = "/quiz";
+    };
 
-  return (
-    <div>
-      <Row className="text-center justify-content-lg-center">
-        <Col xxl={1} xl={0}></Col>
-        <Col xxl={6} xl={6} lg={12}>
-          <div className="blue_bubble">
-            <h2>
-              Hi! I’m Fin, your Virtual Finance Buddy. I’m here to guide you
-              through every stage of your personal finance journey.
-            </h2>
-          </div>
-          <button className="journey-button" onClick={navigateToQuiz}>
-            <h2>Start My Journey!</h2>
-          </button>
-        </Col>
-        <Col xxl={5} xl={6} lg={8} md={12} className="overlayContainer">
-          <img src="/images/Fin.png" alt="Logo" className="overlayImage" />
-        </Col>
-      </Row>
-    </div>
-  );
+    return (
+        <div className="h-screen flex items-center justify-center">
+            {/* Parent container for image and text */}
+            <div className="flex flex-col-reverse sm:flex-row items-center space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
+                {/* Image container */}
+                <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64">
+                    <Image
+                        src="/images/Fin.png"
+                        alt="Logo"
+                        width={300}
+                        height={300}
+                        className="w-auto h-auto"
+                    />
+                </div>
+
+                {/* Both text boxes */}
+                <div className="sm:w-2/3 text-left">
+                    <div className="sm:chat sm:chat-start sm:mt-[-4rem]">
+                        <div className="chat-bubble bg-[#5298b8] text-white sm:p-12 px-10 py-4 rounded-[64px] sm:ml-0 ml-6">
+                            <div className="font-bold text-2xl sm:text-3xl ">
+                                Hi!👋 I’m Fin, your Virtual Finance Buddy.
+                            </div>
+                            <div className="font-semibold text-lg sm:text-xl mt-4 ">
+                                I’m here to guide you through every stage of
+                                your personal finance journey.
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Button */}
+                    <div className="mt-8 flex justify-center">
+                        <button
+                            className="bg-[#5298b8] text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary"
+                            onClick={navigateToQuiz}
+                        >
+                            Start My Journey!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default HomePage;
