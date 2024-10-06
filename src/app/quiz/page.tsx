@@ -61,11 +61,13 @@ export default function QuizPage() {
                 {/* Text Area */}
                 <div className="sm:w-2/3 text-left text-white rounded-xl">
                     {/* Back button */}
-                    <div className="sm:left-auto mb-4">
-                        <IoIosArrowRoundBack
-                            onClick={goBack}
-                            className="text-blue h-8 w-8 hover:cursor-pointer"
-                        />
+                    <div className="mb-2">
+                        <div className="rounded-xl bg-light_blue p-2 inline-block bg-opacity-10">
+                            <IoIosArrowRoundBack
+                                onClick={goBack}
+                                className="text-blue h-8 w-8 hover:cursor-pointer"
+                            />
+                        </div>
                     </div>
 
                     {/* If screen is mobile */}
