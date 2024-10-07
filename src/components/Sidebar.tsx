@@ -76,9 +76,9 @@ export const Navigation = ({
                         key={link.route}
                         href={link.route}
                         className={twMerge(
-                            "text-slate-500 hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
+                            "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md ",
                             isActive(link.route) &&
-                                "bg-slate-50 shadow-slate-300 shadow-xl"
+                                "bg-slate-50 shadow-slate-300 shadow-xl text-blue"
                         )}
                     >
                         <div className="flex flex-row my-2">
@@ -99,7 +99,7 @@ export const Navigation = ({
                     <Link
                         href="/profile"
                         className={twMerge(
-                            "text-slate-500 hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
+                            "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
                         )}
                     >
                         <div className="flex flex-row my-2">
@@ -114,7 +114,7 @@ export const Navigation = ({
                     </Link>
                 </SignedOut>
 
-                <div className="text-slate-500 hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm">
+                <div className="text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm">
                     <SignedIn>
                         {/* Custom container to make both the icon and name clickable */}
                         <div className="flex items-center cursor-pointer space-x-2">
@@ -135,6 +135,9 @@ export const Navigation = ({
 };
 
 const SidebarHeader = () => {
+    const goHome = () => {
+        window.location.href = "/";
+    };
     return (
         <div className="flex space-x-2">
             <Image
@@ -142,7 +145,8 @@ const SidebarHeader = () => {
                 alt="Avatar"
                 height="150"
                 width="150"
-                className="object-cover object-top flex-shrink-0"
+                className="object-cover object-top flex-shrink-0 hover:cursor-pointer"
+                onClick={goHome}
             />
         </div>
     );
