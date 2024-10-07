@@ -1,34 +1,45 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { Sidebar } from "@/components/Sidebar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { Container } from "react-bootstrap";
-
 import "./globals.css";
 import "../components/navbar.module.css";
 import "../app/quiz/quiz.module.css";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
-import NavbarComponent from "@/components/Navbar";
-
-const inter = Inter({ subsets: ["latin"] });
+const font = Montserrat({ subsets: ["latin"], weight: ["700"] });
 
 export const metadata: Metadata = {
-  title: "Finance Buddy",
-  description: "your financial compainion",
+  title: "FinBud",
+  description: "your financial companion",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <NavbarComponent />
-        <Container fluid className="main-container">{children}</Container>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={font.className}>
+          <div className="flex h-screen">
+            <Sidebar />
+            <ResponsiveImage>
+              <div className="flex-1">{children}</div>
+            </ResponsiveImage>
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

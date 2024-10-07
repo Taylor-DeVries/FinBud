@@ -1,8 +1,6 @@
 "use client";
-import { Row, Col, Container } from "react-bootstrap";
 import testData from "../../data/easier.json";
 import { useEffect, useState } from "react";
-import styles from "./quiz.module.css";
 import {
   findNode,
   Node,
@@ -12,12 +10,19 @@ import {
 import { FaAngleLeft, FaAngleRight, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 // import CalculatorComponent from "@/components/Calculator";
 
+import Image from "next/image";
+import Button from "@/components/Button";
+import Textbox from "@/components/Textbox";
+import { IoIosArrowRoundBack } from "react-icons/io";
+
 export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(testData);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [history, setHistory] = useState<Node[]>([]);
   const [tip, setTip] = useState<number>(0);
   const [showNextTip, setShowNextTip] = useState<boolean>(false);
   const [showPrevTip, setShowPrevTip] = useState<boolean>(false);
+
 
   //Runs everytime currentJson changes
   useEffect(() => {
@@ -34,11 +39,24 @@ export default function QuizPage() {
       currentNode.nodeType === NodeType.Link &&
       currentNode.connect_id !== undefined
     ) {
-      const newCurrentNode: Node = findNode(testData, currentNode.connect_id);
+      const newCurrentNode: Node = findNode(
+        testData,
+        currentNode.connect_id
+      );
 
       setCurrentNode(newCurrentNode);
     }
   }, [currentNode]);
+
+  // Runs everytime a answer is pressed
+  function nextAnswer(answer: string) {
+    // Update json to where the answer leads
+    if (currentNode.answers?.[answer] === undefined) {
+      return;
+    }
+    setHistory([...history, currentNode]);
+    setCurrentNode(currentNode.answers[answer]);
+  }
 
   useEffect(() => {
 
@@ -59,13 +77,14 @@ export default function QuizPage() {
 
   }, [tip, currentNode])
 
-  // Runs everytime a answer is pressed
-  function nextAnswer(answer: string) {
-    // Update json to where the answer leads
-    if (currentNode.answers?.[answer] === undefined) {
-      return;
+  function goBack() {
+    if (history.length > 0) {
+      const previousNode = history[history.length - 1]; // Get the last node from history
+      setHistory(history.slice(0, -1)); // Remove the last node from history
+      setCurrentNode(previousNode); // Set the current node to the previous one
+    } else {
+      window.location.href = "/";
     }
-    setCurrentNode(currentNode.answers[answer]);
   }
 
   //Move to the next tooltip
@@ -84,7 +103,9 @@ export default function QuizPage() {
 
 
   return (
-    <>
+
+    < div className="flex min-h-screen sm:mt-32" >
+      {/*
       <Row className="text-center justify-content-lg-center">
         <Col xxl={1} xl={0}></Col>
 
@@ -146,17 +167,63 @@ export default function QuizPage() {
               </button>
             ))}
           </div>
-          {/* <CalculatorComponent /> */}
-        </Col>
+        </Col >
+    */}
+      <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
+        {/* Text Area */}
+        <div className="sm:w-2/3 text-left text-white rounded-xl">
+          {/* Back button */}
+          <div className="mb-2">
+            <div className="rounded-xl bg-light_blue p-2 inline-block bg-opacity-10">
+              <IoIosArrowRoundBack
+                onClick={goBack}
+                className="text-blue h-8 w-8 hover:cursor-pointer"
+              />
+            </div>
+          </div>
 
-        <Col xxl={5} xl={6} lg={8} md={12} className="overlayContainer">
-          <img
+          {/* If screen is mobile */}
+          <div className="w-full  rounded-xl bg-blue px-1 py-2 sm:hidden">
+            {/* Inner scrollable content */}
+            <div className="max-h-64 overflow-y-auto">
+              <Textbox secondaryLabel={currentNode?.question} />
+            </div>
+          </div>
+
+          {/* If screen is big */}
+          <div className="hidden sm:block">
+            <Textbox secondaryLabel={currentNode?.question} />
+          </div>
+
+          {/* Buttons for the answers */}
+          <div className="mt-4">
+            <div className="flex flex-col space-y-2 ">
+              {answers.map((answer, index) => (
+                <Button
+                  key={index}
+                  onClick={() => nextAnswer(answer)}
+                  label={answer}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* <CalculatorComponent /> */}
+        </div>
+
+        {/* Fin Image */}
+        <div className="sm:w-1/3 flex fixed sm:static bottom-6 sm:bottom-0 sm:mt-64">
+          <Image
             src="/images/Fin.png"
             alt="Logo"
-            className="overlayImage"
+            width={300}
+            height={300}
+            className="w-[350px] h-[350px] sm:w-auto sm:h-auto sm:mt-32"
+            unoptimized={true}
           />
-        </Col>
-      </Row>
-    </>
+        </div>
+      </div>
+    </div>
   );
 }
+
