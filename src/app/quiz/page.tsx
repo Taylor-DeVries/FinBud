@@ -104,47 +104,6 @@ export default function QuizPage() {
 
   return (
     < div className="flex min-h-screen sm:mt-32" >
-      {/*
-      <Row className="text-center justify-content-lg-center">
-        <Col xxl={1} xl={0}></Col>
-
-        <Col xxl={6} xl={6} lg={12}>
-          <div className="blue_bubble">
-            {tip === 0 ? (
-              <h3>
-                {currentNode?.question}
-                {currentNode?.answer}
-                {currentNode?.link !== undefined ? (
-                  <a href={currentNode.link.link}>{currentNode.link.text}</a>
-                ) : (
-                  <></>
-                )}
-              </h3>
-            ) : (
-              <h3>
-                {currentNode?.moreInfo?.[tip - 1]}
-              </h3>
-            )}
-
-            
-
-
-
-
-          </div>
-          <div className={styles["button-container"]}>
-            {answers.map((answer, index) => (
-              <button
-                className={[styles["grey-button"], styles["width80"]].join(' ')}
-                key={index}
-                onClick={() => nextAnswer(answer)}
-              >
-                <h3>{answer}</h3>
-              </button>
-            ))}
-          </div>
-        </Col >
-    */}
       <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
         {/* Text Area */}
         <div className="sm:w-2/3 text-left text-white rounded-xl">
