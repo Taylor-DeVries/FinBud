@@ -106,36 +106,30 @@ export default function QuizPage() {
               </h3>
             )}
 
-            <Container>
-              <Row className="text-center justify-content-end">
-                <Col className="float-end">
-                  {showPrevTip ? (
-                    <button
-                      className={styles["thin-button"]}
-                      onClick={() => nextTip(tip, false)}
-                    >
-                      <h3><FaAngleLeft /></h3>
-                    </button>
-
-                  ) : (
-                    <></>
-                  )}
-                  {showNextTip ? (
-                    <button
-                      className={styles["thin-button"]}
-                      onClick={() => nextTip(tip, true)}
-                    >
-                      <h3><FaAngleRight /></h3>
-                    </button>
+            {showNextTip ? (
+              <button
+                className={styles["thin-button"]}
+                onClick={() => nextTip(tip, true)}
+              >
+                <h3><FaAngleRight /></h3>
+              </button>
 
 
-                  ) : (
-                    <></>
-                  )}
+            ) : (
+              <></>
+            )}
 
-                </Col>
-              </Row>
-            </Container>
+            {showPrevTip ? (
+              <button
+                className={styles["thin-button"]}
+                onClick={() => nextTip(tip, false)}
+              >
+                <h3><FaAngleLeft /></h3>
+              </button>
+
+            ) : (
+              <></>
+            )}
 
 
 
