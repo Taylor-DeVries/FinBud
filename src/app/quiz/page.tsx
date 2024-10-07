@@ -7,7 +7,7 @@ import {
   NodeType,
   updateAnswers,
 } from "./../../quiz-logic/quiz-functions";
-import { FaAngleLeft, FaAngleRight, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // import CalculatorComponent from "@/components/Calculator";
 
 import Image from "next/image";
@@ -103,7 +103,6 @@ export default function QuizPage() {
 
 
   return (
-
     < div className="flex min-h-screen sm:mt-32" >
       {/*
       <Row className="text-center justify-content-lg-center">
@@ -127,30 +126,7 @@ export default function QuizPage() {
               </h3>
             )}
 
-            {showNextTip ? (
-              <button
-                className={styles["thin-button"]}
-                onClick={() => nextTip(tip, true)}
-              >
-                <h3><FaAngleRight /></h3>
-              </button>
-
-
-            ) : (
-              <></>
-            )}
-
-            {showPrevTip ? (
-              <button
-                className={styles["thin-button"]}
-                onClick={() => nextTip(tip, false)}
-              >
-                <h3><FaAngleLeft /></h3>
-              </button>
-
-            ) : (
-              <></>
-            )}
+            
 
 
 
@@ -192,7 +168,39 @@ export default function QuizPage() {
 
           {/* If screen is big */}
           <div className="hidden sm:block">
-            <Textbox secondaryLabel={currentNode?.question} />
+
+            {tip === 0 ? (
+              <Textbox secondaryLabel={currentNode?.question} />
+            ) : (
+              <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1]} />
+
+            )}
+
+            {showNextTip ? (
+              <div className="mb-2">
+                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out">
+                  <FaAngleRight
+                    onClick={() => nextTip(tip, true)}
+                    className="text-blue h-8 w-8 hover:cursor-pointer"
+                  />
+                </div>
+              </div>
+
+            ) : (
+              <></>
+            )}
+
+            {showPrevTip ? (
+              <div className="mb-2">
+                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out">
+                  <FaAngleLeft
+                    onClick={() => nextTip(tip, false)}
+                    className="text-blue h-8 w-8 hover:cursor-pointer"
+                  />
+                </div></div>
+            ) : (
+              <></>
+            )}
           </div>
 
           {/* Buttons for the answers */}
