@@ -167,7 +167,7 @@ export default function QuizPage() {
           </div>
 
           {/* If screen is big */}
-          <div className="hidden sm:block">
+          <div className="hidden sm:block relative">
 
             {tip === 0 ? (
               <Textbox secondaryLabel={currentNode?.question} />
@@ -175,32 +175,29 @@ export default function QuizPage() {
               <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1]} />
 
             )}
+            <div className="mb-2 absolute right-[5px] bottom-0">
 
-            {showNextTip ? (
-              <div className="mb-2">
-                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out">
-                  <FaAngleRight
-                    onClick={() => nextTip(tip, true)}
-                    className="text-blue h-8 w-8 hover:cursor-pointer"
-                  />
-                </div>
-              </div>
-
-            ) : (
-              <></>
-            )}
-
-            {showPrevTip ? (
-              <div className="mb-2">
-                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out">
+              {showPrevTip ? (
+                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
                   <FaAngleLeft
                     onClick={() => nextTip(tip, false)}
-                    className="text-blue h-8 w-8 hover:cursor-pointer"
+                    className="text-blue h-6 w-6 hover:cursor-pointer"
                   />
-                </div></div>
-            ) : (
-              <></>
-            )}
+                </div>
+              ) : null}
+
+              {showNextTip ? (
+                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+                  <FaAngleRight
+                    onClick={() => nextTip(tip, true)}
+                    className="text-blue h-6 w-6 hover:cursor-pointer"
+                  />
+                </div>
+              ) : null}
+
+
+            </div>
+
           </div>
 
           {/* Buttons for the answers */}
@@ -231,7 +228,7 @@ export default function QuizPage() {
           />
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
