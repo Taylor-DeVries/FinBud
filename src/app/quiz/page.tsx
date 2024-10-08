@@ -10,6 +10,7 @@ import {
   updateAnswers,
 } from "./../../quiz-logic/quiz-functions";
 import CalculatorComponent from "@/components/Calculator";
+import React from "react";
 
 export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(testData);
