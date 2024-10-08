@@ -66,12 +66,6 @@ export default function CalculatorComponent() {
           //console.log(badInputFlag[0].toString());
           element.textContent = null;
           let num:number = 0;
-<<<<<<< HEAD
-          displayVals(input, num);
-          handleResidentChange();
-          handleContributionChange();
-=======
->>>>>>> 1efe26744df3d1a95b8cadf55f2785a09fb9c54a
           return;
         }
         badInputFlag[0] = true;
@@ -102,14 +96,11 @@ export default function CalculatorComponent() {
         
         return;
       }
-<<<<<<< HEAD
-=======
-      if(temp == 0 && bornFlag == false) {
+      if(temp == 0 && !bornFlag) {
         badInputFlag[1] = true;
         element.textContent = null;
         return;
       }
->>>>>>> 1efe26744df3d1a95b8cadf55f2785a09fb9c54a
     }
     element.textContent = "Oops! Your response cannot be a year before you were born or in the future!"
     badInputFlag[1] = true;
@@ -175,59 +166,8 @@ export default function CalculatorComponent() {
     </div> );
   }
   
-<<<<<<< HEAD
-  const handleContributionChange = ()  => {
-    input.contributed.focusTextInput;
-    const element = document.getElementById("contributedError")!;
-    let temparray = input.getTFSAProps(input);
-    temparray[2] = "0";
-    let maxRoom = tfsaMath(temparray);
-    let num: number = 0;
-    if(input.contributed.textInput.current && input.withdrawn.textInput.current) {
-      if(contributeFlag == false) {
-        element.textContent = null;
-        return;
-      }
-      
-      
-      if(Math.floor(Number(input.contributed.textInput.current.value)) <= maxRoom && Math.floor(Number(input.contributed.textInput.current.value)) >= 0) {
-        badInputFlag[2] = false;
-        element.textContent = null;
-        displayVals(input, num);
-        if(badInputFlag[3] == true || Math.floor(Number(input.withdrawn.textInput.current.value)) > Math.floor(Number(input.contributed.textInput.current.value))) handleWithdrawalChange();
-        return;
-      }
-      if(Math.floor(Number(input.contributed.textInput.current.value)) < 0) {
-        badInputFlag[2] = true;
-        element.textContent = "Oops! negative values for contribution are not allowed! Please enter a positive number";
-        return;
-      }
-    }
-    badInputFlag[2] = true;
-    displayVals(input, num);
-    element.textContent = "Warning: The number you have entered is higher then your maximum contribution limit and withdrawal amount! You will pay interest with this amount";
-  }
-  const handleWithdrawalChange = () => {
-    input.withdrawn.focusTextInput;
-    const element = document.getElementById("withdrawnError")!;
-    const num: number = 0;
-    if(input.withdrawn.textInput.current && input.contributed.textInput.current) {
-      if(Math.floor(Number(input.withdrawn.textInput.current.value)) <= Math.floor(Number(input.contributed.textInput.current.value)) && Math.floor(Number(input.withdrawn.textInput.current.value)) >= 0) {
-        badInputFlag[3] = false;
-        element.textContent = null;
-        displayVals(input, num);
-        handleContributionChange();
-        return;
-      }
-    }
-    badInputFlag[3] = true;
-    element.textContent = "Oops! Value must be a non-negative number less then amount contributed. Please try again!";
-    displayVals(input, num);
-  }
-=======
   
   
->>>>>>> 1efe26744df3d1a95b8cadf55f2785a09fb9c54a
   
   function displayVals(theClass: TFSAvars, contributionRoom: number){
     const element = document.getElementById("calculation")!;
@@ -312,11 +252,7 @@ export default function CalculatorComponent() {
 
           <Form.Group className="mb-3" controlId="canadianResidentYear">
             <Form.Label>Since what year have you been a Canadian Resident?</Form.Label>
-<<<<<<< HEAD
-            <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onClick={() => setBornFlag(true)} onBlur={handleResidentChange} />
-=======
             <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onClick={() => residentClick()} onBlur={handleChange} />
->>>>>>> 1efe26744df3d1a95b8cadf55f2785a09fb9c54a
             <Form.Text className="errorMessage" id="residentError"  muted> </Form.Text>
             
             
@@ -324,11 +260,7 @@ export default function CalculatorComponent() {
 
           <Form.Group className="mb-3" controlId="tfsaContributed">
             <Form.Label>How much have you contributed to your TFSA so far?</Form.Label>
-<<<<<<< HEAD
-            <Form.Control type="number" ref={input.contributed.textInput} onClick={() => setContributeFlag(true)} onBlur={handleContributionChange}/>
-=======
             <Form.Control type="number" ref={input.contributed.textInput} onClick={() => OtherClick()} onBlur={handleChange}/>
->>>>>>> 1efe26744df3d1a95b8cadf55f2785a09fb9c54a
             <Form.Text className="errorMessage" id="contributedError" muted></Form.Text>
           </Form.Group>
 
