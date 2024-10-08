@@ -23,7 +23,6 @@ export default function QuizPage() {
   const [showNextTip, setShowNextTip] = useState<boolean>(false);
   const [showPrevTip, setShowPrevTip] = useState<boolean>(false);
 
-
   //Runs everytime currentJson changes
   useEffect(() => {
     setAnswers(updateAnswers(currentNode));
@@ -118,10 +117,36 @@ export default function QuizPage() {
           </div>
 
           {/* If screen is mobile */}
-          <div className="w-full  rounded-xl bg-blue px-1 py-2 sm:hidden">
+          <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
             {/* Inner scrollable content */}
             <div className="max-h-64 overflow-y-auto">
-              <Textbox secondaryLabel={currentNode?.question} />
+              {tip === 0 ? (
+                <Textbox secondaryLabel={currentNode?.question} />
+              ) : (
+                <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1]} />
+              )}
+              <div className="z-10 mb-2 absolute right-[5px] bottom-0">
+
+                {showPrevTip ? (
+                  <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+                    <FaAngleLeft
+                      onClick={() => nextTip(tip, false)}
+                      className="text-blue h-6 w-6 hover:cursor-pointer"
+                    />
+                  </div>
+                ) : null}
+
+                {showNextTip ? (
+                  <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+                    <FaAngleRight
+                      onClick={() => nextTip(tip, true)}
+                      className="text-blue h-6 w-6 hover:cursor-pointer"
+                    />
+                  </div>
+                ) : null}
+
+
+              </div>
             </div>
           </div>
 
@@ -129,9 +154,9 @@ export default function QuizPage() {
           <div className="hidden sm:block relative">
 
             {tip === 0 ? (
-              <Textbox secondaryLabel={currentNode?.question} />
+              <Textbox secondaryLabel={currentNode?.question + "\n"} />
             ) : (
-              <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1]} />
+              <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1] + "\n"} />
 
             )}
             <div className="mb-2 absolute right-[5px] bottom-0">
