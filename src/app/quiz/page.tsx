@@ -131,7 +131,7 @@ export default function QuizPage() {
                   <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
                     <FaAngleLeft
                       onClick={() => nextTip(tip, false)}
-                      className="text-blue h-6 w-6 hover:cursor-pointer"
+                      className="text-blue h-8 w-8 hover:cursor-pointer"
                     />
                   </div>
                 ) : null}
@@ -140,7 +140,7 @@ export default function QuizPage() {
                   <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
                     <FaAngleRight
                       onClick={() => nextTip(tip, true)}
-                      className="text-blue h-6 w-6 hover:cursor-pointer"
+                      className="text-blue h-8 w-8 hover:cursor-pointer"
                     />
                   </div>
                 ) : null}
