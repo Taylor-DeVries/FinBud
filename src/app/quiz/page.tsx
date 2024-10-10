@@ -126,25 +126,27 @@ export default function QuizPage() {
               ) : (
                 <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1]} />
               )}
-              {showPrevTip ? (
-                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-                  <FaAngleLeft
-                    onClick={() => nextTip(tip, false)}
-                    className="text-blue h-8 w-8 hover:cursor-pointer"
-                  />
-                </div>
-              ) : null}
+              <div className="z-10 mb-2 absolute right-[5px] bottom-0">
 
-              {showNextTip ? (
-                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-                  <FaAngleRight
-                    onClick={() => nextTip(tip, true)}
-                    className="text-blue h-8 w-8 hover:cursor-pointer"
-                  />
-                </div>
-              ) : null}
+                {showPrevTip ? (
+                  <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+                    <FaAngleLeft
+                      onClick={() => nextTip(tip, false)}
+                      className="text-blue h-8 w-8 hover:cursor-pointer"
+                    />
+                  </div>
+                ) : null}
 
+                {showNextTip ? (
+                  <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+                    <FaAngleRight
+                      onClick={() => nextTip(tip, true)}
+                      className="text-blue h-8 w-8 hover:cursor-pointer"
+                    />
+                  </div>
+                ) : null}
 
+              </div>
             </div>
           </div>
 
