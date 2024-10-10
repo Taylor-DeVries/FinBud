@@ -18,6 +18,7 @@ export interface Node {
 	answers?: { [key: string]: Node },
 	// NodeType.Result
 	answer?: string,
+	moreInfo?: string[],
 	// NodeType.Link
 	connect_id?: number,
 }

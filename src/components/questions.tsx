@@ -14,7 +14,7 @@ const Question: React.FC<QuestionProps> = ({ question, onAnswer }) => {
       <div className={styles["button-container"]}>
         {question.answers.map((answer, index) => (
           <button
-            className={styles["grey-button"]}
+            className={styles["grey-button width80"]}
             key={index}
             onClick={() => onAnswer(answer)}
           >
