@@ -4,11 +4,10 @@ import React from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
 import Textbox from "@/components/Textbox";
+import { useRouter } from "next/navigation";
 
 const HomePage: React.FC = () => {
-    const navigateToQuiz = () => {
-        window.location.href = "/quiz";
-    };
+    const router = useRouter();
 
     return (
         <div className="h-screen flex items-center justify-center">
@@ -22,7 +21,8 @@ const HomePage: React.FC = () => {
                         width={300}
                         height={300}
                         className="w-auto h-auto"
-                        unoptimized={true}
+                        priority
+                        unoptimized
                     />
                 </div>
 
@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
                     <div className="mt-8 flex justify-center ">
                         <Button
                             label="Start My Journey"
-                            onClick={navigateToQuiz}
+                            onClick={() => router.push("/quiz")}
                         />
                     </div>
                 </div>

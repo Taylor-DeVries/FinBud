@@ -107,7 +107,7 @@ export const Navigation = ({
                                 <div className="flex flex-row">
                                     <IconUser />
 
-                                    <span className="ml-2">Signup / Login</span>
+                                    <span className="ml-2">Sign in</span>
                                 </div>
                             </SignInButton>
                         </div>
@@ -135,9 +135,7 @@ export const Navigation = ({
 };
 
 const SidebarHeader = () => {
-    const goHome = () => {
-        window.location.href = "/";
-    };
+    const router = useRouter();
     return (
         <div className="flex space-x-2">
             <Image
@@ -146,7 +144,9 @@ const SidebarHeader = () => {
                 height="150"
                 width="150"
                 className="object-cover object-top flex-shrink-0 hover:cursor-pointer"
-                onClick={goHome}
+                onClick={() => router.push("/")}
+                priority
+                unoptimized
             />
         </div>
     );
