@@ -35,7 +35,7 @@ export default function QuizPage() {
 
       setCurrentNode(newCurrentNode);
     }
-    if (currentNode.id == 5) {
+    if (currentNode.id == 6) {
       setShowCalculator(true);
     } else setShowCalculator(false);
   }, [currentNode]);
