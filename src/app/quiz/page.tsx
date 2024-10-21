@@ -15,6 +15,7 @@ import React from "react";
 export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(testData);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [showCalculator, setShowCalculator] = React.useState(false);
 
   //Runs everytime currentJson changes
   useEffect(() => {
@@ -28,6 +29,9 @@ export default function QuizPage() {
 
       setCurrentNode(newCurrentNode);
     }
+    if (currentNode.id == 5) {
+      setShowCalculator(true);
+    } else setShowCalculator(false);
   }, [currentNode]);
 
   // Runs everytime a answer is pressed
@@ -64,7 +68,7 @@ export default function QuizPage() {
               </button>
             ))}
           </div>
-          { <CalculatorComponent /> }
+          { showCalculator ? <CalculatorComponent /> : null }
         </Col>
         <Col xs={2} className={styles.overlayImage}>
           <img
