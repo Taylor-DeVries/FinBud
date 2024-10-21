@@ -1,155 +1,159 @@
 {
-  "nodeType": "Question",
-  "question": "Disclaimer This website is strictly for Canadian users and is for educational and entertainment purposes only. We are not financial advisors, and the content should not be considered professional financial advice. The content is designed to be simple and may not meet everyone's financial needs or goals. Please note that the website is still in development, and content may change. Consult a certified financial professional before making any financial decisions.",
-  "answers": {
-    "I have read and understand the above": {
-      "nodeType": "Question",
-      "question": "Do you want to make more money?",
-      "answers": {
-        "Yes!": {
-          "nodeType": "Question",
-          "question": "Do you have any debt?",
-          "id": 1,
-          "answers": {
-            "Yes, credit card debt": {
-              "nodeType": "Question",
-              "question": "Yikes! Credit card debt is high-interest debt that can snowball quickly! I would pay that off right away!",
-              "answers": {
-                "I paid off my credit card debt": {
-                  "nodeType": "Link",
-                  "connect_id": 1
-                }
-              }
-            },
-            "Yes, it is low-interest and I can afford the payments": {
-              "nodeType": "Link",
-              "connect_id": 2
-            },
-            "No": {
-              "nodeType": "Question",
-              "question": "That's great! Do you have extra money after regular expenses?",
-              "id": 2,
-              "answers": {
-                "Yes": {
-                  "nodeType": "Question",
-                  "question": "Fantastic! Do you have about 6 months worth of living expenses saved up?",
-                  "id": 3,
-                  "answers": {
-                    "Yes": {
-                      "nodeType": "Question",
-                      "question": "Great! Now when do you want even more money?",
-                      "id": 4,
-                      "answers": {
-                        "I'd want the money within the next five years": {
-                          "nodeType": "Question",
-                          "question": "I'd continue contributing to your savings account until you feel comfortable taking on risk for long-term reward",
-                          "answers": {
-                            "I got all the money I need for now, I can wait more than five years": {
-                              "nodeType": "Link",
-                              "connect_id": 5
-                            }
-                          }
-                        },
-                        "I got all the money I need for now, I can wait more than five years": {
-                          "nodeType": "Question",
-                          "question": "Calculate your TFSA contribution room, if you have room then I would buy a few different ETFs and continue investing into them",
-                          "id": 5,
-                          "answers": {
-                            "I maxed out my TFSA and have more money to invest": {
-                              "nodeType": "Question",
-                              "question": "What are you saving for now?",
-                              "id": 6,
-                              "answers": {
-                                "My child's education": {
-                                  "nodeType": "Question",
-                                  "question": "Calculate your RESP contribution room. If you have room, then I would buy a few different ETFs and continue investing in them.",
-                                  "answers": {
-                                    "I maxed out my RESP and have more money to invest": {
-                                      "nodeType": "Link",
-                                      "connect_id": 6
-                                    }
-                                  }
-                                },
-                                "My retirement": {
-                                  "nodeType": "Question",
-                                  "question": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
-                                  "answers": {
-                                    "I maxed out my RRSP and have more money to invest": {
-                                      "nodeType": "Link",
-                                      "connect_id": 6
-                                    }
-                                  }
-                                },
-                                "I just want more money": {
-                                  "nodeType": "Question",
-                                  "question": "Do you want to risk it for the biscuit or get some steady reliable income?",
-                                  "answers": {
-                                    "Risk it for the biscuit": {
-                                      "nodeType": "Question",
-                                      "question": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
-                                      "id": 7,
-                                      "answers": {
-                                        "What next?": {
-                                          "nodeType": "Question",
-                                          "question": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time."
-                                        }
-                                      }
-                                    },
-                                    "Play it safe": {
-                                      "nodeType": "Question",
-                                      "question": "I'd continue contributing to your savings account until you feel comfortable taking on risk for long-term reward.",
-                                      "answers": {
-                                        "I'm ready to take on some more risk for more long-term reward": {
-                                          "nodeType": "Link",
-                                          "connect_id": 7
-                                        }
-                                      }
-                                    }
-                                  }
+    "nodeType": "Question",
+    "question": "Disclaimer: This website is strictly for Canadian users and is for educational and entertainment purposes only. We are not financial advisors, and the content should not be considered professional financial advice. The content is designed to be simple and may not meet everyone's financial needs or goals. Please note that the website is still in development, and content may change. Consult a certified financial professional before making any financial decisions.",
+    "id": 0,
+    "answers": {
+        "I have read and understand the above": {
+            "nodeType": "Question",
+            "question": "Do you want to make more money?",
+            "id": 1,
+            "answers": {
+                "Yes!": {
+                    "nodeType": "Question",
+                    "question": "Do you have any debt?",
+                    "id": 2,
+                    "answers": {
+                        "Yes, credit card debt": {
+                            "nodeType": "Question",
+                            "question": "Yikes! Credit card debt is high-interest debt that can snowball quickly! I would pay that off right away!",
+                            "answers": {
+                                "I paid off my credit card debt": {
+                                    "nodeType": "Link",
+                                    "connect_id": 3
                                 }
-                              }
                             }
-                          }
+                        },
+                        "Yes, it is low-interest and I can afford the payments": {
+                            "nodeType": "Link",
+                            "connect_id": 3
+                        },
+                        "No": {
+                            "nodeType": "Question",
+                            "question": "That's great! Do you have extra money after regular expenses?",
+                            "id": 3,
+                            "answers": {
+                                "Yes": {
+                                    "nodeType": "Question",
+                                    "question": "Fantastic! Do you have about 6 months worth of living expenses saved up?",
+                                    "id": 4,
+                                    "answers": {
+                                        "Yes": {
+                                            "nodeType": "Question",
+                                            "question": "Great! Now when do you want even more money?",
+                                            "id": 5,
+                                            "answers": {
+                                                "I'd want the money within the next five years": {
+                                                    "nodeType": "Question",
+                                                    "question": "I'd continue contributing to your savings account until you feel comfortable taking on risk for long-term reward",
+                                                    "answers": {
+                                                        "I got all the money I need for now, I can wait more than five years": {
+                                                            "nodeType": "Link",
+                                                            "connect_id": 6
+                                                        }
+                                                    }
+                                                },
+                                                "I got all the money I need for now, I can wait more than five years": {
+                                                    "nodeType": "Question",
+                                                    "question": "Calculate your TFSA contribution room, if you have room then I would buy a few different ETFs and continue investing into them",
+                                                    "id": 6,
+                                                    "answers": {
+                                                        "I maxed out my TFSA and have more money to invest": {
+                                                            "nodeType": "Question",
+                                                            "question": "What are you saving for now?",
+                                                            "id": 7,
+                                                            "answers": {
+                                                                "My child's education": {
+                                                                    "nodeType": "Question",
+                                                                    "question": "Calculate your RESP contribution room. If you have room, then I would buy a few different ETFs and continue investing in them.",
+                                                                    "id": 8,
+                                                                    "answers": {
+                                                                        "I maxed out my RESP and have more money to invest": {
+                                                                            "nodeType": "Link",
+                                                                            "connect_id": 7
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "My retirement": {
+                                                                    "nodeType": "Question",
+                                                                    "question": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
+                                                                    "answers": {
+                                                                        "I maxed out my RRSP and have more money to invest": {
+                                                                            "nodeType": "Link",
+                                                                            "connect_id": 7
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "I just want more money": {
+                                                                    "nodeType": "Question",
+                                                                    "question": "Do you want to risk it for the biscuit or get some steady reliable income?",
+                                                                    "id": 9,
+                                                                    "answers": {
+                                                                        "Risk it for the biscuit": {
+                                                                            "nodeType": "Question",
+                                                                            "question": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
+                                                                            "id": 10,
+                                                                            "answers": {
+                                                                                "What next?": {
+                                                                                    "nodeType": "Question",
+                                                                                    "question": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time."
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "Play it safe": {
+                                                                            "nodeType": "Question",
+                                                                            "question": "I'd continue contributing to your savings account until you feel comfortable taking on risk for long-term reward.",
+                                                                            "answers": {
+                                                                                "I'm ready to take on some more risk for more long-term reward": {
+                                                                                    "nodeType": "Link",
+                                                                                    "connect_id": 10
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "No": {
+                                            "nodeType": "Question",
+                                            "question": "Having about 6 months worth of living expenses saved up is a great step towards financial freedom. I would dedicate a portion of my income to regularly be deposited into a high-interest savings account. I've found that the Wealthsimple Cash account is the highest-interest account with no fees.",
+                                            "answers": {
+                                                "I've saved up about 6 months worth of living expenses!": {
+                                                    "nodeType": "Link",
+                                                    "connect_id": 5
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "No": {
+                                    "nodeType": "Question",
+                                    "question": "Some ways I would get more money would be to cut back on spending, finding more income streams, or increasing your existing income streams",
+                                    "answers": {
+                                        "I've found extra money!": {
+                                            "nodeType": "Link",
+                                            "connect_id": 4
+                                        }
+                                    }
+                                }
+                            }
                         }
-                      }
-                    },
-                    "No": {
-                      "nodeType": "Question",
-                      "question": "Having about 6 months worth of living expenses saved up is a great step towards financial freedom. I would dedicate a portion of my income to regularly be deposited into a high-interest savings account. I've found that the Wealthsimple Cash account is the highest-interest account with no fees.",
-                      "answers": {
-                        "I've saved up about 6 months worth of living expenses!": {
-                          "nodeType": "Link",
-                          "connect_id": 4
-                        }
-                      }
                     }
-                  }
                 },
-                "No": {
-                  "nodeType": "Question",
-                  "question": "Some ways I would get more money would be to cut back on spending, finding more income streams, or increasing your existing income streams",
-                  "answers": {
-                    "I've found extra money!": {
-                      "nodeType": "Link",
-                      "connect_id": 3
+                "No.": {
+                    "nodeType": "Question",
+                    "question": "Well, that's no good",
+                    "answers": {
+                        "I do want to make more money actually": {
+                            "nodeType": "Link",
+                            "connect_id": 2
+                        }
                     }
-                  }
                 }
-              }
             }
-          }
-        },
-        "No.": {
-          "nodeType": "Question",
-          "question": "Well, that's no good",
-          "answers": {
-            "I do want to make more money actually": {
-              "nodeType": "Link",
-              "connect_id": 1
-            }
-          }
         }
-      }
     }
-  }
 }
