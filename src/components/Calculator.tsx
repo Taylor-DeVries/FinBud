@@ -1,14 +1,19 @@
 "use client";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal'
 import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 import TFSAvars from "./tfsaInterface";
 import  tfsaMath  from "./tfsaMath";
 import Overlay from "react-bootstrap/Overlay";
+import render from 'react-dom'
 
-export default function CalculatorComponent() {
+
+ function CalculatorComponent() {
   const input = new TFSAvars();
   const [checked, setChecked] = React.useState(false);
   var myChecked:boolean = true;
@@ -16,7 +21,7 @@ export default function CalculatorComponent() {
   var badInputFlag: boolean[] = [false, false, false, false];
   const [showSwitch, setShowSwitch] = React.useState(false);
   const [bornFlag, setBornFlag] = React.useState(false);
-
+  
   function residentClick() {
     setBornFlag(true);
     setShowResults(false);
@@ -63,19 +68,12 @@ export default function CalculatorComponent() {
               setShowSwitch(true);
           } else setShowSwitch(false);
           badInputFlag[0] = false;
-          //console.log(badInputFlag[0].toString());
           element.textContent = null;
           let num:number = 0;
           return;
         }
         badInputFlag[0] = true;
-        //console.log(badInputFlag[0].toString());
     }
-    
-    //for(let i = 0; i < badInputFlag.length; i++) {
-     // console.log(badInputFlag[i].toString());
-    //}
-    
     element.textContent = "Oops! Please enter a number between 1900-2024";
     }
 
@@ -198,15 +196,11 @@ export default function CalculatorComponent() {
   }
   
   return (
-    
-    <Card
-      bg="light"
-      key="light"
-      className="mb-2"
-      style={{ textAlign: "left" }}>
-      <Card.Body>
-        <Form>
-        <Form.Group className="mb-3" controlId="birthYear">
+    <>
+        <Form className="mt-10"
+        key="light"
+        style={{ textAlign: "left", color: "black"}}>
+        <Form.Group as={Row} className="mb-3" controlId="birthYear">
             <Form.Label>What year were you born?</Form.Label>
             <Form.Control type="number" placeholder="XXXX" ref={input.born.textInput} onClick={() => OtherClick()} onBlur={handleChange} />
             <Form.Text className="errorMessage" id="bornError" muted> </Form.Text>
@@ -216,41 +210,13 @@ export default function CalculatorComponent() {
             {showSwitch ? < Switch /> : null }
             </Form.Group>
             
-          /*<Form.Group className="mb-3" controlId="over18">
-            <Form.Label>Are you over 18?</Form.Label>
-            <Form.Check
-              type="switch"
-              id="custom-switch"
-              label="Yes"
-            />
-          </Form.Group>
-          */
           }
-          {/*<Form.Group className="mb-3" controlId="over18">
-            <Form.Label>Are you over 18?</Form.Label>
-            <br />
-            <ButtonGroup>
-              {radios.map((radio, idx) => (
-                <ToggleButton
-                  key={idx}
-                  id={`radio-${idx}`}
-                  type="radio"
-                  variant={'outline-dark'}
-                  name="radio"
-                  value={radio.value}
-                  checked={radioValue === radio.value}
-                  onChange={(e) => setRadioValue(e.currentTarget.value)}
-                >
-                  {radio.name}
-                </ToggleButton>
-              ))}
-            </ButtonGroup>
-          </Form.Group>*/
+          {
         }
 
           
 
-          <Form.Group className="mb-3" controlId="canadianResidentYear">
+          <Form.Group as={Row} className="mb-3" controlId="canadianResidentYear">
             <Form.Label>Since what year have you been a Canadian Resident?</Form.Label>
             <Form.Control type="number" placeholder="XXXX" ref={input.resident.textInput} onClick={() => residentClick()} onBlur={handleChange} />
             <Form.Text className="errorMessage" id="residentError"  muted> </Form.Text>
@@ -258,13 +224,13 @@ export default function CalculatorComponent() {
             
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="tfsaContributed">
+          <Form.Group as={Row} className="mb-3" controlId="tfsaContributed">
             <Form.Label>How much have you contributed to your TFSA so far?</Form.Label>
             <Form.Control type="number" ref={input.contributed.textInput} onClick={() => OtherClick()} onBlur={handleChange}/>
             <Form.Text className="errorMessage" id="contributedError" muted></Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="tfsaWithdrawn">
+          <Form.Group as={Row} className="mb-3" controlId="tfsaWithdrawn">
             <Form.Label>How much have you withdrawn from your TFSA so far?</Form.Label>
             <Form.Control type="number" ref={input.withdrawn.textInput} onClick={() => OtherClick()} onBlur={handleChange} />
             <Form.Text className ="errorMessage" id="withdrawnError" muted></Form.Text>
@@ -275,10 +241,13 @@ export default function CalculatorComponent() {
         </Form>
         <div> { showResults ? <Results /> : null } </div>
         <div id="calculation"></div>
-      </Card.Body>
-    </Card>
+      
+      
+    
+    </>
   );
-
+  
   
 }
+export default CalculatorComponent;
   

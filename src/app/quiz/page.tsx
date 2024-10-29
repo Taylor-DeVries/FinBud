@@ -13,12 +13,21 @@ import Textbox from "@/components/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import CalculatorComponent from "@/components/Calculator";
 import React from "react";
+import Modal from 'react-bootstrap/Modal'
 
-export default function QuizPage() {
+function QuizPage() {
     const [currentNode, setCurrentNode] = useState<Node>(testData);
     const [answers, setAnswers] = useState<string[]>([]);
     const [history, setHistory] = useState<Node[]>([]);
   const [showCalculator, setShowCalculator] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
+ function handleShow() {
+    setShowModal(true);
+
+ } 
+  const handleClose= () => setShowModal(false);
+    
+
 
     //Runs everytime currentJson changes
     useEffect(() => {
@@ -102,10 +111,25 @@ export default function QuizPage() {
                             ))}
                         </div>
                     </div>
-
-                    { showCalculator ? <CalculatorComponent /> : null }
-                </div>
-
+                    {showCalculator ? <button className="btn" onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}>open modal</button> : null}
+                    
+                    <dialog id="my_modal_1" className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Hello!</h3>
+                                <div className="Calculator"> <CalculatorComponent /> </div>
+                            <div className="modal-action">
+                                
+                                    {/* if there is a button in form, it will close the modal */}
+                                      <button className="btn" style={{color: "black"}} onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).close()}>Close</button>
+                                
+                            </div>
+                        </div>
+                    </dialog>
+                    </div>
+                    
+                    
+                
+                
                 {/* Fin Image */}
                 <div className="sm:w-1/3 flex fixed sm:static bottom-6 sm:bottom-0 sm:mt-64">
                     <Image
@@ -118,6 +142,9 @@ export default function QuizPage() {
                     />
                 </div>
             </div>
+            
         </div>
     );
 }
+export default QuizPage
+

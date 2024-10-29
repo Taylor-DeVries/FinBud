@@ -18,7 +18,7 @@ Virtual Finance Buddy is an innovative platform designed to simplify personal fi
 
 ![image](https://github.com/user-attachments/assets/bc264066-8090-4875-9a50-04296a2da19d)
 
-# Why It Does It ❓
+# Why Is It Important ❓
 
 Many young people struggle with personal finance due to the complexity and overwhelming nature of traditional methods. Virtual Finance Buddy aims to address this by providing a user-friendly, lazy-proof approach that makes financial literacy accessible and actionable for everyone.
 
