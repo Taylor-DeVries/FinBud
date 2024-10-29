@@ -10,11 +10,11 @@ const HomePage: React.FC = () => {
     const router = useRouter();
 
     return (
-        <div className="h-screen flex items-center justify-center">
+        <div className="h-screen flex items-center sm:items-start ">
             {/* Parent container for image and text */}
-            <div className="flex flex-col-reverse sm:flex-row items-center ">
+            <div className="flex flex-col-reverse sm:flex-row sm:mt-48">
                 {/* Image container */}
-                <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64">
+                <div className="sm:w-1/3 flex sm:mt-0">
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"

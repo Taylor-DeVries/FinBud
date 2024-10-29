@@ -9,6 +9,10 @@ module.exports = {
                 dark_blue: "#3a6d85",
                 light_blue: "#639db8", //"#68accc",
             },
+            screens: {
+                lg: { min: "1025px" }, // screens larger than 1024px
+                md: { min: "769px" }, // screens larger than 768px
+            },
         },
     },
     plugins: [require("daisyui")],
