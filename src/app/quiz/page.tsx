@@ -11,8 +11,10 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Textbox from "@/components/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
 export default function QuizPage() {
+    const router = useRouter();
     const [currentNode, setCurrentNode] = useState<Node>(testData);
     const [answers, setAnswers] = useState<string[]>([]);
     const [history, setHistory] = useState<Node[]>([]);
@@ -50,7 +52,7 @@ export default function QuizPage() {
             setHistory(history.slice(0, -1)); // Remove the last node from history
             setCurrentNode(previousNode); // Set the current node to the previous one
         } else {
-            window.location.href = "/";
+            router.push("/");
         }
     }
     return (
@@ -105,10 +107,11 @@ export default function QuizPage() {
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
-                        width={0} // placeholder
-                        height={0} // placeholder
-                        className="w-[225px] h-[225px] sm:w-[500px] sm:h-[500px] lg:w-auto lg:auto object-contain "
-                        unoptimized={true}
+                        width={300}
+                        height={300}
+                        className="w-[350px] h-[350px] sm:w-auto sm:h-auto sm:mt-32"
+                        unoptimized
+                        priority
                     />
                 </div>
             </div>
