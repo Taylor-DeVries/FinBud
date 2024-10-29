@@ -56,10 +56,10 @@ export default function QuizPage() {
     return (
         // Parent Container
 
-        <div className="flex min-h-screen sm:mt-32">
-            <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
+        <div className="flex min-h-screen">
+            <div className="flex flex-col lg:flex-row justify-between lg:justify-center  space-y-16 lg:space-y-0 mt-8 lg:mt-16 min-h-[50vh] w-full">
                 {/* Text Area */}
-                <div className="sm:w-2/3 text-left text-white rounded-xl">
+                <div className="lg:w-2/3 text-left text-white rounded-xl ">
                     {/* Back button */}
                     <div className="mb-2">
                         <div className="rounded-xl bg-light_blue p-2 inline-block bg-opacity-10">
@@ -71,16 +71,16 @@ export default function QuizPage() {
                     </div>
 
                     {/* If screen is mobile */}
-                    <div className="w-full  rounded-xl bg-blue px-1 py-2 sm:hidden">
+                    <div className="w-full rounded-xl bg-blue px-1 py-2 lg:hidden">
                         {/* Inner scrollable content */}
 
-                        <div className="max-h-64 overflow-y-auto">
+                        <div className="max-h-[150px] sm:max-h-[256px] md:max-h-[512px] lg:max-h-[640px] xl:max-h-[780px] overflow-y-auto ">
                             <Textbox secondaryLabel={currentNode?.question} />
                         </div>
                     </div>
 
                     {/* If screen is big */}
-                    <div className="hidden sm:block">
+                    <div className="hidden lg:block">
                         <Textbox secondaryLabel={currentNode?.question} />
                     </div>
 
@@ -101,13 +101,13 @@ export default function QuizPage() {
                 </div>
 
                 {/* Fin Image */}
-                <div className="sm:w-1/3 flex fixed sm:static bottom-6 sm:bottom-0 sm:mt-64">
+                <div className="lg:w-1/3 flex lg:justify-start justify-center">
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
-                        width={300}
-                        height={300}
-                        className="w-[350px] h-[350px] sm:w-auto sm:h-auto sm:mt-32"
+                        width={0} // placeholder
+                        height={0} // placeholder
+                        className="w-[225px] h-[225px] sm:w-[500px] sm:h-[500px] lg:w-auto lg:auto object-contain "
                         unoptimized={true}
                     />
                 </div>
