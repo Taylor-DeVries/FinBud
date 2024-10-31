@@ -4,25 +4,25 @@ import React from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
 import Textbox from "@/components/Textbox";
+import { useRouter } from "next/navigation";
 
 const HomePage: React.FC = () => {
-    const navigateToQuiz = () => {
-        window.location.href = "/quiz";
-    };
+    const router = useRouter();
 
     return (
-        <div className="h-screen flex items-center sm:items-start ">
+        <div className="h-screen flex items-center justify-center">
             {/* Parent container for image and text */}
-            <div className="flex flex-col-reverse sm:flex-row sm:mt-48">
+            <div className="flex flex-col-reverse sm:flex-row items-center ">
                 {/* Image container */}
-                <div className="sm:w-1/3 flex sm:mt-0">
+                <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64">
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
                         width={300}
                         height={300}
-                        className="w-auto h-auto object-contain"
-                        unoptimized={true}
+                        className="w-auto h-auto"
+                        priority
+                        unoptimized
                     />
                 </div>
 
@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
                     <div className="mt-8 flex justify-center ">
                         <Button
                             label="Start My Journey"
-                            onClick={navigateToQuiz}
+                            onClick={() => router.push("/quiz")}
                         />
                     </div>
                 </div>

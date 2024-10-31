@@ -19,7 +19,7 @@ const Textbox: React.FC<TextBoxProps> = ({
                 } `}
         >
             <div
-                className={`bg-blue text-white sm:px-8 px-6 py-5 rounded-xl ${chatBubble ? "chat-bubble" : ""
+                className={`bg-blue text-white sm:px-8 px-6 py-4 rounded-xl ${chatBubble ? "chat-bubble" : ""
                     }`}
             >
                 <div className="font-bold text-xl sm:text-2xl">{label}</div>
