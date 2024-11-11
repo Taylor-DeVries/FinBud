@@ -18,6 +18,7 @@ export default function QuizPage() {
     const [currentNode, setCurrentNode] = useState<Node>(testData);
     const [answers, setAnswers] = useState<string[]>([]);
     const [history, setHistory] = useState<Node[]>([]);
+    const [loading, setLoading] = useState(true);
 
     //Runs everytime currentJson changes
     useEffect(() => {
@@ -58,7 +59,9 @@ export default function QuizPage() {
     return (
         // Parent Container
 
-        <div className="flex min-h-screen sm:mt-32">
+        <div
+            className={`flex min-h-screen sm:mt-32 ${loading ? "hidden" : ""}`}
+        >
             <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
                 {/* Text Area */}
                 <div className="sm:w-2/3 text-left text-white rounded-xl">
@@ -110,8 +113,9 @@ export default function QuizPage() {
                         width={300}
                         height={300}
                         className="w-[350px] h-[350px] sm:w-auto sm:h-auto sm:mt-32"
-                        unoptimized
                         priority
+                        unoptimized
+                        onLoadingComplete={() => setLoading(false)}
                     />
                 </div>
             </div>
