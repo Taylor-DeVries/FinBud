@@ -166,22 +166,31 @@ export default function QuizPage() {
                             />
                         )}
 
-                        <div className="mb-2 absolute right-[5px] bottom-0">
+                        <div className="mb-2 flex justify-end mt-1">
                             {showPrevTip ? (
-                                <div className="rounded-xl bg-slate_100 p-2 m-1 inline-block bg-opacity-50 translate-y-[35px]">
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
                                     <FaAngleLeft
                                         onClick={() => nextTip(tip, false)}
-                                        className="text-blue h-6 w-6 hover:cursor-pointer"
+                                        className="text-blue h-7 w-7 hover:cursor-pointer"
                                     />
                                 </div>
                             ) : null}
 
-                            {showNextTip ? (
-                                <div className="rounded-xl bg-slate_100 p-2 m-1 inline-block bg-opacity-50 translate-y-[35px]">
+                            {showNextTip && showPrevTip ? (
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
                                     <FaAngleRight
                                         onClick={() => nextTip(tip, true)}
-                                        className="text-blue h-6 w-6 hover:cursor-pointer"
+                                        className="text-blue h-7 w-7 hover:cursor-pointer"
                                     />
+                                </div>
+                            ) : null}
+
+                            {showNextTip && !showPrevTip ? (
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                    <h1
+                                        onClick={() => nextTip(tip, true)}
+                                        className="text-blue text-2xl text-center h-7 w-7 hover:cursor-pointer "
+                                    >...</h1>
                                 </div>
                             ) : null}
                         </div>
