@@ -107,17 +107,16 @@ export const Navigation = ({
                                 <div className="flex flex-row">
                                     <IconUser />
 
-                                    <span className="ml-2">Signup / Login</span>
+                                    <span className="ml-2">Sign in</span>
                                 </div>
                             </SignInButton>
                         </div>
                     </Link>
                 </SignedOut>
 
-                <div className="text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm">
+                <div className="text-slate-500 flex items-center space-x-2 py-2 px-2 rounded-md text-sm">
                     <SignedIn>
-                        {/* Custom container to make both the icon and name clickable */}
-                        <div className="flex items-center cursor-pointer space-x-2">
+                        <div className="flex items-center  space-x-2">
                             {/* Wrapping the name and UserButton in one container */}
                             <UserButton userProfileMode="modal" />
                             {/* User's name displayed beside the UserButton */}
@@ -135,9 +134,7 @@ export const Navigation = ({
 };
 
 const SidebarHeader = () => {
-    const goHome = () => {
-        window.location.href = "/";
-    };
+    const router = useRouter();
     return (
         <div className="flex space-x-2">
             <Image
@@ -146,7 +143,9 @@ const SidebarHeader = () => {
                 height="150"
                 width="150"
                 className="object-cover object-top flex-shrink-0 hover:cursor-pointer"
-                onClick={goHome}
+                onClick={() => router.push("/")}
+                priority
+                unoptimized
             />
         </div>
     );
