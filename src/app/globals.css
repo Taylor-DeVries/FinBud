@@ -81,3 +81,10 @@ h3 {
     width: 110%;
     height: auto;
 }
+
+.CalculatorForm {
+    font-family: "Inter", sans-serif;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+  }

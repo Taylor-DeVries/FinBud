@@ -21,11 +21,13 @@ function QuizPage() {
     const [history, setHistory] = useState<Node[]>([]);
   const [showCalculator, setShowCalculator] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
- function handleShow() {
-    setShowModal(true);
+ 
 
+  function handleShow() {
+    const element = document.getElementById("my_modal_1")! as HTMLDialogElement;
+    element.showModal();
  } 
-  const handleClose= () => setShowModal(false);
+
     
 
 
@@ -71,7 +73,7 @@ function QuizPage() {
     return (
         // Parent Container
 
-        <div className="flex min-h-screen sm:mt-32">
+        <div className="flex  sm:mt-32">
             <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
                 {/* Text Area */}
                 <div className="sm:w-2/3 text-left text-white rounded-xl">
@@ -111,20 +113,9 @@ function QuizPage() {
                             ))}
                         </div>
                     </div>
-                    {showCalculator ? <button className="btn" onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}>open modal</button> : null}
+                    {showCalculator ? <button className="btn" onClick={handleShow}>open modal</button> : null}
                     
-                    <dialog id="my_modal_1" className="modal">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg">Hello!</h3>
-                                <div className="Calculator"> <CalculatorComponent /> </div>
-                            <div className="modal-action">
-                                
-                                    {/* if there is a button in form, it will close the modal */}
-                                      <button className="btn" style={{color: "black"}} onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).close()}>Close</button>
-                                
-                            </div>
-                        </div>
-                    </dialog>
+                    <CalculatorComponent/>
                     </div>
                     
                     
