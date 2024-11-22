@@ -17,16 +17,6 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import CalculatorComponent from "@/components/Calculator";
 import React from "react";
 
-    const [currentNode, setCurrentNode] = useState<Node>(testData);
-    const [answers, setAnswers] = useState<string[]>([]);
-    const [history, setHistory] = useState<Node[]>([]);
-  const [showCalculator, setShowCalculator] = React.useState(false);
-  const [showModal, setShowModal] = React.useState(false);
- function handleShow() {
-    setShowModal(true);
- }
-
-  const handleClose= () => setShowModal(false);
     
 
 import { useRouter } from "next/navigation";
@@ -40,6 +30,14 @@ export default function QuizPage() {
     const [answers, setAnswers] = useState<string[]>([]);
     const [history, setHistory] = useState<Node[]>([]);
     const [loading, setLoading] = useState(true);
+  const [showCalculator, setShowCalculator] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
+ function handleShow() {
+    setShowModal(true);
+ }
+
+  const handleClose= () => setShowModal(false);
+    
 
     //Runs everytime currentJson changes
     useEffect(() => {
@@ -116,10 +114,11 @@ export default function QuizPage() {
     }
 
     return (
+        
         <div
-            className={`flex min-h-screen sm:mt-32  ${loading ? "hidden" : ""}`}
+            className={`flex sm:mt-32  ${loading ? "hidden" : ""}`}
         >
-            <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
+            <div className=" flex flex-col sm:flex-row sm:items-start items-center space-y-10 sm:space-x-5 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] ">
                 {/* Text Area */}
                 <div className="sm:w-2/3 text-left text-white rounded-xl">
                     {/* Back button */}
@@ -217,8 +216,12 @@ export default function QuizPage() {
                             ))}
                         </div>
                     </div>
-                    {showCalculator ? <button className="btn" onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}>open modal</button> : null}
                     
+                    
+                    
+                    </div>
+                    
+                    <div className="flex">
                     <dialog id="my_modal_1" className="modal">
                         <div className="modal-box">
                             <h3 className="font-bold text-lg">Hello!</h3>
@@ -231,13 +234,15 @@ export default function QuizPage() {
                             </div>
                         </div>
                     </dialog>
-                    </div>
+                   
+                </div>
                     
-                    
-                
+                {showCalculator ? <button className=" w-40 h-40 size-0  static shadow-none btn border-none text-blue bg-light_blue bg-opacity-0 " onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <Image className="absolute overflow-visible " width="100" height="100" alt="Calculatoricon" src="/images/calculator.png"></Image></button> : null}
                 
                 {/* Fin Image */}
-                <div className="sm:w-1/3 flex fixed sm:static bottom-6 sm:bottom-0 sm:mt-64">
+                
+                <div className=" justify-center fixed sm:w-1/3 break-before-all flex-none sm:static bottom-6 sm:bottom-0 sm:mt-64">
+                
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
@@ -248,10 +253,13 @@ export default function QuizPage() {
                         priority
                         onLoadingComplete={() => setLoading(false)}
                     />
-                </div>
+               
+            </div>
             </div>
             
         </div>
+       
+        
     );
 }
 
