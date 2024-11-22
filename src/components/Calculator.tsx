@@ -12,16 +12,25 @@ import  tfsaMath  from "./tfsaMath";
 import Overlay from "react-bootstrap/Overlay";
 import render from 'react-dom'
 
-
  function CalculatorComponent() {
   const input = new TFSAvars();
   const [checked, setChecked] = React.useState(false);
   var myChecked:boolean = true;
   const [showResults, setShowResults] = React.useState(false);
-  var badInputFlag: boolean[] = [false, false, false, false];
+  var badInputFlag: boolean[] = [false, false, false, false, false];
   const [showSwitch, setShowSwitch] = React.useState(false);
   const [bornFlag, setBornFlag] = React.useState(false);
+  const [showWithdrawnCurr, setWithdrawnCurr] = React.useState(false);
+ 
+  const [withdrawCurrData, setwithdrawCurrData] = useState({
+    withdrawBlur: 0,
+    withdrawChange: 0
+  });
+
+  // Handle form field changes
   
+
+
   function residentClick() {
     setBornFlag(true);
     setShowResults(false);
@@ -44,6 +53,8 @@ import render from 'react-dom'
     handleContributionChange();
     if (badInputFlag[2]) return;
     handleWithdrawalChange();
+    if (badInputFlag[3]) return;
+    handleCurrWithdrawChange();
     return;
   }
 
@@ -113,13 +124,20 @@ import render from 'react-dom'
       if(Math.floor(Number(input.withdrawn.textInput.current.value)) <= Math.floor(Number(input.contributed.textInput.current.value)) && Math.floor(Number(input.withdrawn.textInput.current.value)) >= 0) {
         badInputFlag[3] = false;
         element.textContent = null;
-        
+        if(Math.floor(Number(input.withdrawn.textInput.current.value)) != 0){
+           setWithdrawnCurr(true);
+           return;
+        }
+        setWithdrawnCurr(false);
         return;
       }
     }
+    setWithdrawnCurr(false);
     badInputFlag[3] = true;
     element.textContent = "Oops! Value must be a non-negative number less then amount contributed. Please try again!";
   }
+
+  
   const handleContributionChange = ()  => {
     input.contributed.focusTextInput;
     const element = document.getElementById("contributedError")!;
@@ -144,7 +162,24 @@ import render from 'react-dom'
     badInputFlag[2] = true;
     element.textContent = "Warning: The number you have entered is higher then your maximum contribution limit and withdrawal amount! You will pay interest with this amount";
   }
-  
+
+
+  const handleCurrWithdrawChange = () => {
+    
+    const element = document.getElementById("withdrawnCurrError")!;
+    
+    if (input.withdrawn.textInput.current && input.withdrawnCurr.textInput.current) {
+      if((Math.floor(Number(input.withdrawnCurr.textInput.current.value)) <= Math.floor(Number(input.withdrawn.textInput.current.value))) && (Math.floor(Number(input.withdrawnCurr.textInput.current.value)) >= 0)) {
+        badInputFlag[4] = false;
+        element.textContent = null;
+        return;
+      }
+    }
+    badInputFlag[4] = true;
+    element.textContent = "error! Withdrawal amount cannot exceed total withdrawal amount!"
+    return;
+  }
+
   const Switch = () => {
     return (
       <Form.Check type="switch" 
@@ -169,11 +204,9 @@ import render from 'react-dom'
   
   function displayVals(theClass: TFSAvars, contributionRoom: number){
     const element = document.getElementById("calculation")!;
-    console.log(checked.toString());
-    console.log(showSwitch.toString());
-    for (let i =0; i < badInputFlag.length; i++) {
-      console.log(badInputFlag[i].toString()) 
-    }
+    //for (let i =0; i < badInputFlag.length; i++) {
+    //  console.log(badInputFlag[i].toString()) 
+    //}
     for (let i =0; i < badInputFlag.length; i++) {
         if(badInputFlag[i] == true) {
           element.textContent = "Please solve all above errors, or enter values for all fields, before submitting";
@@ -184,7 +217,10 @@ import render from 'react-dom'
           return;
         }
     }
+  
+    console.log(withdrawCurrData.withdrawBlur);
     let temp = theClass.getTFSAProps(theClass);
+
     contributionRoom = tfsaMath(temp);
     setShowResults(true);
     
@@ -196,11 +232,15 @@ import render from 'react-dom'
   }
   
   return (
-    <>
-        <Form className="mt-10"
+    <div className="CalculatorForm">
+    <dialog id="my_modal_1" className="modal">
+    <div className="modal-box">
+    <h3 className="font-bold text-lg">TFSA Calculator</h3>
+                         
+        <Form
         key="light"
         style={{ textAlign: "left", color: "black"}}>
-        <Form.Group as={Row} className="mb-3" controlId="birthYear">
+        <Form.Group as={Row} className="mb-3" id="birthYear">
             <Form.Label>What year were you born?</Form.Label>
             <Form.Control type="number" placeholder="XXXX" ref={input.born.textInput} onClick={() => OtherClick()} onBlur={handleChange} />
             <Form.Text className="errorMessage" id="bornError" muted> </Form.Text>
@@ -236,15 +276,29 @@ import render from 'react-dom'
             <Form.Text className ="errorMessage" id="withdrawnError" muted></Form.Text>
           </Form.Group>
 
-          <Button onClick={(() => displayVals(input, 0))}>Submit</Button>
+          <Form.Group as={Row} className="mb-3" controlId="tfsaWithdrawnCurr">
+           <Form.Label>How much of that amount have you withdrawn this year?</Form.Label>
+            <Form.Control type="number"  ref={input.withdrawnCurr.textInput} onClick={() => OtherClick()} onBlur={handleChange} />
+           <Form.Text className ="errorMessage" id="withdrawnCurrError" muted></Form.Text>
+          </Form.Group>
+
+          <Button className="btn" style={{color: "black"}} onClick={(() => displayVals(input, 0))}>Submit</Button>
 
         </Form>
-        <div> { showResults ? <Results /> : null } </div>
-        <div id="calculation"></div>
+        <div className="text-black mt-3"> { showResults ? <Results /> : null } </div>
+        <div className="text-black mt-2" id="calculation"></div> 
+                <div className="modal-action">
+                                
+      {/* if there is a button in form, it will close the modal */}
+      <button className="btn" style={{color: "black"}} onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).close()}>Close</button>
+                                
+                            </div>
+                        </div>
+                    </dialog>
       
       
     
-    </>
+    </div>
   );
   
   

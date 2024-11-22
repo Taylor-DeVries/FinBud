@@ -32,12 +32,14 @@ export default function QuizPage() {
     const [loading, setLoading] = useState(true);
   const [showCalculator, setShowCalculator] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
- function handleShow() {
-    setShowModal(true);
- }
 
-  const handleClose= () => setShowModal(false);
+  function handleShow() {
+    const element = document.getElementById("my_modal_1")! as HTMLDialogElement;
+    element.showModal();
+ } 
+
     
+
 
     //Runs everytime currentJson changes
     useEffect(() => {
@@ -114,11 +116,14 @@ export default function QuizPage() {
     }
 
     return (
-        
+        //PARENT CONTAINER
         <div
             className={`flex sm:mt-32  ${loading ? "hidden" : ""}`}
         >
-            <div className=" flex flex-col sm:flex-row sm:items-start items-center space-y-10 sm:space-x-5 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] ">
+       
+
+        <div className="flex  sm:mt-32">
+            <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
                 {/* Text Area */}
                 <div className="sm:w-2/3 text-left text-white rounded-xl">
                     {/* Back button */}
@@ -132,43 +137,59 @@ export default function QuizPage() {
                     </div>
 
                     {/* If screen is mobile */}
-                    <div className="w-full  rounded-xl bg-blue px-1 py-2 sm:hidden relative">
-                        {/* Inner scrollable content */}
+                    <div className="sm:hidden relative w-full">
+                        {tip === 0 ? (
+                            <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
 
-                        <div className="max-h-64 overflow-y-auto">
-                            {tip === 0 ? (
-                                <Textbox
-                                    secondaryLabel={currentNode?.question}
-                                />
-                            ) : (
-                                <Textbox
-                                    secondaryLabel={
-                                        currentNode?.moreInfo?.[tip - 1]
-                                    }
-                                />
-                            )}
-                            <div className="z-10 mb-2 absolute right-[5px] bottom-0">
-                                {showPrevTip ? (
-                                    <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-                                        <FaAngleLeft
-                                            onClick={() => nextTip(tip, false)}
-                                            className="text-blue h-5 w-5 hover:cursor-pointer"
-                                        />
-                                    </div>
-                                ) : null}
+                                <div className="max-h-64 overflow-y-auto">
 
-                                {showNextTip ? (
-                                    <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-                                        <FaAngleRight
-                                            onClick={() => nextTip(tip, true)}
-                                            className="text-blue h-5 w-5 hover:cursor-pointer"
-                                        />
-                                    </div>
-                                ) : null}
-                            </div>{" "}
+                                    <Textbox
+                                        secondaryLabel={currentNode?.question}
+                                    />
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
+
+                                <div className="max-h-64 overflow-y-auto">
+
+                                    <Textbox
+                                        secondaryLabel={
+                                            currentNode?.moreInfo?.[tip - 1]
+                                        }
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        <div className="mb-2 flex justify-end mt-1">
+                            {showPrevTip ? (
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                    <FaAngleLeft
+                                        onClick={() => nextTip(tip, false)}
+                                        className="text-blue h-6 w-6 hover:cursor-pointer"
+                                    />
+                                </div>
+                            ) : null}
+
+                            {showNextTip && showPrevTip ? (
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                    <FaAngleRight
+                                        onClick={() => nextTip(tip, true)}
+                                        className="text-blue h-6 w-6 hover:cursor-pointer"
+                                    />
+                                </div>
+                            ) : null}
+
+                            {showNextTip && !showPrevTip ? (
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                    <h1
+                                        onClick={() => nextTip(tip, true)}
+                                        className="text-blue text-3xl text-center h-6 w-6 hover:cursor-pointer leading-none"
+                                    >...</h1>
+                                </div>
+                            ) : null}
                         </div>
                     </div>
-
                     {/* If screen is big */}
                     <div className="hidden sm:block relative">
                         {tip === 0 ? (
@@ -183,22 +204,32 @@ export default function QuizPage() {
                             />
                         )}
 
-                        <div className="mb-2 absolute right-[5px] bottom-0">
+                        {/* MoreInfo Buttons */}
+                        <div className="mb-2 flex justify-end mt-1">
                             {showPrevTip ? (
-                                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
                                     <FaAngleLeft
                                         onClick={() => nextTip(tip, false)}
-                                        className="text-blue h-6 w-6 hover:cursor-pointer"
+                                        className="text-blue h-7 w-7 hover:cursor-pointer"
                                     />
                                 </div>
                             ) : null}
 
-                            {showNextTip ? (
-                                <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+                            {showNextTip && showPrevTip ? (
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
                                     <FaAngleRight
                                         onClick={() => nextTip(tip, true)}
-                                        className="text-blue h-6 w-6 hover:cursor-pointer"
+                                        className="text-blue h-7 w-7 hover:cursor-pointer"
                                     />
+                                </div>
+                            ) : null}
+
+                            {showNextTip && !showPrevTip ? (
+                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                    <h1
+                                        onClick={() => nextTip(tip, true)}
+                                        className="text-blue text-3xl text-center h-7 w-7 hover:cursor-pointer leading-none"
+                                    >...</h1>
                                 </div>
                             ) : null}
                         </div>
@@ -216,26 +247,10 @@ export default function QuizPage() {
                             ))}
                         </div>
                     </div>
+                    {showCalculator ? <button className="btn" onClick={handleShow}>open modal</button> : null}
                     
-                    
-                    
+                    <CalculatorComponent/>
                     </div>
-                    
-                    <div className="flex">
-                    <dialog id="my_modal_1" className="modal">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg">Hello!</h3>
-                                <div className="Calculator"> <CalculatorComponent /> </div>
-                            <div className="modal-action">
-                                
-                                    {/* if there is a button in form, it will close the modal */}
-                                      <button className="btn" style={{color: "black"}} onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).close()}>Close</button>
-                                
-                            </div>
-                        </div>
-                    </dialog>
-                   
-                </div>
                     
                 {showCalculator ? <button className=" w-40 h-40 size-0  static shadow-none btn border-none text-blue bg-light_blue bg-opacity-0 " onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <Image className="absolute overflow-visible " width="100" height="100" alt="Calculatoricon" src="/images/calculator.png"></Image></button> : null}
                 
@@ -257,6 +272,7 @@ export default function QuizPage() {
             </div>
             </div>
             
+        </div>
         </div>
        
         
