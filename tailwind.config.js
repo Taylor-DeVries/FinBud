@@ -7,8 +7,8 @@ module.exports = {
                 secondary: "0F0F0F",
                 blue: "#5298b8",
                 dark_blue: "#3a6d85",
-                light_blue: "#639db8", //"#68accc",
-                slate_100: "#f1f5f9"
+                light_blue: "#639db8",
+                light_blue_bg: "#f8fafc"
             },
             screens: {
                 lg: { min: "1025px" }, // screens larger than 1024px
