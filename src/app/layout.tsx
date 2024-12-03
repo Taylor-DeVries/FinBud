@@ -12,7 +12,7 @@ const font = Montserrat({ subsets: ["latin"], weight: ["700"] });
 
 export const metadata: Metadata = {
     title: "FinBud",
-    description: "your financial companion",
+    description: "FinBud is your Virtual Finance Buddy! Simplify personal finance with step-by-step guidance, smart tools, and approachable advice. Say goodbye to confusing jargon and take control of your money today!",
 };
 
 export default function RootLayout({
