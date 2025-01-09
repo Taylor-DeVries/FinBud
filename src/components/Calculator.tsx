@@ -17,15 +17,15 @@ import render from 'react-dom'
   const [checked, setChecked] = React.useState(false);
   var myChecked:boolean = true;
   const [showResults, setShowResults] = React.useState(false);
-  var badInputFlag: boolean[] = [false, false, false, false, false];
   const [showSwitch, setShowSwitch] = React.useState(false);
   const [bornFlag, setBornFlag] = React.useState(false);
   const [showWithdrawnCurr, setWithdrawnCurr] = React.useState(false);
- 
-  const [withdrawCurrData, setwithdrawCurrData] = useState({
-    withdrawBlur: 0,
-    withdrawChange: 0
-  });
+  const [BornInputFlag, setBornInputFlag] = React.useState(false);
+  const [ResidentInputFlag, setResidentInputFlag] = React.useState(false);
+  const [ContributedInputFlag, setContributedInputFlag] = React.useState(false);
+  const [WithdrawInputFlag, setWithdrawInputFlag] = React.useState(false);
+  const [WithdrawCurrInputFlag, setWithdrawCurrInputFlag] = React.useState(false);
+  
 
   // Handle form field changes
   
@@ -46,14 +46,14 @@ import render from 'react-dom'
   
   const handleChange = () => {
     handleBornChange();
-    if (badInputFlag[0]) return;
+    //if (BornInputFlag) return;
     handleResidentChange();
-    if(badInputFlag[1]) return; 
-    //console.log(inputFlag.toString());
+    //if(ResidentInputFlag) return; 
+    //console.log(badInputFlags.resident.toString());
     handleContributionChange();
-    if (badInputFlag[2]) return;
+    //if (ContributedInputFlag) return;
     handleWithdrawalChange();
-    if (badInputFlag[3]) return;
+    //if (WithdrawInputFlag) return;
     handleCurrWithdrawChange();
     return;
   }
@@ -64,28 +64,26 @@ import render from 'react-dom'
     console.log(checked.toString());
     let num:number = 0;
     OtherClick();
-    for(let i = 0; i < badInputFlag.length; i++) {
-      console.log(badInputFlag[i].toString());
-    }
+    handleChange();
   };
   function handleBornChange() {
     input.born.focusTextInput;
     const element = document.getElementById("bornError")!;
     if(input.born.textInput.current && input.resident.textInput.current && input.contributed.textInput.current){
         const temp = Number(input.born.textInput.current.value);
-        if(temp >= 1900 && temp < 2025) {
+        if(temp >= 1900 && temp < 2026) {
           element.textContent = null;
           if(temp == 2007){
               setShowSwitch(true);
           } else setShowSwitch(false);
-          badInputFlag[0] = false;
+          setBornInputFlag(false);
           element.textContent = null;
           let num:number = 0;
           return;
         }
-        badInputFlag[0] = true;
+        setBornInputFlag(true);
     }
-    element.textContent = "Oops! Please enter a number between 1900-2024";
+    element.textContent = "Oops! Please enter a number between 1900-2025";
     }
 
   const handleResidentChange = () => {
@@ -97,22 +95,21 @@ import render from 'react-dom'
         return;
       }
       const temp = Number(input.resident.textInput.current.value);
-      if(temp >= Number(input.born.textInput.current.value) && temp < 2025) {
-        handleContributionChange();
-        badInputFlag[1] = false;
+      if(temp >= Number(input.born.textInput.current.value) && temp < 2026) {
+        setResidentInputFlag(false);
         element.textContent = null;
         let num:number = 0;
         
         return;
       }
       if(temp == 0 && !bornFlag) {
-        badInputFlag[1] = true;
+        setResidentInputFlag(true);
         element.textContent = null;
         return;
       }
     }
     element.textContent = "Oops! Your response cannot be a year before you were born or in the future!"
-    badInputFlag[1] = true;
+    setResidentInputFlag(true);
     let num:number = 0;
    
   }
@@ -122,7 +119,7 @@ import render from 'react-dom'
     const num: number = 0;
     if(input.withdrawn.textInput.current && input.contributed.textInput.current) {
       if(Math.floor(Number(input.withdrawn.textInput.current.value)) <= Math.floor(Number(input.contributed.textInput.current.value)) && Math.floor(Number(input.withdrawn.textInput.current.value)) >= 0) {
-        badInputFlag[3] = false;
+        setWithdrawInputFlag(false);
         element.textContent = null;
         if(Math.floor(Number(input.withdrawn.textInput.current.value)) != 0){
            setWithdrawnCurr(true);
@@ -133,7 +130,7 @@ import render from 'react-dom'
       }
     }
     setWithdrawnCurr(false);
-    badInputFlag[3] = true;
+    setWithdrawInputFlag(true);
     element.textContent = "Oops! Value must be a non-negative number less then amount contributed. Please try again!";
   }
 
@@ -144,22 +141,23 @@ import render from 'react-dom'
     let temparray = input.getTFSAProps(input);
     temparray[2] = "0";
     let maxRoom = tfsaMath(temparray);
+    console.log(maxRoom);
     let num: number = 0;
     if(input.contributed.textInput.current && input.withdrawn.textInput.current) {
       
       if(Math.floor(Number(input.contributed.textInput.current.value)) <= maxRoom && Math.floor(Number(input.contributed.textInput.current.value)) >= 0) {
-        badInputFlag[2] = false;
+        setContributedInputFlag(false);
         element.textContent = null;
         
         return;
       }
       if(Math.floor(Number(input.contributed.textInput.current.value)) < 0) {
-        badInputFlag[2] = true;
+        setContributedInputFlag(true);
         element.textContent = "Oops! negative values for contribution are not allowed! Please enter a positive number";
         return;
       }
     }
-    badInputFlag[2] = true;
+    setContributedInputFlag(true);
     element.textContent = "Warning: The number you have entered is higher then your maximum contribution limit and withdrawal amount! You will pay interest with this amount";
   }
 
@@ -170,12 +168,12 @@ import render from 'react-dom'
     
     if (input.withdrawn.textInput.current && input.withdrawnCurr.textInput.current) {
       if((Math.floor(Number(input.withdrawnCurr.textInput.current.value)) <= Math.floor(Number(input.withdrawn.textInput.current.value))) && (Math.floor(Number(input.withdrawnCurr.textInput.current.value)) >= 0)) {
-        badInputFlag[4] = false;
+        setWithdrawCurrInputFlag(false);
         element.textContent = null;
         return;
       }
     }
-    badInputFlag[4] = true;
+    setWithdrawCurrInputFlag(true);
     element.textContent = "error! Withdrawal amount cannot exceed total withdrawal amount!"
     return;
   }
@@ -204,21 +202,20 @@ import render from 'react-dom'
   
   function displayVals(theClass: TFSAvars, contributionRoom: number){
     const element = document.getElementById("calculation")!;
-    //for (let i =0; i < badInputFlag.length; i++) {
-    //  console.log(badInputFlag[i].toString()) 
-    //}
-    for (let i =0; i < badInputFlag.length; i++) {
-        if(badInputFlag[i] == true) {
+    console.log(BornInputFlag.toString() + ResidentInputFlag.toString() + WithdrawInputFlag.toString() + ContributedInputFlag.toString() + WithdrawCurrInputFlag.toString() );
+    if ((checked == false && showSwitch == true)){
+      element.textContent = "You must be 18 to have a TFSA. If you are 18, please click on the switch above.";
+      return;
+    }
+   
+        if(BornInputFlag || ResidentInputFlag || ContributedInputFlag || WithdrawInputFlag || WithdrawCurrInputFlag) {
           element.textContent = "Please solve all above errors, or enter values for all fields, before submitting";
           return; 
         }
-        if ((checked == false && showSwitch == true)){
-          element.textContent = "You must be 18 to have a TFSA. If you are 18, please click on the switch above.";
-          return;
-        }
-    }
+        
+    
   
-    console.log(withdrawCurrData.withdrawBlur);
+  
     let temp = theClass.getTFSAProps(theClass);
 
     contributionRoom = tfsaMath(temp);

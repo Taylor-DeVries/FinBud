@@ -126,7 +126,7 @@ export default function QuizPage() {
         <div className="  flex sm:mt-16">
             <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
                 {/* Text Area */}
-                <div className="sm:w-2/3 text-left text-white rounded-xl">
+                <div className="sm:w-2/3 sm:mr-10 text-left text-white rounded-xl">
                     {/* Back button */}
                     <div className="mb-2">
                         <div className="rounded-xl bg-light_blue_bg p-2 inline-block">
@@ -249,15 +249,15 @@ export default function QuizPage() {
                         </div>
                     </div>
                     
-                    <CalculatorComponent />
+                    <CalculatorComponent/>
                     </div>
                     
                 
                 
                 {/* Fin Image */}
                 
-                <div className=" flex sm:justify-center justify-normal sm:w-1/3 sm:ml-10 break-before-all flex-none sm:static bottom-6 sm:bottom-0 sm:mt-64">
-                <button className={`sm:flex hidden  shadow-none btn border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={70}></FaCalculator></button>
+                <div className=" sm:w-1/3 sm:justify-center flex static bottom-6 sm:bottom-0 sm:mt-64">
+                <button className={`sm:flex hidden shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={70}></FaCalculator></button>
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
