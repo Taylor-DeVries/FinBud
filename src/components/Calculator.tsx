@@ -75,7 +75,7 @@ import render from 'react-dom'
         const temp = Number(input.born.textInput.current.value);
         if(temp >= 1900 && temp < 2025) {
           element.textContent = null;
-          if(temp == 2006){
+          if(temp == 2007){
               setShowSwitch(true);
           } else setShowSwitch(false);
           badInputFlag[0] = false;
@@ -228,14 +228,14 @@ import render from 'react-dom'
       alert("oops");
     }
     
-    element.textContent = contributionRoom.toString();
+    element.textContent = "$" + contributionRoom.toString();
   }
   
   return (
-    <div className="CalculatorForm">
+    <div className="CalculatorForm -mt-10">
     <dialog id="my_modal_1" className="modal">
     <div className="modal-box">
-    <h3 className="font-bold text-lg">TFSA Calculator</h3>
+    <h3 className="font-bold mb-3 text-lg" style={{color: "black"}}>TFSA Calculator</h3>
                          
         <Form
         key="light"

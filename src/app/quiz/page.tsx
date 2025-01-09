@@ -16,6 +16,7 @@ import Textbox from "@/components/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import CalculatorComponent from "@/components/Calculator";
 import React from "react";
+import { FaCalculator } from "react-icons/fa";
 
     
 
@@ -118,11 +119,11 @@ export default function QuizPage() {
     return (
         //PARENT CONTAINER
         <div
-            className={`flex sm:mt-32  ${loading ? "hidden" : ""}`}
+            className={` flex sm:mt-32  ${loading ? "hidden" : ""}`}
         >
        
 
-        <div className="flex  sm:mt-32">
+        <div className="  flex sm:mt-16">
             <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
                 {/* Text Area */}
                 <div className="sm:w-2/3 text-left text-white rounded-xl">
@@ -247,23 +248,22 @@ export default function QuizPage() {
                             ))}
                         </div>
                     </div>
-                    {showCalculator ? <button className="btn" onClick={handleShow}>open modal</button> : null}
                     
                     <CalculatorComponent/>
                     </div>
                     
-                {showCalculator ? <button className=" w-40 h-40 size-0  static shadow-none btn border-none text-blue bg-light_blue bg-opacity-0 " onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <Image className="absolute overflow-visible " width="100" height="100" alt="Calculatoricon" src="/images/calculator.png"></Image></button> : null}
+                
                 
                 {/* Fin Image */}
                 
                 <div className=" justify-center fixed sm:w-1/3 break-before-all flex-none sm:static bottom-6 sm:bottom-0 sm:mt-64">
-                
+                <button className={` shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={70}></FaCalculator></button>
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
                         width={300}
                         height={300}
-                        className="w-[350px] h-[350px] sm:w-auto sm:h-auto sm:mt-32"
+                        className="w-[350px] static h-[350px] sm:w-auto sm:h-auto sm:mt-32"
                         unoptimized
                         priority
                         onLoadingComplete={() => setLoading(false)}
@@ -273,6 +273,7 @@ export default function QuizPage() {
             </div>
             
         </div>
+        
         </div>
        
         
