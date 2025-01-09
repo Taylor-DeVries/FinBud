@@ -2,9 +2,7 @@
 
 Virtual Finance Buddy is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.
 
-![linkedin banners](https://github.com/user-attachments/assets/1e549331-aa51-4e61-9ed5-ddd970d24dab)
-
-### Access it here - https://main.d3buoyj6s1tc6p.amplifyapp.com/
+### Access it here - https://finbud.ca
 
 ### LinkedIn - https://www.linkedin.com/company/virtual-finance-buddy
 
@@ -16,7 +14,7 @@ Virtual Finance Buddy is an innovative platform designed to simplify personal fi
 - Lazy-Proof Design 🛋️: Ensures ease of use for individuals who find traditional financial planning too complex or time-consuming.
 - Ongoing Support 🔄: Adapts to users’ needs, offering relevant guidance whether they are just starting or looking to refine their financial strategies.
 
-![image](https://github.com/user-attachments/assets/bc264066-8090-4875-9a50-04296a2da19d)
+![image](https://github.com/user-attachments/assets/3819d323-4a37-4cac-a35b-b9a42d4484e5)
 
 # Why Is It Important ❓
 

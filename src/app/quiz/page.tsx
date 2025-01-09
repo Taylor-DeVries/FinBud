@@ -129,7 +129,7 @@ export default function QuizPage() {
                 <div className="sm:w-2/3 text-left text-white rounded-xl">
                     {/* Back button */}
                     <div className="mb-2">
-                        <div className="rounded-xl bg-light_blue p-2 inline-block bg-opacity-10">
+                        <div className="rounded-xl bg-light_blue_bg p-2 inline-block">
                             <IoIosArrowRoundBack
                                 onClick={goBack}
                                 className="text-blue h-8 w-8 hover:cursor-pointer"
@@ -164,7 +164,7 @@ export default function QuizPage() {
                         )}
                         <div className="mb-2 flex justify-end mt-1">
                             {showPrevTip ? (
-                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                                     <FaAngleLeft
                                         onClick={() => nextTip(tip, false)}
                                         className="text-blue h-6 w-6 hover:cursor-pointer"
@@ -173,7 +173,7 @@ export default function QuizPage() {
                             ) : null}
 
                             {showNextTip && showPrevTip ? (
-                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                                     <FaAngleRight
                                         onClick={() => nextTip(tip, true)}
                                         className="text-blue h-6 w-6 hover:cursor-pointer"
@@ -182,7 +182,7 @@ export default function QuizPage() {
                             ) : null}
 
                             {showNextTip && !showPrevTip ? (
-                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                                     <h1
                                         onClick={() => nextTip(tip, true)}
                                         className="text-blue text-3xl text-center h-6 w-6 hover:cursor-pointer leading-none"
@@ -208,7 +208,7 @@ export default function QuizPage() {
                         {/* MoreInfo Buttons */}
                         <div className="mb-2 flex justify-end mt-1">
                             {showPrevTip ? (
-                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                                     <FaAngleLeft
                                         onClick={() => nextTip(tip, false)}
                                         className="text-blue h-7 w-7 hover:cursor-pointer"
@@ -217,7 +217,7 @@ export default function QuizPage() {
                             ) : null}
 
                             {showNextTip && showPrevTip ? (
-                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                                     <FaAngleRight
                                         onClick={() => nextTip(tip, true)}
                                         className="text-blue h-7 w-7 hover:cursor-pointer"
@@ -226,7 +226,7 @@ export default function QuizPage() {
                             ) : null}
 
                             {showNextTip && !showPrevTip ? (
-                                <div className="rounded-xl bg-light_blue p-2 mx-1 inline-block bg-opacity-10">
+                                <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                                     <h1
                                         onClick={() => nextTip(tip, true)}
                                         className="text-blue text-3xl text-center h-7 w-7 hover:cursor-pointer leading-none"

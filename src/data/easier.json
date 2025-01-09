@@ -19,7 +19,7 @@
           "id": 2,
           "moreInfo": [
             "Debt is when you borrow money and have to pay it back later",
-            "In most cases, you have to pay back regular payments with a extra added on top",
+            "In most cases, you have to pay back regular payments with an extra added on top",
             "The extra money on top of how much you borrowed is called interest",
             "The original amount is often called the principal",
             "The interest rate is the percentage of interest you pay for a given time period in relation to the principal",
@@ -31,7 +31,7 @@
           "answers": {
             "Yes, credit card debt or other high interest debt (rate above 10 percent)": {
               "nodeType": "Question",
-              "question": "Yikes! Credit card debt is high-interest debt that can snowball quickly! I would pay that off right away!",
+              "question": "Yikes! High-interest debt can snowball quickly! I would pay that off right away!",
               "moreInfo": [
                 "Usual credit card debt has a rate between 10-15 percent",
                 "This is quite high and is difficult to overcome",
@@ -107,6 +107,43 @@
                         "I'd want the money within the next five years": {
                           "nodeType": "Question",
                           "question": "I'd continue contributing to your savings account until you feel comfortable taking on risk for long-term reward",
+                          "moreInfo": [
+                            "In order to earn higher rates of return, higher risk is needed",
+                            "However, this risk is greatly reduced with time",
+                            "Because of this, money that you need short term should be put into guaranteed investments",
+                            "A high interest savings account with no fees is a good option for this",
+                            "When deciding what is a good account for you to put your money in it can be overwhelming with all the options",
+                            "A good account should meet a few criteria",
+                            "First, it should be from a reputable firm, this could mean it's large or it's been around for a while",
+                            "Second, it should be CDIC covered, this means the government protects up to $100,000 in deposits in case anything happens to the bank providing the account",
+                            "Thirdly, there should be no fees for using the savings account, with so many no-fee accounts out there, there's no need for the average person to pay for one",
+                            "Lastly, it should have the highest interest rate possible",
+                            "How interest rate is so hurtful when it comes to debt, works in the opposite way when it comes to your own savings account",
+                            "A good account that meets these requirements is the Wealthsimple Cash account, an easy account you can manage all from your phone",
+                            "Alternatively, you can invest in other guaranteed financial instruments",
+                            "These include GICs and Treasury Bonds",
+                            "GICs (Guaranteed Investment Certificates) are investments where you lend money to a financial institution for a fixed term and earn a guaranteed interest rate.",
+                            "There are a couple things to note with GICs",
+                            "You are unable to get the money you invest back until the time period is over",
+                            "There is a guaranteed amount of interest you will receive",
+                            "This makes GICs enticing in scenarios where you want a guaranteed amount of money a certain amount of time into the future",
+                            "Many different financial institutions offer various rates and time periods",
+                            "If you find one that has a particularly high rate (higher than your savings account rate) and has a time frame that works for you, it could be a safe way to make some money",
+                            "Treasury bonds are low risk investments where you lend money to the government and earn interest until they pay you back in full later",
+                            "You can buy them through financial institutions or directly from the government",
+                            "To buy directly from the Government of Canada you can go via the Canada Savings Bonds (CSB) website or the Government of Canada Investment Account",
+                            "To decide between the options I've mentioned, go with what works for your time frame and gives you the best returns",
+                            "To keep it simple, you can always just stick to contributing to your savings account",
+                            "If you are saving for a particular goal within the next few year, some financial institutions allow you to open savings accounts with different labels",
+                            "For example, Wealthsimple allows you to open as many Cash accounts as you'd like at no fee",
+                            "From there you can label them accordingly",
+                            "For example, at this point you should have your six months worth of living expenses saved up",
+                            "You could keep this in an account called 'Emergency Fund'",
+                            "Then you could open another account for whatever you're looking to spend in the next few years",
+                            "If it was a car for example, you could open another account and call it 'Car Fund'",
+                            "Then month by month contribute to this account and build it until you are able to buy what you're working towards",
+                            "If you don't need money for within the next five years, beyond your six month fund and your regular expenses, then you can take on riskier investments for greater returns"
+                          ],
                           "answers": {
                             "I got all the money I need for now, I can wait more than five years": {
                               "nodeType": "Link",
