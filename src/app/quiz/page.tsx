@@ -249,26 +249,26 @@ export default function QuizPage() {
                         </div>
                     </div>
                     
-                    <CalculatorComponent/>
+                    <CalculatorComponent />
                     </div>
                     
                 
                 
                 {/* Fin Image */}
                 
-                <div className=" justify-center fixed sm:w-1/3 break-before-all flex-none sm:static bottom-6 sm:bottom-0 sm:mt-64">
-                <button className={` shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={70}></FaCalculator></button>
+                <div className=" flex sm:justify-center justify-normal sm:w-1/3 break-before-all flex-none sm:static bottom-6 sm:bottom-0 sm:mt-64">
+                <button className={`sm:flex hidden  ml-20 shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={70}></FaCalculator></button>
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
                         width={300}
                         height={300}
-                        className="w-[350px] static h-[350px] sm:w-auto sm:h-auto sm:mt-32"
+                        className="w-[350px] h-[350px] sm:w-auto sm:h-auto sm:mt-32"
                         unoptimized
                         priority
                         onLoadingComplete={() => setLoading(false)}
                     />
-               
+               <button className={`sm:hidden absolute mb-5 shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={65}></FaCalculator></button>
             </div>
             </div>
             
