@@ -46,14 +46,9 @@ import render from 'react-dom'
   
   const handleChange = () => {
     handleBornChange();
-    //if (BornInputFlag) return;
     handleResidentChange();
-    //if(ResidentInputFlag) return; 
-    //console.log(badInputFlags.resident.toString());
     handleContributionChange();
-    //if (ContributedInputFlag) return;
     handleWithdrawalChange();
-    //if (WithdrawInputFlag) return;
     handleCurrWithdrawChange();
     return;
   }
@@ -61,7 +56,6 @@ import render from 'react-dom'
   const handleSwitchChange = () => {
     setChecked(!checked);
     myChecked = checked;
-    console.log(checked.toString());
     let num:number = 0;
     OtherClick();
     handleChange();
@@ -141,7 +135,6 @@ import render from 'react-dom'
     let temparray = input.getTFSAProps(input);
     temparray[2] = "0";
     let maxRoom = tfsaMath(temparray);
-    console.log(maxRoom);
     let num: number = 0;
     if(input.contributed.textInput.current && input.withdrawn.textInput.current) {
       
@@ -202,7 +195,6 @@ import render from 'react-dom'
   
   function displayVals(theClass: TFSAvars, contributionRoom: number){
     const element = document.getElementById("calculation")!;
-    console.log(BornInputFlag.toString() + ResidentInputFlag.toString() + WithdrawInputFlag.toString() + ContributedInputFlag.toString() + WithdrawCurrInputFlag.toString() );
     if ((checked == false && showSwitch == true)){
       element.textContent = "You must be 18 to have a TFSA. If you are 18, please click on the switch above.";
       return;

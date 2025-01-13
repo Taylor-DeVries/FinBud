@@ -9,11 +9,9 @@ export default function tfsaMath(inputArray: string[]) {
     if (inputs[1] > 2007) {
         return 0;
     }
-    console.log(inputs);
     let ageAbove18 = 2025 - (inputs[1] +18)
     let yearsAsResident = 2025 - (inputs[0])
     let counter = ageAbove18 < yearsAsResident ? ageAbove18 : yearsAsResident;
-    //console.log(counter);
     if((counter+1) > yearlyRate.length) {total = 102000;}
     
     else {
@@ -22,10 +20,8 @@ export default function tfsaMath(inputArray: string[]) {
         counter--;
     }
     }
-    console.log(inputs[4]);
     total = total - inputs[2] + inputs[3] - inputs[4];
     if (total < 0) total = 0;
-    //console.log(total);
     return total;
     
     

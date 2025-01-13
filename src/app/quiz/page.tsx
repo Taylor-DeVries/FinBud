@@ -280,3 +280,103 @@ export default function QuizPage() {
     );
 }
 
+// {/* If screen is mobile */ }
+// <div className="w-full rounded-xl bg-blue px-1 py-2 lg:hidden relative">
+//   {/* Inner scrollable content */}
+//
+//   <div className="max-h-[150px] sm:max-h-[256px] md:max-h-[512px] lg:max-h-[640px] xl:max-h-[780px] overflow-y-auto ">
+//     {tip === 0 ? (
+//       <Textbox secondaryLabel={currentNode?.question} />
+//     ) : (
+//       <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1]} />
+//     )}
+//     <div className="z-10 mb-2 absolute right-[5px] bottom-0">
+//
+//       {showPrevTip ? (
+//         <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+//           <FaAngleLeft
+//             onClick={() => nextTip(tip, false)}
+//             className="text-blue h-8 w-8 hover:cursor-pointer"
+//           />
+//         </div>
+//       ) : null}
+//
+//       {showNextTip ? (
+//         <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+//           <FaAngleRight
+//             onClick={() => nextTip(tip, true)}
+//             className="text-blue h-8 w-8 hover:cursor-pointer"
+//           />
+//         </div>
+//       ) : null}
+//
+//     </div>
+//   </div>
+// </div>
+//
+// {/* If screen is big */ }
+// <div className="hidden lg:block relative">
+//   {tip === 0 ? (
+//     <Textbox secondaryLabel={currentNode?.question + "\n"} />
+//   ) : (
+//     <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1] + "\n"} />
+//
+//   )}
+//
+//   <div className="mb-2 absolute right-[5px] bottom-0">
+//
+//     {showPrevTip ? (
+//       <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+//         <FaAngleLeft
+//           onClick={() => nextTip(tip, false)}
+//           className="text-blue h-6 w-6 hover:cursor-pointer"
+//         />
+//       </div>
+//     ) : null}
+//
+//     {showNextTip ? (
+//       <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
+//         <FaAngleRight
+//           onClick={() => nextTip(tip, true)}
+//           className="text-blue h-6 w-6 hover:cursor-pointer"
+//         />
+//       </div>
+//     ) : null}
+//
+//
+//   </div>
+//
+// </div>
+//
+// {/* Buttons for the answers */ }
+// <div className="mt-4">
+//   <div className="flex flex-col space-y-2 ">
+//     {answers.map((answer, index) => (
+//       <Button
+//         key={index}
+//         onClick={() => nextAnswer(answer)}
+//         label={answer}
+//       />
+//     ))}
+//   </div>
+// </div>
+//
+// {/* <CalculatorComponent /> */ }
+//             </div >
+//
+//   {/* Fin Image */ }
+//   < div className = "lg:w-1/3 flex lg:justify-start justify-center" >
+//     <Image
+//       src="/images/Fin.png"
+//       alt="Logo"
+//       width={0} // placeholder
+//       height={0} // placeholder
+//       className="w-[225px] h-[225px] sm:w-[500px] sm:h-[500px] lg:w-auto lg:auto object-contain "
+//       unoptimized={true}
+//     />
+//             </div >
+//           </div >
+//         </div >
+//         )
+// };
+
