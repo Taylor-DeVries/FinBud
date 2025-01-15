@@ -8,6 +8,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./globals.css";
 import ResponsiveImage from "@/components/ResponsiveImage";
 
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+
 const font = Montserrat({ subsets: ["latin"], weight: ["700"] });
 
 export const metadata: Metadata = {
@@ -26,6 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <UserProvider> 
       <html lang="en">
         <body className={font.className}>
           <div className="flex h-screen">
@@ -36,5 +39,6 @@ export default function RootLayout({
           </div>
         </body>
       </html>
+    </UserProvider>
   );
 }
