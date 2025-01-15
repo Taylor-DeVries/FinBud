@@ -6,10 +6,16 @@ import Button from "@/components/Button";
 import Textbox from "@/components/Textbox";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
 
   return (
     <>
@@ -47,6 +53,11 @@ const HomePage: React.FC = () => {
               secondaryLabel="I’m here to guide you through every stage of your personal finance journey."
               chatBubble
             />
+
+            <a href="/api/auth/login">Login</a>
+            <a href="/api/auth/login">Logout</a>
+            <h1>{ user.name }</h1>
+            <Image src={user.picture} width={100} height={100} alt={"Damn"}></Image>
 
             <div className="mt-8 flex justify-center ">
               <Button
