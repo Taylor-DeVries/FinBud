@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['lh3.googleusercontent.com'], // Add allowed image domains here
+        domains: [
+            's.gravatar.com',
+            'cdn.auth0.com',
+            'lh3.googleusercontent.com'
+        ], // Add allowed image domains here
     },
 };
 

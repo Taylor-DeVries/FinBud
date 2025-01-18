@@ -102,50 +102,39 @@ export const Navigation = ({
                 ))}
                 {/* Creating the sign up link only if user is not logged in */}
 
+                    
+
                     { user ? (
-                        <Link
-                            href="/api/auth/logout"
-                            className={twMerge(
-                                "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
-                            )}
-                        >
+                        <a 
+                        href="/api/auth/logout?federated=''" 
+                        className={twMerge(
+                                "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md"
+                        )}
+                        > 
                             <div className="flex flex-row my-2">
                                 <div className="flex flex-row">
-
-                                        {user.picture ? (
-                                            <>
-                                            <Image 
-                                                src={user.picture} 
-                                                width={35} 
-                                                height={35} 
-                                                className="rounded-full"
-                                                alt={""}>
-                                            </Image>
-                                            
-                                            <span className="ml-2 mt-2">Sign out</span>
-                                            </>
-                                        ) :
-                                            <>
-                                            <IconUser />
-                                            <span className="ml-2">Sign out</span>
-                                            </>
-                                           
-                                        }
-                                        
-                                    </div>
+                                    <Image 
+                                        src={user.picture} 
+                                        width={30} 
+                                        height={30} 
+                                        className="rounded-full"
+                                        alt={""}>
+                                    </Image>
+                                    
+                                    <span className="ml-2 mt-2">Sign out</span>
+                                </div>
                             </div>
-                        </Link>
+                        </a>
                     ) : (
                         <Link
                             href="/api/auth/login"
                             className={twMerge(
-                                "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
+                                "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md"
                             )}
                         >
                             <div className="flex flex-row my-2">
                                 <div className="flex flex-row">
                                         <IconUser />
-
                                         <span className="ml-2">Sign in</span>
                                     </div>
                             </div>
