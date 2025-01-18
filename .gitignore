@@ -1,36 +1,34 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+FinBud-Frontend/node_modules
+FinBud-Frontend/.pnp
+FinBud-Frontend.pnp.js
+FinBud-Frontend.yarn/install-state.gz
 
 # testing
-/coverage
+FinBud-Frontend/coverage
 
 # next.js
-/.next/
-/out/
+FinBud-Frontend/.next/
+FinBud-Frontend/out/
 
 # production
-/build
+FinBud-Frontend/build
 
 # misc
-.DS_Store
-*.pem
+FinBud-Frontend/.DS_Store
+FinBud-Frontend/*.pem
 
 # debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+FinBud-Frontend/npm-debug.log*
+FinBud-Frontend/yarn-debug.log*
+FinBud-Frontend/yarn-error.log*
 
 # local env files
-.env
-
-# vercel
-.vercel
+FinBud-Frontend/.env.local
 
 # typescript
-*.tsbuildinfo
-next-env.d.ts
+FinBud-Frontend/*.tsbuildinfo
+FinBud-Frontend/next-env.d.ts
+

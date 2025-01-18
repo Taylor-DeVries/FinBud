@@ -6,13 +6,15 @@ import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { IconMenu2, IconUser } from "@tabler/icons-react";
 import { sidebarLinks } from "@/constants/SidebarLinks";
-import {
-    SignedIn,
-    SignedOut,
-    SignInButton,
-    UserButton,
-    useUser,
-} from "@clerk/nextjs";
+import { useUser } from '@auth0/nextjs-auth0/client';
+
+// import {
+//     SignedIn,
+//     SignedOut,
+//     SignInButton,
+//     UserButton,
+//     useUser,
+// } from "@clerk/nextjs";
 
 const isMobile = () => {
     if (typeof window === "undefined") return false;
@@ -43,7 +45,7 @@ export const Sidebar = () => {
                 <div className="flex flex-col items-center">
                     <SidebarHeader />
                 </div>
-                <Navigation setOpen={setOpen} />
+                    <Navigation setOpen={setOpen} />
             </div>
 
             {/* Button to toggle the sidebar only visible on mobile */}
@@ -63,7 +65,11 @@ export const Navigation = ({
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     const pathname = usePathname();
-    const { user } = useUser();
+    
+    const { user, error, isLoading } = useUser();
+
+    if (isLoading) return <></>;
+    if (error) return <div>{error.message}</div>;
 
     const isActive = (href: string) => pathname === href;
 
@@ -95,39 +101,45 @@ export const Navigation = ({
                     </Link>
                 ))}
                 {/* Creating the sign up link only if user is not logged in */}
-                <SignedOut>
-                    <Link
-                        href="/profile"
+
+                    
+
+                    { user ? (
+                        <a 
+                        href="/api/auth/logout?federated=''" 
                         className={twMerge(
-                            "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
+                                "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md"
                         )}
-                    >
-                        <div className="flex flex-row my-2">
-                            <SignInButton mode="modal">
+                        > 
+                            <div className="flex flex-row my-2">
                                 <div className="flex flex-row">
-                                    <IconUser />
-
-                                    <span className="ml-2">Sign in</span>
+                                    <Image 
+                                        src={user.picture} 
+                                        width={30} 
+                                        height={30} 
+                                        className="rounded-full"
+                                        alt={""}>
+                                    </Image>
+                                    
+                                    <span className="ml-2 mt-2">Sign out</span>
                                 </div>
-                            </SignInButton>
-                        </div>
-                    </Link>
-                </SignedOut>
-
-                <div className="text-slate-500 flex items-center space-x-2 py-2 px-2 rounded-md text-sm">
-                    <SignedIn>
-                        <div className="flex items-center  space-x-2">
-                            {/* Wrapping the name and UserButton in one container */}
-                            <UserButton userProfileMode="modal" />
-                            {/* User's name displayed beside the UserButton */}
-                            {user && (
-                                <span>
-                                    {user.firstName} {user.lastName}
-                                </span>
+                            </div>
+                        </a>
+                    ) : (
+                        <Link
+                            href="/api/auth/login"
+                            className={twMerge(
+                                "text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md"
                             )}
-                        </div>
-                    </SignedIn>
-                </div>
+                        >
+                            <div className="flex flex-row my-2">
+                                <div className="flex flex-row">
+                                        <IconUser />
+                                        <span className="ml-2">Sign in</span>
+                                    </div>
+                            </div>
+                        </Link>
+                    )}
             </div>
         </div>
     );
