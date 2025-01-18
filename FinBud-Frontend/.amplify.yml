@@ -1,17 +1,20 @@
 version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - npm ci --cache .npm --prefer-offline
-    build:
-      commands:
-        - env | grep -e NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY -e CLERK_SECRET_KEY >> .env.production
-        - npm run build
-  artifacts:
-    baseDirectory: .next
-    files:
-      - "**/*"
-  cache:
-    paths:
-      - node_modules/**/*
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci --cache .npm --prefer-offline
+        build:
+          commands:
+            - echo -e "AUTH0_BASE_URL=$AUTH0_BASE_URL\nAUTH0_CLIENT_ID=$AUTH0_CLIENT_ID\nAUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET\nAUTH0_ISSUER_BASE_URL=$AUTH0_ISSUER_BASE_URL\nAUTH0_SECRET=$AUTH0_SECRET" >> .env.production
+            - npm run build
+      artifacts:
+        baseDirectory: .next
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - .next/cache/**/*
+          - .npm/**/*
+    appRoot: FinBud-Frontend
