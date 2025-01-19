@@ -2,15 +2,9 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card';
-import Modal from 'react-bootstrap/Modal'
-import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 import TFSAvars from "./tfsaInterface";
 import  tfsaMath  from "./tfsaMath";
-import Overlay from "react-bootstrap/Overlay";
-import render from 'react-dom'
 
  function CalculatorComponent() {
   const input = new TFSAvars();
