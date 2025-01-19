@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import Textbox from "@/components/Textbox";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
