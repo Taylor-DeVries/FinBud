@@ -14,6 +14,12 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Textbox from "@/components/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import CalculatorComponent from "@/components/Calculator";
+import React from "react";
+import { FaCalculator } from "react-icons/fa";
+
+    
+
 import { useRouter } from "next/navigation";
 
 export default function QuizPage() {
@@ -25,6 +31,16 @@ export default function QuizPage() {
     const [answers, setAnswers] = useState<string[]>([]);
     const [history, setHistory] = useState<Node[]>([]);
     const [loading, setLoading] = useState(true);
+  const [showCalculator, setShowCalculator] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
+
+  function handleShow() {
+    const element = document.getElementById("my_modal_1")! as HTMLDialogElement;
+    element.showModal();
+ } 
+
+    
+
 
     //Runs everytime currentJson changes
     useEffect(() => {
@@ -46,9 +62,12 @@ export default function QuizPage() {
                 currentNode.connect_id
             );
 
-            setCurrentNode(newCurrentNode);
-        }
-    }, [currentNode]);
+      setCurrentNode(newCurrentNode);
+    }
+    if (currentNode.id == 6) {
+      setShowCalculator(true);
+    } else setShowCalculator(false);
+  }, [currentNode]);
 
     // Runs everytime a answer is pressed
     function nextAnswer(answer: string) {
@@ -98,12 +117,16 @@ export default function QuizPage() {
     }
 
     return (
+        //PARENT CONTAINER
         <div
-            className={`flex min-h-screen sm:mt-32  ${loading ? "hidden" : ""}`}
+            className={` flex sm:mt-32  ${loading ? "hidden" : ""}`}
         >
+       
+
+        <div className="  flex sm:mt-16">
             <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
                 {/* Text Area */}
-                <div className="sm:w-2/3 text-left text-white rounded-xl">
+                <div className="sm:w-2/3 sm:mr-10 text-left text-white rounded-xl">
                     {/* Back button */}
                     <div className="mb-2">
                         <div className="rounded-xl bg-light_blue_bg p-2 inline-block">
@@ -225,12 +248,16 @@ export default function QuizPage() {
                             ))}
                         </div>
                     </div>
-
-                    {/* <CalculatorComponent /> */}
-                </div>
-
+                    
+                    <CalculatorComponent/>
+                    </div>
+                    
+                
+                
                 {/* Fin Image */}
-                <div className="sm:w-1/3 flex fixed sm:static bottom-6 sm:bottom-0 sm:mt-64">
+                
+                <div className=" sm:w-1/3 sm:justify-center flex static bottom-6 sm:bottom-0 sm:mt-64">
+                <button className={`sm:flex hidden shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={70}></FaCalculator></button>
                     <Image
                         src="/images/Fin.png"
                         alt="Logo"
@@ -241,9 +268,15 @@ export default function QuizPage() {
                         priority
                         onLoadingComplete={() => setLoading(false)}
                     />
-                </div>
+               <button className={`sm:hidden absolute mb-5 shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${!showCalculator ? "invisible " : ""}`}  onClick={()=>(document.getElementById('my_modal_1')! as HTMLDialogElement).showModal()}> <FaCalculator className="hover:#86b7ce" size={65}></FaCalculator></button>
             </div>
-        </div >
+            </div>
+            
+        </div>
+        
+        </div>
+       
+        
     );
 }
 
@@ -346,3 +379,4 @@ export default function QuizPage() {
 //         </div >
 //         )
 // };
+
