@@ -1,5 +1,4 @@
 # Description 💸
-
 Virtual Finance Buddy is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.
 
 ### Access it here - https://finbud.ca
@@ -7,6 +6,8 @@ Virtual Finance Buddy is an innovative platform designed to simplify personal fi
 ### LinkedIn - https://www.linkedin.com/company/virtual-finance-buddy
 
 ### Instagram - https://www.instagram.com/virtual_finance_buddy/
+
+![finLogo](https://github.com/user-attachments/assets/84dab547-6328-4da9-986c-fec4a28dbb76)
 
 # What the Site Does 🌟
 
@@ -23,7 +24,4 @@ Many young people struggle with personal finance due to the complexity and overw
 # Meet Fin 🐧
 
 He has your best interest at heart! Fin's mission is to make the world more more financially literate!
-
-| Financial Literacy                                                                           | Financial Ignorance                                                                        |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| ![FinHappy](https://github.com/user-attachments/assets/fecd31e0-ce1f-475f-a2ca-cfdeca5020ff) | ![FinSad](https://github.com/user-attachments/assets/8a1ef5b1-aad1-486a-8cb6-629ead2e8058) |
+![Fin](https://github.com/user-attachments/assets/c4f2bcc2-06f4-4605-95a3-84444ff5cee6)
