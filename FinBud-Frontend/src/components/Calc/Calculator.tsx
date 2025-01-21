@@ -9,7 +9,7 @@ import tfsaMath from "./tfsaMath";
 function CalculatorComponent() {
   const input = new TFSAvars();
   const [checked, setChecked] = React.useState(false);
-  var myChecked: boolean = true;
+  let myChecked: boolean = true;
   const [showResults, setShowResults] = React.useState(false);
   const [showSwitch, setShowSwitch] = React.useState(false);
   const [bornFlag, setBornFlag] = React.useState(false);
