@@ -14,7 +14,7 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Textbox from "@/components/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import CalculatorComponent from "@/components/Calc/Calculator";
+import CalculatorComponent from "../../components/Calc/Calculator";
 import React from "react";
 import { FaCalculator } from "react-icons/fa";
 
