@@ -1,0 +1,6 @@
+@FinBud_Backend_HostAddress = http://localhost:5123
+
+GET {{FinBud_Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
