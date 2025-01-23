@@ -235,7 +235,8 @@ export default function QuizPage() {
 
             {/* Fin Image */}
             <Image
-              src="/images/Fin.png"
+              src="/images/Fin.webp
+              "
               alt="Logo"
               width={300}
               height={300}
