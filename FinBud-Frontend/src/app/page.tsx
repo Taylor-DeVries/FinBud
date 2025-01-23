@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Button from "@/components/Button";
-import Textbox from "@/components/Textbox";
+import Button from "@/components/Back-Button-Component/Button";
+import Textbox from "@/components/Textbox-Component/Textbox";
 import { useRouter } from "next/navigation";
-import Loader from "@/components/Loader";
-import { useUser } from '@auth0/nextjs-auth0/client';
+import Loader from "@/components/Loader-Component/Loader";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const HomePage: React.FC = () => {
   const router = useRouter();

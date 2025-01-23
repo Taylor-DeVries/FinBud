@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
-// import { ClerkProvider } from "@clerk/nextjs";
-import { Sidebar } from "@/components/Sidebar";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "./globals.css";
-import ResponsiveImage from "@/components/ResponsiveImage";
-
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import { Sidebar } from "@/components/Sidebar-Component/Sidebar";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import ResponsiveImage from "@/components/Responsive-Image-Component/ResponsiveImage";
 
 const font = Montserrat({ subsets: ["latin"], weight: ["700"] });
 
@@ -28,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <UserProvider> 
+    <UserProvider>
       <html lang="en">
         <body className={font.className}>
           <div className="flex h-screen">

@@ -1,23 +1,23 @@
 "use client";
-import testData from "../../data/easier.json";
+import testData from "../../data/quiz-content.json";
 import { useEffect, useState } from "react";
 import {
   findNode,
   Node,
   NodeType,
   updateAnswers,
-} from "./../../quiz-logic/quiz-functions";
+} from "../../quiz-logic/quiz-functions";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import Image from "next/image";
-import Button from "@/components/Button";
-import Textbox from "@/components/Textbox";
+import Button from "@/components/Back-Button-Component/Button";
+import Textbox from "@/components/Textbox-Component/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import CalculatorComponent from "../../components/Calculator Component/CalculatorComponent";
+import CalculatorComponent from "../../components/Calculator-Component/CalculatorComponent";
 import React from "react";
 
 import { useRouter } from "next/navigation";
-import CalculatorButton from "../../components/Calculator Component/CalculatorButton";
+import CalculatorButton from "../../components/Calculator-Component/CalculatorButton";
 
 export default function QuizPage() {
   const router = useRouter();
