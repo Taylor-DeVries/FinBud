@@ -1,5 +1,5 @@
 "use client";
-import testData from "../../data/easier.json";
+import testData from "../../data/quiz-content.json";
 import { useEffect, useState } from "react";
 import {
   findNode,
