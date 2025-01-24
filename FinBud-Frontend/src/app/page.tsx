@@ -7,6 +7,7 @@ import Textbox from "@/components/Textbox-Component/Textbox";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader-Component/Loader";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { TypeAnimation } from "react-type-animation";
 
 const HomePage: React.FC = () => {
   const router = useRouter();
@@ -43,9 +44,18 @@ const HomePage: React.FC = () => {
           {/* Both text boxes */}
           <div className="sm:w-2/3">
             <Textbox
-              label="Hi! I’m Fin, your Virtual Finance Buddy."
+              label={
+                <TypeAnimation
+                  sequence={[
+                    "Hi! I’m Fin, your Virtual Finance Buddy. \n I’m here to guide you through every stage of your personal finance journey.",
+                    1000,
+                  ]}
+                  wrapper="p"
+                  cursor={false}
+                  repeat={0}
+                />
+              }
               paddingBetween
-              secondaryLabel="I’m here to guide you through every stage of your personal finance journey."
               chatBubble
             />
 
