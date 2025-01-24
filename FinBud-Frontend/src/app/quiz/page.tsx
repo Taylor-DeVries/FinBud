@@ -1,24 +1,23 @@
 "use client";
-import testData from "../../data/easier.json";
+import testData from "../../data/quiz-content.json";
 import { useEffect, useState } from "react";
 import {
   findNode,
   Node,
   NodeType,
   updateAnswers,
-} from "./../../quiz-logic/quiz-functions";
+} from "../../quiz-logic/quiz-functions";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-// import CalculatorComponent from "@/components/Calculator";
 
 import Image from "next/image";
-import Button from "@/components/Button";
-import Textbox from "@/components/Textbox";
+import Button from "@/components/Back-Button-Component/Button";
+import Textbox from "@/components/Textbox-Component/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import CalculatorComponent from "../../components/Calc/Calculator";
+import CalculatorComponent from "../../components/Calculator-Component/CalculatorComponent";
 import React from "react";
-import { FaCalculator } from "react-icons/fa";
 
 import { useRouter } from "next/navigation";
+import CalculatorButton from "../../components/Calculator-Component/CalculatorButton";
 
 export default function QuizPage() {
   const router = useRouter();
@@ -228,28 +227,16 @@ export default function QuizPage() {
                 ))}
               </div>
             </div>
-
             <CalculatorComponent />
           </div>
 
-          {/* Fin Image */}
-
           <div className=" sm:w-1/3 sm:justify-center flex static bottom-6 sm:bottom-0 sm:mt-64">
-            <button
-              className={`sm:flex hidden shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${
-                !showCalculator ? "invisible " : ""
-              }`}
-              onClick={() =>
-                (
-                  document.getElementById("my_modal_1")! as HTMLDialogElement
-                ).showModal()
-              }
-            >
-              {" "}
-              <FaCalculator className="hover:#86b7ce" size={50}></FaCalculator>
-            </button>
+            {showCalculator && <CalculatorButton />}
+
+            {/* Fin Image */}
             <Image
-              src="/images/Fin.png"
+              src="/images/Fin.webp
+              "
               alt="Logo"
               width={300}
               height={300}
@@ -258,122 +245,9 @@ export default function QuizPage() {
               priority
               onLoadingComplete={() => setLoading(false)}
             />
-            <button
-              className={`sm:hidden absolute mb-5 shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 ${
-                !showCalculator ? "invisible " : ""
-              }`}
-              onClick={() =>
-                (
-                  document.getElementById("my_modal_1")! as HTMLDialogElement
-                ).showModal()
-              }
-            >
-              {" "}
-              <FaCalculator className="hover:#86b7ce" size={65}></FaCalculator>
-            </button>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-// {/* If screen is mobile */ }
-// <div className="w-full rounded-xl bg-blue px-1 py-2 lg:hidden relative">
-//   {/* Inner scrollable content */}
-//
-//   <div className="max-h-[150px] sm:max-h-[256px] md:max-h-[512px] lg:max-h-[640px] xl:max-h-[780px] overflow-y-auto ">
-//     {tip === 0 ? (
-//       <Textbox secondaryLabel={currentNode?.question} />
-//     ) : (
-//       <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1]} />
-//     )}
-//     <div className="z-10 mb-2 absolute right-[5px] bottom-0">
-//
-//       {showPrevTip ? (
-//         <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-//           <FaAngleLeft
-//             onClick={() => nextTip(tip, false)}
-//             className="text-blue h-8 w-8 hover:cursor-pointer"
-//           />
-//         </div>
-//       ) : null}
-//
-//       {showNextTip ? (
-//         <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-//           <FaAngleRight
-//             onClick={() => nextTip(tip, true)}
-//             className="text-blue h-8 w-8 hover:cursor-pointer"
-//           />
-//         </div>
-//       ) : null}
-//
-//     </div>
-//   </div>
-// </div>
-//
-// {/* If screen is big */ }
-// <div className="hidden lg:block relative">
-//   {tip === 0 ? (
-//     <Textbox secondaryLabel={currentNode?.question + "\n"} />
-//   ) : (
-//     <Textbox secondaryLabel={currentNode?.moreInfo?.[tip - 1] + "\n"} />
-//
-//   )}
-//
-//   <div className="mb-2 absolute right-[5px] bottom-0">
-//
-//     {showPrevTip ? (
-//       <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-//         <FaAngleLeft
-//           onClick={() => nextTip(tip, false)}
-//           className="text-blue h-6 w-6 hover:cursor-pointer"
-//         />
-//       </div>
-//     ) : null}
-//
-//     {showNextTip ? (
-//       <div className="rounded-xl border-4 border-blue bg-white p-2 inline-block hover:scale-105 transition-transform duration-200 ease-in-out translate-y-[35px]">
-//         <FaAngleRight
-//           onClick={() => nextTip(tip, true)}
-//           className="text-blue h-6 w-6 hover:cursor-pointer"
-//         />
-//       </div>
-//     ) : null}
-//
-//
-//   </div>
-//
-// </div>
-//
-// {/* Buttons for the answers */ }
-// <div className="mt-4">
-//   <div className="flex flex-col space-y-2 ">
-//     {answers.map((answer, index) => (
-//       <Button
-//         key={index}
-//         onClick={() => nextAnswer(answer)}
-//         label={answer}
-//       />
-//     ))}
-//   </div>
-// </div>
-//
-// {/* <CalculatorComponent /> */ }
-//             </div >
-//
-//   {/* Fin Image */ }
-//   < div className = "lg:w-1/3 flex lg:justify-start justify-center" >
-//     <Image
-//       src="/images/Fin.png"
-//       alt="Logo"
-//       width={0} // placeholder
-//       height={0} // placeholder
-//       className="w-[225px] h-[225px] sm:w-[500px] sm:h-[500px] lg:w-auto lg:auto object-contain "
-//       unoptimized={true}
-//     />
-//             </div >
-//           </div >
-//         </div >
-//         )
-// };
