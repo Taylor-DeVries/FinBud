@@ -26,14 +26,14 @@ namespace FinBud_Backend.Controllers
         [Authorize]
         public IActionResult Private()
         {
-            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            // var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized("Invalid user ID.");
+            // if (string.IsNullOrEmpty(userId))
+            //     return Unauthorized("Invalid user ID.");
                 
             return Ok(new
             {
-                Message = "Hello from a private endpoint! You need to be authenticated to see this, your userId: " + userId
+                Message = "I love you Vanessa!!!"          
             });
         }
     }
