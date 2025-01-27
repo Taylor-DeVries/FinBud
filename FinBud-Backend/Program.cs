@@ -4,8 +4,13 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authorization;
+using Amazon.DynamoDBv2;
+using Amazon;
+using FinBud_Backend.Repositories;
+using FinBud_Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 var domain = $"https://{builder.Configuration["Auth0:Domain"]}/";
 
@@ -55,6 +60,12 @@ builder.Services.AddSwaggerGen(c => {
 });
 
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+
+builder.Services.AddSingleton<IAmazonDynamoDB>(_ => new AmazonDynamoDBClient(RegionEndpoint.USEast1));
+builder.Services.AddSingleton<ICustomerRepository>(provider =>
+    new CustomerRepository(provider.GetRequiredService<IAmazonDynamoDB>(),
+        config.GetValue<string>("Database:TableName")));
+builder.Services.AddSingleton<ICustomerService, CustomerService>();
 
 var app = builder.Build();
 

@@ -1,18 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace FinBud_Backend.Models
+namespace FinBud_Backend.Dto.Clients
 {
-    public class Client
+    public class CreateClientDto
     {
-        [JsonPropertyName("pk")]
-        public string Pk => Id;
-        [JsonPropertyName("sk")]
-        public string Sk => Id;
+        [Required]
         public string Id { get; set; } = string.Empty;
+        [Required]
         public string Result { get; set; } = string.Empty;
     }
 }
