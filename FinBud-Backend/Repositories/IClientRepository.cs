@@ -8,7 +8,7 @@ public interface IClientRepository
 {
     Task<bool> CreateAsync(ClientDto customer);
 
-    // Task<CustomerDto?> GetAsync(Guid id);
+    Task<ClientDto?> GetAsync(string id);
 
     // Task<bool> UpdateAsync(CustomerDto customer);
 

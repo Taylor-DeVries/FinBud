@@ -1,7 +1,9 @@
 ﻿// using Customers.Api.Domain;
+using System.ComponentModel.DataAnnotations;
 using FinBud_Backend.Mapping;
 using FinBud_Backend.Models;
 using FinBud_Backend.Repositories;
+using Microsoft.IdentityModel.Tokens;
 // using FluentValidation;
 // using FluentValidation.Results;
 
@@ -18,25 +20,23 @@ public class ClientService : IClientService
 
     public async Task<bool> CreateAsync(Client client)
     {
-        // var existingUser = await _customerRepository.GetAsync(customer.Id.Value);
-        // if (existingUser is not null)
-        // {
-        //     var message = $"A user with id {customer.Id} already exists";
-        //     throw new ValidationException(message, new []
-        //     {
-        //         new ValidationFailure(nameof(Customer), message)
-        //     });
-        // }
+        var existingUser = await _clientRepository.GetAsync(client.Id);
+        if (existingUser is not null)
+        {
+            var message = $"A user with id {client.Id} already exists";
+            return false;
+            // throw new ValidationException(message);
+        }
 
         var clientDto = client.ToClientDto();
         return await _clientRepository.CreateAsync(clientDto);
     }
 
-    // public async Task<Client?> GetAsync(Guid id)
-    // {
-    //     var customerDto = await _clientRepository.GetAsync(id);
-    //     return customerDto?.ToCustomer();
-    // }
+    public async Task<Client?> GetAsync(string id)
+    {
+        var clientDto = await _clientRepository.GetAsync(id);
+        return clientDto?.ToClientFromClientDTO();
+    }
 
     // public async Task<bool> UpdateAsync(Customer customer)
     // {

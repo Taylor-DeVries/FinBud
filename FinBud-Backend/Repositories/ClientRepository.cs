@@ -34,28 +34,28 @@ public class ClientRepository : IClientRepository
         return response.HttpStatusCode == HttpStatusCode.OK;
     }
 
-    // public async Task<CustomerDto?> GetAsync(Guid id)
-    // {
-    //     var getItemRequest = new GetItemRequest
-    //     {
-    //         TableName = _tableName,
-    //         Key = new Dictionary<string, AttributeValue>()
-    //         {
-    //             { "pk", new AttributeValue { S = id.ToString() } },
-    //             { "sk", new AttributeValue { S = id.ToString() } }
-    //         },
-    //         ConsistentRead = true
-    //     };
+    public async Task<ClientDto?> GetAsync(string id)
+    {
+        var getItemRequest = new GetItemRequest
+        {
+            TableName = _tableName,
+            Key = new Dictionary<string, AttributeValue>()
+            {
+                { "pk", new AttributeValue { S = id } },
+                { "sk", new AttributeValue { S = id } }
+            },
+            ConsistentRead = true
+        };
 
-    //     var response = await _dynamoDb.GetItemAsync(getItemRequest);
-    //     if (response.Item.Count == 0)
-    //     {
-    //         return null;
-    //     }
+        var response = await _dynamoDb.GetItemAsync(getItemRequest);
+        if (response.Item.Count == 0)
+        {
+            return null;
+        }
 
-    //     var itemAsDocument = Document.FromAttributeMap(response.Item);
-    //     return JsonSerializer.Deserialize<CustomerDto>(itemAsDocument.ToJson());
-    // }
+        var itemAsDocument = Document.FromAttributeMap(response.Item);
+        return JsonSerializer.Deserialize<ClientDto>(itemAsDocument.ToJson());
+    }
 
     // public async Task<bool> UpdateAsync(CustomerDto customer)
     // {

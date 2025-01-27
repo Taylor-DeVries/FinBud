@@ -52,6 +52,25 @@ namespace FinBud_Backend.Controllers
             });
         }
 
+        [HttpGet("find")]
+        [Authorize]
+        public async Task<IActionResult> getUser(string id) 
+        {
+            var client = await _clientService.GetAsync(id);
+
+            if(client == null) {
+                return Ok ( new
+                {
+                    Message = "Failed to find"
+                });
+            }
+
+            return Ok( new
+            {
+                Message = "Info is " + client.Result
+            });
+        }
+
         [HttpPost("save")]
         [Authorize]
         public async Task<IActionResult> SaveInfo(CreateClientRequestDto clientDto)
@@ -63,7 +82,14 @@ namespace FinBud_Backend.Controllers
                 return Unauthorized("Invalid user ID.");
             client.Id = userId;
 
-            await _clientService.CreateAsync(client);
+            var success = await _clientService.CreateAsync(client);
+
+            if(success == false) {
+                return Ok (new
+                {
+                    Message="Failed to create a user"
+                });
+            }
 
             return Ok( new 
             {

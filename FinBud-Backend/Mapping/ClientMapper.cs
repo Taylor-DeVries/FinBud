@@ -17,6 +17,15 @@ namespace FinBud_Backend.Mapping
             };
         }
 
+        public static Client ToClientFromClientDTO(this ClientDto clientDto)
+        {
+            return new Client
+            {
+                Id = clientDto.Id,
+                Result = clientDto.Result
+            };
+        }
+
         public static ClientDto ToClientDto(this Client client)
         {
             return new ClientDto

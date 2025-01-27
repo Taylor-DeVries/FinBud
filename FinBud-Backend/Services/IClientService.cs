@@ -8,7 +8,7 @@ public interface IClientService
 {
     Task<bool> CreateAsync(Client client);
 
-    // Task<Customer?> GetAsync(Guid id);
+    Task<Client?> GetAsync(string id);
 
     // Task<bool> UpdateAsync(Customer customer);
 
