@@ -7,13 +7,13 @@ using FinBud_Backend.Repositories;
 
 namespace FinBud_Backend.Services;
 
-public class CustomerService : ICustomerService
+public class ClientService : IClientService
 {
-    private readonly ICustomerRepository _customerRepository;
+    private readonly IClientRepository _clientRepository;
 
-    public CustomerService(ICustomerRepository customerRepository)
+    public ClientService(IClientRepository clientRepository)
     {
-        _customerRepository = customerRepository;
+        _clientRepository = clientRepository;
     }
 
     public async Task<bool> CreateAsync(Client client)
@@ -29,7 +29,7 @@ public class CustomerService : ICustomerService
         // }
 
         var clientDto = client.ToCustomerDto();
-        return await _customerRepository.CreateAsync(clientDto);
+        return await _clientRepository.CreateAsync(clientDto);
     }
 
     // public async Task<Customer?> GetAsync(Guid id)

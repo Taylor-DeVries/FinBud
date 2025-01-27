@@ -62,10 +62,10 @@ builder.Services.AddSwaggerGen(c => {
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 builder.Services.AddSingleton<IAmazonDynamoDB>(_ => new AmazonDynamoDBClient(RegionEndpoint.USEast1));
-builder.Services.AddSingleton<ICustomerRepository>(provider =>
-    new CustomerRepository(provider.GetRequiredService<IAmazonDynamoDB>(),
+builder.Services.AddSingleton<IClientRepository>(provider =>
+    new ClientRepository(provider.GetRequiredService<IAmazonDynamoDB>(),
         config.GetValue<string>("Database:TableName")));
-builder.Services.AddSingleton<ICustomerService, CustomerService>();
+builder.Services.AddSingleton<IClientService, ClientService>();
 
 var app = builder.Build();
 

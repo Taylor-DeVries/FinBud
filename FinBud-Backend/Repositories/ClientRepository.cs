@@ -8,21 +8,21 @@ using FinBud_Backend.Dto.Clients;
 
 namespace FinBud_Backend.Repositories;
 
-public class CustomerRepository : ICustomerRepository
+public class ClientRepository : IClientRepository
 {
     private readonly IAmazonDynamoDB _dynamoDb;
     private readonly string _tableName;
 
-    public CustomerRepository(IAmazonDynamoDB dynamoDb, string tableName)
+    public ClientRepository(IAmazonDynamoDB dynamoDb, string tableName)
     {
         _dynamoDb = dynamoDb;
         _tableName = tableName;
     }
 
-    public async Task<bool> CreateAsync(ClientDto customer)
+    public async Task<bool> CreateAsync(ClientDto client)
     {
-        var customerAsJson = JsonSerializer.Serialize(customer);
-        var itemAsDocument = Document.FromJson(customerAsJson);
+        var clientAsJson = JsonSerializer.Serialize(client);
+        var itemAsDocument = Document.FromJson(clientAsJson);
         var itemAsAttributes = itemAsDocument.ToAttributeMap();
         var createItemRequest = new PutItemRequest
         {

@@ -4,7 +4,7 @@ using FinBud_Backend.Models;
 
 namespace FinBud_Backend.Services;
 
-public interface ICustomerService
+public interface IClientService
 {
     Task<bool> CreateAsync(Client client);
 

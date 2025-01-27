@@ -4,7 +4,7 @@ using FinBud_Backend.Dto.Clients;
 
 namespace FinBud_Backend.Repositories;
 
-public interface ICustomerRepository
+public interface IClientRepository
 {
     Task<bool> CreateAsync(ClientDto customer);
 

@@ -21,10 +21,10 @@ namespace FinBud_Backend.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        private readonly ICustomerService _customerService; 
-        public ClientController(ICustomerService customerService)
+        private readonly IClientService _clientService; 
+        public ClientController(IClientService clientService)
         {
-            _customerService = customerService;
+            _clientService = clientService;
         }   
 
         [HttpGet]
@@ -57,7 +57,7 @@ namespace FinBud_Backend.Controllers
         {
             var client = clientDto.ToClientFromCreateClientDTO();
 
-            await _customerService.CreateAsync(client);
+            await _clientService.CreateAsync(client);
 
             return Ok( new 
             {
