@@ -28,13 +28,13 @@ public class ClientService : IClientService
         //     });
         // }
 
-        var clientDto = client.ToCustomerDto();
+        var clientDto = client.ToClientDto();
         return await _clientRepository.CreateAsync(clientDto);
     }
 
-    // public async Task<Customer?> GetAsync(Guid id)
+    // public async Task<Client?> GetAsync(Guid id)
     // {
-    //     var customerDto = await _customerRepository.GetAsync(id);
+    //     var customerDto = await _clientRepository.GetAsync(id);
     //     return customerDto?.ToCustomer();
     // }
 

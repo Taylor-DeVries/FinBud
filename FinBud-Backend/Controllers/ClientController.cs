@@ -53,15 +53,21 @@ namespace FinBud_Backend.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<IActionResult> SaveInfo(CreateClientDto clientDto)
+        [Authorize]
+        public async Task<IActionResult> SaveInfo(CreateClientRequestDto clientDto)
         {
-            var client = clientDto.ToClientFromCreateClientDTO();
+            var client = clientDto.ToClientFromCreateDTO();
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("Invalid user ID.");
+            client.Id = userId;
 
             await _clientService.CreateAsync(client);
 
             return Ok( new 
             {
-                Message="Please"
+                Message="User Saved (="
             });
         }
     }

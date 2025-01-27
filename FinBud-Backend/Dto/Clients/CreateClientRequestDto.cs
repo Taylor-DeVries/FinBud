@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace FinBud_Backend.Dto.Clients
 {
-    public class CreateClientDto
+    public class CreateClientRequestDto
     {
-        [Required]
-        public string Id { get; set; } = string.Empty;
         [Required]
         public string Result { get; set; } = string.Empty;
     }
