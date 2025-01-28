@@ -47,12 +47,14 @@ const HomePage: React.FC = () => {
               label={
                 <TypeAnimation
                   sequence={[
-                    "Hi! I’m Fin, your Virtual Finance Buddy. \n I’m here to guide you through every stage of your personal finance journey.",
+                    "Hi! I’m Fin, your Virtual Finance Buddy. I’m here to guide you through every stage of your personal finance journey.",
                     1000,
                   ]}
                   wrapper="p"
+                  speed={75}
                   cursor={false}
                   repeat={0}
+                  preRenderFirstString={false}
                 />
               }
               paddingBetween
