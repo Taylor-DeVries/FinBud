@@ -47,7 +47,7 @@ namespace FinBud_Backend.Controllers
 
         [HttpPost("create")]
         [Authorize]
-        public async Task<IActionResult> createClient([FromBody] PutClientRequestDto clientRequestDto)
+        public async Task<IActionResult> createClient([FromBody] CreateClientRequestDto clientCreateDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -56,7 +56,7 @@ namespace FinBud_Backend.Controllers
             if (string.IsNullOrEmpty(userId))
                 return NotFound(); 
             
-            var client = clientRequestDto.ToClientFromCreateDTO(userId);            
+            var client = clientCreateDto.ToClientFromCreateDTO(userId);            
             var success = await _clientService.CreateAsync(client);
 
             if(success == false) {

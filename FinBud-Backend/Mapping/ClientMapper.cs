@@ -9,7 +9,7 @@ namespace FinBud_Backend.Mapping
 {
     public static class ClientMapper
     {
-        public static Client ToClientFromCreateDTO(this PutClientRequestDto clientDto, string id)
+        public static Client ToClientFromCreateDTO(this CreateClientRequestDto clientDto, string id)
         {
             return new Client
             {
