@@ -10,7 +10,7 @@ public interface IClientService
 
     Task<Client?> GetAsync(string id);
 
-    // Task<bool> UpdateAsync(Customer customer);
+    Task<bool> UpdateAsync(Client client);
 
     // Task<bool> DeleteAsync(Guid id);
 }

@@ -19,9 +19,9 @@ public class ClientRepository : IClientRepository
         _tableName = tableName;
     }
 
-    public async Task<bool> CreateAsync(ClientDto client)
+    public async Task<bool> CreateAsync(ClientDto clientDto)
     {
-        var clientAsJson = JsonSerializer.Serialize(client);
+        var clientAsJson = JsonSerializer.Serialize(clientDto);
         var itemAsDocument = Document.FromJson(clientAsJson);
         var itemAsAttributes = itemAsDocument.ToAttributeMap();
         var createItemRequest = new PutItemRequest
@@ -57,20 +57,20 @@ public class ClientRepository : IClientRepository
         return JsonSerializer.Deserialize<ClientDto>(itemAsDocument.ToJson());
     }
 
-    // public async Task<bool> UpdateAsync(CustomerDto customer)
-    // {
-    //     var customerAsJson = JsonSerializer.Serialize(customer);
-    //     var itemAsDocument = Document.FromJson(customerAsJson);
-    //     var itemAsAttributes = itemAsDocument.ToAttributeMap();
-    //     var updateItemRequest = new PutItemRequest
-    //     {
-    //         TableName = _tableName,
-    //         Item = itemAsAttributes
-    //     };
+    public async Task<bool> UpdateAsync(ClientDto client)
+    {
+        var clientAsJson = JsonSerializer.Serialize(client);
+        var itemAsDocument = Document.FromJson(clientAsJson);
+        var itemAsAttributes = itemAsDocument.ToAttributeMap();
+        var updateItemRequest = new PutItemRequest
+        {
+            TableName = _tableName,
+            Item = itemAsAttributes
+        };
 
-    //     var response = await _dynamoDb.PutItemAsync(updateItemRequest);
-    //     return response.HttpStatusCode == HttpStatusCode.OK;
-    // }
+        var response = await _dynamoDb.PutItemAsync(updateItemRequest);
+        return response.HttpStatusCode == HttpStatusCode.OK;
+    }
 
     // public async Task<bool> DeleteAsync(Guid id)
     // {

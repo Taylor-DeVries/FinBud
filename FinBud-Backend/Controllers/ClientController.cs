@@ -27,53 +27,27 @@ namespace FinBud_Backend.Controllers
             _clientService = clientService;
         }   
 
-        [HttpGet]
-        public IActionResult suprise() {
-            return Ok("I love you Vanessa <3 \n\n _,-^-;,-'''''-.\n/_  ` )  `      | \n`-., _,  ;      /\n   )_))_,-_,-/_(\n\n<3 Moodeng <3");
-        }
-
-        // [HttpGet("private")]
-        // [Authorize]
-        // public IActionResult privateEndpoint()
-        // {
-            // var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-
-            // if (string.IsNullOrEmpty(userId))
-            //     return Unauthorized("Invalid user ID.");
-
-            // var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-
-            // if (string.IsNullOrEmpty(userId))
-            //     return Unauthorized("Invalid user ID.");
-                
-        //     return Ok(new
-        //     {
-        //         Message = "Shhhhhh"          
-        //     });
-        // }
-
-        [HttpGet("search")]
+        [HttpGet("history")]
         [Authorize]
-        public async Task<IActionResult> getClient(string id) 
+        public async Task<IActionResult> getClientHistory()
         {
-            var client = await _clientService.GetAsync(id);
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return NotFound(); 
+            
+            var client = await _clientService.GetAsync(userId);
 
             if(client == null) {
-                return Ok ( new
-                {
-                    Message = "Failed to find"
-                });
+                return NotFound();
             }
-
-            return Ok( new
-            {
-                Message = "Info is " + client.History
-            });
+            else {
+                return Ok(client.ToViewClientDto());
+            }
         }
 
         [HttpPost("create")]
         [Authorize]
-        public async Task<IActionResult> createClient([FromBody] CreateClientRequestDto clientDto)
+        public async Task<IActionResult> createClient([FromBody] PutClientRequestDto clientRequestDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -82,16 +56,43 @@ namespace FinBud_Backend.Controllers
             if (string.IsNullOrEmpty(userId))
                 return NotFound(); 
             
-            var client = clientDto.ToClientFromCreateDTO(userId);            
-
+            var client = clientRequestDto.ToClientFromCreateDTO(userId);            
             var success = await _clientService.CreateAsync(client);
 
             if(success == false) {
                 return StatusCode(500, "Could not create");
             }
             else {
-                return Created();
+                return Ok(client.ToViewClientDto());
             }
         }
+
+        [HttpPut("update")]
+        [Authorize]
+        public async Task<IActionResult> putClient([FromBody] PutClientRequestDto clientPutDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return NotFound(); 
+            
+            var client = clientPutDto.ToClientFromPutDTO(userId);            
+            var success = await _clientService.UpdateAsync(client);
+
+            if(success == false) {
+                return StatusCode(500, "Could not update");
+            }
+            else {
+                return Ok(client.ToViewClientDto());
+            }
+        }
+
+        [HttpGet]
+        public IActionResult suprise() {
+            return Ok("I love you Vanessa <3 \n\n _,-^-;,-'''''-.\n/_  ` )  `      | \n`-., _,  ;      /\n   )_))_,-_,-/_(\n\n<3 Moodeng <3");
+        }
+
     }
 }

@@ -38,11 +38,11 @@ public class ClientService : IClientService
         return clientDto?.ToClientFromClientDTO();
     }
 
-    // public async Task<bool> UpdateAsync(Customer customer)
-    // {
-    //     var customerDto = customer.ToCustomerDto();
-    //     return await _customerRepository.UpdateAsync(customerDto);
-    // }
+    public async Task<bool> UpdateAsync(Client client)
+    {
+        var clientDto = client.ToClientDto();
+        return await _clientRepository.UpdateAsync(clientDto);
+    }
 
     // public async Task<bool> DeleteAsync(Guid id)
     // {

@@ -6,11 +6,11 @@ namespace FinBud_Backend.Repositories;
 
 public interface IClientRepository
 {
-    Task<bool> CreateAsync(ClientDto customer);
+    Task<bool> CreateAsync(ClientDto clientDto);
 
     Task<ClientDto?> GetAsync(string id);
 
-    // Task<bool> UpdateAsync(CustomerDto customer);
+    Task<bool> UpdateAsync(ClientDto clientDto);
 
     // Task<bool> DeleteAsync(Guid id);
 }

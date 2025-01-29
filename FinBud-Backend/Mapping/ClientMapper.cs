@@ -9,7 +9,16 @@ namespace FinBud_Backend.Mapping
 {
     public static class ClientMapper
     {
-        public static Client ToClientFromCreateDTO(this CreateClientRequestDto clientDto, string id)
+        public static Client ToClientFromCreateDTO(this PutClientRequestDto clientDto, string id)
+        {
+            return new Client
+            {
+                Id = id,
+                History = clientDto.History
+            };
+        }
+
+        public static Client ToClientFromPutDTO(this PutClientRequestDto clientDto, string id)
         {
             return new Client
             {
@@ -32,6 +41,14 @@ namespace FinBud_Backend.Mapping
             return new ClientDto
             {
                 Id = client.Id,
+                History = client.History
+            };
+        }
+
+        public static ViewClientDto ToViewClientDto(this Client client)
+        {
+            return new ViewClientDto
+            {
                 History = client.History
             };
         }
