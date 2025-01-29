@@ -9,6 +9,6 @@ namespace FinBud_Backend.Dto.Clients
     public class CreateClientRequestDto
     {
         [Required]
-        public string Result { get; set; } = string.Empty;
+        public string History { get; set; } = string.Empty;
     }
 }

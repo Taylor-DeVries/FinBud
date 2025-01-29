@@ -16,6 +16,6 @@ namespace FinBud_Backend.Dto.Clients
 
         public string Id { get; init; } = default!;
 
-        public string Result { get; init; } = default!;
+        public string History { get; init; } = default!;
     }
 }

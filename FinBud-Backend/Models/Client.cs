@@ -13,6 +13,6 @@ namespace FinBud_Backend.Models
         [JsonPropertyName("sk")]
         public string Sk => Id;
         public string Id { get; set; } = string.Empty;
-        public string Result { get; set; } = string.Empty;
+        public string History { get; set; } = string.Empty;
     }
 }

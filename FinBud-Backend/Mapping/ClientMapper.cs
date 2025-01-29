@@ -14,7 +14,7 @@ namespace FinBud_Backend.Mapping
             return new Client
             {
                 Id = id,
-                Result = clientDto.Result
+                History = clientDto.History
             };
         }
 
@@ -23,7 +23,7 @@ namespace FinBud_Backend.Mapping
             return new Client
             {
                 Id = clientDto.Id,
-                Result = clientDto.Result
+                History = clientDto.History
             };
         }
 
@@ -32,7 +32,7 @@ namespace FinBud_Backend.Mapping
             return new ClientDto
             {
                 Id = client.Id,
-                Result = client.Result
+                History = client.History
             };
         }
     }

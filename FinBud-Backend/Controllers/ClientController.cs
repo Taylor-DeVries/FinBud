@@ -28,14 +28,14 @@ namespace FinBud_Backend.Controllers
         }   
 
         [HttpGet]
-        public IActionResult getAll() {
-            return Ok("I love you so so so much <3 \n\n _,-^-;,-'''''-.\n/_  ` )  `      | \n`-., _,  ;      /\n   )_))_,-_,-/_(\n\n<3 Moodeng <3");
+        public IActionResult suprise() {
+            return Ok("I love you Vanessa <3 \n\n _,-^-;,-'''''-.\n/_  ` )  `      | \n`-., _,  ;      /\n   )_))_,-_,-/_(\n\n<3 Moodeng <3");
         }
 
-        [HttpGet("private")]
-        [Authorize]
-        public IActionResult Private()
-        {
+        // [HttpGet("private")]
+        // [Authorize]
+        // public IActionResult privateEndpoint()
+        // {
             // var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
             // if (string.IsNullOrEmpty(userId))
@@ -46,15 +46,15 @@ namespace FinBud_Backend.Controllers
             // if (string.IsNullOrEmpty(userId))
             //     return Unauthorized("Invalid user ID.");
                 
-            return Ok(new
-            {
-                Message = "I love you Vanessa!!!"          
-            });
-        }
+        //     return Ok(new
+        //     {
+        //         Message = "Shhhhhh"          
+        //     });
+        // }
 
-        [HttpGet("find")]
+        [HttpGet("search")]
         [Authorize]
-        public async Task<IActionResult> getUser(string id) 
+        public async Task<IActionResult> getClient(string id) 
         {
             var client = await _clientService.GetAsync(id);
 
@@ -67,33 +67,31 @@ namespace FinBud_Backend.Controllers
 
             return Ok( new
             {
-                Message = "Info is " + client.Result
+                Message = "Info is " + client.History
             });
         }
 
-        [HttpPost("save")]
+        [HttpPost("create")]
         [Authorize]
-        public async Task<IActionResult> SaveInfo(CreateClientRequestDto clientDto)
+        public async Task<IActionResult> createClient([FromBody] CreateClientRequestDto clientDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(userId))
-                return Unauthorized("Invalid user ID.");
+                return NotFound(); 
             
             var client = clientDto.ToClientFromCreateDTO(userId);            
 
             var success = await _clientService.CreateAsync(client);
 
             if(success == false) {
-                return Ok (new
-                {
-                    Message="Failed to create a user"
-                });
+                return StatusCode(500, "Could not create");
             }
-
-            return Ok( new 
-            {
-                Message="User Saved (="
-            });
+            else {
+                return Created();
+            }
         }
     }
 }
