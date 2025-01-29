@@ -35,3 +35,5 @@ FinBud-Frontend/next-env.d.ts
 
 FinBud-Backend/obj
 FinBud-Backend/bin
+
+FinBud-Backend/appsettings.*
