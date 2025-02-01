@@ -1,84 +1,52 @@
-export enum NodeType {
-	Question = "Question",
-	Result = "Result",
-	Link = "Link",
-}
-
-interface Link {
-	link: string,
-	text: string,
-}
-
 export interface Node {
-	id?: number,
-	nodeType: string,
-	link?: Link,
-	// NodeType.Question
-	question?: string,
-	answers?: { [key: string]: Node },
-	// NodeType.Result
-	answer?: string,
-	moreInfo?: string[],
-	// NodeType.Link
-	connect_id?: number,
+  connectId?: number;
+  id: number;
+  answer: string;
+  text: string[];
+  responses: Node[];
 }
 
-export function updateAnswers(localNode: Node): string[] {
-	if (localNode.answers === undefined) {
-		return [];
-	}
-
-	let temp: string[] = [];
-	Object.keys(localNode.answers).map(key => (
-		temp.push(key)
-	))
-	return temp;
+export function findNodeTest(
+  id: number,
+  currentNode: Node,
+  rootNode: Node
+): Node {
+  // Run first to see if child node is linked
+  for (const response of currentNode.responses) {
+    if (response.id == id) {
+      return response;
+    }
+  }
+  //If not found, run the recursive find from root, should never return null
+  return findNodeRoot(id, rootNode) as Node;
 }
 
-// Function for finding the node with the correct id
-export function findNode(searchNode: Node, connect_id: number): Node {
-	let returnNode: Node | null;
-	returnNode = findNodeRecursion(searchNode, connect_id);
+//Recursive find node from root
+function findNodeRoot(id: number, currentNode: Node): Node | null {
+  let returnNode: Node | null = null;
 
-	if (returnNode === null) {
-		throw new Error("Node link not found");
-	}
-	return returnNode;
-}
-function findNodeRecursion(searchNode: Node, connect_id: number): Node | null {
-	//console.log(currentNode)
-	let returnNode: Node | null = null;
+  if (currentNode.id == id) {
+    returnNode = currentNode;
+  } else {
+    for (const response of currentNode.responses) {
+      returnNode = findNodeRoot(id, response);
+      if (returnNode != null) break;
+    }
+  }
 
-	// Base Case 1
-	if (searchNode.nodeType == NodeType.Link) {
-		returnNode = null;
-	}
-	// Base Case 2
-	else if (searchNode.nodeType == NodeType.Result) {
-		if (searchNode.id !== undefined && searchNode.id === connect_id) {
-			returnNode = searchNode;
-		}
-	}
-	else if (searchNode.nodeType === NodeType.Question) {
-		//Base Case 3
-		if (searchNode.id !== undefined && searchNode.id === connect_id) {
-			returnNode = searchNode;
-		}
-		//Recursive Case
-		else {
-			if (searchNode.answers === undefined) {
-				return null;
-			}
-			Object.entries(searchNode.answers).forEach(([answer, searchNodeChild]) => {
-				const temp = findNodeRecursion(searchNodeChild, connect_id);
-				if (temp !== null) {
-					returnNode = temp;
-				}
-			})
-		}
-	}
-
-	return returnNode;
+  return returnNode;
 }
 
+export function isPrevAvailable(currentNode: Node, index: number): boolean {
+  if (currentNode?.text?.[index - 1] !== undefined) {
+    return true;
+  }
+  return false;
+}
 
+export function isNextAvailable(currentNode: Node, index: number): boolean {
+  if (currentNode?.text?.[index + 1] !== undefined) {
+    return true;
+  }
+  return false;
+}

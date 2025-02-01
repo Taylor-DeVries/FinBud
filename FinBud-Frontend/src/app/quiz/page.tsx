@@ -1,11 +1,11 @@
 "use client";
-import testData from "../../data/quiz-content.json";
+import quizData from "../../data/quiz-content.json";
 import { useEffect, useState } from "react";
 import {
-  findNode,
+  findNodeTest,
+  isNextAvailable,
+  isPrevAvailable,
   Node,
-  NodeType,
-  updateAnswers,
 } from "../../quiz-logic/quiz-functions";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
@@ -21,91 +21,54 @@ import CalculatorButton from "../../components/Calculator-Component/CalculatorBu
 
 export default function QuizPage() {
   const router = useRouter();
-  const [tip, setTip] = useState<number>(0);
-  const [showNextTip, setShowNextTip] = useState<boolean>(false);
-  const [showPrevTip, setShowPrevTip] = useState<boolean>(false);
-  const [currentNode, setCurrentNode] = useState<Node>(testData);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const [history, setHistory] = useState<Node[]>([]);
+  const rootNode: Node = quizData as Node;
+  const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
+  const [showNextText, setShowNextText] = useState<boolean>(false);
+  const [showPrevText, setShowPrevText] = useState<boolean>(false);
+  const [currentNode, setCurrentNode] = useState<Node>(quizData);
   const [loading, setLoading] = useState(true);
   const [showCalculator, setShowCalculator] = React.useState(false);
-  const [showModal, setShowModal] = React.useState(false);
+  const [history, setHistory] = React.useState([0]);
 
-  function handleShow() {
-    const element = document.getElementById("my_modal_1")! as HTMLDialogElement;
-    element.showModal();
+  function nextNode(id: number) {
+    let tempNode = findNodeTest(id, currentNode, rootNode);
+    setCurrentNode(tempNode);
+    setHistory([...history, id]);
   }
 
-  //Runs everytime currentJson changes
-  useEffect(() => {
-    setAnswers(updateAnswers(currentNode));
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-
-    setTip(0);
-
-    if (
-      currentNode.nodeType === NodeType.Link &&
-      currentNode.connect_id !== undefined
-    ) {
-      const newCurrentNode: Node = findNode(testData, currentNode.connect_id);
-
-      setCurrentNode(newCurrentNode);
+  function moveTextIndex(forward: number) {
+    if (forward == 1 && isNextAvailable(currentNode, currentTextIndex)) {
+      setCurrentTextIndex(currentTextIndex + 1);
+    } else if (isPrevAvailable(currentNode, currentTextIndex)) {
+      setCurrentTextIndex(currentTextIndex - 1);
     }
+  }
+
+  function goBack() {
+    if (history.length == 1) {
+      router.push("/");
+    } else {
+      let id = history.at(-2);
+      setHistory(history.slice(0, -1));
+      let tempNode = findNodeTest(id, currentNode, rootNode);
+      setCurrentNode(tempNode);
+    }
+  }
+
+  useEffect(() => {
+    setCurrentTextIndex(0);
+    setShowNextText(isNextAvailable(currentNode, currentTextIndex));
+    setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
+
     if (currentNode.id == 6) {
       setShowCalculator(true);
     } else setShowCalculator(false);
   }, [currentNode]);
 
-  // Runs everytime a answer is pressed
-  function nextAnswer(answer: string) {
-    // Update json to where the answer leads
-    if (currentNode.answers?.[answer] === undefined) {
-      return;
-    }
-    setHistory([...history, currentNode]);
-    setCurrentNode(currentNode.answers[answer]);
-  }
-
   useEffect(() => {
-    //Check if next tip exists
-    if (currentNode?.moreInfo?.[tip - 1 + 1] !== undefined) {
-      setShowNextTip(true);
-    } else {
-      setShowNextTip(false);
-    }
-    if (currentNode?.moreInfo?.[tip - 1] !== undefined) {
-      setShowPrevTip(true);
-    } else {
-      setShowPrevTip(false);
-    }
-  }, [tip, currentNode]);
-
-  function goBack() {
-    if (history.length > 0) {
-      const previousNode = history[history.length - 1]; // Get the last node from history
-      setHistory(history.slice(0, -1)); // Remove the last node from history
-      setCurrentNode(previousNode); // Set the current node to the previous one
-    } else {
-      router.push("/");
-    }
-  }
-
-  //Move to next tooltip
-  function nextTip(currentTip: number, increase: boolean) {
-    if (increase) {
-      setTip(currentTip + 1);
-    } else {
-      setTip(currentTip - 1);
-    }
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+    setShowNextText(isNextAvailable(currentNode, currentTextIndex));
+    setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
+  }, [currentTextIndex]);
 
   return (
     //PARENT CONTAINER
@@ -126,44 +89,36 @@ export default function QuizPage() {
 
             {/* If screen is mobile */}
             <div className="sm:hidden relative w-full">
-              {tip === 0 ? (
-                <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
-                  <div className="max-h-64 overflow-y-auto">
-                    <Textbox secondaryLabel={currentNode?.question} />
-                  </div>
+              <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
+                <div className="max-h-64 overflow-y-auto">
+                  <Textbox
+                    secondaryLabel={currentNode.text[currentTextIndex]}
+                  />
                 </div>
-              ) : (
-                <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
-                  <div className="max-h-64 overflow-y-auto">
-                    <Textbox
-                      secondaryLabel={currentNode?.moreInfo?.[tip - 1]}
-                    />
-                  </div>
-                </div>
-              )}
+              </div>
               <div className="mb-2 flex justify-end mt-1">
-                {showPrevTip ? (
+                {showPrevText ? (
                   <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                     <FaAngleLeft
-                      onClick={() => nextTip(tip, false)}
+                      onClick={() => moveTextIndex(-1)}
                       className="text-blue h-6 w-6 hover:cursor-pointer"
                     />
                   </div>
                 ) : null}
 
-                {showNextTip && showPrevTip ? (
+                {showNextText && showPrevText ? (
                   <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                     <FaAngleRight
-                      onClick={() => nextTip(tip, true)}
+                      onClick={() => moveTextIndex(1)}
                       className="text-blue h-6 w-6 hover:cursor-pointer"
                     />
                   </div>
                 ) : null}
 
-                {showNextTip && !showPrevTip ? (
+                {showNextText && !showPrevText ? (
                   <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                     <h1
-                      onClick={() => nextTip(tip, true)}
+                      onClick={() => moveTextIndex(1)}
                       className="text-blue text-3xl text-center h-6 w-6 hover:cursor-pointer leading-none"
                     >
                       ...
@@ -174,38 +129,34 @@ export default function QuizPage() {
             </div>
             {/* If screen is big */}
             <div className="hidden sm:block relative">
-              {tip === 0 ? (
-                <Textbox secondaryLabel={currentNode?.question + "\n"} />
-              ) : (
-                <Textbox
-                  secondaryLabel={currentNode?.moreInfo?.[tip - 1] + "\n"}
-                />
-              )}
+              <Textbox
+                secondaryLabel={currentNode.text[currentTextIndex] + "\n"}
+              />
 
               {/* MoreInfo Buttons */}
               <div className="mb-2 flex justify-end mt-1">
-                {showPrevTip ? (
+                {showPrevText ? (
                   <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                     <FaAngleLeft
-                      onClick={() => nextTip(tip, false)}
+                      onClick={() => moveTextIndex(-1)}
                       className="text-blue h-7 w-7 hover:cursor-pointer"
                     />
                   </div>
                 ) : null}
 
-                {showNextTip && showPrevTip ? (
+                {showNextText && showPrevText ? (
                   <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                     <FaAngleRight
-                      onClick={() => nextTip(tip, true)}
+                      onClick={() => moveTextIndex(1)}
                       className="text-blue h-7 w-7 hover:cursor-pointer"
                     />
                   </div>
                 ) : null}
 
-                {showNextTip && !showPrevTip ? (
+                {showNextText && !showPrevText ? (
                   <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
                     <h1
-                      onClick={() => nextTip(tip, true)}
+                      onClick={() => moveTextIndex(1)}
                       className="text-blue text-3xl text-center h-7 w-7 hover:cursor-pointer leading-none"
                     >
                       ...
@@ -218,11 +169,11 @@ export default function QuizPage() {
             {/* Buttons for the answers */}
             <div className="mt-4">
               <div className="flex flex-col space-y-2 ">
-                {answers.map((answer, index) => (
+                {currentNode.responses.map((response, index) => (
                   <Button
-                    key={index}
-                    onClick={() => nextAnswer(answer)}
-                    label={answer}
+                    key={`response-${index}`}
+                    onClick={() => nextNode(response.connectId ?? response.id)}
+                    label={response.answer}
                   />
                 ))}
               </div>
