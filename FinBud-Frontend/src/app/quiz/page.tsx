@@ -18,9 +18,16 @@ import React from "react";
 
 import { useRouter } from "next/navigation";
 import CalculatorButton from "../../components/Calculator-Component/CalculatorButton";
+import axios from "axios";
+import { getVanessa } from "@/quiz-logic/quiz-api-functions";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { getAccessToken } from "@auth0/nextjs-auth0";
 
 export default function QuizPage() {
   const router = useRouter();
+
+  const { user, error, isLoading } = useUser();
+
   const rootNode: Node = quizData as Node;
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
@@ -29,6 +36,7 @@ export default function QuizPage() {
   const [loading, setLoading] = useState(true);
   const [showCalculator, setShowCalculator] = React.useState(false);
   const [history, setHistory] = React.useState([0]);
+  const [data, setData] = useState<string>("Loading");
 
   function nextNode(id: number) {
     let tempNode = findNodeTest(id, currentNode, rootNode);
@@ -55,6 +63,18 @@ export default function QuizPage() {
     }
   }
 
+  async function fetchData() {
+    const result = await getVanessa();
+    setData(result);
+  }
+
+  useEffect(() => {
+    if (user) {
+      console.log("user: " + user.sub);
+      fetchData();
+    }
+  }, [user]);
+
   useEffect(() => {
     setCurrentTextIndex(0);
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
@@ -77,6 +97,7 @@ export default function QuizPage() {
         <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
           {/* Text Area */}
           <div className="sm:w-2/3 sm:mr-10 text-left text-white rounded-xl">
+            <h1>{data}</h1>
             {/* Back button */}
             <div className="mb-2">
               <div className="rounded-xl bg-light_blue_bg p-2 inline-block">

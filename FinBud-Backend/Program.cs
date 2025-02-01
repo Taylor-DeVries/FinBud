@@ -27,11 +27,24 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000") // Allow frontend URL
+                  .AllowAnyMethod() // Allow GET, POST, PUT, DELETE, etc.
+                  .AllowAnyHeader() // Allow all headers
+                  .AllowCredentials(); // Allow cookies and auth headers
+        });
+});
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c => {
+builder.Services.AddSwaggerGen(c =>
+{
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "JWTToken_Auth_API",
@@ -68,6 +81,8 @@ builder.Services.AddSingleton<IClientRepository>(provider =>
 builder.Services.AddSingleton<IClientService, ClientService>();
 
 var app = builder.Build();
+
+app.UseCors("AllowLocalhost");
 
 app.UseAuthentication();
 app.UseAuthorization();
