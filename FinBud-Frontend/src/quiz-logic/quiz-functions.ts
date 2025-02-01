@@ -12,8 +12,6 @@ export function findNodeTest(
   rootNode: Node
 ): Node {
   // Run first to see if child node is linked
-  console.log("Running: " + id);
-
   for (const response of currentNode.responses) {
     if (response.id == id) {
       return response;
@@ -26,8 +24,6 @@ export function findNodeTest(
 //Recursive find node from root
 function findNodeRoot(id: number, currentNode: Node): Node | null {
   let returnNode: Node | null = null;
-
-  console.log(currentNode.id);
 
   if (currentNode.id == id) {
     returnNode = currentNode;

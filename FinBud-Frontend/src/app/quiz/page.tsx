@@ -28,13 +28,7 @@ export default function QuizPage() {
   const [currentNode, setCurrentNode] = useState<Node>(quizData);
   const [loading, setLoading] = useState(true);
   const [showCalculator, setShowCalculator] = React.useState(false);
-  const [showModal, setShowModal] = React.useState(false);
   const [history, setHistory] = React.useState([0]);
-
-  function handleShow() {
-    const element = document.getElementById("my_modal_1")! as HTMLDialogElement;
-    element.showModal();
-  }
 
   function nextNode(id: number) {
     let tempNode = findNodeTest(id, currentNode, rootNode);
@@ -65,6 +59,10 @@ export default function QuizPage() {
     setCurrentTextIndex(0);
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
+
+    if (currentNode.id == 6) {
+      setShowCalculator(true);
+    } else setShowCalculator(false);
   }, [currentNode]);
 
   useEffect(() => {
