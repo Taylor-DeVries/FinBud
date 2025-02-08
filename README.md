@@ -26,3 +26,7 @@ Many young people struggle with personal finance due to the complexity and overw
 
 He has your best interest at heart! Fin's mission is to make the world more more financially literate!
 ![Fin](https://github.com/user-attachments/assets/c4f2bcc2-06f4-4605-95a3-84444ff5cee6)
+
+# Want to Contribute❓
+
+Feel free to contact us on our Instagram or LinkedIn
