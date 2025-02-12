@@ -5,8 +5,8 @@ import { useRouter, usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { IconMenu2, IconUser } from "@tabler/icons-react";
-import { sidebarLinks } from "@/constants/SidebarLinks";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { sidebarLinks } from "@/_data/constants/SidebarLinks";
 
 // import {
 //     SignedIn,

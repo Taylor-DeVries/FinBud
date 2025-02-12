@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Button from "@/components/Back-Button-Component/Button";
-import Textbox from "@/components/Textbox-Component/Textbox";
+import Button from "@/_components/Back-Button-Component/Button";
+import Textbox from "@/_components/Textbox-Component/Textbox";
 import { useRouter } from "next/navigation";
-import Loader from "@/components/Loader-Component/Loader";
+import Loader from "@/_components/Loader-Component/Loader";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { TypeAnimation } from "react-type-animation";
 
