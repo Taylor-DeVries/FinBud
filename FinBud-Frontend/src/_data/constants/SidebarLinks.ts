@@ -4,6 +4,7 @@ import {
   IconPaw,
   IconSettings,
   IconUser,
+  IconQuestionMark,
 } from "@tabler/icons-react";
 
 interface SidebarLink {
@@ -17,6 +18,11 @@ export const sidebarLinks: SidebarLink[] = [
     imgURL: IconHome,
     route: "/",
     label: "Home",
+  },
+  {
+    imgURL: IconQuestionMark,
+    route: "/quiz",
+    label: "Quiz",
   },
   {
     imgURL: IconPaw,
