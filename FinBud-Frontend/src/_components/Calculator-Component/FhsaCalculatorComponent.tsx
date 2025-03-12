@@ -11,8 +11,18 @@ export default function FhsaCalculatorComponent() {
     const [AgeChecked, setAgeChecked] = React.useState(false);
     const [HouseChecked, setHouseChecked] = React.useState(false);
     const [AccountChecked, setAccountChecked] = React.useState(false);
-    const inputs = new FHSAvars();
+    const input = new FHSAvars();
+    const [OpenedInputFlag, setOpenedInputFlag] = React.useState(false);
+      const [ContributedInputFlag, setContributedInputFlag] = React.useState(false);
+    const [showResults, setShowResults] = React.useState(false);
     
+    function OtherClick() {
+      setShowResults(false);
+      const element = document.getElementById("calculation")!;
+      element.textContent = null;
+    }
+
+
     const AgeSwitch = () => {
         return (
           <Form.Check
@@ -33,7 +43,7 @@ export default function FhsaCalculatorComponent() {
         return (
           <Form.Check
             type="switch"
-            label="I currently own a home, or I have owned a home in part within the last 4 years"
+            label="I currently own a home, or I have owned or jointly owned a home within the last 4 years"
             id="checkHouse"
             checked={HouseChecked}
             onChange={() => {
@@ -57,40 +67,63 @@ export default function FhsaCalculatorComponent() {
 
     const OpenedField = () => {
         return (
-                <Form.Group as={Row} className="mb-3" id="birthYear">
-                      <Form.Label>What year did you Open your FHSA account?</Form.Label>
+                <div>
+                      <Form.Label>What year did you open your FHSA account?</Form.Label>
                       <Form.Control
                         type="number"
                         placeholder="XXXX"
-                        ref={inputs.opened.textInput}
-                        //onClick={() => OtherClick()}
-                        //onBlur={handleChange}
+                        ref={input.opened.textInput}
+                        onClick={() => OtherClick()}
+                        onBlur={() => handleOpenedChange()}
                       />
-                      <Form.Text className="errorMessage" id="bornError" muted>
-                        {" "}
-                      </Form.Text>
-                    </Form.Group>
+                </div>      
             );
     }
 
     const ContributedField = () => {
         return (
-            <Form.Group as={Row} className="mb-3" id="birthYear">
+              <div>
                   <Form.Label>How much have you contributed so far?</Form.Label>
                   <Form.Control
                     type="number"
                     placeholder="0"
-                    ref={inputs.contributed.textInput}
-                    //onClick={() => OtherClick()}
+                    ref={input.contributed.textInput}
+                    onClick={() => OtherClick()}
                     //onBlur={handleChange}
                   />
-                  <Form.Text className="errorMessage" id="bornError" muted>
-                    {" "}
-                  </Form.Text>
-                </Form.Group>
+              </div>
         );
     }
 
+    const handleOpenedChange = () => {
+      input.opened.focusTextInput;
+      const element = document.getElementById("openedError")!;
+      if (input.opened.textInput.current) {
+        if (Number(input.opened.textInput.current.value) <= 2025 && 
+            Number(input.opened.textInput.current.value) >= 2023) {
+          setOpenedInputFlag(false);
+          element.textContent = null;
+  
+          return;
+        }
+        if (AccountChecked == false) {
+          setOpenedInputFlag(false);
+          element.textContent = null;
+        }
+      }
+      element.textContent =
+        "Oops! Your response cannot be a year before you were born or in the future!";
+      setOpenedInputFlag(true);
+      let num: number = 0;
+    };
+    
+    const Results = () => {
+      return (
+        <div id="results" className="search-results">
+          Your TFSA contribution limit is:
+        </div>
+      );
+    };
 
     return (
         <div className="CalculatorForm -mt-10">
@@ -117,20 +150,35 @@ export default function FhsaCalculatorComponent() {
                 {HouseChecked ? <AccountSwitch /> : null} 
               </Form.Group>
               }
-
+            <Form.Group as={Row} className="mb-3" id="birthYear">
             {AccountChecked ? <OpenedField /> : null}
+            <Form.Text className="errorMessage" id="openedError" muted>
+                        {" "}
+                      </Form.Text>
+                    </Form.Group>
 
+            <Form.Group as={Row} className="mb-3" id="birthYear">
             {AccountChecked ? <ContributedField /> : null}
-            
+            <Form.Text className="errorMessage" id="contributedError" muted>
+                    {" "}
+                  </Form.Text>
+                </Form.Group>
             <Button
               className="btn"
               style={{ color: "black" }}
-              //onClick={() => displayVals(input, 0)}
+              onClick={() => {setShowResults(!showResults);
+                console.log(input.opened.textInput.current.value);
+              }}
             >
               Submit
             </Button>
 
             </Form>
+            <div className="text-black mt-3">
+            {" "}
+            {showResults ? <Results /> : null}{" "}
+          </div>
+
             <div className="text-black mt-2" id="calculation"></div>
             <div className="modal-action">
               {/* if there is a button in form, it will close the modal */}
