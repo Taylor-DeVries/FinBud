@@ -13,12 +13,13 @@ import Image from "next/image";
 import Button from "@/_components/Back-Button-Component/Button";
 import Textbox from "@/_components/Textbox-Component/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import CalculatorComponent from "../Calculator-Component/CalculatorComponent";
+import TfsaCalculatorComponent from "../Calculator-Component/TfsaCalculatorComponent";
 import React from "react";
 
 import { useRouter } from "next/navigation";
-import CalculatorButton from "../Calculator-Component/CalculatorButton";
+import TfsaCalculatorButton from "../Calculator-Component/TfsaCalculatorButton";
 import { HistoryState, Node } from "@/_data/types/types";
+import FHSACalculatorComponent from "../Calculator-Component/FhsaCalculatorComponent";
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -198,11 +199,12 @@ export default function QuizPage({ data }) {
                 ))}
               </div>
             </div>
-            <CalculatorComponent />
+            <TfsaCalculatorComponent />
+            <FHSACalculatorComponent />
           </div>
 
           <div className=" sm:w-1/3 sm:justify-center flex static bottom-6 sm:bottom-0 sm:mt-64">
-            {showCalculator && <CalculatorButton />}
+            {showCalculator && <TfsaCalculatorButton />}
 
             {/* Fin Image */}
             <Image

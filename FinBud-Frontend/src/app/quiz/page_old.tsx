@@ -17,11 +17,11 @@ import Image from "next/image";
 import Button from "@/_components/Back-Button-Component/Button";
 import Textbox from "@/_components/Textbox-Component/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import CalculatorComponent from "../../_components/Calculator-Component/CalculatorComponent";
+import CalculatorComponent from "../../_components/Calculator-Component/TfsaCalculatorComponent";
 import React from "react";
 
 import { useRouter } from "next/navigation";
-import CalculatorButton from "../../_components/Calculator-Component/CalculatorButton";
+import CalculatorButton from "../../_components/Calculator-Component/TfsaCalculatorButton";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { getAccessToken, getSession } from "@auth0/nextjs-auth0";

@@ -11,7 +11,7 @@ const CalculatorButton = () => {
         className={`sm:flex hidden shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 }`}
         onClick={() =>
           (
-            document.getElementById("my_modal_1")! as HTMLDialogElement
+            document.getElementById("FHSA_modal")! as HTMLDialogElement
           ).showModal()
         }
       >
@@ -23,7 +23,7 @@ const CalculatorButton = () => {
         className={`sm:hidden absolute mb-5 shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0`}
         onClick={() =>
           (
-            document.getElementById("my_modal_1")! as HTMLDialogElement
+            document.getElementById("FHSA_modal")! as HTMLDialogElement
           ).showModal()
         }
       >
