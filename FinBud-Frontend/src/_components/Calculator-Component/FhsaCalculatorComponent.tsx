@@ -65,35 +65,7 @@ export default function FhsaCalculatorComponent() {
         );
       };
 
-    const OpenedField = () => {
-        return (
-                <div>
-                      <Form.Label>What year did you open your FHSA account?</Form.Label>
-                      <Form.Control
-                        type="number"
-                        placeholder="XXXX"
-                        ref={input.opened.textInput}
-                        onClick={() => OtherClick()}
-                        onBlur={() => handleOpenedChange()}
-                      />
-                </div>      
-            );
-    }
 
-    const ContributedField = () => {
-        return (
-              <div>
-                  <Form.Label>How much have you contributed so far?</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="0"
-                    ref={input.contributed.textInput}
-                    onClick={() => OtherClick()}
-                    //onBlur={handleChange}
-                  />
-              </div>
-        );
-    }
 
     const handleOpenedChange = () => {
       input.opened.focusTextInput;
@@ -151,14 +123,29 @@ export default function FhsaCalculatorComponent() {
               </Form.Group>
               }
             <Form.Group as={Row} className="mb-3" id="birthYear">
-            {AccountChecked ? <OpenedField /> : null}
+            <Form.Label className={`${AccountChecked ? '' : 'hidden'}`}>What year did you open your FHSA account?</Form.Label>
+                      <Form.Control
+                        className={`${AccountChecked ? '' : 'hidden'}`}
+                        type="number"
+                        placeholder="XXXX"
+                        ref={input.opened.textInput}
+                        onClick={() => OtherClick()}
+                        onBlur={() => handleOpenedChange()} ></Form.Control>
             <Form.Text className="errorMessage" id="openedError" muted>
                         {" "}
                       </Form.Text>
                     </Form.Group>
 
             <Form.Group as={Row} className="mb-3" id="birthYear">
-            {AccountChecked ? <ContributedField /> : null}
+            <Form.Label className={`${AccountChecked ? '' : 'hidden'}`}>How much have you contributed so far?</Form.Label>
+                  <Form.Control
+                    className={`${AccountChecked ? '' : 'hidden'}`}
+                    type="number"
+                    placeholder="0"
+                    ref={input.contributed.textInput}
+                    onClick={() => OtherClick()}
+                    //onBlur={handleChange}
+                  />
             <Form.Text className="errorMessage" id="contributedError" muted>
                     {" "}
                   </Form.Text>
