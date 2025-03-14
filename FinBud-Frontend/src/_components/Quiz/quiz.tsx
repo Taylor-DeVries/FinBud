@@ -19,6 +19,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import CalculatorButton from "../Calculator-Component/CalculatorButton";
 import { HistoryState, Node } from "@/_data/types/types";
+import { TypeAnimation } from "react-type-animation";
+import Loader from "../Loader-Component/Loader";
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -91,10 +93,29 @@ export default function QuizPage({ data }) {
   }, [currentTextIndex]);
 
   return (
-    //PARENT CONTAINER
-    <div className={` flex sm:mt-32  ${loading ? "hidden" : ""}`}>
-      <div className="  flex sm:mt-16">
-        <div className="flex flex-col sm:flex-row sm:items-start items-center space-y-16 sm:space-y-0 mt-8 sm:mt-8 min-h-[50vh] w-full">
+    <>
+      {loading && <Loader />}
+      <div className="h-screen flex items-center justify-center">
+        {/* Parent container for image and text */}
+        <div
+          className={`flex flex-col-reverse sm:flex-row items-center ${
+            loading ? "hidden" : "" // If isLoading, hide everything, else show loading screen
+          }`}
+        >
+          {/* Image container */}
+          <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
+            <Image
+              src="/images/Fin.webp"
+              alt="Logo"
+              width={300}
+              height={300}
+              className="w-auto h-auto"
+              priority
+              unoptimized
+              onLoadingComplete={() => setLoading(false)}
+            />
+          </div>
+
           {/* Text Area */}
           <div className="sm:w-2/3 sm:mr-10 text-left text-white rounded-xl">
             {/* Back button */}
@@ -112,7 +133,17 @@ export default function QuizPage({ data }) {
               <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
                 <div className="max-h-64 overflow-y-auto">
                   <Textbox
-                    secondaryLabel={currentNode.text[currentTextIndex]}
+                    secondaryLabel={
+                      <TypeAnimation
+                        key={`${currentNode.id}-${currentTextIndex}`}
+                        sequence={[currentNode.text[currentTextIndex] + "\n"]}
+                        wrapper="p"
+                        speed={80}
+                        cursor={false}
+                        repeat={0}
+                        preRenderFirstString={false}
+                      />
+                    }
                   />
                 </div>
               </div>
@@ -147,10 +178,21 @@ export default function QuizPage({ data }) {
                 ) : null}
               </div>
             </div>
+
             {/* If screen is big */}
             <div className="hidden sm:block relative">
               <Textbox
-                secondaryLabel={currentNode.text[currentTextIndex] + "\n"}
+                secondaryLabel={
+                  <TypeAnimation
+                    key={`${currentNode.id}-${currentTextIndex}`}
+                    sequence={[currentNode.text[currentTextIndex] + "\n"]}
+                    wrapper="p"
+                    speed={85}
+                    cursor={false}
+                    repeat={0}
+                    preRenderFirstString={false}
+                  />
+                }
               />
 
               {/* MoreInfo Buttons */}
@@ -200,25 +242,11 @@ export default function QuizPage({ data }) {
             </div>
             <CalculatorComponent />
           </div>
-
-          <div className=" sm:w-1/3 sm:justify-center flex static bottom-6 sm:bottom-0 sm:mt-64">
+          <div className="sm:w-1/3 sm:justify-left flex static bottom-6 sm:bottom-0">
             {showCalculator && <CalculatorButton />}
-
-            {/* Fin Image */}
-            <Image
-              src="/images/Fin.webp
-              "
-              alt="Logo"
-              width={300}
-              height={300}
-              className="w-[350px] h-[350px] sm:w-auto sm:h-auto sm:mt-32"
-              unoptimized
-              priority
-              onLoadingComplete={() => setLoading(false)}
-            />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
