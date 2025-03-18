@@ -1,5 +1,6 @@
 "use client";
 import quizData from "@/_data/constants/quiz-content.json";
+import { buildQuizData } from "@/_services/buildQuizData";
 import { useEffect, useState } from "react";
 import {
   findNodeTest,
@@ -18,14 +19,24 @@ import React from "react";
 
 import { useRouter } from "next/navigation";
 import CalculatorButton from "../Calculator-Component/CalculatorButton";
-import { HistoryState, Node } from "@/_data/types/types";
+import  { HistoryState, Node } from "@/_data/types/types";
 import { TypeAnimation } from "react-type-animation";
 import Loader from "../Loader-Component/Loader";
 
 export default function QuizPage({ data }) {
   const router = useRouter();
 
+  const myRoot: Node = buildQuizData();
+
   const rootNode: Node = quizData as Node;
+  // const rootNode = myRoot;
+  
+  // old data
+  const quizstr = JSON.stringify(rootNode);
+  
+  // new data
+  const mystr = JSON.stringify(myRoot);
+
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);

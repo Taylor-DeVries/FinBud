@@ -23,3 +23,21 @@ export interface Node {
   text: string[];
   responses: Node[];
 }
+
+export interface QuizPath{
+  connectId?: number,
+  id: number,
+  responses: QuizPath[];
+}
+
+export interface QuizAnswer{
+  connectId?: number,
+  id:number,
+  answer: string
+}
+
+export interface QuizText{
+  connectId?: number,
+  id:number,
+  text: string[]
+}
