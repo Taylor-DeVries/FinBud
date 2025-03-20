@@ -8,7 +8,7 @@ const CalculatorButton = () => {
     <>
       {/* Desktop Calculator button */}
       <button
-        className={`sm:flex hidden shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0 }`}
+        className={`sm:flex hidden shadow-none btn border-none`}
         onClick={() =>
           (
             document.getElementById("FHSA_modal")! as HTMLDialogElement
@@ -16,11 +16,15 @@ const CalculatorButton = () => {
         }
       >
         {" "}
-        <FaCalculator className="hover:#86b7ce" size={50}></FaCalculator>
+        <FaCalculator
+          className="text-blue hover:text-gray-200"
+          size={50}
+        ></FaCalculator>
       </button>
+
       {/* Mobile Calculator button */}
       <button
-        className={`sm:hidden absolute mb-5 shadow-none btn hover:grey-button border-none text-blue bg-light_blue bg-opacity-0`}
+        className={`sm:hidden absolute mb-5 shadow-none btn border-none`}
         onClick={() =>
           (
             document.getElementById("FHSA_modal")! as HTMLDialogElement
@@ -28,7 +32,10 @@ const CalculatorButton = () => {
         }
       >
         {" "}
-        <FaCalculator className="hover:#86b7ce" size={50}></FaCalculator>
+        <FaCalculator
+          className="text-blue hover:text-gray-200"
+          size={50}
+        ></FaCalculator>
       </button>
     </>
   );

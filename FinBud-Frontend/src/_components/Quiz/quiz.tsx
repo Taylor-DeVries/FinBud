@@ -245,7 +245,7 @@ export default function QuizPage({ data }) {
             <FhsaCalculatorComponent />
           </div>
 
-          <div className=" sm:w-1/3 sm:justify-center flex static bottom-6 sm:bottom-0 sm:mt-64">
+          <div className="sm:w-1/3 sm:justify-left">
             {showTfsaCalculator && <TfsaCalculatorButton />}
             {showFhsaCalculator && <FhsaCalculatorButton />}
           </div>
