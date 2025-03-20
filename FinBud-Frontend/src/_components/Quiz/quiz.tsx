@@ -15,11 +15,11 @@ import Textbox from "@/_components/Textbox-Component/Textbox";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import TfsaCalculatorComponent from "../Calculator-Component/TfsaCalculatorComponent";
 import React from "react";
-
+import FhsaCalculatorButton from "../Calculator-Component/FhsaCalculatorComponent";
 import { useRouter } from "next/navigation";
 import TfsaCalculatorButton from "../Calculator-Component/TfsaCalculatorButton";
 import { HistoryState, Node } from "@/_data/types/types";
-import FHSACalculatorComponent from "../Calculator-Component/FhsaCalculatorComponent";
+import FhsaCalculatorComponent from "../Calculator-Component/FhsaCalculatorComponent";
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -32,8 +32,8 @@ export default function QuizPage({ data }) {
     findNodeTest(data.historyArray.at(-1), rootNode, rootNode)
   );
   const [loading, setLoading] = useState(true);
-  const [showCalculator, setShowCalculator] = React.useState(false);
-
+  const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
+  const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
   const [historyState, setHistoryState] = React.useState<HistoryState>(data);
 
   function nextNode(id: number) {
@@ -78,8 +78,8 @@ export default function QuizPage({ data }) {
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
 
     if (currentNode.id == 6) {
-      setShowCalculator(true);
-    } else setShowCalculator(false);
+      setshowTfsaCalculator(true);
+    } else setshowTfsaCalculator(false);
 
     if (historyState.loading) {
       setHistoryAsync();
@@ -200,12 +200,12 @@ export default function QuizPage({ data }) {
               </div>
             </div>
             <TfsaCalculatorComponent />
-            <FHSACalculatorComponent />
+            <FhsaCalculatorComponent />
           </div>
 
           <div className=" sm:w-1/3 sm:justify-center flex static bottom-6 sm:bottom-0 sm:mt-64">
-            {showCalculator && <TfsaCalculatorButton />}
-
+            {showTfsaCalculator && <TfsaCalculatorButton />}
+            {showFhsaCalculator && <FhsaCalculatorButton />}
             {/* Fin Image */}
             <Image
               src="/images/Fin.webp
