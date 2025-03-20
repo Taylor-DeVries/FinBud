@@ -6,7 +6,7 @@ import React from "react";
 import TFSAvars from "./tfsaInterface";
 import tfsaMath from "./tfsaMath";
 
-function CalculatorComponent() {
+function TfsaCalculatorComponent() {
   const input = new TFSAvars();
   const [checked, setChecked] = React.useState(false);
   let myChecked: boolean = true;
@@ -242,7 +242,7 @@ function CalculatorComponent() {
 
   return (
     <div className="CalculatorForm -mt-10">
-      <dialog id="my_modal_1" className="modal">
+      <dialog id="TFSA_modal" className="modal">
         <div className="modal-box">
           <h3 className="font-bold mb-3 text-lg" style={{ color: "black" }}>
             TFSA Calculator
@@ -360,7 +360,7 @@ function CalculatorComponent() {
               style={{ color: "black" }}
               onClick={() =>
                 (
-                  document.getElementById("my_modal_1")! as HTMLDialogElement
+                  document.getElementById("TFSA_modal")! as HTMLDialogElement
                 ).close()
               }
             >
@@ -372,4 +372,4 @@ function CalculatorComponent() {
     </div>
   );
 }
-export default CalculatorComponent;
+export default TfsaCalculatorComponent;
