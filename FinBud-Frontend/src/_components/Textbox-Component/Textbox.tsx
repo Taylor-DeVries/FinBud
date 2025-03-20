@@ -2,7 +2,7 @@ import React from "react";
 
 interface TextBoxProps {
   label?: React.ReactNode;
-  secondaryLabel?: string;
+  secondaryLabel?: React.ReactNode;
   paddingBetween?: boolean;
   chatBubble?: boolean;
 }
