@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 // Load environment variables from the workspace root
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+dotenv.config({ path: path.resolve(__dirname, '../../.env.local') });
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}

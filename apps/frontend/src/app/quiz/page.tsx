@@ -9,7 +9,8 @@ export default async function Page() {
 
   if (session) {
     data = await getHistoryFunction();
+    return <QuizPage data={data}></QuizPage>;
   }
 
-  return <QuizPage data={data}></QuizPage>;
+  return <></>;
 }
