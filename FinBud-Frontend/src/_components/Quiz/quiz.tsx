@@ -1,5 +1,6 @@
 "use client";
 import quizData from "@/_data/constants/quiz-content.json";
+import { buildQuizData } from "@/_services/buildQuizData";
 import { useEffect, useState } from "react";
 import {
   findNodeTest,
@@ -26,7 +27,8 @@ import FhsaCalculatorComponent from "../Calculator-Component/FhsaCalculatorCompo
 export default function QuizPage({ data }) {
   const router = useRouter();
 
-  const rootNode: Node = quizData as Node;
+  const rootNode: Node = buildQuizData();
+
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);
