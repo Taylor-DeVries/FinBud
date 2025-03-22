@@ -15,6 +15,16 @@
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "nxCloudId": "67db68d78076dd19641f164b",
+  "projects": {
+    "frontend": {
+      "tags": ["type:frontend"],
+      "implicitDependencies": []
+    },
+    "backend": {
+      "tags": ["type:backend"],
+      "implicitDependencies": []
+    }
+  },
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
@@ -70,9 +80,6 @@
     },
     "test": {
       "dependsOn": ["^build"]
-    },
-    "build": {
-      "inputs": ["default", "!@nx-dotnet/core"]
     }
   },
   "generators": {
