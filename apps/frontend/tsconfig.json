@@ -34,8 +34,6 @@
     "**/*.jsx",
     "**/*.ts",
     "**/*.tsx",
-    "../../apps/frontend/.next/types/**/*.ts",
-    "../../dist/apps/frontend/.next/types/**/*.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts"
   ],
