@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
               chatBubble
             />
 
-            <h1>Hello: {process.env.NEXT_PUBLIC_API_URL}</h1>
+            <h1>Hello: {process.env.AUTH0_BASE_URL}</h1>
 
             <div className="mt-8 flex justify-center ">
               <Button
