@@ -58,12 +58,6 @@
       "options": {
         "targetName": "test"
       }
-    },
-    {
-      "plugin": "@nx-dotnet/core",
-      "options": {
-        "disableInCI": true
-      }
     }
   ],
   "targetDefaults": {
