@@ -59,7 +59,12 @@
         "targetName": "test"
       }
     },
-    "@nx-dotnet/core"
+    {
+      "plugin": "@nx-dotnet/core",
+      "options": {
+        "buildTargetName": "backend-build"
+      }
+    }
   ],
   "targetDefaults": {
     "e2e-ci--**/*": {
