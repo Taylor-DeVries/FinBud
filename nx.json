@@ -58,6 +58,10 @@
       "options": {
         "targetName": "test"
       }
+    },
+    {
+      "plugin": "@nx-dotnet/core",
+      "projects": ["backend"]
     }
   ],
   "targetDefaults": {
