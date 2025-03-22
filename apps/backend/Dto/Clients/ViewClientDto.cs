@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinBud_Backend.Dto.Clients
+namespace backend.Dto.Clients
 {
     public class ViewClientDto
     {

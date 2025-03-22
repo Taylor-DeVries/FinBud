@@ -1,8 +1,8 @@
 ﻿// using Customers.Api.Contracts.Data;
 
-using FinBud_Backend.Dto.Clients;
+using backend.Dto.Clients;
 
-namespace FinBud_Backend.Repositories;
+namespace backend.Repositories;
 
 public interface IClientRepository
 {

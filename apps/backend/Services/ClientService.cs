@@ -1,13 +1,13 @@
 ﻿// using Customers.Api.Domain;
 using System.ComponentModel.DataAnnotations;
-using FinBud_Backend.Mapping;
-using FinBud_Backend.Models;
-using FinBud_Backend.Repositories;
+using backend.Mapping;
+using backend.Models;
+using backend.Repositories;
 using Microsoft.IdentityModel.Tokens;
 // using FluentValidation;
 // using FluentValidation.Results;
 
-namespace FinBud_Backend.Services;
+namespace backend.Services;
 
 public class ClientService : IClientService
 {

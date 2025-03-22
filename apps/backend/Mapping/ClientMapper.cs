@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FinBud_Backend.Dto.Clients;
-using FinBud_Backend.Models;
+using backend.Dto.Clients;
+using backend.Models;
 
-namespace FinBud_Backend.Mapping
+namespace backend.Mapping
 {
     public static class ClientMapper
     {

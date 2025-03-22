@@ -6,8 +6,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Amazon.DynamoDBv2;
 using Amazon;
-using FinBud_Backend.Repositories;
-using FinBud_Backend.Services;
+using backend.Repositories;
+using backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;

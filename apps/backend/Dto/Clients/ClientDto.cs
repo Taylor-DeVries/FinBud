@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace FinBud_Backend.Dto.Clients
+namespace backend.Dto.Clients
 {
     public class ClientDto
     {

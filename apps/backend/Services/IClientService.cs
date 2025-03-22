@@ -1,8 +1,8 @@
 ﻿// using Customers.Api.Domain;
 
-using FinBud_Backend.Models;
+using backend.Models;
 
-namespace FinBud_Backend.Services;
+namespace backend.Services;
 
 public interface IClientService
 {
