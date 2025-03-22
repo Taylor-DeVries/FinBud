@@ -1,23 +1,25 @@
 import quizData from "@/_data/constants/quiz-content.json";
 import quizPaths from "@/_data/constants/paths.json";
 import quizAnswers from "@/_data/constants/answers.json";
-import quizTexts from "@/_data/constants/texts.json";
+import quizTexts from "@/_data/constants/extentedTexts.json";
 import { QuizPath, QuizAnswer, QuizText, Node } from "@/_data/types/types";
 
 export function buildQuizData(): Node{
     const paths: QuizPath = quizPaths as QuizPath;
     const answers: QuizAnswer[] = quizAnswers.answers as QuizAnswer[];
-    const texts: QuizText[] = quizTexts.texts as QuizText[];
+    const extendedtexts: QuizText[] = quizTexts.extendedTexts as QuizText[];
    
     const answers_n = answers.length;
-    const texts_n = texts.length;
+    const extendedtexts_n = extendedtexts.length;
 
     return generateNode(paths);
 
 
     function generateNode( current: QuizPath): Node{
         let nodeAnswers = getAnswerById(current.id, 0, answers_n-1);
-        let nodeTexts = getTextById(current.id, 0, texts_n-1);
+        let nodeExtendedTexts = getTextById(current.id, 0, extendedtexts_n-1);
+        let nodeMainText = current.mainText;
+        let nodeText: string[] = [];
         let nodeResponses: Node[] = [];
     
         if(current.responses.length > 0){
@@ -25,12 +27,19 @@ export function buildQuizData(): Node{
             nodeResponses.push(generateNode(resp));
           }
         }
-    
+
+        if(nodeMainText){
+          nodeText.push(nodeMainText);
+          for(const exTex of nodeExtendedTexts){
+            nodeText.push(exTex);
+          }
+        }
+        
         const newNode: Node = {
           answer: nodeAnswers,
           connectId: current.connectId,
           id: current.id,
-          text: nodeTexts,
+          text: nodeText,
           responses: nodeResponses
         };
     
@@ -74,17 +83,17 @@ export function buildQuizData(): Node{
         }
     
         else if(start === end){
-          return (texts[start].id === ID) ? texts[start].text : ["Error: Quiz ID does not exist."]; // throw error?
+          return (extendedtexts[start].id === ID) ? extendedtexts[start].extendedText : ["Error: Quiz ID does not exist."]; // throw error?
         }
     
         else{
     
           let mid = Math.floor((start+end)/2);
     
-          if(texts[mid].id === ID){
-            return texts[mid].text;
+          if(extendedtexts[mid].id === ID){
+            return extendedtexts[mid].extendedText;
           }
-          else if(ID < texts[mid].id){
+          else if(ID < extendedtexts[mid].id){
             //search on first half
             return getTextById(ID, start, mid-1);
           }

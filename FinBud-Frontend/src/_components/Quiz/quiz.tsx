@@ -26,16 +26,7 @@ import Loader from "../Loader-Component/Loader";
 export default function QuizPage({ data }) {
   const router = useRouter();
 
-  const myRoot: Node = buildQuizData();
-
-  const rootNode: Node = quizData as Node;
-  // const rootNode = myRoot;
-  
-  // old data
-  const quizstr = JSON.stringify(rootNode);
-  
-  // new data
-  const mystr = JSON.stringify(myRoot);
+  const rootNode: Node = buildQuizData();
 
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);

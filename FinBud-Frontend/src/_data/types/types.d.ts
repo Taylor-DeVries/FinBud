@@ -27,6 +27,7 @@ export interface Node {
 export interface QuizPath{
   connectId?: number,
   id: number,
+  mainText?: string,
   responses: QuizPath[];
 }
 
@@ -39,5 +40,5 @@ export interface QuizAnswer{
 export interface QuizText{
   connectId?: number,
   id:number,
-  text: string[]
+  extendedText: string[]
 }
