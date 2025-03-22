@@ -2,9 +2,7 @@
   "name": "@finbud/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "prepare": "nx g @nx-dotnet/core:restore"
-  },
+  "scripts": {},
   "private": true,
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.6.0",
