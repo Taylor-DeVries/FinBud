@@ -59,11 +59,7 @@
         "targetName": "test"
       }
     },
-    {
-      "plugin": "@nx-dotnet/core",
-      "startTargetName": "start",
-      "buildTargetName": "build"
-    }
+    "@nx-dotnet/core"
   ],
   "targetDefaults": {
     "e2e-ci--**/*": {
