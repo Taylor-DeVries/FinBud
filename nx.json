@@ -70,6 +70,9 @@
     },
     "test": {
       "dependsOn": ["^build"]
+    },
+    "build": {
+      "inputs": ["default", "!@nx-dotnet/core"]
     }
   },
   "generators": {
