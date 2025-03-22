@@ -60,6 +60,8 @@ const HomePage: React.FC = () => {
               chatBubble
             />
 
+            <h1>Hello: {process.env.NEXT_PUBLIC_API_URL}</h1>
+
             <div className="mt-8 flex justify-center ">
               <Button
                 label="Start My Journey"
