@@ -1,8 +1,8 @@
-"use client"
-import React, { createRef, RefObject } from 'react';
+'use client';
+import { createRef, RefObject } from 'react';
 
 class RefInput {
-    textInput: RefObject<HTMLInputElement>;
+  textInput: RefObject<HTMLInputElement>;
 
   constructor() {
     this.textInput = createRef();

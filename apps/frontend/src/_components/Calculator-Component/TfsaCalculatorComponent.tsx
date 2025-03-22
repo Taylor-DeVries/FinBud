@@ -10,11 +10,9 @@ function TfsaCalculatorComponent() {
   const input = new TFSAvars();
   const [checked, setChecked] = React.useState(false);
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-  let myChecked: boolean = true;
   const [showResults, setShowResults] = React.useState(false);
   const [showSwitch, setShowSwitch] = React.useState(false);
   const [bornFlag, setBornFlag] = React.useState(false);
-  const [showWithdrawnCurr, setWithdrawnCurr] = React.useState(false);
   const [BornInputFlag, setBornInputFlag] = React.useState(false);
   const [ResidentInputFlag, setResidentInputFlag] = React.useState(false);
   const [ContributedInputFlag, setContributedInputFlag] = React.useState(false);
@@ -48,9 +46,6 @@ function TfsaCalculatorComponent() {
 
   const handleSwitchChange = () => {
     setChecked(!checked);
-    myChecked = checked;
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-    let num: number = 0;
     OtherClick();
     handleChange();
   };
@@ -72,8 +67,6 @@ function TfsaCalculatorComponent() {
         setBornInputFlag(false);
         element.textContent = null;
 
-        // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-        let num: number = 0;
         return;
       }
       setBornInputFlag(true);
@@ -94,8 +87,6 @@ function TfsaCalculatorComponent() {
       if (temp >= Number(input.born.textInput.current.value) && temp < 2026) {
         setResidentInputFlag(false);
         element.textContent = null;
-        // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-        let num: number = 0;
 
         return;
       }
@@ -108,15 +99,11 @@ function TfsaCalculatorComponent() {
     element.textContent =
       'Oops! Your response cannot be a year before you were born or in the future!';
     setResidentInputFlag(true);
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-    let num: number = 0;
   };
   const handleWithdrawalChange = () => {
     // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const, @typescript-eslint/no-unused-expressions
     input.withdrawn.focusTextInput;
     const element = document.getElementById('withdrawnError')!;
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-    const num: number = 0;
     if (
       input.withdrawn.textInput.current &&
       input.contributed.textInput.current
@@ -129,14 +116,11 @@ function TfsaCalculatorComponent() {
         setWithdrawInputFlag(false);
         element.textContent = null;
         if (Math.floor(Number(input.withdrawn.textInput.current.value)) != 0) {
-          setWithdrawnCurr(true);
           return;
         }
-        setWithdrawnCurr(false);
         return;
       }
     }
-    setWithdrawnCurr(false);
     setWithdrawInputFlag(true);
     element.textContent =
       'Oops! Value must be a non-negative number less then amount contributed. Please try again!';
@@ -146,13 +130,9 @@ function TfsaCalculatorComponent() {
     // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const, @typescript-eslint/no-unused-expressions
     input.contributed.focusTextInput;
     const element = document.getElementById('contributedError')!;
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-    let temparray = input.getTFSAProps(input);
+    const temparray = input.getTFSAProps(input);
     temparray[2] = '0';
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-    let maxRoom = tfsaMath(temparray);
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types, prefer-const
-    let num: number = 0;
+    const maxRoom = tfsaMath(temparray);
     if (
       input.contributed.textInput.current &&
       input.withdrawn.textInput.current

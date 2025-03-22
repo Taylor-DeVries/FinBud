@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col } from 'react-bootstrap';
 
 export default function AboutPage() {
   return (

@@ -1,11 +1,9 @@
 import {
   IconHome,
-  IconStar,
   IconPaw,
   IconSettings,
-  IconUser,
   IconQuestionMark,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react';
 
 interface SidebarLink {
   imgURL: React.ComponentType; // Type for the imported icons
@@ -16,23 +14,23 @@ interface SidebarLink {
 export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: IconHome,
-    route: "/",
-    label: "Home",
+    route: '/',
+    label: 'Home',
   },
   {
     imgURL: IconQuestionMark,
-    route: "/quiz",
-    label: "Quiz",
+    route: '/quiz',
+    label: 'Quiz',
   },
   {
     imgURL: IconPaw,
-    route: "/characters",
-    label: "Characters",
+    route: '/characters',
+    label: 'Characters',
   },
   {
     imgURL: IconSettings,
-    route: "/settingsPage",
-    label: "Settings",
+    route: '/settingsPage',
+    label: 'Settings',
   },
   // {
   //     imgURL: IconUser,

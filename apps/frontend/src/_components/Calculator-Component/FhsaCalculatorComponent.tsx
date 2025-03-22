@@ -6,8 +6,6 @@ import Row from 'react-bootstrap/Row';
 import React from 'react';
 import FHSAvars from './fhsaInterface';
 import FhsaResultComponent from './FhsaResultComponent';
-import { useEffect } from 'react';
-import TFSAvars from './tfsaInterface';
 
 export default function FhsaCalculatorComponent() {
   const [AgeChecked, setAgeChecked] = React.useState(false);
