@@ -5,12 +5,14 @@ import { getSession } from '@auth0/nextjs-auth0';
 export default async function Page() {
   const session = await getSession();
 
-  let data = { loading: false, historyArray: [0], error: 'Not logged in' };
-
   if (session) {
-    data = await getHistoryFunction();
+    const data = await getHistoryFunction();
     return <QuizPage data={data}></QuizPage>;
   }
 
-  return <></>;
+  return (
+    <QuizPage
+      data={{ loading: false, historyArray: [0], error: 'Not logged in' }}
+    ></QuizPage>
+  );
 }
