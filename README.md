@@ -3,7 +3,7 @@ Virtual Finance Buddy is an innovative platform designed to simplify personal fi
 
 ### Access it here - https://finbud.ca
 
-### LinkedIn - https://www.linkedin.com/company/virtual-finance-buddy
+### LinkedIn - https://www.linkedin.com/company/fin-bud
 
 ### Instagram - https://www.instagram.com/fin_bud_/
 
