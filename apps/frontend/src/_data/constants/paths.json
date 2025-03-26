@@ -1,0 +1,158 @@
+{
+  "id": 0,
+  "mainText": "Disclaimer: This website is strictly for Canadian users and is for educational and entertainment purposes only. We are not financial advisors, and the content should not be considered professional financial advice. The content is designed to be simple and may not meet everyone's financial needs or goals. Please note that the website is still in development, and content may change. Consult a certified financial professional before making any financial decisions.",
+  "responses": [
+    {
+      "id": 1,
+      "mainText": "Do you want to make more money?",
+      "responses": [
+        {
+          "id": 2,
+          "mainText": "Do you have any debt?",
+          "responses": [
+            {
+              "id": 11,
+              "mainText": "Yikes! High-interest debt can snowball quickly! I would pay that off right away!",
+              "responses": [
+                {
+                  "connectId": 3,
+                  "id": 12,
+                  "responses": []
+                }
+              ]
+            },
+            {
+              "connectId": 3,
+              "id": 13,
+              "responses": []
+            },
+            {
+              "id": 3,
+              "mainText": "That's great! Do you have extra money after regular expenses?",
+              "responses": [
+                {
+                  "id": 4,
+                  "mainText": "Fantastic! Do you have about 6 months worth of living expenses saved up?",
+                  "responses": [
+                    {
+                      "id": 5,
+                      "mainText": "Great! Now when do you want even more money?",
+                      "responses": [
+                        {
+                          "id": 14,
+                          "mainText": "I'd continue contributing to your savings account until you feel comfortable taking on risk for long-term reward",
+                          "responses": [
+                            {
+                              "connectId": 6,
+                              "id": 15,
+                              "responses": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": 6,
+                          "mainText": "Calculate your TFSA contribution room, if you have room then I would buy a few different ETFs and continue investing into them",
+                          "responses": [
+                            {
+                              "id": 7,
+                              "mainText": "What are you saving for now?",
+                              "responses": [
+                                {
+                                  "id": 8,
+                                  "mainText": "Calculate your RESP contribution room. If you have room, then I would buy a few different ETFs and continue investing in them.",
+                                  "responses": [
+                                    {
+                                      "connectId": 7,
+                                      "id": 16,
+                                      "responses": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": 17,
+                                  "mainText": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
+                                  "responses": [
+                                    {
+                                      "connectId": 7,
+                                      "id": 18,
+                                      "responses": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": 9,
+                                  "mainText": "Do you want to risk it for the biscuit or get some steady reliable income?",
+                                  "responses": [
+                                    {
+                                      "id": 10,
+                                      "mainText": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
+                                      "responses": [
+                                        {
+                                          "id": 19,
+                                          "mainText": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time.",
+                                          "responses": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": 20,
+                                      "mainText": "I'd continue contributing to your savings account until you feel comfortable taking on risk for long-term reward.",
+                                      "responses": [
+                                        {
+                                          "connectId": 10,
+                                          "id": 21,
+                                          "responses": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 22,
+                      "mainText": "Having about 6 months worth of living expenses saved up is a great step towards financial freedom. I would dedicate a portion of my income to regularly be deposited into a high-interest savings account. I've found that the Wealthsimple Cash account is the highest-interest account with no fees.",
+                      "responses": [
+                        {
+                          "connectId": 5,
+                          "id": 23,
+                          "responses": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": 24,
+                  "mainText": "Before you're sure that you don't have extra money, go back to the previous page and use the dialogue arrow to hear me out on what I am referring to as extra money",
+                  "responses": [
+                    {
+                      "connectId": 4,
+                      "id": 25,
+                      "responses": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "mainText": "Well, that's no good",
+          "responses": [
+            {
+              "connectId": 2,
+              "id": 27,
+              "responses": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
