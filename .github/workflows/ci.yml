@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - request-pr-review
+      - main
   pull_request:
 
 permissions:
@@ -11,16 +11,17 @@ permissions:
   contents: read
 
 jobs:
-  request-pr-review:
+  main:
     runs-on: ubuntu-latest
 
     steps:
       - name: Deploy Stage
         uses: fjogeleit/http-request-action@v1
         with:
-          url: 'https://en.wikipedia.org/wiki/Potato'
-          method: 'GET'
+          url: 'https://discord.com/api/webhooks/1355672353274593500/WzySXs_M23UxybT4i9HMm2QywdId_H5c6yhhCddJ0izmF0svidr4iaILogoC28bCQ7YV'
+          method: 'POST'
           customHeaders: '{"Content-Type": "application/json"}'
+          data: '{"content": "hello world"}'
 # jobs:
 #   main:
 #     runs-on: ubuntu-latest
