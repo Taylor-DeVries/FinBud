@@ -2,11 +2,9 @@ name: CI
 
 on:
   push:
-    branches: -pr-review-request
-    # types: [opened, reopened, synchronize]
-  # pull_request:
-  #   types: [opened, reopened, synchronize]
-  #   branches: -pr-review-request
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: -main
 
 permissions:
   actions: read
