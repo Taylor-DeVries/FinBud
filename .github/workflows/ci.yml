@@ -2,8 +2,9 @@ name: CI
 
 on:
   push:
-    branches: -pr-review-request
   pull_request:
+    types: [synchronize]
+    branches: -pr-review-request
 
 permissions:
   actions: read
