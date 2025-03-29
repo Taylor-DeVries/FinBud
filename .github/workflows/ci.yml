@@ -2,16 +2,15 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
   pull_request:
+    branches: -pr-review-request
 
 permissions:
   actions: read
   contents: read
 
 jobs:
-  main:
+  pr-review-request:
     runs-on: ubuntu-latest
 
     steps:
