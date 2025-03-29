@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - request-pr-review
   pull_request:
 
 permissions:
@@ -11,14 +11,16 @@ permissions:
   contents: read
 
 jobs:
-  main:
+  request-pr-review:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Deploy Stage
+        uses: fjogeleit/http-request-action@v1
         with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v2
-      - run: print("Hello Pipeline")
+          url: 'https://en.wikipedia.org/wiki/Potato'
+          method: 'GET'
+          customHeaders: '{"Content-Type": "application/json"}'
 # jobs:
 #   main:
 #     runs-on: ubuntu-latest
