@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: get PR
-        run: echo "Your PR is ${{ github.event.pull_request.number }}"
+        run: echo "Your PR is"
       - name: Deploy Stage
         uses: fjogeleit/http-request-action@v1
         with:
