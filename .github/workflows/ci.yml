@@ -1,7 +1,8 @@
 name: CI
 
 on:
-  pull_request:
+  push:
+  pull_request_target:
     types: [opened, reopened, synchronize]
     branches: -main
 
@@ -15,7 +16,7 @@ jobs:
 
     steps:
       - name: get PR
-        run: echo "Your PR is"
+        run: echo "Your PR is ${PR}"
       - name: Deploy Stage
         uses: fjogeleit/http-request-action@v1
         with:
