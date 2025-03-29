@@ -17,6 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-python@v2
       - run: print("Hello Pipeline")
 # jobs:
 #   main:
