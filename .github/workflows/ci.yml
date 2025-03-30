@@ -15,15 +15,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: get PR
-        run: echo "Your PR is ${{ github.event.pull_request.number }}"
       - name: Deploy Stage
         uses: fjogeleit/http-request-action@v1
         with:
           url: 'https://discord.com/api/webhooks/1355672353274593500/WzySXs_M23UxybT4i9HMm2QywdId_H5c6yhhCddJ0izmF0svidr4iaILogoC28bCQ7YV'
           method: 'POST'
           customHeaders: '{"Content-Type": "application/json"}'
-          data: '{"content": "hello world"}'
+          data: '{"content": "PR: ${{ github.event.pull_request.number }}"}'
 # jobs:
 #   main:
 #     runs-on: ubuntu-latest
