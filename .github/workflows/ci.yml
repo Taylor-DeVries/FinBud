@@ -15,13 +15,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set PR_NUMBER message
+        run: |
+          echo "PR_NUMBER=PR: ${{ github.event.pull_request.number }} - Please work" >> $GITHUB_ENV
+
+      - name: Prepare JSON payload
+        run: |
+          echo 'DATA<<EOF' >> $GITHUB_ENV
+
       - name: Send Discord PR Notification
         uses: fjogeleit/http-request-action@v1
         with:
           url: 'https://discord.com/api/webhooks/1355672353274593500/WzySXs_M23UxybT4i9HMm2QywdId_H5c6yhhCddJ0izmF0svidr4iaILogoC28bCQ7YV'
           method: 'POST'
           customHeaders: '{"Content-Type": "application/json"}'
-          data: '{"content": "PR: ${{ github.event.pull_request.number }} \n Please work"}'
+          data: '{"content": "${{ env.DATA }}"}'
 # jobs:
 #   main:
 #     runs-on: ubuntu-latest
