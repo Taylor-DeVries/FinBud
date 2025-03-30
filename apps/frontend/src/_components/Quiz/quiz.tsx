@@ -84,7 +84,7 @@ export default function QuizPage({ data }) {
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
 
-    if (currentNode.id == 6) {
+    if (currentNode.id == 4 || currentNode.id == 23) {
       setshowTfsaCalculator(true);
     } else setshowTfsaCalculator(false);
 

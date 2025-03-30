@@ -1,6 +1,6 @@
 import quizPaths from '_data/constants/paths.json';
 import quizAnswers from '_data/constants/answers.json';
-import quizTexts from '_data/constants/extentedTexts.json';
+import quizTexts from '_data/constants/extendedTexts.json';
 import { QuizPath, QuizAnswer, QuizText, Node } from '_data/types/types';
 
 export function buildQuizData(): Node {
