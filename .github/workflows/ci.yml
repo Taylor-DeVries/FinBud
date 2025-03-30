@@ -3,7 +3,8 @@ name: CI
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-    branches: -set-up-webhooks-for-pr-reviews
+    branches:
+      - set-up-webhooks-for-pr-reviews
 
 permissions:
   actions: read
