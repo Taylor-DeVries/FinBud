@@ -1,5 +1,5 @@
 {
-  "answers":[  
+  "answers": [
     {
       "id": 0,
       "answer": ""
@@ -12,22 +12,22 @@
 
     {
       "id": 2,
-      "answer": "yes"
-    },
-
-    {
-      "id": 3,
-      "answer": "No"
-    },
-
-    {
-      "id": 4,
       "answer": "Yes"
     },
 
     {
+      "id": 3,
+      "answer": "No (I have no debt or the interest is below 10%)"
+    },
+
+    {
+      "id": 4,
+      "answer": "Yes, something other than my first home"
+    },
+
+    {
       "id": 5,
-      "answer": "Yes" 
+      "answer": "Yes"
     },
 
     {
@@ -37,7 +37,7 @@
 
     {
       "id": 7,
-      "answer": "I maxed out my TFSA and have more money to invest"
+      "answer": "Yes"
     },
 
     {
@@ -52,32 +52,27 @@
 
     {
       "id": 10,
-      "answer": "Risk it for the biscuit"
+      "answer": "What next?"
     },
 
     {
       "id": 11,
-      "answer": "Yes, credit card debt or other high interest debt (rate above 10 percent)"
+      "answer": "Yes, high interest debt with a rate around/above 10%"
     },
-      
+
     {
       "id": 12,
       "answer": "I paid off my credit card debt"
     },
-              
-    {
-      "id": 13,
-      "answer": "Yes, it is not high-interest and I can afford the payments (rate below 10 percent)"
-    },
 
     {
       "id": 14,
-      "answer": "I'd want the money within the next five years"
+      "answer": "Yes, my first home"
     },
 
     {
       "id": 15,
-      "answer": "I got all the money I need for now, I can wait more than five years"
+      "answer": "I got all the money I need for my house and I'm all set for the next 5 years"
     },
 
     {
@@ -85,7 +80,7 @@
       "answer": "I maxed out my RESP and have more money to invest"
     },
 
-    { 
+    {
       "id": 17,
       "answer": "My retirement"
     },
@@ -96,49 +91,33 @@
     },
 
     {
-      "id": 19,
-      "answer": "What next?"
-    },
-
-    {
-      "id": 20,
-      "answer": "Play it safe"
-    },
-
-    {
-      "id": 21,
-      "answer": "I'm ready to take on some more risk for more long-term reward"
-    },
-
-    {
       "id": 22,
-      "answer": "No"
+      "answer": "I got all the money I need for now, I can wait more than 5 years"
     },
 
     {
       "id": 23,
-      "answer": "I've saved up about 6 months worth of living expenses!"
-    },
-
-    {
-      "id": 24,
       "answer": "No"
     },
 
     {
+      "id": 24,
+      "answer": "I got all the money I need for my house, but I need more within the next 5 years"
+    },
+
+    {
       "id": 25,
-      "answer": "I've found extra money!"
+      "answer": "I got all the money I need for things within the next 5 years except for my first home"
     },
 
     {
       "id": 26,
-      "answer": "no"
+      "answer": "I've contributed all my employer will match to my RRSP"
     },
 
     {
       "id": 27,
-      "answer": "I do want to make more money actually"
+      "answer": "I've maxed my TFSA contribution room"
     }
-
   ]
 }
