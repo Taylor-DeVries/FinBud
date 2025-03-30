@@ -1,4 +1,4 @@
-name: CI
+name: finbud-ci
 
 on:
   pull_request:
@@ -11,11 +11,11 @@ permissions:
   contents: read
 
 jobs:
-  pr-review-request:
+  notify-pr-on-discord:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy Stage
+      - name: Send Discord PR Notification
         uses: fjogeleit/http-request-action@v1
         with:
           url: 'https://discord.com/api/webhooks/1355672353274593500/WzySXs_M23UxybT4i9HMm2QywdId_H5c6yhhCddJ0izmF0svidr4iaILogoC28bCQ7YV'
