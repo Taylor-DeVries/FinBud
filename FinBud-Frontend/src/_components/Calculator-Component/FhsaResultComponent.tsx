@@ -8,8 +8,8 @@ export default function FhsaResultComponent(values: number[]) {
     const contributed = values[1];
     const contributionRoom = (opened * 8000) - contributed;
     const totalRemaining = 40000 - contributionRoom - contributed;
-    document.getElementById("contributionRoom").textContent = contributionRoom.toString();
-    document.getElementById("totalRemaining").textContent = totalRemaining.toString();
+    document.getElementById("contributionRoom").textContent = "$" + contributionRoom.toString();
+    document.getElementById("totalRemaining").textContent = "$" + totalRemaining.toString();
     return [contributionRoom, totalRemaining];
 
 
