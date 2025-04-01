@@ -14,7 +14,7 @@ Virtual Finance Buddy is an innovative platform designed to simplify personal fi
 - Simple Guidance 📋: Asks one straightforward question at a time and provides clear, step-by-step answers.
 - Lazy-Proof Design 🛋️: Ensures ease of use for individuals who find traditional financial planning too complex or time-consuming.
 - Ongoing Support 🔄: Adapts to users’ needs, offering relevant guidance whether they are just starting or looking to refine their financial strategies.
-- Calculators 📊: TFSA contribution calculator feature, FHSA contribution calculator coming soon.
+- Calculators 📊: TFSA contribution calculator feature, FHSA contribution calculator.
 
 ![image](https://github.com/user-attachments/assets/3819d323-4a37-4cac-a35b-b9a42d4484e5)
 
