@@ -15,7 +15,7 @@ import Textbox from '_components/Textbox-Component/Textbox';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import TfsaCalculatorComponent from '../Calculator-Component/TfsaCalculatorComponent';
 import React from 'react';
-// import FhsaCalculatorButton from '../Calculator-Component/FhsaCalculatorComponent';
+ import FhsaCalculatorButton from '../Calculator-Component/FhsaCalculatorComponent';
 import { useRouter } from 'next/navigation';
 import TfsaCalculatorButton from '../Calculator-Component/TfsaCalculatorButton';
 import { HistoryState, Node } from '_data/types/types';
@@ -36,7 +36,7 @@ export default function QuizPage({ data }) {
   );
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
-  // const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
+  const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
   const [historyState, setHistoryState] = React.useState<HistoryState>(data);
 
   function nextNode(id: number) {
@@ -88,6 +88,9 @@ export default function QuizPage({ data }) {
       setshowTfsaCalculator(true);
     } else setshowTfsaCalculator(false);
 
+    if(currentNode.id == 14) {
+      setshowFhsaCalculator(true);
+    } else setshowFhsaCalculator(false);
     if (historyState.loading) {
       setHistoryAsync();
     }
@@ -252,7 +255,7 @@ export default function QuizPage({ data }) {
 
           <div className="sm:w-1/3 sm:justify-left">
             {showTfsaCalculator && <TfsaCalculatorButton />}
-            {/* {showFhsaCalculator && <FhsaCalculatorButton />} */}
+            {showFhsaCalculator && <FhsaCalculatorButton /> }
           </div>
         </div>
       </div>
