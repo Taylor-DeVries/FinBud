@@ -25,19 +25,30 @@ import FhsaCalculatorComponent from '../Calculator-Component/FhsaCalculatorCompo
 
 export default function QuizPage({ data }) {
   const router = useRouter();
-
+  const [historyState, setHistoryState] = React.useState<HistoryState>(getInitialState(data));
   const rootNode: Node = buildQuizData();
-
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);
   const [currentNode, setCurrentNode] = useState<Node>(
-    findNodeTest(data.historyArray.at(-1), rootNode, rootNode)
+    findNodeTest(historyState.historyArray.at(-1), rootNode, rootNode)
   );
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   // const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
-  const [historyState, setHistoryState] = React.useState<HistoryState>(data);
+  
+  
+  function getInitialState(data: HistoryState): HistoryState{
+    let hist: HistoryState = data;  
+    if (data.initialState) {
+      if(sessionStorage.getItem("userHistory")){
+      hist  = {loading: data.loading, historyArray: JSON.parse(sessionStorage.getItem("userHistory")), error: data.error, initialState:false}; 
+      }else{
+        hist = {loading: data.loading, historyArray: [0], error: data.error, initialState:false};  
+      }
+    }
+    return hist
+  }
 
   function nextNode(id: number) {
     // eslint-disable-next-line prefer-const
@@ -90,6 +101,10 @@ export default function QuizPage({ data }) {
 
     if (historyState.loading) {
       setHistoryAsync();
+    }
+
+    if(historyState.error == 'Not logged in'){
+      sessionStorage.setItem("userHistory", JSON.stringify(historyState.historyArray));
     }
   }, [currentNode]);
 
