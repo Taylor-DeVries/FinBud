@@ -1,5 +1,5 @@
 'use client';
-import { buildQuizData } from '_services/buildQuizData';
+import { buildQuizData } from '@/_services/buildQuizData';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -10,15 +10,15 @@ import {
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import Image from 'next/image';
-import Button from '_components/Back-Button-Component/Button';
-import Textbox from '_components/Textbox-Component/Textbox';
+import Button from '@/_components/Back-Button-Component/Button';
+import Textbox from '@/_components/Textbox-Component/Textbox';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import TfsaCalculatorComponent from '../Calculator-Component/TfsaCalculatorComponent';
 import React from 'react';
 // import FhsaCalculatorButton from '../Calculator-Component/FhsaCalculatorComponent';
 import { useRouter } from 'next/navigation';
 import TfsaCalculatorButton from '../Calculator-Component/TfsaCalculatorButton';
-import { HistoryState, Node } from '_data/types/types';
+import { HistoryState, Node } from '@/_data/types/types';
 import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FhsaCalculatorComponent';
@@ -104,9 +104,8 @@ export default function QuizPage({ data }) {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${
-            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-          }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+            }`}
         >
           {/* Image container */}
           <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">

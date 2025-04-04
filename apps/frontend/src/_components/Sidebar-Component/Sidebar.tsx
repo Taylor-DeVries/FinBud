@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { IconMenu2, IconUser } from '@tabler/icons-react';
-import { sidebarLinks } from '_data/constants/SidebarLinks';
+import { sidebarLinks } from '@/_data/constants/SidebarLinks';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 // import {
@@ -38,9 +38,8 @@ export const Sidebar = () => {
   return (
     <div className="flex-shrink-0 lg:w-[18rem] bg-zinc-100 h-full lg:static fixed z-40">
       <div
-        className={`lg:flex lg:flex-col lg:px-6 lg:py-6 lg:h-full ${
-          open ? 'flex flex-col px-6 py-6' : 'hidden'
-        }`}
+        className={`lg:flex lg:flex-col lg:px-6 lg:py-6 lg:h-full ${open ? 'flex flex-col px-6 py-6' : 'hidden'
+          }`}
       >
         <div className="flex flex-col items-center">
           <SidebarHeader />
@@ -84,7 +83,7 @@ export const Navigation = ({
             className={twMerge(
               'text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md ',
               isActive(link.route) &&
-                'bg-slate-50 shadow-slate-300 shadow-xl text-blue'
+              'bg-slate-50 shadow-slate-300 shadow-xl text-blue'
             )}
           >
             <div className="flex flex-row my-2">

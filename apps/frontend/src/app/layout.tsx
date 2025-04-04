@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
-import { Sidebar } from '_components/Sidebar-Component/Sidebar';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import ResponsiveImage from '_components/Responsive-Image-Component/ResponsiveImage';
+import { Sidebar } from '@/_components/Sidebar-Component/Sidebar';
+import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 const font = Montserrat({ subsets: ['latin'], weight: ['700'] });
 
