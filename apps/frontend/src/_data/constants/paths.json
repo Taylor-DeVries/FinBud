@@ -1,127 +1,121 @@
 {
   "id": 0,
-  "mainText": "Disclaimer: This website is strictly for Canadian users and is for educational and entertainment purposes only. We are not financial advisors, and the content should not be considered professional financial advice. The content is designed to be simple and may not meet everyone's financial needs or goals. Please note that the website is still in development, and content may change. Consult a certified financial professional before making any financial decisions.",
+  "mainText": "Do you want to make more money?",
   "responses": [
     {
-      "id": 1,
-      "mainText": "Do you want to make more money?",
+      "id": 2,
+      "mainText": "Do you have any high interest debt? (Interest rate of about 10% or higher)",
       "responses": [
         {
-          "id": 2,
-          "mainText": "Do you have any high interest debt? (Interest rate of about 10% or higher)",
+          "id": 11,
+          "mainText": "Yikes! High-interest debt can snowball quickly! I would pay that off right away!",
           "responses": [
             {
-              "id": 11,
-              "mainText": "Yikes! High-interest debt can snowball quickly! I would pay that off right away!",
-              "responses": [
-                {
-                  "connectId": 3,
-                  "id": 12,
-                  "responses": []
-                }
-              ]
-            },
+              "connectId": 3,
+              "id": 12,
+              "responses": []
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "mainText": "Fantastic! Do you have about 6 months worth of living expenses saved up?",
+          "responses": [
             {
-              "id": 3,
-              "mainText": "Fantastic! Do you have about 6 months worth of living expenses saved up?",
+              "id": 5,
+              "mainText": "Great! Do you have any savings goals for the next five years?",
               "responses": [
                 {
-                  "id": 5,
-                  "mainText": "Great! Do you have any savings goals for the next five years?",
+                  "id": 14,
+                  "mainText": "Calculate your FHSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them.",
                   "responses": [
                     {
-                      "id": 14,
-                      "mainText": "Calculate your FHSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them.",
+                      "connectId": 6,
+                      "id": 15,
+                      "responses": []
+                    },
+                    {
+                      "connectId": 4,
+                      "id": 24,
+                      "responses": []
+                    }
+                  ]
+                },
+                {
+                  "id": 6,
+                  "mainText": "Does your employer match RRSP contributions?",
+                  "responses": [
+                    {
+                      "id": 7,
+                      "mainText": "I'd match your employers contribution and invest into medium risk ETFs.",
                       "responses": [
                         {
-                          "connectId": 6,
-                          "id": 15,
-                          "responses": []
-                        },
-                        {
-                          "connectId": 4,
-                          "id": 24,
+                          "id": 26,
+                          "connectId": "23",
                           "responses": []
                         }
                       ]
                     },
                     {
-                      "id": 6,
-                      "mainText": "Does your employer match RRSP contributions?",
+                      "id": 23,
+                      "mainText": "Calculate your TFSA contribution room, if you have room then I would buy medium risk ETFs and continue investing into them.",
                       "responses": [
                         {
-                          "id": 7,
-                          "mainText": "I'd match your employers contribution and invest into medium risk ETFs.",
+                          "id": 27,
+                          "mainText": "What are you saving for now?",
                           "responses": [
                             {
-                              "id": 26,
-                              "connectId": "23",
-                              "responses": []
-                            }
-                          ]
-                        },
-                        {
-                          "id": 23,
-                          "mainText": "Calculate your TFSA contribution room, if you have room then I would buy medium risk ETFs and continue investing into them.",
-                          "responses": [
-                            {
-                              "id": 27,
-                              "mainText": "What are you saving for now?",
+                              "id": 8,
+                              "mainText": "Calculate your RESP contribution room. If you have room, then I would buy medium risk ETFs and continue investing in them.",
                               "responses": [
                                 {
-                                  "id": 8,
-                                  "mainText": "Calculate your RESP contribution room. If you have room, then I would buy medium risk ETFs and continue investing in them.",
-                                  "responses": [
-                                    {
-                                      "connectId": 27,
-                                      "id": 16,
-                                      "responses": []
-                                    }
-                                  ]
-                                },
+                                  "connectId": 27,
+                                  "id": 16,
+                                  "responses": []
+                                }
+                              ]
+                            },
+                            {
+                              "id": 17,
+                              "mainText": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
+                              "responses": [
                                 {
-                                  "id": 17,
-                                  "mainText": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
-                                  "responses": [
-                                    {
-                                      "connectId": 27,
-                                      "id": 18,
-                                      "responses": []
-                                    }
-                                  ]
-                                },
+                                  "connectId": 27,
+                                  "id": 18,
+                                  "responses": []
+                                }
+                              ]
+                            },
+                            {
+                              "id": 9,
+                              "mainText": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
+                              "responses": [
                                 {
-                                  "id": 9,
-                                  "mainText": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
-                                  "responses": [
-                                    {
-                                      "id": 10,
-                                      "mainText": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time.",
-                                      "responses": []
-                                    }
-                                  ]
+                                  "id": 10,
+                                  "mainText": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time.",
+                                  "responses": []
                                 }
                               ]
                             }
                           ]
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "id": 4,
+                  "mainText": "Calculate your TFSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them",
+                  "responses": [
+                    {
+                      "connectId": 6,
+                      "id": 22,
+                      "responses": []
                     },
                     {
-                      "id": 4,
-                      "mainText": "Calculate your TFSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them",
-                      "responses": [
-                        {
-                          "connectId": 6,
-                          "id": 22,
-                          "responses": []
-                        },
-                        {
-                          "connectId": 14,
-                          "id": 25,
-                          "responses": []
-                        }
-                      ]
+                      "connectId": 14,
+                      "id": 25,
+                      "responses": []
                     }
                   ]
                 }
