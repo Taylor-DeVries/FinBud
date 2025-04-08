@@ -24,21 +24,22 @@ export interface Node {
   responses: Node[];
 }
 
-export interface QuizPath{
+export interface QuizPath {
+  answer: string,
   connectId?: number,
   id: number,
   mainText?: string,
   responses: QuizPath[];
 }
 
-export interface QuizAnswer{
+export interface QuizAnswer {
   connectId?: number,
-  id:number,
+  id: number,
   answer: string
 }
 
-export interface QuizText{
+export interface QuizText {
   connectId?: number,
-  id:number,
+  id: number,
   extendedText: string[]
 }
