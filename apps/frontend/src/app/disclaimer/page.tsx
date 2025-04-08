@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Textbox from '_components/Textbox-Component/Textbox';
-import Button from '_components/Back-Button-Component/Button';
+import Textbox from '@/_components/Textbox-Component/Textbox';
+import Button from '@/_components/Back-Button-Component/Button';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
