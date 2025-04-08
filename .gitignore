@@ -93,3 +93,8 @@ obj
 test-output
 
 .fake
+
+#Docker
+dynamodb
+
+appsettings.json
