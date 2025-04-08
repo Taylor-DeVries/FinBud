@@ -1,5 +1,5 @@
-import { getHistoryApi, setHistoryApi } from '_services/callApi';
-import { Node, HistoryState } from '_data/types/types';
+import { getHistoryApi, setHistoryApi } from '@/_services/callApi';
+import { Node, HistoryState } from '@/_data/types/types';
 
 export function findNodeTest(
   id: number,
