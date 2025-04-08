@@ -60,10 +60,10 @@ const HomePage: React.FC = () => {
               chatBubble
             />
 
-            <div className="mt-8 flex justify-center ">
+            <div className="mt-8 flex justify-center">
               <Button
                 label="Start My Journey"
-                onClick={() => router.push('/quiz')}
+                onClick={() => router.push('/disclaimer')}
               />
             </div>
           </div>
