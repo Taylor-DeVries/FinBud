@@ -12,7 +12,7 @@ export default async function Page() {
 
   return (
     <QuizPage
-      data={{ loading: false, historyArray: [0], error: 'Not logged in' }}
+      data={{ loading: false, historyArray: [0], error: 'Not logged in', initialState: false }}
     ></QuizPage>
   );
 }

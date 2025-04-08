@@ -19,7 +19,7 @@ export function findNodeTest(
 //Recursive find node from root
 function findNodeRoot(id: number, currentNode: Node): Node | null {
   let returnNode: Node | null = null;
-
+  
   if (currentNode.id == id) {
     returnNode = currentNode;
   } else {
@@ -73,12 +73,13 @@ export async function getHistoryFunction(): Promise<HistoryState> {
 
     const historyArray = historyStringToHistoryArray(historyString);
 
-    return { loading: true, historyArray: historyArray, error: '' };
+    return { loading: true, historyArray: historyArray, error: '', initialState: false };
   } catch (error) {
-    let account = { loading: true, historyArray: [0], error: error.toString() };
+    let account = { loading: true, historyArray: [0], error: error.toString(), initialState:false };
 
     if (account.error == 'AxiosError: Request failed with status code 404') {
       account = await setHistoryFunction([0]);
+      account.initialState = true;
     }
 
     return account;
@@ -90,15 +91,16 @@ export async function setHistoryFunction(
 ): Promise<HistoryState> {
   try {
     const historyString = historyArrayToHistoryString(historyArray);
-
+    
     await setHistoryApi(historyString);
-
-    return { loading: true, historyArray: historyArray, error: '' };
+    
+    return { loading: true, historyArray: historyArray, error: '', initialState:false };
   } catch (error) {
     return {
       loading: true,
       historyArray: historyArray,
       error: error.toString(),
+      initialState: false
     };
   }
 }

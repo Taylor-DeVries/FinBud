@@ -1,5 +1,5 @@
 # Description 💸
-Virtual Finance Buddy is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.
+FinBud is an innovative platform designed to simplify personal finance for young people. It offers an easy-to-use interface that guides users through their financial journey with step-by-step instructions.
 
 ### Access it here - https://finbud.ca
 
