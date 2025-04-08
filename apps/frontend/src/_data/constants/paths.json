@@ -66,7 +66,7 @@
                           "answer": "Yes",
                           "responses": [
                             {
-                              "connectId": "23",
+                              "connectId": 23,
                               "id": 26,
                               "answer": "I've contributed all my employer will match to my RRSP",
                               "responses": []
