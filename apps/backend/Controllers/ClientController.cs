@@ -17,89 +17,89 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
-    [Route("api/client")]
-    [ApiController]
-    public class ClientController : ControllerBase
+  [Route("api/client")]
+  [ApiController]
+  public class ClientController : ControllerBase
+  {
+    private readonly IClientService _clientService;
+    public ClientController(IClientService clientService)
     {
-        private readonly IClientService _clientService;
-        public ClientController(IClientService clientService)
-        {
-            _clientService = clientService;
-        }
-
-        [HttpGet("history")]
-        [Authorize]
-        public async Task<IActionResult> getClientHistory()
-        {
-            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
-                return NotFound();
-
-            var client = await _clientService.GetAsync(userId);
-
-            if (client == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(client.ToViewClientDto());
-            }
-        }
-
-        [HttpPost("create")]
-        [Authorize]
-        public async Task<IActionResult> createClient([FromBody] CreateClientRequestDto clientCreateDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
-                return NotFound();
-
-            var client = clientCreateDto.ToClientFromCreateDTO(userId);
-            var success = await _clientService.CreateAsync(client);
-
-            if (success == false)
-            {
-                return StatusCode(500, "Could not create");
-            }
-            else
-            {
-                return Ok(client.ToViewClientDto());
-            }
-        }
-
-        [HttpPut("update")]
-        [Authorize]
-        public async Task<IActionResult> putClient([FromBody] PutClientRequestDto clientPutDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
-                return NotFound();
-
-            var client = clientPutDto.ToClientFromPutDTO(userId);
-            var success = await _clientService.UpdateAsync(client);
-
-            if (success == false)
-            {
-                return StatusCode(500, "Could not update");
-            }
-            else
-            {
-                return Ok(client.ToViewClientDto());
-            }
-        }
-
-        [HttpGet]
-        public IActionResult suprise()
-        {
-            return Ok("I love you Vanessa <3 \n\n _,-^-;,-'''''-.\n/_  ` )  `      | \n`-., _,  ;      /\n   )_))_,-_,-/_(\n\n<3 Moodeng <3");
-        }
-
+      _clientService = clientService;
     }
+
+    [HttpGet("history")]
+    [Authorize]
+    public async Task<IActionResult> getClientHistory()
+    {
+      var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+      if (string.IsNullOrEmpty(userId))
+        return NotFound();
+
+      var client = await _clientService.GetAsync(userId);
+
+      if (client == null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        return Ok(client.ToViewClientDto());
+      }
+    }
+
+    [HttpPost("create")]
+    [Authorize]
+    public async Task<IActionResult> createClient([FromBody] CreateClientRequestDto clientCreateDto)
+    {
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
+      var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+      if (string.IsNullOrEmpty(userId))
+        return NotFound();
+
+      var client = clientCreateDto.ToClientFromCreateDTO(userId);
+      var success = await _clientService.CreateAsync(client);
+
+      if (success == false)
+      {
+        return StatusCode(500, "Could not create");
+      }
+      else
+      {
+        return Ok(client.ToViewClientDto());
+      }
+    }
+
+    [HttpPut("update")]
+    [Authorize]
+    public async Task<IActionResult> putClient([FromBody] PutClientRequestDto clientPutDto)
+    {
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
+      var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+      if (string.IsNullOrEmpty(userId))
+        return NotFound();
+
+      var client = clientPutDto.ToClientFromPutDTO(userId);
+      var success = await _clientService.UpdateAsync(client);
+
+      if (success == false)
+      {
+        return StatusCode(500, "Could not update");
+      }
+      else
+      {
+        return Ok(client.ToViewClientDto());
+      }
+    }
+
+    [HttpGet]
+    public IActionResult suprise()
+    {
+      return Ok("I love you Vanessa <3 \n\n _,-^-;,-'''''-.\n/_  ` )  `      | \n`-., _,  ;      /\n   )_))_,-_,-/_(\n\n<3 Moodeng <3");
+    }
+
+  }
 }
