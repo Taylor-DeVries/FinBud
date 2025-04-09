@@ -27,6 +27,7 @@ FinBud-Frontend/yarn-error.log*
 
 # local env files
 .env.local
+appsettings.json
 
 # typescript
 FinBud-Frontend/*.tsbuildinfo
@@ -96,5 +97,3 @@ test-output
 
 #Docker
 dynamodb
-
-appsettings.json
