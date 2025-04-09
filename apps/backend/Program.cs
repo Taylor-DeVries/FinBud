@@ -75,7 +75,7 @@ builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 AmazonDynamoDBConfig clientConfig = new AmazonDynamoDBConfig();
 // Set the endpoint URL
-clientConfig.ServiceURL = "http://host.docker.internal:8000";
+clientConfig.ServiceURL = config.GetValue<string>("Database:Link");
 
 AmazonDynamoDBClient client = new AmazonDynamoDBClient(clientConfig);
 builder.Services.AddSingleton<IAmazonDynamoDB>(_ => client);
