@@ -271,10 +271,12 @@ export default function FhsaCalculatorComponent() {
             <div id="errorResult"></div>{' '}
             <div className={`${showCalculation ? '' : 'hidden'}`}>
               <div id="results" className="search-results">
-                Your FHSA contribution limit is:
+                Your contribution limit for this year is:
               </div>
               <div id="contributionRoom"></div>
-              <div>Your total remaining contribution room is:</div>
+              <div>
+                Your total lifetime contribution room after this year is:
+              </div>
               <div id="totalRemaining"></div>
             </div>{' '}
           </div>
