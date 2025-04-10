@@ -120,6 +120,17 @@
                   ]
                 }
               ]
+            },
+            {
+              "id": 28,
+              "mainText": "I would save up 6 months worth of living expenses before putting money towards other goals",
+              "responses": [
+                {
+                  "connectId": 5,
+                  "id": 29,
+                  "responses": []
+                }
+              ]
             }
           ]
         }
