@@ -10,7 +10,7 @@ import {
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import Image from 'next/image';
-import Button from '@/_components/Back-Button-Component/Button';
+import Button from '@/_components/Button-Component/Button';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import TfsaCalculatorComponent from '../Calculator-Component/TfsaCalculatorComponent';
@@ -25,7 +25,9 @@ import FhsaCalculatorComponent from '../Calculator-Component/FhsaCalculatorCompo
 
 export default function QuizPage({ data }) {
   const router = useRouter();
-  const [historyState, setHistoryState] = React.useState<HistoryState>(getInitialState(data));
+  const [historyState, setHistoryState] = React.useState<HistoryState>(
+    getInitialState(data)
+  );
   const rootNode: Node = buildQuizData();
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
@@ -36,18 +38,27 @@ export default function QuizPage({ data }) {
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   // const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
-  
-  
-  function getInitialState(data: HistoryState): HistoryState{
-    let hist: HistoryState = data;  
+
+  function getInitialState(data: HistoryState): HistoryState {
+    let hist: HistoryState = data;
     if (data.initialState) {
-      if(sessionStorage.getItem("userHistory")){
-      hist  = {loading: data.loading, historyArray: JSON.parse(sessionStorage.getItem("userHistory")), error: data.error, initialState:false}; 
-      }else{
-        hist = {loading: data.loading, historyArray: [0], error: data.error, initialState:false};  
+      if (sessionStorage.getItem('userHistory')) {
+        hist = {
+          loading: data.loading,
+          historyArray: JSON.parse(sessionStorage.getItem('userHistory')),
+          error: data.error,
+          initialState: false,
+        };
+      } else {
+        hist = {
+          loading: data.loading,
+          historyArray: [0],
+          error: data.error,
+          initialState: false,
+        };
       }
     }
-    return hist
+    return hist;
   }
 
   function nextNode(id: number) {
@@ -103,8 +114,11 @@ export default function QuizPage({ data }) {
       setHistoryAsync();
     }
 
-    if(historyState.error == 'Not logged in'){
-      sessionStorage.setItem("userHistory", JSON.stringify(historyState.historyArray));
+    if (historyState.error == 'Not logged in') {
+      sessionStorage.setItem(
+        'userHistory',
+        JSON.stringify(historyState.historyArray)
+      );
     }
   }, [currentNode]);
 
@@ -119,11 +133,12 @@ export default function QuizPage({ data }) {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-            }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${
+            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+          }`}
         >
           {/* Image container */}
-          <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
+          <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
             <Image
               src="/images/Fin.webp"
               alt="Logo"
@@ -137,21 +152,27 @@ export default function QuizPage({ data }) {
           </div>
 
           {/* Text Area */}
-          <div className="sm:w-2/3 sm:mr-10 text-left text-white rounded-xl">
-            {/* Back button */}
-            <div className="mb-2">
+          <div className="2xl:w-[650px] xl:w-[650px] md:w-[450px] sm:w-[400px] w-[300px] text-left text-white rounded-xl mt-12">
+            {/* Above Texbox area */}
+            <div className="mb-2 flex flex-row items-center justify-between">
+              {/* Back button */}
               <div className="rounded-xl bg-light_blue_bg p-2 inline-block">
                 <IoIosArrowRoundBack
                   onClick={goBack}
                   className="text-blue h-8 w-8 hover:cursor-pointer"
                 />
               </div>
+              {/* Calculator Buttons */}
+              <div className="flex flex-wrap justify-center gap-4 mb-2">
+                {showTfsaCalculator && <TfsaCalculatorButton />}
+                {/* {showFhsaCalculator && <FhsaCalculatorButton />} */}
+              </div>
             </div>
 
-            {/* If screen is mobile */}
-            <div className="sm:hidden relative w-full">
-              <div className="w-full rounded-xl bg-blue px-1 py-2 sm:hidden relative">
-                <div className="max-h-64 overflow-y-auto">
+            {/* TextBox */}
+            <div className="relative w-full">
+              <div className="w-full rounded-xl bg-blue px-1 py-2 relative">
+                <div className="max-h-64">
                   <Textbox
                     secondaryLabel={
                       <TypeAnimation
@@ -167,53 +188,6 @@ export default function QuizPage({ data }) {
                   />
                 </div>
               </div>
-              <div className="mb-2 flex justify-end mt-1">
-                {showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
-                    <FaAngleLeft
-                      onClick={() => moveTextIndex(-1)}
-                      className="text-blue h-6 w-6 hover:cursor-pointer"
-                    />
-                  </div>
-                ) : null}
-
-                {showNextText && showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
-                    <FaAngleRight
-                      onClick={() => moveTextIndex(1)}
-                      className="text-blue h-6 w-6 hover:cursor-pointer"
-                    />
-                  </div>
-                ) : null}
-
-                {showNextText && !showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg p-2 mx-1 inline-block">
-                    <h1
-                      onClick={() => moveTextIndex(1)}
-                      className="text-blue text-3xl text-center h-6 w-6 hover:cursor-pointer leading-none"
-                    >
-                      ...
-                    </h1>
-                  </div>
-                ) : null}
-              </div>
-            </div>
-
-            {/* If screen is big */}
-            <div className="hidden sm:block relative">
-              <Textbox
-                secondaryLabel={
-                  <TypeAnimation
-                    key={`${currentNode.id}-${currentTextIndex}`}
-                    sequence={[currentNode.text[currentTextIndex] + '\n']}
-                    wrapper="p"
-                    speed={85}
-                    cursor={false}
-                    repeat={0}
-                    preRenderFirstString={false}
-                  />
-                }
-              />
 
               {/* MoreInfo Buttons */}
               <div className="mb-2 flex justify-end mt-1">
@@ -250,7 +224,7 @@ export default function QuizPage({ data }) {
 
             {/* Buttons for the answers */}
             <div className="mt-4">
-              <div className="flex flex-col space-y-2 ">
+              <div className="flex flex-col space-y-2">
                 {currentNode.responses.map((response, index) => (
                   <Button
                     key={`response-${index}`}
@@ -260,13 +234,9 @@ export default function QuizPage({ data }) {
                 ))}
               </div>
             </div>
+
             <TfsaCalculatorComponent />
             <FhsaCalculatorComponent />
-          </div>
-
-          <div className="sm:w-1/3 sm:justify-left">
-            {showTfsaCalculator && <TfsaCalculatorButton />}
-            {/* {showFhsaCalculator && <FhsaCalculatorButton />} */}
           </div>
         </div>
       </div>

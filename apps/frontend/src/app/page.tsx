@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { TypeAnimation } from 'react-type-animation';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import Loader from '@/_components/Loader-Component/Loader';
-import Button from '@/_components/Back-Button-Component/Button';
+import Button from '@/_components/Button-Component/Button';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
@@ -14,19 +14,16 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <meta
-        name="google-site-verification"
-        content="cop3EVn1MpFPTHW6UDGB15t1icUAzdZrAKh5yt8d5p8"
-      />
       {loading && <Loader />}
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-            }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${
+            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+          }`}
         >
           {/* Image container */}
-          <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64">
+          <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
             <Image
               src="/images/Fin.webp"
               alt="Logo"
@@ -39,8 +36,8 @@ const HomePage: React.FC = () => {
             />
           </div>
 
-          {/* Both text boxes */}
-          <div className="sm:w-2/3">
+          {/* Text Area */}
+          <div className="sm:w-2/3 sm:mr-10 text-left text-white rounded-xl mt-12">
             <Textbox
               label={
                 <TypeAnimation
@@ -55,11 +52,10 @@ const HomePage: React.FC = () => {
                   preRenderFirstString={false}
                 />
               }
-              paddingBetween
               chatBubble
             />
 
-            <div className="mt-8 flex justify-center">
+            <div className="mt-4 flex justify-center">
               <Button
                 label="Start My Journey"
                 onClick={() => router.push('/disclaimer')}
