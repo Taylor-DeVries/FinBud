@@ -1,16 +1,20 @@
 {
+  "answer": "",
   "id": 0,
   "mainText": "Do you want to make more money?",
   "responses": [
     {
+      "answer": "Yes",
       "id": 2,
       "mainText": "Do you have any high interest debt? (Interest rate of about 10% or higher)",
       "responses": [
         {
+          "answer": "Yes, high interest debt with a rate around/above 10%",
           "id": 11,
           "mainText": "Yikes! High-interest debt can snowball quickly! I would pay that off right away!",
           "responses": [
             {
+              "answer": "I paid off my credit card debt",
               "connectId": 3,
               "id": 12,
               "responses": []
@@ -18,23 +22,28 @@
           ]
         },
         {
+          "answer": "No (I have no debt or the interest is below 10%)",
           "id": 3,
           "mainText": "Fantastic! Do you have about 6 months worth of living expenses saved up?",
           "responses": [
             {
+              "answer": "Yes",
               "id": 5,
               "mainText": "Great! Do you have any savings goals for the next five years?",
               "responses": [
                 {
+                  "answer": "Yes, my first home",
                   "id": 14,
                   "mainText": "Calculate your FHSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them.",
                   "responses": [
                     {
+                      "answer": "I got all the money I need for my house and I'm all set for the next 5 years",
                       "connectId": 6,
                       "id": 15,
                       "responses": []
                     },
                     {
+                      "answer": "I got all the money I need for my house, but I need more within the next 5 years",
                       "connectId": 4,
                       "id": 24,
                       "responses": []
@@ -42,14 +51,17 @@
                   ]
                 },
                 {
+                  "answer": "I got all the money I need for now, I can wait more than five years",
                   "id": 6,
                   "mainText": "Does your employer match RRSP contributions?",
                   "responses": [
                     {
+                      "answer": "Yes",
                       "id": 7,
                       "mainText": "I'd match your employers contribution and invest into medium risk ETFs.",
                       "responses": [
                         {
+                          "answer": "I've contributed all my employer will match to my RRSP",
                           "id": 26,
                           "connectId": "23",
                           "responses": []
@@ -57,18 +69,22 @@
                       ]
                     },
                     {
+                      "answer": "No",
                       "id": 23,
                       "mainText": "Calculate your TFSA contribution room, if you have room then I would buy medium risk ETFs and continue investing into them.",
                       "responses": [
                         {
+                          "answer": "I've maxed my TFSA contribution room",
                           "id": 27,
                           "mainText": "What are you saving for now?",
                           "responses": [
                             {
+                              "answer": "My child's education",
                               "id": 8,
                               "mainText": "Calculate your RESP contribution room. If you have room, then I would buy medium risk ETFs and continue investing in them.",
                               "responses": [
                                 {
+                                  "answer": "I maxed out my RESP and have more money to invest",
                                   "connectId": 27,
                                   "id": 16,
                                   "responses": []
@@ -76,10 +92,12 @@
                               ]
                             },
                             {
+                              "answer": "My retirement",
                               "id": 17,
                               "mainText": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
                               "responses": [
                                 {
+                                  "answer": "I maxed out my RRSP and have more money to invest",
                                   "connectId": 27,
                                   "id": 18,
                                   "responses": []
@@ -87,10 +105,12 @@
                               ]
                             },
                             {
+                              "answer": "I just want more money",
                               "id": 9,
                               "mainText": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
                               "responses": [
                                 {
+                                  "answer": "What next?",
                                   "id": 10,
                                   "mainText": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time.",
                                   "responses": []
@@ -104,15 +124,18 @@
                   ]
                 },
                 {
+                  "answer": "Yes, something other than my first home",
                   "id": 4,
                   "mainText": "Calculate your TFSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them",
                   "responses": [
                     {
+                      "answer": "I got all the money I need for now, I can wait more than 5 years",
                       "connectId": 6,
                       "id": 22,
                       "responses": []
                     },
                     {
+                      "answer": "I got all the money I need for things within the next 5 years except for my first home",
                       "connectId": 14,
                       "id": 25,
                       "responses": []
@@ -122,10 +145,12 @@
               ]
             },
             {
+              "answer": "No",
               "id": 28,
               "mainText": "I would save up 6 months worth of living expenses before putting money towards other goals",
               "responses": [
                 {
+                  "answer": "I've saved up 6 months worth of living expenses",
                   "connectId": 5,
                   "id": 29,
                   "responses": []
