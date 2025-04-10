@@ -113,6 +113,16 @@
     {
       "id": 27,
       "answer": "I've maxed my TFSA contribution room"
+    },
+
+    {
+      "id": 28,
+      "answer": "No"
+    },
+
+    {
+      "id": 29,
+      "answer": "I've saved up 6 months worth of living expenses"
     }
   ]
 }
