@@ -7,7 +7,7 @@ FinBud is an innovative platform designed to simplify personal finance for young
 
 ### Instagram - https://www.instagram.com/fin_bud_/
 
-![finLogo](https://github.com/user-attachments/assets/84dab547-6328-4da9-986c-fec4a28dbb76)
+https://github.com/user-attachments/assets/116db8d5-345e-4377-9c29-86b7e04637f3
 
 # What the Site Does 🌟
 
@@ -16,7 +16,7 @@ FinBud is an innovative platform designed to simplify personal finance for young
 - Ongoing Support 🔄: Adapts to users’ needs, offering relevant guidance whether they are just starting or looking to refine their financial strategies.
 - Calculators 📊: TFSA contribution calculator feature, FHSA contribution calculator.
 
-![image](https://github.com/user-attachments/assets/3819d323-4a37-4cac-a35b-b9a42d4484e5)
+https://github.com/user-attachments/assets/44d7a197-2b41-45ce-9a41-2ca86e790278
 
 # Why Is It Important ❓
 
