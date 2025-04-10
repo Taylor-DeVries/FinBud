@@ -1,5 +1,5 @@
 'use client';
-import RefInput from './Reference';
+import RefInput from '../Reference';
 
 interface TFSA {
   born: RefInput;

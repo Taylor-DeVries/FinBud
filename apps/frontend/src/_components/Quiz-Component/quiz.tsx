@@ -13,15 +13,16 @@ import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import { IoIosArrowRoundBack } from 'react-icons/io';
-import TfsaCalculatorComponent from '../Calculator-Component/TfsaCalculatorComponent';
+import TfsaCalculatorComponent from '../Calculator-Component/TFSA/TfsaCalculatorComponent';
 import React from 'react';
 // import FhsaCalculatorButton from '../Calculator-Component/FhsaCalculatorComponent';
 import { useRouter } from 'next/navigation';
-import TfsaCalculatorButton from '../Calculator-Component/TfsaCalculatorButton';
+import TfsaCalculatorButton from '../Calculator-Component/TFSA/TfsaCalculatorButton';
 import { HistoryState, Node } from '@/_data/types/types';
 import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
-import FhsaCalculatorComponent from '../Calculator-Component/FhsaCalculatorComponent';
+import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
+import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function QuizPage({ data }) {
   );
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
-  // const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
+  const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
 
   function getInitialState(data: HistoryState): HistoryState {
     let hist: HistoryState = data;
@@ -110,6 +111,10 @@ export default function QuizPage({ data }) {
       setshowTfsaCalculator(true);
     } else setshowTfsaCalculator(false);
 
+    if (currentNode.id == 14) {
+      setshowFhsaCalculator(true);
+    } else setshowFhsaCalculator(false);
+
     if (historyState.loading) {
       setHistoryAsync();
     }
@@ -165,7 +170,7 @@ export default function QuizPage({ data }) {
               {/* Calculator Buttons */}
               <div className="flex flex-wrap justify-center gap-4 mb-2">
                 {showTfsaCalculator && <TfsaCalculatorButton />}
-                {/* {showFhsaCalculator && <FhsaCalculatorButton />} */}
+                {showFhsaCalculator && <FhsaCalculatorButton />}
               </div>
             </div>
 
