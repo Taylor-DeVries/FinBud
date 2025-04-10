@@ -27,6 +27,7 @@ FinBud-Frontend/yarn-error.log*
 
 # local env files
 .env.local
+appsettings.json
 
 # typescript
 FinBud-Frontend/*.tsbuildinfo
@@ -93,3 +94,6 @@ obj
 test-output
 
 .fake
+
+#Docker
+dynamodb

@@ -1,5 +1,5 @@
-import QuizPage from '_components/Quiz/quiz';
-import { getHistoryFunction } from '_utils/quiz-functions';
+import QuizPage from '@/_components/Quiz/quiz';
+import { getHistoryFunction } from '@/_utils/quiz-functions';
 import { getSession } from '@auth0/nextjs-auth0';
 
 export default async function Page() {
@@ -12,7 +12,7 @@ export default async function Page() {
 
   return (
     <QuizPage
-      data={{ loading: false, historyArray: [0], error: 'Not logged in' }}
+      data={{ loading: false, historyArray: [0], error: 'Not logged in', initialState: false }}
     ></QuizPage>
   );
 }

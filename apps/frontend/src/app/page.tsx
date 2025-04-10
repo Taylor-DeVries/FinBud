@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Button from '_components/Back-Button-Component/Button';
-import Textbox from '_components/Textbox-Component/Textbox';
 import { useRouter } from 'next/navigation';
-import Loader from '_components/Loader-Component/Loader';
 import { TypeAnimation } from 'react-type-animation';
+import Textbox from '@/_components/Textbox-Component/Textbox';
+import Loader from '@/_components/Loader-Component/Loader';
+import Button from '@/_components/Back-Button-Component/Button';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
@@ -22,9 +22,8 @@ const HomePage: React.FC = () => {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${
-            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-          }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+            }`}
         >
           {/* Image container */}
           <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64">
@@ -60,10 +59,10 @@ const HomePage: React.FC = () => {
               chatBubble
             />
 
-            <div className="mt-8 flex justify-center ">
+            <div className="mt-8 flex justify-center">
               <Button
                 label="Start My Journey"
-                onClick={() => router.push('/quiz')}
+                onClick={() => router.push('/disclaimer')}
               />
             </div>
           </div>

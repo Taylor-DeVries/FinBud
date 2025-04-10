@@ -1,5 +1,5 @@
 'use client';
-import { buildQuizData } from '_services/buildQuizData';
+import { buildQuizData } from '@/_services/buildQuizData';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -10,34 +10,45 @@ import {
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import Image from 'next/image';
-import Button from '_components/Back-Button-Component/Button';
-import Textbox from '_components/Textbox-Component/Textbox';
+import Button from '@/_components/Back-Button-Component/Button';
+import Textbox from '@/_components/Textbox-Component/Textbox';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import TfsaCalculatorComponent from '../Calculator-Component/TfsaCalculatorComponent';
 import React from 'react';
 // import FhsaCalculatorButton from '../Calculator-Component/FhsaCalculatorComponent';
 import { useRouter } from 'next/navigation';
 import TfsaCalculatorButton from '../Calculator-Component/TfsaCalculatorButton';
-import { HistoryState, Node } from '_data/types/types';
+import { HistoryState, Node } from '@/_data/types/types';
 import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FhsaCalculatorComponent';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
-
+  const [historyState, setHistoryState] = React.useState<HistoryState>(getInitialState(data));
   const rootNode: Node = buildQuizData();
-
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);
   const [currentNode, setCurrentNode] = useState<Node>(
-    findNodeTest(data.historyArray.at(-1), rootNode, rootNode)
+    findNodeTest(historyState.historyArray.at(-1), rootNode, rootNode)
   );
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   // const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
-  const [historyState, setHistoryState] = React.useState<HistoryState>(data);
+
+
+  function getInitialState(data: HistoryState): HistoryState {
+    let hist: HistoryState = data;
+    if (data.initialState) {
+      if (sessionStorage.getItem("userHistory")) {
+        hist = { loading: data.loading, historyArray: JSON.parse(sessionStorage.getItem("userHistory")), error: data.error, initialState: false };
+      } else {
+        hist = { loading: data.loading, historyArray: [0], error: data.error, initialState: false };
+      }
+    }
+    return hist
+  }
 
   function nextNode(id: number) {
     // eslint-disable-next-line prefer-const
@@ -91,6 +102,10 @@ export default function QuizPage({ data }) {
     if (historyState.loading) {
       setHistoryAsync();
     }
+
+    if (historyState.error == 'Not logged in') {
+      sessionStorage.setItem("userHistory", JSON.stringify(historyState.historyArray));
+    }
   }, [currentNode]);
 
   useEffect(() => {
@@ -104,9 +119,8 @@ export default function QuizPage({ data }) {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${
-            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-          }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+            }`}
         >
           {/* Image container */}
           <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
