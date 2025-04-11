@@ -63,7 +63,7 @@
                         {
                           "answer": "I've contributed all my employer will match to my RRSP",
                           "id": 26,
-                          "connectId": "23",
+                          "connectId": 23,
                           "responses": []
                         }
                       ]
