@@ -11,7 +11,7 @@ export default function contactUs() {
       <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
         Instagram:{'  '}
         <a
-          href="https://www.linkedin.com/company/fin-bud/"
+          href="https://www.instagram.com/fin_bud_/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-link_color underline hover:text-dark_blue"
