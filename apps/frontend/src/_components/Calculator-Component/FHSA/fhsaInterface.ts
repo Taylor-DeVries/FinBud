@@ -1,5 +1,5 @@
 'use client';
-import RefInput from './Reference';
+import RefInput from '../Reference';
 
 class FHSAvars {
   contributed: RefInput;

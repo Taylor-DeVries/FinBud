@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Textbox from '@/_components/Textbox-Component/Textbox';
-import Button from '@/_components/Back-Button-Component/Button';
+import Button from '@/_components/Button-Component/Button';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
@@ -25,26 +25,28 @@ export default function DisclaimerPage() {
         <div className="lg:w-2/3 sm:w-full">
           {!showAdditionalTextbox && (
             <>
-              <Textbox
-                label="Disclaimer"
-                secondaryLabel={
-                  <div className="max-h-48 overflow-y-scroll">
-                    This website is strictly for Canadian users and is for
-                    educational and entertainment purposes only. We are not
-                    financial advisors, and the content should not be considered
-                    professional financial advice. The content is designed to be
-                    simple and may not meet everyone's financial needs or goals.
-                    Please note that the website is still in development, and
-                    content may change. Consult a certified financial
-                    professional before making any financial decisions.
-                  </div>
-                }
-                paddingBetween={true}
-                centerAlignment={true}
-              />
-
-              <div className="mt-8 flex justify-center">
-                <Button label="I understand" onClick={handleButtonClick} />
+              <div className="relative lg:w-2/3 sm:w-full justify-center mx-auto">
+                <Textbox
+                  label="Disclaimer"
+                  secondaryLabel={
+                    <div className="max-h-48 overflow-y-scroll">
+                      This website is strictly for Canadian users and is for
+                      educational and entertainment purposes only. We are not
+                      financial advisors, and the content should not be
+                      considered professional financial advice. The content is
+                      designed to be simple and may not meet everyone's
+                      financial needs or goals. Please note that the website is
+                      still in development, and content may change. Consult a
+                      certified financial professional before making any
+                      financial decisions.
+                    </div>
+                  }
+                  paddingBetween={true}
+                  centerAlignment={true}
+                />
+                <div className="mt-4 flex flex-col">
+                  <Button label="I understand" onClick={handleButtonClick} />
+                </div>
               </div>
             </>
           )}
