@@ -11,8 +11,9 @@ module.exports = {
         secondary: '0F0F0F',
         blue: '#5298b8',
         dark_blue: '#3a6d85',
-        light_blue: '#7C9FB4',
+        light_blue: '#639db8',
         light_blue_bg: '#f8fafc',
+        light_blue_infoPage: '#7C9FB4',
         link_color: '#4343D9',
       },
       screens: {
