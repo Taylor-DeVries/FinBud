@@ -16,7 +16,7 @@ export default function contactUs() {
           rel="noopener noreferrer"
           className="text-link_color underline hover:text-dark_blue"
         >
-          instagram.com/fin_bud_
+          Instagram.com/fin_bud_
         </a>
         <br />
         LinkedIn:{' '}
