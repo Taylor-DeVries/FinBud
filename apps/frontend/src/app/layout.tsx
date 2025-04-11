@@ -1,11 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
-import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import { Sidebar } from '@/_components/Sidebar-Component/Sidebar';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import ClientLayoutWrapper from './clientLayoutWrapper';
+import { Metadata } from 'next';
 
 const font = Montserrat({ subsets: ['latin'], weight: ['700'] });
 
@@ -28,12 +27,7 @@ export default function RootLayout({
     <UserProvider>
       <html lang="en">
         <body className={font.className}>
-          <div className="flex h-screen">
-            <Sidebar />
-            <ResponsiveImage>
-              <div className="flex-1">{children}</div>
-            </ResponsiveImage>
-          </div>
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
         </body>
       </html>
     </UserProvider>

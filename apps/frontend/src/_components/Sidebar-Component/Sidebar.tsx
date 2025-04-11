@@ -38,8 +38,9 @@ export const Sidebar = () => {
   return (
     <div className="flex-shrink-0 lg:w-[18rem] bg-zinc-100 h-full lg:static fixed z-40">
       <div
-        className={`lg:flex lg:flex-col lg:px-6 lg:py-6 lg:h-full ${open ? 'flex flex-col px-6 py-6' : 'hidden'
-          }`}
+        className={`lg:flex lg:flex-col lg:px-6 lg:py-6 h-full ${
+          open ? 'flex flex-col px-6 py-6' : 'hidden'
+        }`}
       >
         <div className="flex flex-col items-center">
           <SidebarHeader />
@@ -73,7 +74,7 @@ export const Navigation = ({
   const isActive = (href: string) => pathname === href;
 
   return (
-    <div className="flex flex-col space-y-1">
+    <div className="flex flex-col space-y-1 h-full">
       <div className="flex flex-col space-y-1 my-16 relative z-[100]">
         {sidebarLinks.map((link) => (
           // Creating the link for every sidebar item
@@ -83,7 +84,7 @@ export const Navigation = ({
             className={twMerge(
               'text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md ',
               isActive(link.route) &&
-              'bg-slate-50 shadow-slate-300 shadow-xl text-blue'
+                'bg-slate-50 shadow-slate-300 shadow-xl text-blue'
             )}
           >
             <div className="flex flex-row my-2">
@@ -99,8 +100,8 @@ export const Navigation = ({
             </div>
           </Link>
         ))}
-        {/* Creating the sign up link only if user is not logged in */}
 
+        {/* Creating the sign up link only if user is not logged in */}
         {user ? (
           // eslint-disable-next-line @next/next/no-html-link-for-pages
           <a
@@ -138,6 +139,17 @@ export const Navigation = ({
             </div>
           </Link>
         )}
+      </div>
+      <div className="flex flex-row text-slate-400 text-sm space-x-2 justify-center items-center mt-auto">
+        <Link href="/info/about">
+          <h1 className="hover:text-blue hover:cursor-pointer">About</h1>
+        </Link>
+        <Link href="/info/contact">
+          <h1 className="hover:text-blue hover:cursor-pointer">Contact</h1>
+        </Link>
+        <Link href="/info/disclaimer">
+          <h1 className="hover:text-blue hover:cursor-pointer">Disclaimer</h1>
+        </Link>
       </div>
     </div>
   );
