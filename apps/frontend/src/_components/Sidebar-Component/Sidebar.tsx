@@ -129,6 +129,7 @@ export const Navigation = ({
             className={twMerge(
               'text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
             )}
+            onClick={() => sessionStorage.setItem("url", window.location.href.toString())}
           >
             <div className="flex flex-row my-2">
               <div className="flex flex-row">

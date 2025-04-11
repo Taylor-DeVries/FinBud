@@ -1,16 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { TypeAnimation } from 'react-type-animation';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import Loader from '@/_components/Loader-Component/Loader';
 import Button from '@/_components/Button-Component/Button';
+import { redirect } from 'next/navigation';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (sessionStorage?.getItem("url")) {
+      var redirectURL = sessionStorage.getItem("url").toString();
+      sessionStorage.removeItem("url");
+      redirect(redirectURL);
+    }
+  });
 
   return (
     <>
@@ -18,9 +27,8 @@ const HomePage: React.FC = () => {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${
-            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-          }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+            }`}
         >
           {/* Image container */}
           <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
