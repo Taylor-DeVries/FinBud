@@ -35,10 +35,10 @@ export default function contactUs() {
       <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
         Any questions or concerns:{' '}
         <a
-          href="mailto:finbud-team@gmail.com"
+          href="mailto:finbud.team@gmail.com"
           className="text-link_color hover:text-dark_blue"
         >
-          finbud-team@gmail.com
+          finbud.team@gmail.com
         </a>
       </p>
     </div>
