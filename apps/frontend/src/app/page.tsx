@@ -13,12 +13,16 @@ const HomePage: React.FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  function redirectAfterLogin() {
     if (sessionStorage?.getItem("url")) {
       var redirectURL = sessionStorage.getItem("url").toString();
       sessionStorage.removeItem("url");
       redirect(redirectURL);
     }
+  }
+
+  useEffect(() => {
+    redirectAfterLogin();
   });
 
   return (

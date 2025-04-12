@@ -19,6 +19,11 @@ export default function DisclaimerPage() {
     setShowAdditionalTextbox(true);
   };
 
+  function saveQuizURLtoSessionStorage() {
+    sessionStorage.setItem("url", '/quiz');
+    router.push('api/auth/login');
+  }
+
   return (
     <>
       <div className="h-screen flex items-center justify-center">
@@ -67,7 +72,10 @@ export default function DisclaimerPage() {
                     />
                     <Button
                       label="Create an account/Sign in"
-                      onClick={() => router.push('/api/auth/login')}
+                      onClick={
+                        () => saveQuizURLtoSessionStorage()
+                      }
+
                     />
                   </div>
                 </div>
