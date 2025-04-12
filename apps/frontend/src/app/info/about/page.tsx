@@ -23,7 +23,7 @@ export default function aboutUs() {
       <h2 className="mt-4 lg:text-2xl md:text-xl sm:text-lg text-lg font-bold text-gray-50">
         Our Approach
       </h2>
-      <p className="mt-2 mb-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
+      <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
         We believe anyone can take control of their finances with FinBud. Our
         step-by-step guidance makes managing money simple, engaging, and
         stress-free—more like talking to a friend than a finance lecture.
@@ -35,6 +35,46 @@ export default function aboutUs() {
         provide the tools you need to take action. With personalized insights
         and continuous updates, FinBud evolves with you, making financial
         freedom not just a goal, but a reality.
+      </p>
+      <h2 className="mt-4 lg:text-2xl md:text-xl sm:text-lg text-lg font-bold text-gray-50">
+        Our Tenets
+      </h2>
+      <p className="mt-2 mb-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
+        <span className="lg:text-xl md:text-xl sm:text-lg text-lg">
+          Plan for the Future:
+        </span>{' '}
+        When making decisions, choose solutions that simplify future updates and
+        enhancements.
+        <br />
+        <span className="lg:text-xl md:text-xl sm:text-lg text-lg">
+          Experiment and Explore:
+        </span>{' '}
+        Embrace all ideas and test them before dismissing them. Innovation is
+        key.
+        <br />
+        <span className="lg:text-xl md:text-xl sm:text-lg text-lg">
+          Customer First:
+        </span>{' '}
+        Always prioritize the customer’s needs, even when it conflicts with
+        other interests.
+        <br />
+        <span className="lg:text-xl md:text-xl sm:text-lg text-lg">
+          Act Promptly:
+        </span>{' '}
+        The best time to start is yesterday, but today works too. There’s no
+        better time than now to begin.
+        <br />
+        <span className="lg:text-xl md:text-xl sm:text-lg text-lg">
+          Embrace Versatility:
+        </span>{' '}
+        Stay open to learning new skills and exploring new ideas. Flexibility
+        enhances growth.
+        <br />
+        <span className="font-bold lg:text-xl md:text-xl sm:text-lg text-lg">
+          Enjoy Your Work:
+        </span>{' '}
+        Enjoyment leads to the most productive work. When you love what you do,
+        everything else falls into place.
       </p>
     </div>
   );
