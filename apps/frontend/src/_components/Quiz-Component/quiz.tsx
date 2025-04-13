@@ -50,6 +50,7 @@ export default function QuizPage({ data }) {
           error: data.error,
           initialState: false,
         };
+        sessionStorage.removeItem('userHistory');
       } else {
         hist = {
           loading: data.loading,
@@ -138,9 +139,8 @@ export default function QuizPage({ data }) {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${
-            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-          }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+            }`}
         >
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
