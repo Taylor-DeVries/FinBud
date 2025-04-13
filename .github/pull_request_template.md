@@ -1,7 +1,7 @@
 ## Describe your changes
 
 - What has changed?
-  -Why has it changed?
+    -Why has it changed?
 - Are there any dependencies?
 
 ## Issue ticket number and link
