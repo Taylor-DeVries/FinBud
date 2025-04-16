@@ -23,6 +23,7 @@ import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
 import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
+import LinkButton from '../Link-Component/LinkComponent';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -30,6 +31,7 @@ export default function QuizPage({ data }) {
     getInitialState(data)
   );
   const rootNode: Node = buildQuizData();
+  console.log(JSON.stringify(rootNode));
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);
@@ -39,6 +41,7 @@ export default function QuizPage({ data }) {
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
+  const [showLink, setShowLink] = React.useState(false);
 
   function getInitialState(data: HistoryState): HistoryState {
     let hist: HistoryState = data;
@@ -116,6 +119,10 @@ export default function QuizPage({ data }) {
       setshowFhsaCalculator(true);
     } else setshowFhsaCalculator(false);
 
+    if (currentNode.link) {
+      setShowLink(true);
+    } else setShowLink(false);
+
     if (historyState.loading) {
       setHistoryAsync();
     }
@@ -169,8 +176,12 @@ export default function QuizPage({ data }) {
               </div>
               {/* Calculator Buttons */}
               <div className="flex flex-wrap justify-center gap-4 mb-2">
+                {showLink && <LinkButton
+                  url={`${currentNode.link}`}
+                />}
                 {showTfsaCalculator && <TfsaCalculatorButton />}
                 {showFhsaCalculator && <FhsaCalculatorButton />}
+
               </div>
             </div>
 

@@ -22,7 +22,9 @@ export interface Node {
   id: number;
   answer: string;
   text: string[];
+  link?: string;
   responses: Node[];
+
 }
 
 export interface QuizPath {
@@ -30,11 +32,16 @@ export interface QuizPath {
   connectId?: number,
   id: number,
   mainText?: string,
-  responses: QuizPath[];
+  responses: QuizPath[]
 }
 
 export interface QuizText {
   connectId?: number,
   id: number,
   extendedText: string[]
+}
+
+export interface QuizLink {
+  id: number,
+  link: string
 }
