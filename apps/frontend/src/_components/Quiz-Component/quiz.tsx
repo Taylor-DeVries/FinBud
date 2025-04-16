@@ -175,7 +175,7 @@ export default function QuizPage({ data }) {
                 />
               </div>
               {/* Calculator Buttons */}
-              <div className="flex flex-wrap justify-center gap-4 mb-2">
+              <div className="flex flex-wrap justify-center gap-0 mb-2">
                 {showLink && <LinkButton
                   url={`${currentNode.link}`}
                 />}

@@ -1,5 +1,5 @@
 'use client';
-import { AiOutlineLink } from "react-icons/ai";
+import { FaLink } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 
 
@@ -10,16 +10,15 @@ function LinkButton(url) {
                 className={`sm:flex shadow-none btn border-none`}
                 onClick={() =>
                     window.open(url.url)
-
                 }
                 id="LinkButton"
             >
-                <AiOutlineLink
-                    className="text-blue hover:text-grey-500"
+                <FaLink
+                    className={`text-blue hover:text-gray-500`}
                     size={50}
-                ></AiOutlineLink>
+                ></FaLink>
             </button >
-            <Tooltip anchorSelect="#LinkButton" place="top-start" >
+            <Tooltip anchorSelect="#LinkButton" place="top" >
                 {`${url.url}`}
             </Tooltip>
 
