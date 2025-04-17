@@ -175,12 +175,20 @@ export default function QuizPage({ data }) {
                 />
               </div>
               {/* Calculator Buttons */}
-              <div className="flex flex-wrap justify-center gap-0 mb-2">
-                {showLink && <LinkButton
-                  url={`${currentNode.link}`}
-                />}
-                {showTfsaCalculator && <TfsaCalculatorButton />}
-                {showFhsaCalculator && <FhsaCalculatorButton />}
+              <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+                <div className="rounded-xl bg-light_blue_bg m-0 inline-block">
+                  {showLink && <LinkButton
+                    url={`${currentNode.link}`}
+                  />}
+                </div>
+
+                <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+                  {showTfsaCalculator && <TfsaCalculatorButton />}
+                </div>
+
+                <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+                  {showFhsaCalculator && <FhsaCalculatorButton />}
+                </div>
 
               </div>
             </div>

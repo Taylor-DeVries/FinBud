@@ -7,15 +7,15 @@ function LinkButton(url) {
     return (
         <>
             <button
-                className={`sm:flex shadow-none btn border-none`}
+                className={`sm:flex shadow-none m-0 px-3 btn border-none `}
                 onClick={() =>
                     window.open(url.url)
                 }
                 id="LinkButton"
             >
                 <FaLink
-                    className={`text-blue hover:text-gray-500`}
-                    size={50}
+                    className={`text-blue hover:text-gray-500 m-0 p-0`}
+                    size={20}
                 ></FaLink>
             </button >
             <Tooltip anchorSelect="#LinkButton" place="top" >
