@@ -26,11 +26,13 @@ const Textbox: React.FC<TextBoxProps> = ({
           chatBubble ? 'chat-bubble' : ''
         }  ${centerAlignment ? 'text-center' : ''}`}
       >
-        <div className="font-bold text-xl sm:text-2xl">{label}</div>
+        <div className="font-bold text-xl sm:text-2xl dark:text-[#333]">
+          {label}
+        </div>
         <div
           className={`font-semibold text-lg sm:text-xl ${
             paddingBetween ? 'mt-4' : ''
-          }`}
+          } dark:text-[#333]`}
         >
           {secondaryLabel}
         </div>

@@ -7,14 +7,7 @@ import { twMerge } from 'tailwind-merge';
 import { IconMenu2, IconUser } from '@tabler/icons-react';
 import { sidebarLinks } from '@/_data/constants/SidebarLinks';
 import { useUser } from '@auth0/nextjs-auth0/client';
-
-// import {
-//     SignedIn,
-//     SignedOut,
-//     SignInButton,
-//     UserButton,
-//     useUser,
-// } from "@clerk/nextjs";
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const isMobile = () => {
   if (typeof window === 'undefined') return false;
@@ -24,19 +17,36 @@ const isMobile = () => {
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(isMobile() ? true : false);
+  const [darkMode, setDarkMode] = useState(false);
 
-  // Set open/close state based on window resize to handle mobile
   useEffect(() => {
     const handleResize = () => {
       setOpen(!isMobile());
     };
 
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      setDarkMode(true);
+    }
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const toggleDarkMode = () => {
+    if (darkMode) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="flex-shrink-0 lg:w-[18rem] bg-zinc-100 h-full lg:static fixed z-40">
+    <div className="flex-shrink-0 lg:w-[18rem] bg-zinc-100 dark:bg-[#333] h-full lg:static fixed z-40">
       <div
         className={`lg:flex lg:flex-col lg:px-6 lg:py-6 h-full ${
           open ? 'flex flex-col px-6 py-6' : 'hidden'
@@ -46,6 +56,17 @@ export const Sidebar = () => {
           <SidebarHeader />
         </div>
         <Navigation setOpen={setOpen} />
+
+        {/* Dark Mode Toggle */}
+        <div className="mt-4 flex justify-center">
+          <button
+            onClick={toggleDarkMode}
+            className="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md"
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+            <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
+          </button>
+        </div>
       </div>
 
       {/* Button to toggle the sidebar only visible on mobile */}
@@ -77,21 +98,20 @@ export const Navigation = ({
     <div className="flex flex-col space-y-1 h-full">
       <div className="flex flex-col space-y-1 my-16 relative z-[100]">
         {sidebarLinks.map((link) => (
-          // Creating the link for every sidebar item
           <Link
             key={link.route}
             href={link.route}
             className={twMerge(
-              'text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md ',
+              'text-slate-500 dark:text-blue hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md ',
               isActive(link.route) &&
-                'bg-slate-50 shadow-slate-300 shadow-xl text-blue'
+                'bg-slate-50 dark:bg-blue shadow-slate-300 dark:shadow-slate-800 shadow-xl text-blue dark:text-[#333]'
             )}
           >
             <div className="flex flex-row my-2">
               <div
                 className={twMerge(
                   'h-4 w-4 flex-shrink-0 text-center',
-                  isActive(link.route) && 'text-blue'
+                  isActive(link.route) && 'text-blue dark:text-[#333]'
                 )}
               >
                 <link.imgURL />
@@ -107,7 +127,7 @@ export const Navigation = ({
           <a
             href="/api/auth/logout?federated=''"
             className={twMerge(
-              'text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
+              'text-slate-500 dark:text-blue hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
             )}
           >
             <div className="flex flex-row my-2">
@@ -128,9 +148,11 @@ export const Navigation = ({
           <Link
             href="/api/auth/login"
             className={twMerge(
-              'text-slate-500 hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
+              'text-slate-500 dark:text-blue hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
             )}
-            onClick={() => sessionStorage.setItem("url", window.location.href.toString())}
+            onClick={() =>
+              sessionStorage.setItem('url', window.location.href.toString())
+            }
           >
             <div className="flex flex-row my-2">
               <div className="flex flex-row">
