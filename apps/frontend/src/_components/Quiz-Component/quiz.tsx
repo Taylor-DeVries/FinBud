@@ -31,7 +31,6 @@ export default function QuizPage({ data }) {
     getInitialState(data)
   );
   const rootNode: Node = buildQuizData();
-  console.log(JSON.stringify(rootNode));
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);
