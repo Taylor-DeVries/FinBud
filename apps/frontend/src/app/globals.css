@@ -2,68 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --mobile: 480px;
-  --tablet: 768px;
-  --desktop: 1024px;
-}
-
 /* TAILWIND RESPONSIVE VALUES */
 /* sm	640px	
 md	769px	
 lg	1025px	
 xl	1280px	
 2xl	1536px */
-
-.blue_bubble {
-  background-color: #5298b8;
-  border-radius: 32px;
-  text-align: left;
-  padding: 30px 30px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-  margin: 0px 30px 0px;
-}
-
-h2 {
-  font-family: "Inter", sans-serif;
-  color: white;
-  font-weight: bold;
-  font-size: 3.5rem;
-  margin-bottom: 0;
-}
-
-h3 {
-  font-family: "Inter", sans-serif;
-  color: white;
-  font-weight: bold;
-  font-size: 2.5rem;
-  margin-bottom: 0;
-}
-
-@media only screen and (max-width: 768px) {
-  .blue_bubble {
-    margin: 0px;
-  }
-  h2 {
-    font-size: 2.5rem;
-  }
-  h3 {
-    font-size: 2rem;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  h2 {
-    font-size: 2rem;
-  }
-  h3 {
-    font-size: 1.5rem;
-  }
-}
-
-.CalculatorForm {
-  font-family: "Inter", sans-serif;
-  color: black;
-  font-weight: bold;
-  font-size: 16px;
-}

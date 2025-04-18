@@ -14,9 +14,9 @@ const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   function redirectAfterLogin() {
-    if (sessionStorage?.getItem("url")) {
-      var redirectURL = sessionStorage.getItem("url").toString();
-      sessionStorage.removeItem("url");
+    if (sessionStorage?.getItem('url')) {
+      var redirectURL = sessionStorage.getItem('url').toString();
+      sessionStorage.removeItem('url');
       redirect(redirectURL);
     }
   }
@@ -31,8 +31,9 @@ const HomePage: React.FC = () => {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-            }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${
+            loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+          }`}
         >
           {/* Image container */}
           <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
@@ -49,7 +50,7 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Text Area */}
-          <div className="sm:w-2/3 sm:mr-10 text-left text-white rounded-xl mt-12">
+          <div className="sm:w-2/3 sm:mr-10 text-left rounded-xl mt-12">
             <Textbox
               label={
                 <TypeAnimation

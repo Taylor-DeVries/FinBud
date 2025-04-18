@@ -189,7 +189,7 @@ export default function FhsaCalculatorComponent() {
   };
 
   return (
-    <div className="CalculatorForm -mt-10">
+    <div className="text-[#333] font-bold mt-10">
       <dialog id="FHSA_modal" className="modal">
         <div className="modal-box">
           <h3 className="font-bold mb-3 text-lg" style={{ color: 'black' }}>
