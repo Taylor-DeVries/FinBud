@@ -1,14 +1,12 @@
 export default function aboutUs() {
   return (
-    <div className="flex flex-col items-left h-screen my-10 mx-10">
-      <h1 className="lg:text-4xl md:text-4xl text-3xl font-bold text-gray-50">
-        About Us
-      </h1>
-      <hr className="border-gray-50 border-4 my-4" />
-      <h2 className="lg:text-2xl md:text-xl sm:text-lg text-lg font-bold text-gray-50">
+    <div className="flex flex-col items-left h-screen my-10 mx-10 text-gray-50 dark:text-[#333]">
+      <h1 className="lg:text-4xl md:text-4xl text-3xl font-bold">About Us</h1>
+      <hr className="border-gray-50 dark:border-[#333] border-4 my-4" />
+      <h2 className="lg:text-2xl md:text-xl sm:text-lg text-lg font-bold">
         Our Mission
       </h2>
-      <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
+      <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm">
         At FinBud, our mission is to make personal finance simple, accessible,
         and stress-free for young people. We empower individuals with
         step-by-step guidance, engaging content, and easy-to-understand
@@ -20,10 +18,10 @@ export default function aboutUs() {
         finance-related into one seamless platform, making financial confidence
         easier than ever.
       </p>
-      <h2 className="mt-4 lg:text-2xl md:text-xl sm:text-lg text-lg font-bold text-gray-50">
+      <h2 className="mt-4 lg:text-2xl md:text-xl sm:text-lg text-lg font-bold">
         Our Approach
       </h2>
-      <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
+      <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm">
         We believe anyone can take control of their finances with FinBud. Our
         step-by-step guidance makes managing money simple, engaging, and
         stress-free—more like talking to a friend than a finance lecture.
@@ -36,10 +34,10 @@ export default function aboutUs() {
         and continuous updates, FinBud evolves with you, making financial
         freedom not just a goal, but a reality.
       </p>
-      <h2 className="mt-4 lg:text-2xl md:text-xl sm:text-lg text-lg font-bold text-gray-50">
+      <h2 className="mt-4 lg:text-2xl md:text-xl sm:text-lg text-lg font-bold">
         Our Tenets
       </h2>
-      <p className="mt-2 mb-2 lg:text-lg md:text-lg sm:text-md text-sm text-gray-50">
+      <p className="mt-2 mb-2 lg:text-lg md:text-lg sm:text-md text-sm">
         <span className="lg:text-xl md:text-xl sm:text-lg text-lg">
           Plan for the Future:
         </span>{' '}

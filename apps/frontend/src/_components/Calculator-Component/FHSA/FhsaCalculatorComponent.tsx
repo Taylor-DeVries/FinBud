@@ -36,7 +36,7 @@ export default function FhsaCalculatorComponent() {
   const AgeSwitch = () => {
     return (
       <Form.Check
-        type="switch"
+        type="checkbox"
         label="I am over 18."
         id="check18"
         checked={AgeChecked}
@@ -54,7 +54,7 @@ export default function FhsaCalculatorComponent() {
   const HouseSwitch = () => {
     return (
       <Form.Check
-        type="switch"
+        type="checkbox"
         label="I do not currently own a home, nor have I owned or jointly owned a home within the last 4 years"
         id="checkHouse"
         checked={HouseChecked}
@@ -70,7 +70,7 @@ export default function FhsaCalculatorComponent() {
   const AccountSwitch = () => {
     return (
       <Form.Check
-        type="switch"
+        type="checkbox"
         label="I have opened a FHSA already"
         id="checkAccount"
         checked={AccountChecked}
@@ -189,7 +189,7 @@ export default function FhsaCalculatorComponent() {
   };
 
   return (
-    <div className="CalculatorForm -mt-10">
+    <div className="text-[#333] font-bold mt-10">
       <dialog id="FHSA_modal" className="modal">
         <div className="modal-box">
           <h3 className="font-bold mb-3 text-lg" style={{ color: 'black' }}>
