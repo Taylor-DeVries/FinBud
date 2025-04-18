@@ -175,7 +175,7 @@ export default function QuizPage({ data }) {
               </div>
 
               {/* Calculator Buttons */}
-              <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+              <div className="flex flex-wrap justify-center items-center gap-0 p-1 mb-2">
                 <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] m-0 inline-block">
                   {showLink && <LinkButton
                     url={`${currentNode.link}`}
