@@ -16,8 +16,8 @@ const CalculatorButton = () => {
       >
         {' '}
         <FaCalculator
-          className="text-blue hover:text-gray-500"
-          size={50}
+          className="text-blue hover:text-gray-500 sm:flex content-top"
+          size={45}
         ></FaCalculator>
       </button>
     </>
