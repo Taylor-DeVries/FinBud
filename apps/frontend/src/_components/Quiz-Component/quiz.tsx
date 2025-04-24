@@ -23,6 +23,7 @@ import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
 import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
+import LinkButton from '../Link-Component/LinkComponent';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function QuizPage({ data }) {
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
+  const [showLink, setShowLink] = React.useState(false);
 
   function getInitialState(data: HistoryState): HistoryState {
     let hist: HistoryState = data;
@@ -116,6 +118,10 @@ export default function QuizPage({ data }) {
       setshowFhsaCalculator(true);
     } else setshowFhsaCalculator(false);
 
+    if (currentNode.link) {
+      setShowLink(true);
+    } else setShowLink(false);
+
     if (historyState.loading) {
       setHistoryAsync();
     }
@@ -139,9 +145,8 @@ export default function QuizPage({ data }) {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${
-            loading ? 'hidden' : ''
-          }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : ''
+            }`}
         >
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
@@ -170,9 +175,21 @@ export default function QuizPage({ data }) {
               </div>
 
               {/* Calculator Buttons */}
-              <div className="flex flex-wrap justify-center gap-4 mb-2">
-                {showTfsaCalculator && <TfsaCalculatorButton />}
-                {showFhsaCalculator && <FhsaCalculatorButton />}
+              <div className="flex flex-wrap justify-center items-center gap-0 p-1 mb-2">
+                <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] m-0 inline-block">
+                  {showLink && <LinkButton
+                    url={`${currentNode.link}`}
+                  />}
+                </div>
+
+                <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+                  {showTfsaCalculator && <TfsaCalculatorButton />}
+                </div>
+
+                <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+                  {showFhsaCalculator && <FhsaCalculatorButton />}
+                </div>
+
               </div>
             </div>
 
