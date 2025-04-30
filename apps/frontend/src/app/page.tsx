@@ -8,11 +8,11 @@ import Textbox from '@/_components/Textbox-Component/Textbox';
 import Loader from '@/_components/Loader-Component/Loader';
 import Button from '@/_components/Button-Component/Button';
 import { redirect } from 'next/navigation';
+import JourneyLabel from '@/_components/journey-button-label-component/JourneyButtonLabel';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-
   function redirectAfterLogin() {
     if (sessionStorage?.getItem('url')) {
       var redirectURL = sessionStorage.getItem('url').toString();
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
 
             <div className="mt-4 flex justify-center">
               <Button
-                label="Start My Journey"
+                label={JourneyLabel()}
                 onClick={() => router.push('/disclaimer')}
               />
             </div>
