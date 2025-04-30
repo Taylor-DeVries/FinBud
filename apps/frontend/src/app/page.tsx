@@ -8,7 +8,7 @@ import Textbox from '@/_components/Textbox-Component/Textbox';
 import Loader from '@/_components/Loader-Component/Loader';
 import Button from '@/_components/Button-Component/Button';
 import { redirect } from 'next/navigation';
-import JourneyLabel from '@/_components/JourneyButtonLabel-Component/JourneyButtonLabel'
+import JourneyLabel from '@/_components/journey-button-label-component/JourneyButtonLabel';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
