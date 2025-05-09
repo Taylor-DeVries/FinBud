@@ -6,6 +6,9 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 import ClientLayoutWrapper from './clientLayoutWrapper';
 import { Metadata } from 'next';
 
+import { Sidebar } from '@/_components/Sidebar-Component/Sidebar';
+import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+
 const font = Montserrat({ subsets: ['latin'], weight: ['700'] });
 
 export const metadata: Metadata = {
@@ -27,7 +30,15 @@ export default function RootLayout({
     <UserProvider>
       <html lang="en">
         <body className={font.className}>
-          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+          <div className="flex h-screen  bg-slate-50 dark:bg-[#333] ">
+            <Sidebar />
+
+            <div className='flex-1 overflow-y-hidden'>
+              {children}
+            </div>
+
+
+          </div>
         </body>
       </html>
     </UserProvider>
