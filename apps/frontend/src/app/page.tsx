@@ -28,8 +28,9 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      {loading && <Loader />}
+
       <ResponsiveImage>
+        {loading && <Loader />}
         <div className="h-screen flex items-center justify-center">
           {/* Parent container for image and text */}
           <div
