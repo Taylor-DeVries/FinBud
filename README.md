@@ -15,6 +15,7 @@ https://github.com/user-attachments/assets/116db8d5-345e-4377-9c29-86b7e04637f3
 - Lazy-Proof Design 🛋️: Ensures ease of use for individuals who find traditional financial planning too complex or time-consuming.
 - Ongoing Support 🔄: Adapts to users’ needs, offering relevant guidance whether they are just starting or looking to refine their financial strategies.
 - Calculators 📊: TFSA contribution calculator feature, FHSA contribution calculator.
+- Dark Mode 🌙: in settings you can change your experience to be in light or dark mode.
 
 https://github.com/user-attachments/assets/44d7a197-2b41-45ce-9a41-2ca86e790278
 
