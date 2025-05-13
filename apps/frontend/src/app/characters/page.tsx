@@ -1,6 +1,5 @@
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 import Image from 'next/image';
-import { Row, Col } from 'react-bootstrap';
 
 export default function AboutPage() {
   return (
