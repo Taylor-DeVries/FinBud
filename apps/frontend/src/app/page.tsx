@@ -8,7 +8,7 @@ import Textbox from '@/_components/Textbox-Component/Textbox';
 import Loader from '@/_components/Loader-Component/Loader';
 import Button from '@/_components/Button-Component/Button';
 import { redirect } from 'next/navigation';
-import { isLoggedIn, getUser } from  '@/_services/LoginHelper';
+import { isLoggedIn } from  '@/_services/LoginHelper';
 import Title from '@/_services/TitleHelper';
 
 
@@ -55,6 +55,7 @@ const HomePage: React.FC = () => {
           <div className="sm:w-2/3 sm:mr-10 text-left rounded-xl mt-12">
             <Textbox
               label={
+                // Finbud Main Message
                 <Title />
               }
               chatBubble

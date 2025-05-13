@@ -1,10 +1,7 @@
-
-
 import { TypeAnimation } from 'react-type-animation';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function TitleText() {
-  //const user = getUser();
   const { user, isLoading } = useUser();
   if (isLoading) {
     return (

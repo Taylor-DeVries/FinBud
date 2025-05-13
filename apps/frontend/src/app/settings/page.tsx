@@ -35,10 +35,7 @@ const Settings: React.FC = () => {
             <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
           </button>
         </div>
-        <input
-          type="text"
-          className="mt-4 w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-200"
-          placeholder="Enter your name"></input>
+        
       </div>
     </div>
   );
