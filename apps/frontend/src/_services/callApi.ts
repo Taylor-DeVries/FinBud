@@ -1,6 +1,7 @@
 'use server';
 import { getAccessToken } from '@auth0/nextjs-auth0';
 import axios from 'axios';
+import { headers } from 'next/headers';
 
 export async function getHistoryApi(): Promise<string> {
   const accessToken = await getAccessToken();
@@ -35,3 +36,20 @@ export async function setHistoryApi(history: string): Promise<void> {
 
   return;
 }
+
+
+/** 
+ * TODO: see if we are able to update name using Auth0 or not
+export async function updateNameApi(name: string): Promise<void> {
+  const accessToken = await getAccessToken();
+  await axios.put(
+    `${process.env.NEXT_PUBLIC_API_URL}/client/update`,
+    { name: name },
+    {
+    headers: {
+      Authorization: `Bearer ${accessToken?.accessToken}`,
+      'Content-Type': 'application/json',
+    }
+    })
+}
+**/

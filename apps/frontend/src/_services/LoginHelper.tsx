@@ -10,14 +10,3 @@ export  function isLoggedIn() {
 }
 
 
-export  function getUser() {
-  if (isLoggedIn()) {
-  const { user, error, isLoading } = useUser();
-  return (
-    user
-  );
-  } else {
-    return null;
-  }
-  
-}
