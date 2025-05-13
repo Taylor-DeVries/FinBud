@@ -3,11 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
 import { Montserrat } from 'next/font/google';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import ClientLayoutWrapper from './clientLayoutWrapper';
 import { Metadata } from 'next';
-
 import { Sidebar } from '@/_components/Sidebar-Component/Sidebar';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 const font = Montserrat({ subsets: ['latin'], weight: ['700'] });
 
@@ -32,12 +29,7 @@ export default function RootLayout({
         <body className={font.className}>
           <div className="flex h-screen  bg-slate-50 dark:bg-[#333] ">
             <Sidebar />
-
-            <div className='flex-1 overflow-y-hidden'>
-              {children}
-            </div>
-
-
+            <div className="flex-1 overflow-y-hidden">{children}</div>
           </div>
         </body>
       </html>
