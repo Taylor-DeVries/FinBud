@@ -1,24 +1,11 @@
 'use client';
-
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
-import React, { useState } from 'react';
+import React from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { useTheme } from './providers';
 
 const Settings: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(
-    typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark'
-  );
-
-  const toggleDarkMode = () => {
-    if (darkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    setDarkMode(!darkMode);
-  };
+  const { darkMode, toggleDarkMode } = useTheme();
 
   return (
     <ResponsiveImage>
