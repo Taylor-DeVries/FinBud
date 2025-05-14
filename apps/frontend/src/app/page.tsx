@@ -7,7 +7,12 @@ import ResponsiveImage from '@/_components/Responsive-Image-Component/Responsive
 import ClientTypeAnimation from '@/_components/TypeAnimation-Component/ClientTypeAnimation';
 
 const HomePage = async () => {
-  const journeyLabel = await JourneyLabel();
+  let journeyLabel = "Start My Journey";
+  try {
+    journeyLabel = await JourneyLabel();
+  } catch (error) {
+    console.error('Error getting journey label:', error);
+  }
   
   return (
     <ResponsiveImage>
