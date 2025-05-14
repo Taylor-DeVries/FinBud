@@ -38,18 +38,3 @@ export async function setHistoryApi(history: string): Promise<void> {
 }
 
 
-/** 
- * TODO: see if we are able to update name using Auth0 or not
-export async function updateNameApi(name: string): Promise<void> {
-  const accessToken = await getAccessToken();
-  await axios.put(
-    `${process.env.NEXT_PUBLIC_API_URL}/client/update`,
-    { name: name },
-    {
-    headers: {
-      Authorization: `Bearer ${accessToken?.accessToken}`,
-      'Content-Type': 'application/json',
-    }
-    })
-}
-**/
