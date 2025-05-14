@@ -5,6 +5,7 @@ import { Montserrat } from 'next/font/google';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { Metadata } from 'next';
 import { Sidebar } from '@/_components/Sidebar-Component/Sidebar';
+import { ThemeProvider } from './settings/providers';
 
 const font = Montserrat({ subsets: ['latin'], weight: ['700'] });
 
@@ -25,14 +26,16 @@ export default function RootLayout({
 }) {
   return (
     <UserProvider>
-      <html lang="en">
-        <body className={font.className}>
-          <div className="flex h-screen  bg-slate-50 dark:bg-[#333] ">
-            <Sidebar />
-            <div className="flex-1 overflow-y-hidden">{children}</div>
-          </div>
-        </body>
-      </html>
+      <ThemeProvider>
+        <html lang="en">
+          <body className={font.className}>
+            <div className="flex h-screen  bg-slate-50 dark:bg-[#333] ">
+              <Sidebar />
+              <div className="flex-1 overflow-y-hidden">{children}</div>
+            </div>
+          </body>
+        </html>
+      </ThemeProvider>
     </UserProvider>
   );
 }
