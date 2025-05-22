@@ -62,7 +62,7 @@ export default function DisclaimerPage() {
               <>
                 <div className="relative lg:w-2/3 sm:w-full justify-center mx-auto">
                   <Textbox
-                    label="Create a profile/Sign in to save your progress"
+                    label="Create a profile or sign in to save your progress"
                     centerAlignment={true}
                   />
 

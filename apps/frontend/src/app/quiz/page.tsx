@@ -8,7 +8,11 @@ export default async function Page() {
 
   if (session) {
     const data = await getHistoryFunction();
-    return <QuizPage data={data}></QuizPage>;
+    return (
+      <ResponsiveImage>
+        <QuizPage data={data}></QuizPage>
+      </ResponsiveImage>
+    );
   }
 
   return (
