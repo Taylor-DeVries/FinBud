@@ -25,6 +25,7 @@ const Settings: React.FC = () => {
             </button>
           </div>
         </div>
+        
       </div>
     </ResponsiveImage>
   );

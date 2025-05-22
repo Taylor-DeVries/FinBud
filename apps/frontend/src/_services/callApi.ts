@@ -1,6 +1,7 @@
 'use server';
 import { getAccessToken } from '@auth0/nextjs-auth0';
 import axios from 'axios';
+import { headers } from 'next/headers';
 
 export async function getHistoryApi(): Promise<string> {
   const accessToken = await getAccessToken();
@@ -35,3 +36,5 @@ export async function setHistoryApi(history: string): Promise<void> {
 
   return;
 }
+
+

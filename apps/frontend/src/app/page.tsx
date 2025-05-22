@@ -8,7 +8,9 @@ import Textbox from '@/_components/Textbox-Component/Textbox';
 import Loader from '@/_components/Loader-Component/Loader';
 import Button from '@/_components/Button-Component/Button';
 import { redirect } from 'next/navigation';
-import JourneyLabel from '@/_components/journey-button-label-component/JourneyButtonLabel';
+import { isLoggedIn } from  '@/_services/LoginHelper';
+import Title from '@/_services/TitleHelper';
+
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 const HomePage: React.FC = () => {
@@ -55,24 +57,14 @@ const HomePage: React.FC = () => {
             <div className="sm:w-2/3 sm:mr-10 text-left rounded-xl mt-12">
               <Textbox
                 label={
-                  <TypeAnimation
-                    sequence={[
-                      'Hi! I’m Fin, your Virtual Finance Buddy. I’m here to guide you through every stage of your personal finance journey.',
-                      1000,
-                    ]}
-                    wrapper="p"
-                    speed={75}
-                    cursor={false}
-                    repeat={0}
-                    preRenderFirstString={false}
-                  />
+                  <Title />
                 }
                 chatBubble
               />
 
               <div className="mt-4 flex justify-center">
                 <Button
-                  label={JourneyLabel()}
+                  label={isLoggedIn() ? 'Resume My Journey' : 'Start My Journey'  }
                   onClick={() => router.push('/disclaimer')}
                 />
               </div>
