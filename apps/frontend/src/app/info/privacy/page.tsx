@@ -26,8 +26,8 @@ export default function privacy() {
                 <ol className="list-[upper-alpha] list-inside">
                     <li className="text-base font-bold">Information that you provide</li>
                     <ul className="text-base list-disc list-inside">
-                       <li> Email Address </li>
-                       <li> Feedback or messages you send us</li> 
+                       <li> <span className="underline">Email Address</span> (e.g., when signing up or contacting us)</li>
+                       <li> <span className="underline">Feedback or messages</span> you send us</li> 
                     </ul>
                     
                     
@@ -81,7 +81,7 @@ export default function privacy() {
 
                 <hr className="border-gray-50 dark:border-[#333] border-2 my-4"/>
                 <li>When We Share Information</li>
-                <p className="text-base">We do <span className="underlined">not share personal information</span> except:</p>
+                <p className="text-base">We do <span className="underline">not share personal information</span> except:</p>
                 <ul className="text-base list-disc list-inside">
                     <li>With trusted service providers (e.g., email or analytics platforms) who help us operate the platform</li>
                     <li>If required by law or legal process</li>
@@ -101,7 +101,7 @@ export default function privacy() {
                 
                 <hr className="border-gray-50 dark:border-[#333] border-2 my-4"/>
                 <li>Children’s Privacy</li>
-                <p className="text-base">FinBud is not intended for children under the age of 13. We do not knowingly collect data from anyone under that age</p>
+                <p className="text-base">FinBud is not intended for children under the age of 13. We do not knowingly collect data from anyone under that age.</p>
                
                 <hr className="border-gray-50 dark:border-[#333] border-2 my-4"/>
                 <li> Changes to This Policy</li>
