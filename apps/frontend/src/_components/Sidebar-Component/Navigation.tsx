@@ -108,6 +108,14 @@ export const Navigation = ({
           <h1 className="hover:text-blue hover:cursor-pointer">Disclaimer</h1>
         </Link>
       </div>
+      <div className="flex flex-col md:flex-row lg:flex-row text-slate-400 text-sm space-x-2 justify-center items-center mt-0">
+        <Link href="/info/privacy">
+          <h1 className="hover:text-blue hover:cursor-pointer">Privacy</h1>
+        </Link>
+        <Link href="/info/terms">
+          <h1 className="hover:text-blue hover:cursor-pointer">Terms</h1>
+        </Link>
+      </div>
     </div>
   );
 };
