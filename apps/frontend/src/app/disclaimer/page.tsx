@@ -73,7 +73,7 @@ export default function DisclaimerPage() {
                         onClick={() => router.push('/quiz')}
                       />
                       <Button
-                        label="Create an account/Sign in"
+                        label="Create an account or sign in"
                         onClick={
                           () => saveQuizURLtoSessionStorage()
                         }
