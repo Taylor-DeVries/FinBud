@@ -102,7 +102,7 @@ export default function FhsaCalculatorComponent() {
       }
     }
     element.textContent =
-      'error: your FHSA must be opened on a valid date. Please enter a valid date (2023-2025).';
+      'Error: your FHSA must be opened on a valid date. Please enter a valid date (2023-2025).';
     setOpenedInputFlag(true);
     resetContributed();
   };

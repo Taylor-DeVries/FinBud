@@ -156,7 +156,7 @@ function TfsaCalculatorComponent() {
     }
     setContributedInputFlag(true);
     element.textContent =
-      'Warning: The number you have entered is higher then your maximum contribution limit and withdrawal amount! You will pay interest with this amount';
+      'Warning: The number you have entered is higher than your maximum contribution limit and withdrawal amount! You will pay interest with this amount';
   };
 
   const handleCurrWithdrawChange = () => {
@@ -178,7 +178,7 @@ function TfsaCalculatorComponent() {
     }
     setWithdrawCurrInputFlag(true);
     element.textContent =
-      'error! Withdrawal amount cannot exceed total withdrawal amount!';
+      'Error! Withdrawal amount cannot exceed total withdrawal amount!';
     return;
   };
 
