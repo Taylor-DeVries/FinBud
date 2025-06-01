@@ -6,7 +6,7 @@ function Dashboard(url) {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="w-full flex flex-col gap-y-10 ">
+    <div className="w-full flex flex-col gap-y-5 ">
       <div className="flex flex-col md:flex-row justify-between ">
         <Textbox label="Welcome To Your Dashboard, User!"></Textbox>
         <Textbox label="Toolbox"></Textbox>
@@ -16,7 +16,7 @@ function Dashboard(url) {
         <Textbox label="your goals"></Textbox>
       </div>
 
-      <div className="flex flex-col md:flex-row lg:flex-row w-full justify-between gap-x-10">
+      <div className="flex flex-col md:flex-row lg:flex-row w-full justify-between gap-x-5">
         <div className="flex flex-col gap-y-10  w-2/3">
           <div className="w-full">
             <Textbox label="current acheivements"></Textbox>

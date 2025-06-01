@@ -12,7 +12,7 @@ export default function DisclaimerPage() {
     <>
       <ResponsiveImage>
         <div className="h-screen flex justify-center">
-          <div className="w-full my-10">
+          <div className="w-full my-8">
             <div> </div>
             <Dashboard />
           </div>
