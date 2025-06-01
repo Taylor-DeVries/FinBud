@@ -10,14 +10,11 @@ export default function DisclaimerPage() {
 
   return (
     <>
-      <ResponsiveImage>
-        <div className="h-screen flex justify-center">
-          <div className="w-full my-8">
-            <div> </div>
-            <Dashboard />
-          </div>
+      <div className="h-screen flex justify-center bg-dashboard_gray_bg">
+        <div className="w-full m-8 bg-dashboard_blue_bg">
+          <Dashboard />
         </div>
-      </ResponsiveImage>
+      </div>
     </>
   );
 }
