@@ -32,7 +32,7 @@
               "mainText": "Great! Do you have any savings goals for the next five years?",
               "responses": [
                 {
-                  "answer": "Yes, my first home",
+                  "answer": "Yes, my first home is within the next 5 years",
                   "id": 14,
                   "mainText": "Calculate your FHSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them.",
                   "responses": [
@@ -51,7 +51,7 @@
                   ]
                 },
                 {
-                  "answer": "I got all the money I need for now, I can wait more than five years",
+                  "answer": "I got all the money I need for the next five years, I have longer term goals",
                   "id": 6,
                   "mainText": "Does your employer match RRSP contributions?",
                   "responses": [
@@ -63,57 +63,77 @@
                         {
                           "answer": "I've contributed all my employer will match to my RRSP",
                           "id": 26,
-                          "connectId": 23,
+                          "connectId": 30,
                           "responses": []
                         }
                       ]
                     },
                     {
                       "answer": "No",
-                      "id": 23,
-                      "mainText": "Calculate your TFSA contribution room, if you have room then I would buy medium risk ETFs and continue investing into them.",
+                      "id": 30,
+                      "mainText": "Are you looking to purchase your first home more than five years from now?",
                       "responses": [
                         {
-                          "answer": "I've maxed my TFSA contribution room",
-                          "id": 27,
-                          "mainText": "What are you saving for now?",
+                          "answer": "Yes",
+                          "id": 31,
+                          "mainText": "Calculate your FHSA contribution room, if you have room I would buy medium risk ETFs.",
                           "responses": [
                             {
-                              "answer": "My child's education",
-                              "id": 8,
-                              "mainText": "Calculate your RESP contribution room. If you have room, then I would buy medium risk ETFs and continue investing in them.",
-                              "responses": [
-                                {
-                                  "answer": "I maxed out my RESP and have more money to invest",
-                                  "connectId": 27,
-                                  "id": 16,
-                                  "responses": []
-                                }
-                              ]
-                            },
+                              "answer": "I've maxed my FHSA contribution room",
+                              "connectId": 23,
+                              "id": 32,
+                              "responses": []
+                            }
+                          ]
+                        },
+                        {
+                          "answer": "No, I'm looking to invest for other future goals more than 5 years from now",
+                          "id": 23,
+                          "mainText": "Calculate your TFSA contribution room, if you have room then I would buy medium risk ETFs and continue investing into them",
+                          "responses": [
                             {
-                              "answer": "My retirement",
-                              "id": 17,
-                              "mainText": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
+                              "answer": "I've maxed my TFSA contribution room",
+                              "id": 27,
+                              "mainText": "What are you saving for now?",
                               "responses": [
                                 {
-                                  "answer": "I maxed out my RRSP and have more money to invest",
-                                  "connectId": 27,
-                                  "id": 18,
-                                  "responses": []
-                                }
-                              ]
-                            },
-                            {
-                              "answer": "I just want more money",
-                              "id": 9,
-                              "mainText": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
-                              "responses": [
+                                  "answer": "My child's education",
+                                  "id": 8,
+                                  "mainText": "Calculate your RESP contribution room. If you have room, then I would buy medium risk ETFs and continue investing in them.",
+                                  "responses": [
+                                    {
+                                      "answer": "I maxed out my RESP and have more money to invest",
+                                      "connectId": 27,
+                                      "id": 16,
+                                      "responses": []
+                                    }
+                                  ]
+                                },
                                 {
-                                  "answer": "What next?",
-                                  "id": 10,
-                                  "mainText": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time.",
-                                  "responses": []
+                                  "answer": "My retirement",
+                                  "id": 17,
+                                  "mainText": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
+                                  "responses": [
+                                    {
+                                      "answer": "I maxed out my RRSP and have more money to invest",
+                                      "connectId": 27,
+                                      "id": 18,
+                                      "responses": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "answer": "I just want more money",
+                                  "id": 9,
+                                  "mainText": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
+                                  "responses": [
+                                    {
+                                      "answer": "What next?",
+                                      "id": 10,
+                                      "mainText": "Congratulations, you seem to have a great portfolio! I don't have any more tips for you at this time.",
+                                      "responses": []
+                                    }
+                                  ]
                                 }
                               ]
                             }
