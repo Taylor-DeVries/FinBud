@@ -46,8 +46,61 @@
     },
 
     {
+      "id": 4,
+      "extendedText": [
+        "A TFSA is a type of account that allows you to invest in a variety of different assets",
+        "This includes stocks, bonds, ETFs, and more",
+        "TFSA stands for Tax-Free Savings Account",
+        "Many banks offer TFSA accounts, some are self directed and some are not",
+        "Self directed TFSA accounts are accounts that allow you to invest in a variety of different assets on your own",
+        "Ones that are not self directed are accounts that are managed by a bank or financial institution",
+        "Though both are viable options, self directed TFSA accounts are more flexible and typically charge less fees",
+        "This is why I would recommend a self directed TFSA account",
+        "The easiest way to open a self directed TFSA account is with Wealthsimple",
+        "You can follow the link button to open a self directed TFSA account to keep your savings in with Wealthsimple",
+        "With Wealthsimple, or any other self directed TFSA account, you can invest in a variety of different assets",
+        "Because you are looking to invest and use the money within the next 5 years, you want to be more conservative with your investments",
+        "This is because you want to be able to access your money quickly if needed",
+        "For example, if you want to buy a new car in 2 years, you don't want to invest in something that is illiquid",
+        "This means you want to invest in something that you can easily sell if needed",
+        "An example of an investment that is more liquid is ETFs",
+        "Liquidity is the ability to convert an investment into cash quickly",
+        "Also, any investments you make for short term goals should be low risk",
+        "Low risk investments are investments that are more stable and have a lower chance of losing money",
+        "An ETF is a type of investment that tracks a basket of stocks or bonds",
+        "ETF stands for Exchange Traded Fund",
+        "You can buy ETFs that are specifically designed for short term goals",
+        "These ETFs are designed to be more liquid and have a lower chance of losing money",
+        "If you want a non self directed account (AKA a managed account) you can open one with Wealthsimple or another bank",
+        "Depending on the institution, they'll likely have a low risk option for short term goals",
+        "This is a viable alternative to self directed TFSA accounts"
+      ]
+    },
+
+    {
       "id": 5,
-      "extendedText": []
+      "extendedText": [
+        "Since you have 6 months worth of living expenses saved up, you can start thinking about your next steps",
+        "The next time horizon I recommend looking at is 5 years",
+        "These are short term goals that you can prepare for as you already have savings for any immediate needs",
+        "Some of these goals could be buying a new car, going on a vacation, or buying a new home",
+        "You want to be prepared for these before preparing for your longer term goals",
+        "The time horizon of 5 years will also impact the type of investments you make",
+        "For short term goals, you want to be more conservative with your investments",
+        "This is because you want to be able to access your money quickly if needed",
+        "For example, if you want to buy a new car in 2 years, you don't want to invest in something that is illiquid",
+        "This means you want to invest in something that you can easily sell if needed",
+        "An example of an investment that is more liquid is ETFs",
+        "Liquidity is the ability to convert an investment into cash quickly",
+        "Also, any investments you make for these should be low risk",
+        "Low risk investments are investments that are more stable and have a lower chance of losing money",
+        "Longer time horizons are more forgiving when it comes to risk",
+        "This is because you have more time to recover from any losses",
+        "Your approach will also be different if one of your short term goals is to buy a home",
+        "This is because there are different accounts that are available to you for this purpose",
+        "One of these accounts is the FHSA",
+        "A FHSA is an account that allows certain tax benefits if the money put into it goes towards buying a first home"
+      ]
     },
 
     {
@@ -98,11 +151,6 @@
     },
 
     {
-      "id": 12,
-      "extendedText": []
-    },
-
-    {
       "id": 14,
       "extendedText": [
         "In order to earn higher rates of return, higher risk is needed",
@@ -110,16 +158,6 @@
         "Because of this, money that you need short term should be put into low risk investments",
         "An FHSA is an account that allows certain tax benefits if the money put into it goes towards buying a first home"
       ]
-    },
-
-    {
-      "id": 15,
-      "extendedText": []
-    },
-
-    {
-      "id": 16,
-      "extendedText": []
     },
 
     {
@@ -133,32 +171,7 @@
     },
 
     {
-      "id": 22,
-      "extendedText": []
-    },
-
-    {
-      "id": 4,
-      "extendedText": []
-    },
-
-    {
       "id": 23,
-      "extendedText": []
-    },
-
-    {
-      "id": 24,
-      "extendedText": []
-    },
-
-    {
-      "id": 25,
-      "extendedText": []
-    },
-
-    {
-      "id": 26,
       "extendedText": []
     },
 
@@ -170,12 +183,37 @@
     {
       "id": 28,
       "extendedText": [
+        "Having 6 months worth of living expenses is a good first goal to have for your personal finances",
+        "This amount is intended to be kept in a secure account with a reputable bank and be left relatively untouched",
+        "It should also grow slowly from the accounts interest rate as an added bonus",
+        "The point of this sum of money isn't for growth though",
+        "This sum is intended as an emergency fund in case something unexpected happens and you find yourself in a difficult financial situation",
+        "This could be something like being laid off from work",
+        "Normally, you'd be in a difficult position without your main income source, but because of this 6 months worth of expenses saved up, you don't have to worry for the next 6 months",
+        "When deciding what is a good account for you to put your money in it can be overwhelming with all the options",
+        "A good account should meet a few criteria",
+        "First, it should be from a reputable firm, this could mean it's large or it's been around for a while",
+        "Second, it should be CDIC covered, this means the government protects up to $100,000 in deposits in case anything happens to the bank providing the account",
+        "Thirdly, there should be no fees for using the savings account, with so many no-fee accounts out there, there's no need for the average person to pay for one",
+        "Lastly, it should have the highest interest rate possible",
+        "How interest rate is so hurtful when it comes to debt, works in the opposite way when it comes to your own savings account",
+        "A good account that meets these requirements is the Wealthsimple Cash account, an easy account you can manage all from your phone",
         "You can follow the link button to open an account to keep your savings in with Wealthsimple"
       ]
     },
 
     {
-      "id": 29,
+      "id": 30,
+      "extendedText": []
+    },
+
+    {
+      "id": 31,
+      "extendedText": []
+    },
+
+    {
+      "id": 32,
       "extendedText": []
     }
   ]

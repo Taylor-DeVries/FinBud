@@ -114,7 +114,7 @@ export default function QuizPage({ data }) {
       setshowTfsaCalculator(true);
     } else setshowTfsaCalculator(false);
 
-    if (currentNode.id == 14) {
+    if (currentNode.id == 14 || currentNode.id == 31) {
       setshowFhsaCalculator(true);
     } else setshowFhsaCalculator(false);
 
