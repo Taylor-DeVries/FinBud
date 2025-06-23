@@ -5,9 +5,9 @@ export default function AcheivementEntry({
   buttonText,
 }) {
   return (
-    <div className="flex flex-row justify-between items-center">
-      <p className="text-white drop-shadow-lg text-xl">{achievementName}</p>
-      <p className="text-white drop-shadow-lg text-xl">{status}</p>
+    <div className="flex md:flex-row lg:flex-row flex-col justify-between md:items-center lg:items-center items-start">
+      <p className=" drop-shadow-lg text-xl">{achievementName}</p>
+      <p className=" drop-shadow-lg text-xl">{status}</p>
       <DashboardButton buttonText={buttonText} />
     </div>
   );

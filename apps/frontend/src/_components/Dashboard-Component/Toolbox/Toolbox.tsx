@@ -11,11 +11,21 @@ export default function Toolbox() {
 
   const actions = [
     {
-      icon: <FaCalculator size={35} className="text-light_blue" />,
+      icon: (
+        <FaCalculator size={35} className="text-light_blue dark:text-[#444]" />
+      ),
       name: 'TFSA Calculator',
     },
     {
-      icon: <FaCalculator size={35} className="text-light_blue" />,
+      icon: (
+        <FaCalculator size={35} className="text-light_blue dark:text-[#444]" />
+      ),
+      name: 'FHSA Calculator',
+    },
+    {
+      icon: (
+        <FaCalculator size={35} className="text-light_blue dark:text-[#444]" />
+      ),
       name: 'FHSA Calculator',
     },
   ];
@@ -30,7 +40,7 @@ export default function Toolbox() {
         </div> */}
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{}}
+        sx={{ zIndex: 1 }}
         FabProps={{
           sx: {
             width: 60, // change to your desired size
@@ -42,7 +52,7 @@ export default function Toolbox() {
             },
           },
         }}
-        icon={<FaWrench size={35} />}
+        icon={<FaWrench size={35} className=" text-white dark:text-[#444]" />}
         direction="right"
       >
         {actions.map((action) => (
@@ -56,6 +66,10 @@ export default function Toolbox() {
                   width: 60, // smaller child button size
                   height: 60,
                   borderRadius: '12px',
+                  backgroundColor: '#639db8',
+                  '&:hover': {
+                    backgroundColor: '#4a7f9e', // darker shade on hover
+                  },
                 },
               },
             }}
