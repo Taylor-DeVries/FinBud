@@ -6,6 +6,7 @@ interface TextBoxProps {
   paddingBetween?: boolean;
   chatBubble?: boolean;
   centerAlignment?: boolean;
+  dashboard?: boolean;
 }
 
 const Textbox: React.FC<TextBoxProps> = ({
@@ -14,6 +15,7 @@ const Textbox: React.FC<TextBoxProps> = ({
   paddingBetween,
   chatBubble,
   centerAlignment,
+  dashboard = false,
 }) => {
   return (
     <div
@@ -22,11 +24,17 @@ const Textbox: React.FC<TextBoxProps> = ({
       } `}
     >
       <div
-        className={`bg-blue text-white sm:px-8 px-6 py-4 rounded-xl ${
+        className={`${
+          dashboard ? 'bg-light_blue' : 'bg-blue'
+        } text-white sm:px-8 px-6 py-4 rounded-xl ${
           chatBubble ? 'chat-bubble' : ''
         }  ${centerAlignment ? 'text-center' : ''}`}
       >
-        <div className="font-bold text-xl sm:text-2xl dark:text-[#333]">
+        <div
+          className={`font-bold ${
+            dashboard ? 'text-base sm:text-base' : 'text-xl sm:text-2xl'
+          } dark:text-[#333]`}
+        >
           {label}
         </div>
         <div
