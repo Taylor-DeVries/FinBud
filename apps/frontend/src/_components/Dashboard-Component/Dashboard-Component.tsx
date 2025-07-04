@@ -4,16 +4,22 @@ import { useState } from 'react';
 import Goal from '@/_components/Dashboard-Component/Goal/Goal';
 import Acheivements from '@/_components/Dashboard-Component/Achievements/Acheivements';
 import Toolbox from './Toolbox/Toolbox';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 function Dashboard(url) {
   const [loading, setLoading] = useState(true);
+
+  const { user, isLoading } = useUser();
+  const welcomeMessage = user?.name
+    ? `Welcome to your dashboard ${user.name}!`
+    : 'Welcome to your dashboard!';
 
   return (
     <div className="w-full h-full overflow-y-scroll">
       <div className="flex flex-col gap-y-8 m-8 text-white dark:text-[#333]">
         <div className="flex flex-col md:flex-row justify-between">
           <p className="font-bold text-xl sm:text-2xl  drop-shadow-lg dark:text-shadow-none">
-            Welcome to your dashboard User!
+            `{welcomeMessage}`
           </p>
         </div>
 
