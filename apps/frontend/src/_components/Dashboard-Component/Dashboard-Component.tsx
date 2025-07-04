@@ -19,7 +19,7 @@ function Dashboard(url) {
       <div className="flex flex-col gap-y-8 m-8 text-white dark:text-[#333]">
         <div className="flex flex-col md:flex-row justify-between">
           <p className="font-bold text-xl sm:text-2xl  drop-shadow-lg dark:text-shadow-none">
-            `{welcomeMessage}`
+            {welcomeMessage}
           </p>
         </div>
 
