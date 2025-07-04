@@ -5,14 +5,40 @@ import Goal from '@/_components/Dashboard-Component/Goal/Goal';
 import Acheivements from '@/_components/Dashboard-Component/Achievements/Acheivements';
 import Toolbox from './Toolbox/Toolbox';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import dashboardgoals from '@/_data/constants/dashboard-goals.json';
+import { DashboardGoal } from '@/_data/types/types';
 
-function Dashboard(url) {
+type DashboardProps = {
+  historyArray: number[];
+};
+
+function Dashboard({ historyArray }: DashboardProps) {
   const [loading, setLoading] = useState(true);
 
   const { user, isLoading } = useUser();
   const welcomeMessage = user?.name
     ? `Welcome to your dashboard ${user.name}!`
     : 'Welcome to your dashboard!';
+
+  const goals: DashboardGoal[] = dashboardgoals.goals as DashboardGoal[];
+  let goalText = 'Check out the Quiz!';
+
+  for (let i = historyArray.length - 1; i >= 0; i--) {
+    let id = historyArray[i];
+    let found = false;
+    for (let j = 0; j < goals.length; j++) {
+      if (goals[j].id == id) {
+        found = true;
+        goalText = goals[j].goalText;
+        break;
+      }
+    }
+
+    if (found) break;
+  }
+
+  // const goalText =
+  //   index >= 0 ? dashboardgoals[historyArray[index]] : 'Check out the Quiz!';
 
   return (
     <div className="w-full h-full overflow-y-scroll">
@@ -24,7 +50,7 @@ function Dashboard(url) {
         </div>
 
         <div className="w-full">
-          <Goal goal={'make money'} percentage={78} />
+          <Goal goal={goalText} percentage={78} />
         </div>
 
         <div className="flex flex-col md:flex-row lg:flex-row w-full justify-between items-start gap-x-5 md:gap-y-5 lg:gap-y-5 gap-y-5 ">

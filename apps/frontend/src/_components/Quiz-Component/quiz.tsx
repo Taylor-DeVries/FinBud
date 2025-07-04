@@ -30,6 +30,12 @@ export default function QuizPage({ data }) {
   const [historyState, setHistoryState] = React.useState<HistoryState>(
     getInitialState(data)
   );
+
+  sessionStorage.setItem(
+    'userHistory',
+    JSON.stringify(historyState.historyArray)
+  );
+
   const rootNode: Node = buildQuizData();
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
@@ -145,8 +151,9 @@ export default function QuizPage({ data }) {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : ''
-            }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${
+            loading ? 'hidden' : ''
+          }`}
         >
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
@@ -177,9 +184,7 @@ export default function QuizPage({ data }) {
               {/* Calculator Buttons */}
               <div className="flex flex-wrap justify-center items-center gap-0 p-1 mb-2">
                 <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] m-0 inline-block">
-                  {showLink && <LinkButton
-                    url={`${currentNode.link}`}
-                  />}
+                  {showLink && <LinkButton url={`${currentNode.link}`} />}
                 </div>
 
                 <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
@@ -189,7 +194,6 @@ export default function QuizPage({ data }) {
                 <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
                   {showFhsaCalculator && <FhsaCalculatorButton />}
                 </div>
-
               </div>
             </div>
 
