@@ -24,6 +24,7 @@ import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
 import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
 import LinkButton from '../Link-Component/LinkComponent';
+import MoreInfoButtons from '../MoreInfo-Component/MoreInfoButtons';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -214,36 +215,11 @@ export default function QuizPage({ data }) {
               </div>
 
               {/* MoreInfo Buttons */}
-              <div className="mb-2 flex justify-end mt-1">
-                {showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
-                    <FaAngleLeft
-                      onClick={() => moveTextIndex(-1)}
-                      className="text-blue h-7 w-7 hover:cursor-pointer"
-                    />
-                  </div>
-                ) : null}
-
-                {showNextText && showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
-                    <FaAngleRight
-                      onClick={() => moveTextIndex(1)}
-                      className="text-blue h-7 w-7 hover:cursor-pointer"
-                    />
-                  </div>
-                ) : null}
-
-                {showNextText && !showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
-                    <h1
-                      onClick={() => moveTextIndex(1)}
-                      className="text-blue text-3xl text-center h-7 w-7 hover:cursor-pointer leading-none"
-                    >
-                      ...
-                    </h1>
-                  </div>
-                ) : null}
-              </div>
+              <MoreInfoButtons
+                showPrevText={showPrevText}
+                showNextText={showNextText}
+                moveTextIndex={moveTextIndex}
+              />
             </div>
 
             {/* Buttons for the answers */}
