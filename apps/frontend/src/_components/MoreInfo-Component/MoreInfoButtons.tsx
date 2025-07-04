@@ -1,7 +1,7 @@
 // components/MoreInfoButtons.tsx
 import React from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-
+import { SyncLoader } from "react-spinners";
 interface MoreInfoButtonsProps {
   showPrevText: boolean;
   showNextText: boolean;
@@ -37,29 +37,41 @@ const MoreInfoButtons: React.FC<MoreInfoButtonsProps> = ({
       {/* When showNextText is true and showPrevText is false, show the animation instead of arrow */}
       {showNextText && !showPrevText && (
         <div
-          onClick={() => moveTextIndex(1)}
-          className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block cursor-pointer"
+        onClick={() => moveTextIndex(1)}
+        className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block cursor-pointer"
         >
-          <video
-            src="/animations/ButtonDots_Animation.webm"
-            autoPlay
-            loop
-            muted
-            playsInline
-            disablePictureInPicture
-            className="h-7 w-7 object-contain block"
-            style={{
-              backgroundColor: "transparent",
-              imageRendering: "auto",
-              transformOrigin: "center",
-              transform: "scale(1.2)",
-              mixBlendMode: "screen",
-            }}
-          />
+          <div className="flex h-7 w-7 items-center justify-center relative">
+            <SyncLoader
+              size={8}
+              color="#5298b8"
+              margin={1}
+              className="custom-sync-loader"
+            />
+            <style>{`
+              .custom-sync-loader span {
+                animation: bounceUp 1s ease-in-out infinite !important;
+              }
+
+              .custom-sync-loader span:nth-child(1) {
+                animation-delay: 0s !important;
+              }
+              .custom-sync-loader span:nth-child(2) {
+                animation-delay: 0.2s !important;
+              }
+              .custom-sync-loader span:nth-child(3) {
+                animation-delay: 0.4s !important;
+              }
+
+              @keyframes bounceUp {
+                0%   { transform: translateY(2px); }
+                50%  { transform: translateY(-2px); }
+                100% { transform: translateY(2px); }
+              }
+            `}</style>
+          </div>
         </div>
       )}
     </div>
   );
 };
-
 export default MoreInfoButtons;
