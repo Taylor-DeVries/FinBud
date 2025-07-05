@@ -49,3 +49,8 @@ export interface DashboardGoal {
   id: number;
   goalText: string;
 }
+
+export interface DashboardAchievement {
+  id: number;
+  achievementText: string;
+}

@@ -37,9 +37,6 @@ function Dashboard({ historyArray }: DashboardProps) {
     if (found) break;
   }
 
-  // const goalText =
-  //   index >= 0 ? dashboardgoals[historyArray[index]] : 'Check out the Quiz!';
-
   return (
     <div className="w-full h-full overflow-y-scroll">
       <div className="flex flex-col gap-y-8 m-8 text-white dark:text-[#333]">
@@ -57,7 +54,7 @@ function Dashboard({ historyArray }: DashboardProps) {
           <div className="flex flex-col gap-y-8 w-full md:w-2/3">
             <div className="w-full">
               {/* <Textbox label="current acheivements"></Textbox> */}
-              <Acheivements />
+              <Acheivements historyArray={historyArray} />
             </div>
 
             <div>
