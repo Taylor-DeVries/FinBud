@@ -18,10 +18,6 @@ type ToolboxProps = {
 };
 
 export default function Toolbox({ historyArray }: ToolboxProps) {
-  const handleCalculatorClick = () => {
-    console.log('Calculator clicked');
-  };
-
   const theme = createTheme({
     components: {
       MuiTooltip: {
@@ -110,7 +106,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
       <ThemeProvider theme={theme}>
         <SpeedDial
-          ariaLabel="SpeedDial basic example"
+          ariaLabel="Toolbox SpeedDial"
           sx={{ zIndex: 1 }}
           FabProps={{
             sx: {
@@ -141,6 +137,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
                       '&:hover': {
                         backgroundColor: '#4a7f9e', // darker shade on hover
                       },
+                      margin: '0 4px', // spacing between buttons
                     },
                   },
                   tooltip: {
@@ -150,11 +147,10 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
                     placement: 'top',
                   },
                 }}
-                onClick={handleCalculatorClick}
               />
             )
           )}
-        </SpeedDial>{' '}
+        </SpeedDial>
       </ThemeProvider>
 
       <TfsaCalculatorComponent />
