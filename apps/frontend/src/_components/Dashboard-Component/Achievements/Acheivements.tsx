@@ -25,14 +25,24 @@ export default function Acheivements({ historyArray }: AcheivementProps) {
   return (
     <div className="bg-light_blue  sm:px-8 px-6 py-4 flex flex-col gap-y-2 rounded-xl">
       <p className=" drop-shadow-lg text-2xl">Current Achievements:</p>
-      <div className="flex flex-col gap-y-2 overflow-y-scroll h-32">
-        {completed.map((achievement) => (
-          <AcheivementEntry
-            achievementName={achievement.achievementText}
-            status="Completed"
-            buttonText="View Details"
-          />
-        ))}
+      <div
+        className={`flex flex-col gap-y-2 ${
+          completed.length == 0
+            ? 'overflow-y-visible h-auto'
+            : 'overflow-y-scroll h-32'
+        } `}
+      >
+        {completed.length === 0 ? (
+          <p className="text-xl drop-shadow-lg"> No Achievements Yet!</p>
+        ) : (
+          completed.map((achievement) => (
+            <AcheivementEntry
+              achievementName={achievement.achievementText}
+              status="Completed"
+              buttonText="View Details"
+            />
+          ))
+        )}
       </div>
     </div>
   );
