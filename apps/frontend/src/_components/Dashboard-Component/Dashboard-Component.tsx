@@ -7,6 +7,10 @@ import Toolbox from './Toolbox/Toolbox';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import dashboardgoals from '@/_data/constants/dashboard-goals.json';
 import { DashboardGoal } from '@/_data/types/types';
+import extendedtext from '@/_data/constants/extendedTexts.json';
+import { QuizText } from '@/_data/types/types';
+import DashboardButton from './Button/Dashboard-Button';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 type DashboardProps = {
   historyArray: number[];
@@ -37,6 +41,34 @@ function Dashboard({ historyArray }: DashboardProps) {
     if (found) break;
   }
 
+  console.log(historyArray);
+
+  const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
+  const quizText: QuizText[] = extendedtext.extendedTexts as QuizText[];
+  let extendedText = [];
+  for (let i = 0; i < quizText.length; i++) {
+    if (quizText[i].id == historyArray[historyArray.length - 1]) {
+      extendedText = quizText[i].extendedText;
+      break;
+    }
+  }
+
+  function moveTextIndex(forward: number) {
+    if (forward == 1 && showNextText()) {
+      setCurrentTextIndex(currentTextIndex + 1);
+    } else if (showPrevText()) {
+      setCurrentTextIndex(currentTextIndex - 1);
+    }
+  }
+
+  function showNextText() {
+    return currentTextIndex < extendedText.length - 1 ? true : false;
+  }
+
+  function showPrevText() {
+    return currentTextIndex > 0 ? true : false;
+  }
+
   return (
     <div className="w-full h-full overflow-y-scroll">
       <div className="flex flex-col gap-y-8 m-8 text-white dark:text-[#333]">
@@ -62,15 +94,28 @@ function Dashboard({ historyArray }: DashboardProps) {
             </div>
           </div>
 
-          <div className="flex flex-col justify-end items-center lg:items-start md:items-start h-full md:w-1/2 gap-y-8">
-            <div className="w-80 md:ml-auto">
+          <div className="flex flex-col justify-end items-center lg:items-between md:items-between h-full md:w-1/2 gap-y-8">
+            <div className="w-80 flex flex-col gap-y-3 ">
               <Textbox
-                label="Tip! You can open a TFSA through an online brokerage and buy ETFs that capture the market!"
+                label={extendedText[currentTextIndex]}
                 paddingBetween={false}
-                chatBubble={true}
+                chatBubble={false}
                 centerAlignment={false}
                 dashboard={true}
               />
+              <div className="flex flex-row justify-end items-center gap-x-3">
+                {showPrevText() && (
+                  <button className="text-white dark:text-[#333] hover:text-gray-500 text-xl p-2 bg-light_blue rounded-lg">
+                    <FaAngleLeft onClick={() => moveTextIndex(-1)} />
+                  </button>
+                )}
+
+                {showNextText() && (
+                  <button className="text-white dark:text-[#333] hover:text-gray-500 text-xl p-2 bg-light_blue rounded-lg">
+                    <FaAngleRight onClick={() => moveTextIndex(1)} />
+                  </button>
+                )}
+              </div>
             </div>
             <Image
               src="/images/Fin.webp"
