@@ -58,7 +58,7 @@ function Dashboard({ historyArray }: DashboardProps) {
             </div>
 
             <div>
-              <Toolbox />
+              <Toolbox historyArray={historyArray} />
             </div>
           </div>
 
