@@ -25,20 +25,14 @@ function Dashboard({ historyArray }: DashboardProps) {
     : 'Welcome to your dashboard!';
 
   const goals: DashboardGoal[] = dashboardgoals.goals as DashboardGoal[];
-  let goalText = 'Check out the Quiz!';
+  let goalText = 'Continue in the Quiz';
+  let currentNodeId = historyArray[historyArray.length - 1];
 
-  for (let i = historyArray.length - 1; i >= 0; i--) {
-    let id = historyArray[i];
-    let found = false;
-    for (let j = 0; j < goals.length; j++) {
-      if (goals[j].id == id) {
-        found = true;
-        goalText = goals[j].goalText;
-        break;
-      }
+  for (let i = 0; i < goals.length; i++) {
+    if (goals[i].id == currentNodeId) {
+      goalText = goals[i].goalText;
+      break;
     }
-
-    if (found) break;
   }
 
   console.log(historyArray);
@@ -97,19 +91,23 @@ function Dashboard({ historyArray }: DashboardProps) {
           <div className="flex flex-col justify-end items-center lg:items-between md:items-between h-full md:w-1/2 gap-y-8">
             <div className="w-80 flex flex-col gap-y-3 ">
               <Textbox
-                label={extendedText[currentTextIndex]}
+                label={
+                  extendedText.length > 0
+                    ? extendedText[currentTextIndex]
+                    : 'Check out the Quiz for your next goal!'
+                }
                 paddingBetween={false}
                 chatBubble={false}
                 centerAlignment={false}
                 dashboard={true}
               />
+
               <div className="flex flex-row justify-end items-center gap-x-3">
                 {showPrevText() && (
                   <button className="text-white dark:text-[#333] hover:text-gray-500 text-xl p-2 bg-light_blue rounded-lg">
                     <FaAngleLeft onClick={() => moveTextIndex(-1)} />
                   </button>
                 )}
-
                 {showNextText() && (
                   <button className="text-white dark:text-[#333] hover:text-gray-500 text-xl p-2 bg-light_blue rounded-lg">
                     <FaAngleRight onClick={() => moveTextIndex(1)} />
