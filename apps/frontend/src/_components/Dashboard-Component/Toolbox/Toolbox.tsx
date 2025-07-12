@@ -1,15 +1,10 @@
 import { FaCalculator, FaWrench } from 'react-icons/fa';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import { SpeedDialIcon } from '@mui/material';
-// import { Tooltip } from 'react-tooltip';
-import Tooltip from '@mui/material/Tooltip';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import TfsaCalculatorComponent from '@/_components/Calculator-Component/TFSA/TfsaCalculatorComponent';
-import TfsaCalculatorButton from '@/_components/Calculator-Component/TFSA/TfsaCalculatorButton';
 import FhsaCalculatorComponent from '@/_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
-import FhsaCalculatorButton from '@/_components/Calculator-Component/FHSA/FhsaCalculatorButton';
 import LinkButton from '@/_components/Link-Component/LinkComponent';
 import links from '@/_data/constants/links.json';
 import { QuizLink } from '@/_data/types/types';
@@ -43,15 +38,17 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   if (currentNodeId == 4 || currentNodeId == 23) {
     currentActions.push({
-      icon: <TfsaCalculatorButton dashboard={true} />,
+      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
       name: 'TFSA Calculator',
+      onClickModal: 'TFSA_modal',
     });
   }
 
   if (currentNodeId == 14) {
     currentActions.push({
-      icon: <FhsaCalculatorButton dashboard={true} />,
+      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
       name: 'FHSA Calculator',
+      onClickModal: 'FHSA_modal',
     });
   }
 
@@ -67,12 +64,14 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   const Defaultactions = [
     {
-      icon: <TfsaCalculatorButton dashboard={true} />,
+      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
       name: 'TFSA Calculator',
+      onClickModal: 'TFSA_modal',
     },
     {
-      icon: <FhsaCalculatorButton dashboard={true} />,
+      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
       name: 'FHSA Calculator',
+      onClickModal: 'FHSA_modal',
     },
     {
       icon: (
@@ -96,14 +95,6 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   return (
     <div className="text-white sm:px-8 p-2 flex flex-row justify-start items-center gap-x-10 rounded-xl">
-      {/* <FaWrench size={35} /> */}
-      {/* <div className="bg-white text-light_blue p-2 rounded-xl">
-          <FaCalculator size={35} />
-        </div>
-        <div className="bg-white text-light_blue p-2 rounded-xl">
-          <FaCalculator size={35} />
-        </div> */}
-
       <ThemeProvider theme={theme}>
         <SpeedDial
           ariaLabel="Toolbox SpeedDial"
@@ -127,6 +118,15 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
               <SpeedDialAction
                 key={action.name}
                 icon={action.icon}
+                onClick={() => {
+                  action.onClickModal
+                    ? (
+                        document.getElementById(
+                          action.onClickModal
+                        )! as HTMLDialogElement
+                      ).showModal()
+                    : null;
+                }}
                 slotProps={{
                   fab: {
                     sx: {

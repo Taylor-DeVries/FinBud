@@ -1,3 +1,4 @@
+'use client';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -13,11 +14,18 @@ import DashboardButton from './Button/Dashboard-Button';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 type DashboardProps = {
-  historyArray: number[];
+  historyData: {
+    loading: boolean;
+    historyArray: number[];
+    error: string;
+    initialState: boolean;
+  };
 };
 
-function Dashboard({ historyArray }: DashboardProps) {
+function Dashboard({ historyData }: DashboardProps) {
   const [loading, setLoading] = useState(true);
+
+  const historyArray = historyData.historyArray;
 
   const { user, isLoading } = useUser();
   const welcomeMessage = user?.name
