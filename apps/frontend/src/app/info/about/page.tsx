@@ -9,7 +9,7 @@ export default function aboutUs() {
         </h2>
         <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm">
           At FinBud, our mission is to make personal finance simple, accessible,
-          and stress-free for young people. We empower individuals with
+          and stress-free for young Canadians. We empower individuals with
           step-by-step guidance, engaging content, and easy-to-understand
           financial advice—eliminating the need for confusing jargon or pushy
           finance bros. More than just education, we strive to be the ultimate
