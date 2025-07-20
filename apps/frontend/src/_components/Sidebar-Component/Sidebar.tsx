@@ -7,6 +7,7 @@ import {
   IconPaw,
   IconSettings,
   IconQuestionMark,
+  IconChartBar,
 } from '@tabler/icons-react';
 import { Navigation } from './Navigation';
 import { SidebarHeader } from './SidebarHeader';
@@ -31,6 +32,11 @@ export const Sidebar = () => {
         imgURL: IconQuestionMark,
         route: '/quiz',
         label: 'Quiz',
+      },
+      {
+        imgURL: IconChartBar,
+        route: '/dashboard',
+        label: 'Dashboard',
       },
       {
         imgURL: IconPaw,

@@ -10,7 +10,6 @@ import dashboardgoals from '@/_data/constants/dashboard-goals.json';
 import { DashboardGoal } from '@/_data/types/types';
 import extendedtext from '@/_data/constants/extendedTexts.json';
 import { QuizText } from '@/_data/types/types';
-import DashboardButton from './Button/Dashboard-Button';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 type DashboardProps = {
@@ -73,7 +72,7 @@ function Dashboard({ historyData }: DashboardProps) {
 
   return (
     <div className="w-full h-full overflow-y-scroll">
-      <div className="flex flex-col gap-y-8 m-8 text-white dark:text-[#333]">
+      <div className="flex flex-col gap-y-8 m-8 ">
         <div className="flex flex-col md:flex-row justify-between">
           <p className="font-bold text-xl sm:text-2xl  drop-shadow-lg dark:text-shadow-none">
             {welcomeMessage}
@@ -102,7 +101,7 @@ function Dashboard({ historyData }: DashboardProps) {
                 label={
                   extendedText.length > 0
                     ? extendedText[currentTextIndex]
-                    : 'Check out the Quiz for your next goal!'
+                    : 'Complete your goal to progress!'
                 }
                 paddingBetween={false}
                 chatBubble={false}
@@ -112,12 +111,12 @@ function Dashboard({ historyData }: DashboardProps) {
 
               <div className="flex flex-row justify-end items-center gap-x-3">
                 {showPrevText() && (
-                  <button className="text-white dark:text-[#333] hover:text-gray-500 text-xl p-2 bg-light_blue rounded-lg">
+                  <button className=" text-xl p-2 bg-light_blue rounded-lg">
                     <FaAngleLeft onClick={() => moveTextIndex(-1)} />
                   </button>
                 )}
                 {showNextText() && (
-                  <button className="text-white dark:text-[#333] hover:text-gray-500 text-xl p-2 bg-light_blue rounded-lg">
+                  <button className=" text-xl p-2 bg-light_blue rounded-lg">
                     <FaAngleRight onClick={() => moveTextIndex(1)} />
                   </button>
                 )}

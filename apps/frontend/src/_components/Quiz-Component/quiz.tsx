@@ -1,5 +1,6 @@
 'use client';
 import { buildQuizData } from '@/_services/buildQuizData';
+import dashboard_goals from '@/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -24,6 +25,7 @@ import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
 import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
 import LinkButton from '../Link-Component/LinkComponent';
+import NavToDashboard from '../Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -47,6 +49,7 @@ export default function QuizPage({ data }) {
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
+  const [showDashboard, setShowDashboard] = React.useState(false);
 
   function getInitialState(data: HistoryState): HistoryState {
     let hist: HistoryState = data;
@@ -138,6 +141,14 @@ export default function QuizPage({ data }) {
         JSON.stringify(historyState.historyArray)
       );
     }
+
+    setShowDashboard(false);
+    for (let i = 0; i < dashboard_goals.goals.length; i++) {
+      if (dashboard_goals.goals[i].id == currentNode.id) {
+        setShowDashboard(true);
+        break;
+      }
+    }
   }, [currentNode]);
 
   useEffect(() => {
@@ -187,6 +198,11 @@ export default function QuizPage({ data }) {
                   {showLink && <LinkButton url={`${currentNode.link}`} />}
                 </div>
 
+                {showDashboard && (
+                  <div className="flex flex-wrap justify-center items-center gap-0">
+                    <NavToDashboard />
+                  </div>
+                )}
                 {showTfsaCalculator && (
                   <div className="flex flex-wrap justify-center items-center gap-0">
                     <TfsaCalculatorButton />

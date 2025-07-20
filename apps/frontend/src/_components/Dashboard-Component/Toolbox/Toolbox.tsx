@@ -1,4 +1,4 @@
-import { FaCalculator, FaWrench } from 'react-icons/fa';
+import { FaCalculator, FaWrench, FaLink } from 'react-icons/fa';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -38,7 +38,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   if (currentNodeId == 4 || currentNodeId == 23) {
     currentActions.push({
-      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
+      icon: <FaCalculator size={45} className="" />,
       name: 'TFSA Calculator',
       onClickModal: 'TFSA_modal',
     });
@@ -46,7 +46,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   if (currentNodeId == 14) {
     currentActions.push({
-      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
+      icon: <FaCalculator size={45} className="" />,
       name: 'FHSA Calculator',
       onClickModal: 'FHSA_modal',
     });
@@ -55,8 +55,9 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
   for (let i = 0; i < Links.length; i++) {
     if (Links[i].id == currentNodeId) {
       currentActions.push({
-        icon: <LinkButton url={Links[i].link} dashboard={true} />,
+        icon: <FaLink size={45} className="" />,
         name: Links[i].link,
+        onClickLink: Links[i].link,
       });
       break;
     }
@@ -64,37 +65,29 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   const Defaultactions = [
     {
-      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
+      icon: <FaCalculator size={45} className="" />,
       name: 'TFSA Calculator',
       onClickModal: 'TFSA_modal',
     },
     {
-      icon: <FaCalculator size={45} className="text-white dark:text-[#333]" />,
+      icon: <FaCalculator size={45} className="" />,
       name: 'FHSA Calculator',
       onClickModal: 'FHSA_modal',
     },
     {
-      icon: (
-        <LinkButton
-          url="https://www.wealthsimple.com/en-ca/spend"
-          dashboard={true}
-        />
-      ),
+      icon: <FaLink size={45} className="" />,
       name: 'https://www.wealthsimple.com/en-ca/spend',
+      onClickLink: 'https://www.wealthsimple.com/en-ca/spend',
     },
     {
-      icon: (
-        <LinkButton
-          url="https://www.wealthsimple.com/en-ca/self-directed-investing"
-          dashboard={true}
-        />
-      ),
+      icon: <FaLink size={45} className="" />,
       name: 'https://www.wealthsimple.com/en-ca/self-directed-investing',
+      onClickLink: 'https://www.wealthsimple.com/en-ca/self-directed-investing',
     },
   ];
 
   return (
-    <div className="text-white sm:px-8 p-2 flex flex-row justify-start items-center gap-x-10 rounded-xl">
+    <div className=" sm:px-8 p-2 flex flex-row justify-start items-center gap-x-10 rounded-xl">
       <ThemeProvider theme={theme}>
         <SpeedDial
           ariaLabel="Toolbox SpeedDial"
@@ -125,6 +118,8 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
                           action.onClickModal
                         )! as HTMLDialogElement
                       ).showModal()
+                    : action.onClickLink
+                    ? window.open(action.onClickLink)
                     : null;
                 }}
                 slotProps={{
