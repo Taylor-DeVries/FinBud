@@ -168,7 +168,7 @@ export default function QuizPage({ data }) {
             {/* Above Texbox area */}
             <div className="flex flex-row items-center justify-between">
               {/* Back button */}
-              <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
+              <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
                 data-tooltip-id="backButton">
                 <IoIosArrowRoundBack
                   onClick={goBack}
@@ -182,18 +182,16 @@ export default function QuizPage({ data }) {
 
               {/* Calculator Buttons */}
               <div className="flex flex-wrap justify-center items-center gap-0">
-                <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 inline-block">
                   {showLink && <LinkButton
                     url={`${currentNode.link}`}
                   />}
-                </div>
 
 
-                <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+                <div className="flex flex-wrap justify-center items-center gap-0">
                   {showTfsaCalculator && <TfsaCalculatorButton />}
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
+                <div className="flex flex-wrap justify-center items-center gap-0">
                   {showFhsaCalculator && <FhsaCalculatorButton />}
                 </div>
 

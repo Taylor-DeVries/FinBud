@@ -18,7 +18,7 @@ const MoreInfoButtons: React.FC<MoreInfoButtonsProps> = ({
     <div className="flex justify-end">
       {showPrevText && (
         <>
-        <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
+        <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center"
         data-tooltip-id="prevTooltip">
           <FaAngleLeft
             onClick={() => moveTextIndex(-1)}
@@ -35,7 +35,7 @@ const MoreInfoButtons: React.FC<MoreInfoButtonsProps> = ({
       {/* When both showPrevText and showNextText are true, show the FaAngleRight icon */}
       {showNextText && showPrevText && (
         <>
-        <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
+        <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center"
         data-tooltip-id="nextTooltip">
           <FaAngleRight
             onClick={() => moveTextIndex(1)}
@@ -54,7 +54,7 @@ const MoreInfoButtons: React.FC<MoreInfoButtonsProps> = ({
         <>
         <div
         onClick={() => moveTextIndex(1)}
-        className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block cursor-pointer"
+        className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center"
         data-tooltip-id="moreInfo"
         >
           <div className="flex h-7 w-7 items-center justify-center relative">

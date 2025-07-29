@@ -7,6 +7,7 @@ import { FaCalculator } from 'react-icons/fa';
 const CalculatorButton = () => {
   return (
     <>
+    <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">
       <button
         className={`sm:flex shadow-none btn border-none`}
         onClick={() =>
@@ -19,7 +20,7 @@ const CalculatorButton = () => {
         {' '}
         <FaCalculator
           className="text-blue"
-          size={45}
+          size={25}
           title="TFSA Calculator"
         ></FaCalculator>
       </button>
@@ -27,6 +28,7 @@ const CalculatorButton = () => {
                   <Tooltip id="tfsaCalculatorButton" place="top" >
                       {`TFSA Calculator`}
                   </Tooltip>
+    </div>
     </>
   );
 };
