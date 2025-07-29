@@ -8,7 +8,7 @@ import {
   setHistoryFunction,
 } from '../../_utils/quiz-functions';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-
+import { Tooltip } from 'react-tooltip';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import Textbox from '@/_components/Textbox-Component/Textbox';
@@ -166,22 +166,28 @@ export default function QuizPage({ data }) {
           {/* Text Area */}
           <div className="2xl:w-[650px] xl:w-[650px] md:w-[450px] sm:w-[400px] w-[300px] text-left rounded-xl mt-12">
             {/* Above Texbox area */}
-            <div className="mb-2 flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center justify-between">
               {/* Back button */}
-              <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 inline-block">
+              <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
+                data-tooltip-id="backButton">
                 <IoIosArrowRoundBack
                   onClick={goBack}
                   className="text-blue h-8 w-8 hover:cursor-pointer"
                 />
               </div>
 
+                    <Tooltip id="backButton" place="top" >
+                        {`Back`}
+                    </Tooltip>
+
               {/* Calculator Buttons */}
-              <div className="flex flex-wrap justify-center items-center gap-0 p-1 mb-2">
-                <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] m-0 inline-block">
+              <div className="flex flex-wrap justify-center items-center gap-0">
+                <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 inline-block">
                   {showLink && <LinkButton
                     url={`${currentNode.link}`}
                   />}
                 </div>
+
 
                 <div className="flex flex-wrap justify-center items-center gap-0 mb-2">
                   {showTfsaCalculator && <TfsaCalculatorButton />}
@@ -193,6 +199,7 @@ export default function QuizPage({ data }) {
 
               </div>
             </div>
+
 
             {/* TextBox */}
             <div className="relative w-full">
@@ -223,7 +230,7 @@ export default function QuizPage({ data }) {
             </div>
 
             {/* Buttons for the answers */}
-            <div className="mt-4">
+            <div className="mt-2">
               <div className="flex flex-col space-y-2">
                 {currentNode.responses.map((response, index) => (
                   <Button

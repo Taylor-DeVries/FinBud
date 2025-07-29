@@ -1,5 +1,6 @@
 // components/MoreInfoButtons.tsx
 import React from "react";
+import { Tooltip } from "react-tooltip";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { SyncLoader } from "react-spinners";
 interface MoreInfoButtonsProps {
@@ -14,31 +15,47 @@ const MoreInfoButtons: React.FC<MoreInfoButtonsProps> = ({
   moveTextIndex,
 }) => {
   return (
-    <div className="mb-2 flex justify-end mt-1">
+    <div className="flex justify-end">
       {showPrevText && (
-        <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
+        <>
+        <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
+        data-tooltip-id="prevTooltip">
           <FaAngleLeft
             onClick={() => moveTextIndex(-1)}
             className="text-blue h-7 w-7 hover:cursor-pointer"
           />
         </div>
+
+                    <Tooltip id="prevTooltip" place="top" >
+                        {`Previous`}
+                    </Tooltip>
+                    </>
       )}
 
       {/* When both showPrevText and showNextText are true, show the FaAngleRight icon */}
       {showNextText && showPrevText && (
-        <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
+        <>
+        <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
+        data-tooltip-id="nextTooltip">
           <FaAngleRight
             onClick={() => moveTextIndex(1)}
             className="text-blue h-7 w-7 hover:cursor-pointer"
           />
         </div>
+
+                    <Tooltip id="nextTooltip" place="top" >
+                        {`Next`}
+                    </Tooltip>
+                    </>
       )}
 
       {/* When showNextText is true and showPrevText is false, show the animation instead of arrow */}
       {showNextText && !showPrevText && (
+        <>
         <div
         onClick={() => moveTextIndex(1)}
         className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block cursor-pointer"
+        data-tooltip-id="moreInfo"
         >
           <div className="flex h-7 w-7 items-center justify-center relative">
             <SyncLoader
@@ -70,6 +87,11 @@ const MoreInfoButtons: React.FC<MoreInfoButtonsProps> = ({
             `}</style>
           </div>
         </div>
+
+                    <Tooltip id="moreInfo" place="top" >
+                        {`More Info`}
+                    </Tooltip>
+                    </>
       )}
     </div>
   );

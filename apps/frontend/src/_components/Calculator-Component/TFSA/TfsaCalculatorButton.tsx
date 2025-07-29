@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Tooltip } from "react-tooltip";
 import { FaCalculator } from 'react-icons/fa';
 
 const CalculatorButton = () => {
@@ -13,13 +14,19 @@ const CalculatorButton = () => {
             document.getElementById('TFSA_modal')! as HTMLDialogElement
           ).showModal()
         }
+        data-tooltip-id="tfsaCalculatorButton"
       >
         {' '}
         <FaCalculator
-          className="text-blue hover:text-gray-500 sm:flex content-top"
+          className="text-blue"
           size={45}
+          title="TFSA Calculator"
         ></FaCalculator>
       </button>
+
+                  <Tooltip id="tfsaCalculatorButton" place="top" >
+                      {`TFSA Calculator`}
+                  </Tooltip>
     </>
   );
 };

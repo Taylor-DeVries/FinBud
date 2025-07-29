@@ -14,7 +14,7 @@ function LinkButton(url) {
                 id="LinkButton"
             >
                 <FaLink
-                    className={`text-blue hover:text-gray-500 m-0 p-0`}
+                    className={`text-blue m-0 p-0`}
                     size={20}
                 ></FaLink>
             </button >
