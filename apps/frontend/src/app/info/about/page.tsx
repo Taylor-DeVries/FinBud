@@ -39,42 +39,42 @@ export default function aboutUs() {
           Our Tenets
         </h2>
         <p className="mt-2 mb-2 lg:text-lg md:text-lg sm:text-md text-sm">
-          <span className="font-bold text-sm">
+          <span className="font-bold">
             Plan for the Future:
           </span>{' '}
           When making decisions, choose solutions that simplify future updates and
           enhancements.
           <br />
           <br />
-          <span className="font-bold text-sm">
+          <span className="font-bold">
             Experiment and Explore:
           </span>{' '}
           Embrace all ideas and test them before dismissing them. Innovation is
           key.
           <br />
           <br />
-          <span className="font-bold text-sm">
+          <span className="font-bold">
             Customer First:
           </span>{' '}
           Always prioritize the customer’s needs, even when it conflicts with
           other interests.
           <br />
           <br />
-          <span className="font-bold text-sm">
+          <span className="font-bold">
             Act Promptly:
           </span>{' '}
           The best time to start is yesterday, but today works too. There’s no
           better time than now to begin.
           <br />
           <br />
-          <span className="font-bold text-sm">
+          <span className="font-bold">
             Embrace Versatility:
           </span>{' '}
           Stay open to learning new skills and exploring new ideas. Flexibility
           enhances growth.
           <br />
           <br />
-          <span className="font-bold text-sm">
+          <span className="font-bold">
             Enjoy Your Work:
           </span>{' '}
           Enjoyment leads to the most productive work. When you love what you do,
