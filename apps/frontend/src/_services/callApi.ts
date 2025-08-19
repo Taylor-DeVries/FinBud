@@ -37,4 +37,18 @@ export async function setHistoryApi(history: string): Promise<void> {
   return;
 }
 
+export async function setProfileImageApi(imageData: string): Promise<void> {
+  const res = await fetch('/api/profile-image', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ imageData }),
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to update profile image');
+  }
+}
+
 
