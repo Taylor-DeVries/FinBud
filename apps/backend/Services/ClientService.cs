@@ -44,6 +44,20 @@ public class ClientService : IClientService
         return await _clientRepository.UpdateAsync(clientDto);
     }
 
+    public async Task<bool> UpdateProfileImageAsync(string id, string imageData)
+    {
+        var existing = await _clientRepository.GetAsync(id);
+        if (existing is null)
+        {
+            var newClient = new Client { Id = id, History = string.Empty, ProfileImage = imageData };
+            return await _clientRepository.CreateAsync(newClient.ToClientDto());
+        }
+
+        var client = existing.ToClientFromClientDTO();
+        client.ProfileImage = imageData;
+        return await _clientRepository.UpdateAsync(client.ToClientDto());
+    }
+
     // public async Task<bool> DeleteAsync(Guid id)
     // {
     //     return await _customerRepository.DeleteAsync(id);

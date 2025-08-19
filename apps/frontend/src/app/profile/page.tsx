@@ -85,38 +85,7 @@ export default function ProfilePage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-2 border-white"></div>
-              <div className="relative">
-                <input
-                  type="file"
-                  id="profile-photo-upload"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      const reader = new FileReader();
-                      reader.onload = (e) => {
-                        const result = e.target?.result as string;
-                        // Update the profile picture immediately for preview
-                        const img = document.querySelector('#profile-photo img') as HTMLImageElement;
-                        if (img) {
-                          img.src = result;
-                        }
-                      };
-                      reader.readAsDataURL(file);
-                    }
-                  }}
-                />
-                <label
-                  htmlFor="profile-photo-upload"
-                  className="absolute -bottom-2 -right-2 w-8 h-8 bg-blue hover:bg-light_blue text-white rounded-full flex items-center justify-center cursor-pointer transition-colors duration-200 shadow-lg border-2 border-white"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                  </svg>
-                </label>
-              </div>
+
             </div>
             <Textbox
               label={`Welcome back, ${activeUser.name}!`}

@@ -14,7 +14,8 @@ namespace backend.Mapping
             return new Client
             {
                 Id = id,
-                History = clientDto.History
+                History = clientDto.History,
+                ProfileImage = string.Empty
             };
         }
 
@@ -32,7 +33,8 @@ namespace backend.Mapping
             return new Client
             {
                 Id = clientDto.Id,
-                History = clientDto.History
+                History = clientDto.History,
+                ProfileImage = clientDto.ProfileImage
             };
         }
 
@@ -41,7 +43,8 @@ namespace backend.Mapping
             return new ClientDto
             {
                 Id = client.Id,
-                History = client.History
+                History = client.History,
+                ProfileImage = client.ProfileImage
             };
         }
 
@@ -49,8 +52,15 @@ namespace backend.Mapping
         {
             return new ViewClientDto
             {
-                History = client.History
+                History = client.History,
+                ProfileImage = client.ProfileImage
             };
+        }
+
+        public static Client UpdateProfileImage(this Client client, string image)
+        {
+            client.ProfileImage = image;
+            return client;
         }
     }
 }
