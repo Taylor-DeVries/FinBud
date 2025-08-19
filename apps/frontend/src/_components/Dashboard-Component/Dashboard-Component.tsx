@@ -11,6 +11,7 @@ import { DashboardGoal } from '@/_data/types/types';
 import extendedtext from '@/_data/constants/extendedTexts.json';
 import { QuizText } from '@/_data/types/types';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { ThemeProvider } from '@/app/settings/providers';
 
 type DashboardProps = {
   historyData: {
@@ -71,10 +72,10 @@ function Dashboard({ historyData }: DashboardProps) {
   }
 
   return (
-    <div className="w-full h-full overflow-y-scroll">
+    <div className="w-full h-full overflow-y-scroll dark:text-[#333] text-white">
       <div className="flex flex-col gap-y-8 m-8 ">
         <div className="flex flex-col md:flex-row justify-between">
-          <p className="font-bold text-xl sm:text-2xl  drop-shadow-lg dark:text-shadow-none">
+          <p className="font-bold text-xl sm:text-2xl  drop-shadow-lg dark:text-shadow-none dark:text-[#333]">
             {welcomeMessage}
           </p>
         </div>

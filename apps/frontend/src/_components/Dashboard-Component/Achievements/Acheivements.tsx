@@ -24,7 +24,9 @@ export default function Acheivements({ historyArray }: AcheivementProps) {
   // console.log(completed);
   return (
     <div className="bg-light_blue  sm:px-8 px-6 py-4 flex flex-col gap-y-2 rounded-xl">
-      <p className=" drop-shadow-lg text-2xl">Current Achievements:</p>
+      <p className=" drop-shadow-lg text-2xl dark:text-[#333]">
+        Current Achievements:
+      </p>
       <div
         className={`flex flex-col gap-y-2 ${
           completed.length == 0

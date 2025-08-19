@@ -87,7 +87,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
   ];
 
   return (
-    <div className=" sm:px-8 p-2 flex flex-row justify-start items-center gap-x-10 rounded-xl">
+    <div className=" sm:px-8 p-2 flex flex-row justify-start items-center gap-x-10 rounded-xl ">
       <ThemeProvider theme={theme}>
         <SpeedDial
           ariaLabel="Toolbox SpeedDial"
@@ -103,7 +103,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
               },
             },
           }}
-          icon={<FaWrench size={45} className=" text-white dark:text-[#444]" />}
+          icon={<FaWrench size={45} className="text-[#283F4A]" />}
           direction="right"
         >
           {(currentActions.length == 0 ? Defaultactions : currentActions).map(
