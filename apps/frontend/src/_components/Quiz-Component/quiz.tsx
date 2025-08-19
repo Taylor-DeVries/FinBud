@@ -170,7 +170,7 @@ export default function QuizPage({ data }) {
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
             <Image
-              src="/images/Fin.webp"
+              src="/images/Fin.png"
               alt="Logo"
               width={300}
               height={300}

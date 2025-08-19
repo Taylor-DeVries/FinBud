@@ -36,7 +36,7 @@ export default async function Page() {
               Sign In to view your Dashboard
             </a>
             <Image
-              src="/images/Fin.webp"
+              src="/images/Fin.png"
               alt="Fin"
               width={400}
               height={400}

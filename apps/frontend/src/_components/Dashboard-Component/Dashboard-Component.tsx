@@ -123,7 +123,7 @@ function Dashboard({ historyData }: DashboardProps) {
               </div>
             </div>
             <Image
-              src="/images/Fin.webp"
+              src="/images/Fin.png"
               alt="Logo"
               width={250}
               height={250}
