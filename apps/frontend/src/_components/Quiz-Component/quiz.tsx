@@ -9,7 +9,7 @@ import {
   setHistoryFunction,
 } from '../../_utils/quiz-functions';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-
+import { Tooltip } from 'react-tooltip';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import Textbox from '@/_components/Textbox-Component/Textbox';
@@ -26,6 +26,7 @@ import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculator
 import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
 import LinkButton from '../Link-Component/LinkComponent';
 import NavToDashboard from '../Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
+import MoreInfoButtons from '../MoreInfo-Component/MoreInfoButtons';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -123,7 +124,7 @@ export default function QuizPage({ data }) {
       setshowTfsaCalculator(true);
     } else setshowTfsaCalculator(false);
 
-    if (currentNode.id == 14) {
+    if (currentNode.id == 14 || currentNode.id == 31) {
       setshowFhsaCalculator(true);
     } else setshowFhsaCalculator(false);
 
@@ -183,7 +184,7 @@ export default function QuizPage({ data }) {
           {/* Text Area */}
           <div className="2xl:w-[650px] xl:w-[650px] md:w-[450px] sm:w-[400px] w-[300px] text-left rounded-xl mt-12">
             {/* Above Texbox area */}
-            <div className="mb-2 flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center justify-between">
               {/* Back button */}
               <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 inline-block">
                 <IoIosArrowRoundBack
@@ -238,40 +239,15 @@ export default function QuizPage({ data }) {
               </div>
 
               {/* MoreInfo Buttons */}
-              <div className="mb-2 flex justify-end mt-1">
-                {showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
-                    <FaAngleLeft
-                      onClick={() => moveTextIndex(-1)}
-                      className="text-blue h-7 w-7 hover:cursor-pointer"
-                    />
-                  </div>
-                ) : null}
-
-                {showNextText && showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
-                    <FaAngleRight
-                      onClick={() => moveTextIndex(1)}
-                      className="text-blue h-7 w-7 hover:cursor-pointer"
-                    />
-                  </div>
-                ) : null}
-
-                {showNextText && !showPrevText ? (
-                  <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block">
-                    <h1
-                      onClick={() => moveTextIndex(1)}
-                      className="text-blue text-3xl text-center h-7 w-7 hover:cursor-pointer leading-none"
-                    >
-                      ...
-                    </h1>
-                  </div>
-                ) : null}
-              </div>
+              <MoreInfoButtons
+                showPrevText={showPrevText}
+                showNextText={showNextText}
+                moveTextIndex={moveTextIndex}
+              />
             </div>
 
             {/* Buttons for the answers */}
-            <div className="mt-4">
+            <div className="mt-2">
               <div className="flex flex-col space-y-2">
                 {currentNode.responses.map((response, index) => (
                   <Button

@@ -41,7 +41,7 @@ export const Sidebar = () => {
       {
         imgURL: IconPaw,
         route: '/characters',
-        label: 'Characters',
+        label: 'Buddies',
       },
       {
         imgURL: IconSettings,

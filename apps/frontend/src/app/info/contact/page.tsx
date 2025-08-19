@@ -39,6 +39,10 @@ export default function contactUs() {
           >
             finbud.team@gmail.com
           </a>
+          <br />
+          <br />
+          <br />
+          <br />
         </p>
       </div>
     </div>
