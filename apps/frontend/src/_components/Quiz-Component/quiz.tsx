@@ -1,5 +1,6 @@
 'use client';
 import { buildQuizData } from '@/_services/buildQuizData';
+import dashboard_goals from '@/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -24,6 +25,7 @@ import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
 import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
 import LinkButton from '../Link-Component/LinkComponent';
+import NavToDashboard from '../Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
 import MoreInfoButtons from '../MoreInfo-Component/MoreInfoButtons';
 
 export default function QuizPage({ data }) {
@@ -31,6 +33,12 @@ export default function QuizPage({ data }) {
   const [historyState, setHistoryState] = React.useState<HistoryState>(
     getInitialState(data)
   );
+
+  sessionStorage.setItem(
+    'userHistory',
+    JSON.stringify(historyState.historyArray)
+  );
+
   const rootNode: Node = buildQuizData();
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const [showNextText, setShowNextText] = useState<boolean>(false);
@@ -42,6 +50,7 @@ export default function QuizPage({ data }) {
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
+  const [showDashboard, setShowDashboard] = React.useState(false);
 
   function getInitialState(data: HistoryState): HistoryState {
     let hist: HistoryState = data;
@@ -133,6 +142,14 @@ export default function QuizPage({ data }) {
         JSON.stringify(historyState.historyArray)
       );
     }
+
+    setShowDashboard(false);
+    for (let i = 0; i < dashboard_goals.goals.length; i++) {
+      if (dashboard_goals.goals[i].id == currentNode.id) {
+        setShowDashboard(true);
+        break;
+      }
+    }
   }, [currentNode]);
 
   useEffect(() => {
@@ -146,8 +163,9 @@ export default function QuizPage({ data }) {
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : ''
-            }`}
+          className={`flex flex-col-reverse sm:flex-row items-center ${
+            loading ? 'hidden' : ''
+          }`}
         >
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
@@ -168,36 +186,37 @@ export default function QuizPage({ data }) {
             {/* Above Texbox area */}
             <div className="flex flex-row items-center justify-between">
               {/* Back button */}
-              <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 mx-1 inline-block"
-                data-tooltip-id="backButton">
+              <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 inline-block">
                 <IoIosArrowRoundBack
                   onClick={goBack}
                   className="text-blue h-8 w-8 hover:cursor-pointer"
                 />
               </div>
 
-                    <Tooltip id="backButton" place="top" >
-                        {`Back`}
-                    </Tooltip>
-
               {/* Calculator Buttons */}
-              <div className="flex flex-wrap justify-center items-center gap-0">
-                  {showLink && <LinkButton
-                    url={`${currentNode.link}`}
-                  />}
-
-
+              <div className="flex flex-row flex-wrap justify-between items-center gap-x-3 p-1 mb-2">
                 <div className="flex flex-wrap justify-center items-center gap-0">
-                  {showTfsaCalculator && <TfsaCalculatorButton />}
+                  {showLink && <LinkButton url={`${currentNode.link}`} />}
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-0">
-                  {showFhsaCalculator && <FhsaCalculatorButton />}
-                </div>
+                {showDashboard && (
+                  <div className="flex flex-wrap justify-center items-center gap-0">
+                    <NavToDashboard />
+                  </div>
+                )}
+                {showTfsaCalculator && (
+                  <div className="flex flex-wrap justify-center items-center gap-0">
+                    <TfsaCalculatorButton />
+                  </div>
+                )}
 
+                {showFhsaCalculator && (
+                  <div className="flex flex-wrap justify-center items-center gap-0">
+                    <FhsaCalculatorButton />
+                  </div>
+                )}
               </div>
             </div>
-
 
             {/* TextBox */}
             <div className="relative w-full">

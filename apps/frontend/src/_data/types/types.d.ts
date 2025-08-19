@@ -24,24 +24,33 @@ export interface Node {
   text: string[];
   link?: string;
   responses: Node[];
-
 }
 
 export interface QuizPath {
-  answer: string,
-  connectId?: number,
-  id: number,
-  mainText?: string,
-  responses: QuizPath[]
+  answer: string;
+  connectId?: number;
+  id: number;
+  mainText?: string;
+  responses: QuizPath[];
 }
 
 export interface QuizText {
-  connectId?: number,
-  id: number,
-  extendedText: string[]
+  connectId?: number;
+  id: number;
+  extendedText: string[];
 }
 
 export interface QuizLink {
-  id: number,
-  link: string
+  id: number;
+  link: string;
+}
+
+export interface DashboardGoal {
+  id: number;
+  goalText: string;
+}
+
+export interface DashboardAchievement {
+  id: number;
+  achievementText: string;
 }

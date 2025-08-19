@@ -16,6 +16,8 @@ module.exports = {
         light_blue_bg: '#f8fafc',
         light_blue_infoPage: '#7C9FB4',
         link_color: '#4343D9',
+        dashboard_blue_bg: '#A4C8DD',
+        dashboard_gray_bg: '#D9D9D9',
       },
       screens: {
         lg: { min: '1025px' }, // screens larger than 1024px

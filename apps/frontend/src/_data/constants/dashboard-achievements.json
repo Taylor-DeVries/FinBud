@@ -1,0 +1,53 @@
+{
+  "achievements": [
+    {
+      "id": 4,
+      "achievementText": "Maxed TFSA with low risk ETFs for goals within next 5 years"
+    },
+
+    {
+      "id": 7,
+      "achievementText": "Matched employer RRSP contributions to the max"
+    },
+
+    {
+      "id": 8,
+      "achievementText": "Maxed RESP with medium risk ETFs"
+    },
+
+    {
+      "id": 9,
+      "achievementText": "Invested in medium risk ETFs in non registered account"
+    },
+
+    {
+      "id": 11,
+      "achievementText": "Eliminated High-Interest Debt"
+    },
+
+    {
+      "id": 14,
+      "achievementText": "Maxed FHSA for First Home Within Next 5 Years with low risk ETFs"
+    },
+
+    {
+      "id": 17,
+      "achievementText": "Maxed RRSP with medium risk ETFs"
+    },
+
+    {
+      "id": 23,
+      "achievementText": "Maxed TFSA with medium risk ETFs for goals more than 5 years from now"
+    },
+
+    {
+      "id": 28,
+      "achievementText": "Saved 6 Months of Living Expenses"
+    },
+
+    {
+      "id": 31,
+      "achievementText": "Maxed FHSA for first home further than 5 years away with low risk ETFs"
+    }
+  ]
+}

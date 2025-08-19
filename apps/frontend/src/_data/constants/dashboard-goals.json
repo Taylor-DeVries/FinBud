@@ -1,0 +1,53 @@
+{
+  "goals": [
+    {
+      "id": 4,
+      "goalText": "Max TFSA with low risk ETFs for goals within next 5 years"
+    },
+
+    {
+      "id": 7,
+      "goalText": "Match employer RRSP contributions to the max"
+    },
+
+    {
+      "id": 8,
+      "goalText": "Max RESP with medium risk ETFs"
+    },
+
+    {
+      "id": 9,
+      "goalText": "Invest in medium risk ETFs in non registered account"
+    },
+
+    {
+      "id": 11,
+      "goalText": "Eliminate High-Interest Debt"
+    },
+
+    {
+      "id": 14,
+      "goalText": "Max FHSA for First Home Within Next 5 Years with low risk ETFs"
+    },
+
+    {
+      "id": 17,
+      "goalText": "Max RRSP with medium risk ETFs"
+    },
+
+    {
+      "id": 23,
+      "goalText": "Max TFSA with medium risk ETFs for goals more than 5 years from now"
+    },
+
+    {
+      "id": 28,
+      "goalText": "Save 6 Months of Living Expenses"
+    },
+
+    {
+      "id": 31,
+      "goalText": "Max FHSA for first home further than 5 years away with low risk ETFs"
+    }
+  ]
+}

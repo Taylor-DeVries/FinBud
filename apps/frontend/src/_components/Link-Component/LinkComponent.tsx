@@ -1,29 +1,34 @@
 'use client';
-import { FaLink } from "react-icons/fa";
-import { Tooltip } from "react-tooltip";
-
-
-function LinkButton(url) {
-    return (
-        <>
-          <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">
-            <button
-                className={`sm:flex shadow-none m-0 px-3 btn border-none `}
-                onClick={() =>
-                    window.open(url.url)
-                }
-                id="LinkButton"
-            >
-                <FaLink
-                    className={`text-blue m-0 p-0`}
-                    size={20}
-                ></FaLink>
-            </button >
-            <Tooltip anchorSelect="#LinkButton" place="top" >
-                {`${url.url}`}
-            </Tooltip>
-          </div>
-        </>
-    )
+import { FaLink } from 'react-icons/fa';
+import { Tooltip } from 'react-tooltip';
+interface LinkButtonProps {
+  dashboard?: boolean; // optional boolean prop
+  url: string;
 }
-export default LinkButton
+
+function LinkButton({ dashboard = false, url }: LinkButtonProps) {
+  return (
+    <>
+      <button
+        className={`sm:flex shadow-none m-0 px-3 btn border-none rounded-xl ${
+          dashboard ? 'bg-transparent' : 'bg-light_blue_bg dark:bg-[#333]'
+        } inline-block `}
+        onClick={() => window.open(url)}
+        id="LinkButton"
+      >
+        <FaLink
+          className={`${
+            dashboard ? 'text-white' : 'text-blue hover:text-gray-500'
+          } m-0 p-0`}
+          size={`${dashboard ? 35 : 20}`}
+        ></FaLink>
+      </button>
+      {!dashboard && (
+        <Tooltip anchorSelect="#LinkButton" place="top">
+          {`${url}`}
+        </Tooltip>
+      )}
+    </>
+  );
+}
+export default LinkButton;
