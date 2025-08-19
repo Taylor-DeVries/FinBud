@@ -44,7 +44,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
     });
   }
 
-  if (currentNodeId == 14) {
+  if (currentNodeId == 14 || currentNodeId == 31) {
     currentActions.push({
       icon: <FaCalculator size={45} className="" />,
       name: 'FHSA Calculator',

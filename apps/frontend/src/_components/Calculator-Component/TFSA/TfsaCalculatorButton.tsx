@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FaCalculator } from 'react-icons/fa';
+import { Tooltip } from 'react-tooltip';
 
 interface TFSAButtonProps {
   dashboard?: boolean; // optional boolean prop
@@ -10,22 +11,24 @@ interface TFSAButtonProps {
 const CalculatorButton: React.FC<TFSAButtonProps> = ({ dashboard = false }) => {
   return (
     <>
-      <button
-        className={`sm:flex shadow-none btn border-none p-0`}
-        onClick={() =>
-          (
-            document.getElementById('TFSA_modal')! as HTMLDialogElement
-          ).showModal()
-        }
-      >
-        {' '}
-        <FaCalculator
-          className={`${
-            dashboard ? 'text-white dark:text-[#333]' : 'text-blue'
-          } hover:text-gray-500 sm:flex content-top`}
-          size={45}
-        ></FaCalculator>
-      </button>
+      <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">
+        <button
+          className={`sm:flex shadow-none btn border-none`}
+          onClick={() =>
+            (
+              document.getElementById('TFSA_modal')! as HTMLDialogElement
+            ).showModal()
+          }
+          data-tooltip-id="tfsaCalculatorButton"
+        >
+          {' '}
+          <FaCalculator className="text-blue" size={25}></FaCalculator>
+        </button>
+
+        <Tooltip id="tfsaCalculatorButton" place="top">
+          {`TFSA Calculator`}
+        </Tooltip>
+      </div>
     </>
   );
 };
