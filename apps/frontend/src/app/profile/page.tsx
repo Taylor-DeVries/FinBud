@@ -9,6 +9,7 @@ import Button from '@/_components/Button-Component/Button';
 import ProfileName from '@/_components/Profile-Name-Component/ProfileName';
 import ProfileEmail from '@/_components/Profile-Email-Component/ProfileEmail';
 import ProfileHeader from '@/_components/Profile-Header-Component/ProfileHeader';
+import ProfileSignOutButton from '@/_components/Profile-Signout_Component/ProfileSignOutButton';
 
 const mockUser = {
   name: 'Test User',
@@ -93,14 +94,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="mt-8 text-center">
-            <a
-              href="/api/auth/logout"
-              className="inline-block text-red-500 hover:text-red-600 font-medium transition-colors duration-200"
-            >
-              Sign Out
-            </a>
-          </div>
+            <ProfileSignOutButton />
         </div>
       </div>
     </ResponsiveImage>
