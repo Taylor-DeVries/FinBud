@@ -72,8 +72,7 @@ function Dashboard({ historyData }: DashboardProps) {
   }
 
   return (
-    <div className="w-full h-full overflow-y-scroll dark:text-[#333] text-white">
-      <div className="flex flex-col gap-y-8 m-8 ">
+      <div className="flex flex-col gap-y-8 m-8 dark:text-[#333] text-white">
         <div className="flex flex-col md:flex-row justify-between">
           <p className="font-bold text-xl sm:text-2xl  drop-shadow-lg dark:text-shadow-none dark:text-[#333]">
             {welcomeMessage}
@@ -124,7 +123,7 @@ function Dashboard({ historyData }: DashboardProps) {
               </div>
             </div>
             <Image
-              src="/images/Fin.webp"
+              src="/images/Fin.png"
               alt="Logo"
               width={250}
               height={250}
@@ -136,7 +135,6 @@ function Dashboard({ historyData }: DashboardProps) {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 export default Dashboard;

@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
             {/* Image container */}
             <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
               <Image
-                src="/images/Fin.webp"
+                src="/images/Fin.png"
                 alt="Logo"
                 width={300}
                 height={300}
