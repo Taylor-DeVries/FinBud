@@ -19,8 +19,8 @@ export default async function Page() {
     return (
       <>
         <ThemeProvider>
-          <div className="h-screen flex justify-center bg-light_blue_infoPage dark:bg-[#444] ">
-            <div className="w-full m-8 bg-dashboard_blue_bg dark:bg-dark_blue rounded-xl">
+          <div className="h-screen w-full flex justify-center bg-dashboard_blue_bg dark:bg-dark_blue p-8">
+            <div className="w-full">
               <Dashboard historyData={data} />
             </div>
           </div>
@@ -30,8 +30,8 @@ export default async function Page() {
   } else {
     return (
       <ThemeProvider>
-        <div className="h-screen flex justify-center bg-light_blue_infoPage dark:bg-[#444]">
-          <div className="w-full m-8 bg-dashboard_blue_bg dark:bg-dark_blue rounded-xl  flex flex-col items-center justify-center gap-y-5 text-3xl text-center">
+        <div className="h-screen w-full flex justify-center items-center bg-dashboard_blue_bg dark:bg-dark_blue p-8">
+          <div className="w-full flex flex-col items-center justify-center gap-y-5 text-3xl text-center">
             <a className="underline" href="/api/auth/login">
               Sign In to view your Dashboard
             </a>
