@@ -110,7 +110,7 @@ function Dashboard({ historyData }: DashboardProps) {
                 dashboard={true}
               />
 
-              <div className="flex flex-row justify-end items-center gap-x-3">
+              <div className="flex flex-row justify-end items-center gap-x-3 dark:text-[#333]">
                 {showPrevText() && (
                   <button className=" text-xl p-2 bg-light_blue rounded-lg">
                     <FaAngleLeft onClick={() => moveTextIndex(-1)} />
