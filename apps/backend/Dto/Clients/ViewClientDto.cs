@@ -8,6 +8,5 @@ namespace backend.Dto.Clients
     public class ViewClientDto
     {
         public string History { get; set; } = string.Empty;
-        public string ProfileImage { get; set; } = string.Empty;
     }
 }

@@ -14,6 +14,5 @@ namespace backend.Models
         public string Sk => Id;
         public string Id { get; set; } = string.Empty;
         public string History { get; set; } = string.Empty;
-        public string ProfileImage { get; set; } = string.Empty;
     }
 }

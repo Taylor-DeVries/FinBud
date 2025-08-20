@@ -12,7 +12,5 @@ public interface IClientService
 
     Task<bool> UpdateAsync(Client client);
 
-    Task<bool> UpdateProfileImageAsync(string id, string imageData);
-
     // Task<bool> DeleteAsync(Guid id);
 }

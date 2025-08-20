@@ -27,11 +27,6 @@ namespace backend.Controllers
       _clientService = clientService;
     }
 
-    public class PutClientProfileImageRequestDto
-    {
-      public string ProfileImage { get; set; } = string.Empty;
-    }
-
     [HttpGet("history")]
     [Authorize]
     public async Task<IActionResult> getClientHistory()
@@ -97,26 +92,6 @@ namespace backend.Controllers
       else
       {
         return Ok(client.ToViewClientDto());
-      }
-    }
-
-    [HttpPut("profile-image")]
-    [Authorize]
-    public async Task<IActionResult> updateProfileImage([FromBody] PutClientProfileImageRequestDto request)
-    {
-      var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-      if (string.IsNullOrEmpty(userId))
-        return NotFound();
-
-      var success = await _clientService.UpdateProfileImageAsync(userId, request.ProfileImage);
-      if (!success)
-      {
-        return StatusCode(500, "Could not update profile image");
-      }
-      else
-      {
-        var updated = await _clientService.GetAsync(userId);
-        return Ok(updated?.ToViewClientDto());
       }
     }
 

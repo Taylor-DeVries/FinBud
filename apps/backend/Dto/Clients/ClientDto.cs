@@ -18,6 +18,5 @@ namespace backend.Dto.Clients
 
         public string History { get; init; } = default!;
 
-        public string ProfileImage { get; init; } = string.Empty;
     }
 }
