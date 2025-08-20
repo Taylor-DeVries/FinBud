@@ -37,4 +37,3 @@ export async function setHistoryApi(history: string): Promise<void> {
   return;
 }
 
-

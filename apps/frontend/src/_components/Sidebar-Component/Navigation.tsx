@@ -58,8 +58,8 @@ export const Navigation = ({
         {/* Creating the sign up link only if user is not logged in */}
         {user ? (
           // eslint-disable-next-line @next/next/no-html-link-for-pages
-          <a
-            href="/api/auth/logout?federated=''"
+          <Link
+            href="/profile"
             className={twMerge(
               'text-slate-500 dark:text-blue hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
             )}
@@ -71,13 +71,12 @@ export const Navigation = ({
                   width={30}
                   height={30}
                   className="rounded-full"
-                  alt={''}
-                ></Image>
-
-                <span className="ml-2 mt-2">Sign out</span>
+                  alt="User avatar"
+                />
+                <span className="ml-2 mt-2">Profile</span>
               </div>
             </div>
-          </a>
+          </Link>
         ) : (
           <Link
             href="/api/auth/login"
@@ -91,7 +90,7 @@ export const Navigation = ({
             <div className="flex flex-row my-2">
               <div className="flex flex-row">
                 <IconUser />
-                <span className="ml-2">Sign in</span>
+                <span className="ml-2 mt-2">Sign in</span>
               </div>
             </div>
           </Link>
