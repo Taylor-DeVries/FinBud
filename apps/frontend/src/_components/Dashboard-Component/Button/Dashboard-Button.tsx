@@ -1,6 +1,6 @@
 export default function DashboardButton({ buttonText }) {
   return (
-    <button className=" bg-white dark:bg-[#444] text-light_blue px-2 py-1 rounded">
+    <button className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">
       {buttonText}
     </button>
   );
