@@ -28,11 +28,7 @@ export default function Acheivements({ historyArray }: AcheivementProps) {
         Current Achievements:
       </p>
       <div
-        className={`flex flex-col gap-y-2 ${
-          completed.length == 0
-            ? 'overflow-y-visible h-auto'
-            : 'overflow-y-scroll h-32'
-        } `}
+        className={`flex flex-col gap-y-2`}
       >
         {completed.length === 0 ? (
           <p className="text-xl drop-shadow-lg"> No Achievements Yet!</p>

@@ -36,7 +36,7 @@ export default function DisclaimerPage() {
                   <Textbox
                     label="Disclaimer"
                     secondaryLabel={
-                      <div className="max-h-48 overflow-y-scroll">
+                      <div>
                         This website is strictly for Canadian users and is for
                         educational and entertainment purposes only. We are not
                         financial advisors, and the content should not be
