@@ -109,6 +109,15 @@ export default function QuizPage({ data }) {
     }
   }
 
+  function checkNodeVisited(id: number): boolean {
+    for (let i = 0; i < historyState.historyArray.length; i++) {
+      if (historyState.historyArray[i] == id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   async function setHistoryAsync() {
     // eslint-disable-next-line prefer-const
     let localHistoryState: HistoryState = await historyState;
@@ -249,13 +258,23 @@ export default function QuizPage({ data }) {
             {/* Buttons for the answers */}
             <div className="mt-2">
               <div className="flex flex-col space-y-2">
-                {currentNode.responses.map((response, index) => (
-                  <Button
-                    key={`response-${index}`}
-                    onClick={() => nextNode(response.connectId ?? response.id)}
-                    label={response.answer}
-                  />
-                ))}
+                {currentNode.responses
+                  .filter((response) => {
+                    let id = response.connectId ?? response.id;
+                    if (id == 8 || id == 17 || id == 9) {
+                      return !checkNodeVisited(id);
+                    }
+                    return true;
+                  })
+                  .map((response, index) => (
+                    <Button
+                      key={`response-${index}`}
+                      onClick={() =>
+                        nextNode(response.connectId ?? response.id)
+                      }
+                      label={response.answer}
+                    />
+                  ))}
               </div>
             </div>
 
