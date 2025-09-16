@@ -6,10 +6,10 @@ interface ProfileEmailProps {
 
 export default function ProfileEmail({ email }: ProfileEmailProps) {
   return (
-    <div className="bg-white/95 dark:bg-gray-900/80 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700/80 backdrop-blur text-gray-900 dark:text-gray-100">
-      <div className="flex items-center space-x-3">
+    <div className="text-left">
+      <div className="bg-blue text-white sm:px-8 px-6 py-4 rounded-xl flex items-center space-x-4">
         {/* Icon */}
-        <div className="w-10 h-10 bg-blue rounded-full flex items-center justify-center">
+        <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
           <svg
             className="w-5 h-5 text-white"
             fill="none"
@@ -25,14 +25,14 @@ export default function ProfileEmail({ email }: ProfileEmailProps) {
           </svg>
         </div>
 
-        {/* Content */}
-        <div className="min-w-0 flex-1">
-          <h3 className="text-sm font-medium text-gray-600 dark:text-gray-300">
+        {/* Text */}
+        <div className="min-w-0">
+          <div className="font-bold text-xl sm:text-2xl dark:text-[#333]">
             Email Address
-          </h3>
-          <p className="text-lg font-semibold text-gray-900 dark:text-gray-100 break-words">
+          </div>
+          <div className="font-semibold text-lg sm:text-xl dark:text-[#333] break-words">
             {email}
-          </p>
+          </div>
         </div>
       </div>
     </div>
