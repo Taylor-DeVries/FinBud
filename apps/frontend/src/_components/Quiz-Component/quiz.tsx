@@ -232,6 +232,7 @@ export default function QuizPage({ data }) {
               <div className="w-full rounded-xl px-1 py-2 relative">
                 <div className="max-h-64">
                   <Textbox
+                    chatBubble
                     secondaryLabel={
                       <TypeAnimation
                         key={`${currentNode.id}-${currentTextIndex}`}
