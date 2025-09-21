@@ -34,10 +34,10 @@ export default function QuizPage({ data }) {
     getInitialState(data)
   );
 
-  sessionStorage.setItem(
-    'userHistory',
-    JSON.stringify(historyState.historyArray)
-  );
+  // sessionStorage.setItem(
+  //   'userHistory',
+  //   JSON.stringify(historyState.historyArray)
+  // );
 
   const rootNode: Node = buildQuizData();
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);

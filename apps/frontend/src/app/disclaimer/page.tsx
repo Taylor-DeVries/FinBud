@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import Button from '@/_components/Button-Component/Button';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 export default function DisclaimerPage() {

@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
 import { Montserrat } from 'next/font/google';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { Metadata } from 'next';
 import { Sidebar } from '@/_components/Sidebar-Component/Sidebar';
 import { ThemeProvider } from './settings/providers';
@@ -25,7 +24,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <UserProvider>
       <ThemeProvider>
         <html lang="en">
           <body className={font.className}>
@@ -36,6 +34,5 @@ export default function RootLayout({
           </body>
         </html>
       </ThemeProvider>
-    </UserProvider>
   );
 }

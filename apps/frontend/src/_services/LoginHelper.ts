@@ -1,4 +1,4 @@
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 
 export  function isLoggedIn() {
   const { user, error, isLoading } = useUser();

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { IconUser } from '@tabler/icons-react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 
 interface SidebarLink {
   imgURL: React.ComponentType;
