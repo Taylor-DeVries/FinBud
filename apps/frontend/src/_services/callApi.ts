@@ -10,7 +10,7 @@ export async function getHistoryApi(): Promise<string> {
     `${process.env.NEXT_PUBLIC_API_URL}/client/history`,
     {
       headers: {
-        Authorization: `Bearer ${accessToken?.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     }
@@ -28,7 +28,7 @@ export async function setHistoryApi(history: string): Promise<void> {
     { history: history },
     {
       headers: {
-        Authorization: `Bearer ${accessToken?.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     }

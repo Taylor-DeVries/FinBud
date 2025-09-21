@@ -130,7 +130,7 @@ function Dashboard({ historyData }: DashboardProps) {
               className=""
               priority
               unoptimized
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
             />
           </div>
         </div>

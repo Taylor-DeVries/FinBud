@@ -186,7 +186,7 @@ export default function QuizPage({ data }) {
               className="w-auto h-auto"
               priority
               unoptimized
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
             />
           </div>
 
