@@ -65,7 +65,7 @@ export default function ProfilePage() {
               centerAlignment={true}
             />
             <div className="mt-4">
-              <Link href="/api/auth/login">
+              <Link href="/auth/login">
                 <Button label="Sign In" onClick={() => {}} />
               </Link>
             </div>

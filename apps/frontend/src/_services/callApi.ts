@@ -6,6 +6,8 @@ import { headers } from 'next/headers';
 export async function getHistoryApi(): Promise<string> {
   const accessToken = await getAccessToken();
 
+  console.log('Access Token:', accessToken);
+
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/client/history`,
     {
