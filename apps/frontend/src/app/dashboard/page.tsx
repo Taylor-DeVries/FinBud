@@ -1,12 +1,5 @@
-// 'use client';
-
-import Textbox from '@/_components/Textbox-Component/Textbox';
-import { useRouter } from 'next/navigation';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 import Dashboard from '@/_components/Dashboard-Component/Dashboard-Component';
-import historystate from '@/_data/types/types';
 import { getHistoryFunction } from '@/_utils/quiz-functions';
-import { getSession } from '@auth0/nextjs-auth0';
 import Image from 'next/image';
 import { ThemeProvider } from '@/app/settings/providers';
 import { auth0 } from '@/lib/auth0';

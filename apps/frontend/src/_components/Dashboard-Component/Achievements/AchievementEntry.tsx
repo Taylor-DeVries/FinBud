@@ -1,5 +1,5 @@
 import DashboardButton from '@/_components/Dashboard-Component/Button/Dashboard-Button';
-export default function AcheivementEntry({
+export default function AchievementEntry({
   achievementName,
   status,
   buttonText,
