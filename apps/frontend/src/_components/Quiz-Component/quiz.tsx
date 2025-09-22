@@ -34,10 +34,10 @@ export default function QuizPage({ data }) {
     getInitialState(data)
   );
 
-  sessionStorage.setItem(
-    'userHistory',
-    JSON.stringify(historyState.historyArray)
-  );
+  // sessionStorage.setItem(
+  //   'userHistory',
+  //   JSON.stringify(historyState.historyArray)
+  // );
 
   const rootNode: Node = buildQuizData();
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
@@ -186,7 +186,7 @@ export default function QuizPage({ data }) {
               className="w-auto h-auto"
               priority
               unoptimized
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
             />
           </div>
 

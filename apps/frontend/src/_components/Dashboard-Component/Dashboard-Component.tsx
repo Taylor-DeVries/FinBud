@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Goal from '@/_components/Dashboard-Component/Goal/Goal';
 import Acheivements from '@/_components/Dashboard-Component/Achievements/Acheivements';
 import Toolbox from './Toolbox/Toolbox';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 import dashboardgoals from '@/_data/constants/dashboard-goals.json';
 import { DashboardGoal } from '@/_data/types/types';
 import extendedtext from '@/_data/constants/extendedTexts.json';
@@ -130,7 +130,7 @@ function Dashboard({ historyData }: DashboardProps) {
               className=""
               priority
               unoptimized
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
             />
           </div>
         </div>

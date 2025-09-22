@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { IconUser } from '@tabler/icons-react';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 
 interface SidebarLink {
   imgURL: React.ComponentType;
@@ -24,7 +24,7 @@ export const Navigation = ({
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <></>;
-  if (error) return <div>{error.message}</div>;
+  // if (error) return <div>{error.message}</div>;
 
   const isActive = (href: string) => pathname === href;
 
@@ -79,7 +79,7 @@ export const Navigation = ({
           </Link>
         ) : (
           <Link
-            href="/api/auth/login"
+            href="/auth/login"
             className={twMerge(
               'text-slate-500 dark:text-blue hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
             )}

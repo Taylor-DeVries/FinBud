@@ -1,6 +1,6 @@
 'use client';
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 import Image from 'next/image';
 import Link from 'next/link';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
@@ -65,7 +65,7 @@ export default function ProfilePage() {
               centerAlignment={true}
             />
             <div className="mt-4">
-              <Link href="/api/auth/login">
+              <Link href="/auth/login">
                 <Button label="Sign In" onClick={() => {}} />
               </Link>
             </div>
