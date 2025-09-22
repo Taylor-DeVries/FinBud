@@ -39,6 +39,7 @@ export default function Achievements({ historyArray }: AchievementProps) {
         ) : (
           completed.map((achievement) => (
             <AchievementEntry
+              key={achievement.id}
               achievementName={achievement.achievementText}
               status="Completed"
               buttonText="View Details"
