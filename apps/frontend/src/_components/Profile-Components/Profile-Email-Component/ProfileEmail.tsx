@@ -6,13 +6,8 @@ interface ProfileEmailProps {
 
 export default function ProfileEmail({ email }: ProfileEmailProps) {
   return (
-<<<<<<< HEAD:apps/frontend/src/_components/Profile-Email-Component/ProfileEmail.tsx
     <div className="text-left">
       <div className="bg-blue text-white sm:px-8 px-6 py-4 rounded-xl flex items-center space-x-4">
-=======
-    <div className="bg-white/95 dark:bg-[#333] rounded-xl p-6 shadow-lg backdrop-blur text-gray-900 dark:text-gray-100">
-      <div className="flex items-center space-x-3">
->>>>>>> origin/main:apps/frontend/src/_components/Profile-Components/Profile-Email-Component/ProfileEmail.tsx
         {/* Icon */}
         <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
           <svg
