@@ -1,21 +1,19 @@
 import QuizPage from '@/_components/Quiz-Component/quiz';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 import { getHistoryFunction } from '@/_utils/quiz-functions';
-import { getSession } from '@auth0/nextjs-auth0';
 
 export default async function Page() {
-  const session = await getSession();
 
-  if (session) {
-    const data = await getHistoryFunction();
+  try {  
+  const data = await getHistoryFunction();
     return (
       <ResponsiveImage>
         <QuizPage data={data}></QuizPage>
       </ResponsiveImage>
     );
   }
-
-  return (
+  catch (error) {
+return (
     <ResponsiveImage>
       <QuizPage
         data={{
@@ -27,4 +25,8 @@ export default async function Page() {
       ></QuizPage>
     </ResponsiveImage>
   );
+  }
 }
+
+  
+

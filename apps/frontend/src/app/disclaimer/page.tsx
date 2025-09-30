@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import Button from '@/_components/Button-Component/Button';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 export default function DisclaimerPage() {
@@ -21,8 +21,8 @@ export default function DisclaimerPage() {
   };
 
   function saveQuizURLtoSessionStorage() {
-    sessionStorage.setItem("url", '/quiz');
-    router.push('api/auth/login');
+    sessionStorage.setItem('url', '/quiz');
+    router.push('/auth/login');
   }
 
   return (
@@ -42,9 +42,9 @@ export default function DisclaimerPage() {
                         financial advisors, and the content should not be
                         considered professional financial advice. The content is
                         designed to be simple and may not meet everyone's
-                        financial needs or goals. Please note that the website is
-                        still in development, and content may change. Consult a
-                        certified financial professional before making any
+                        financial needs or goals. Please note that the website
+                        is still in development, and content may change. Consult
+                        a certified financial professional before making any
                         financial decisions.
                       </div>
                     }
@@ -74,10 +74,7 @@ export default function DisclaimerPage() {
                       />
                       <Button
                         label="Create an account or sign in"
-                        onClick={
-                          () => saveQuizURLtoSessionStorage()
-                        }
-
+                        onClick={() => saveQuizURLtoSessionStorage()}
                       />
                     </div>
                   </div>

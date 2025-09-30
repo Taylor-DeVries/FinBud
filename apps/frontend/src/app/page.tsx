@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
                 className="w-auto h-auto"
                 priority
                 unoptimized
-                onLoadingComplete={() => setLoading(false)}
+                onLoad={() => setLoading(false)}
               />
             </div>
 

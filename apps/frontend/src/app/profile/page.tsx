@@ -1,15 +1,15 @@
 'use client';
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 import Image from 'next/image';
 import Link from 'next/link';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import Button from '@/_components/Button-Component/Button';
-import ProfileName from '@/_components/Profile-Name-Component/ProfileName';
-import ProfileEmail from '@/_components/Profile-Email-Component/ProfileEmail';
-import ProfileHeader from '@/_components/Profile-Header-Component/ProfileHeader';
-import ProfileSignOutButton from '@/_components/Profile-Signout_Component/ProfileSignOutButton';
+import ProfileName from '@/_components/Profile-Components/Profile-Name-Component/ProfileName';
+import ProfileEmail from '@/_components/Profile-Components/Profile-Email-Component/ProfileEmail';
+import ProfileHeader from '@/_components/Profile-Components/Profile-Header-Component/ProfileHeader';
+import ProfileSignOutButton from '@/_components/Profile-Components/Profile-Signout_Component/ProfileSignOutButton';
 
 const mockUser = {
   name: 'Test User',
@@ -29,10 +29,7 @@ export default function ProfilePage() {
       <ResponsiveImage>
         <div className="h-screen flex items-center justify-center">
           <div className="text-center">
-            <Textbox
-              label="Loading your profile..."
-              centerAlignment={true}
-            />
+            <Textbox label="Loading your profile..." centerAlignment={true} />
           </div>
         </div>
       </ResponsiveImage>
@@ -65,7 +62,7 @@ export default function ProfilePage() {
               centerAlignment={true}
             />
             <div className="mt-4">
-              <Link href="/api/auth/login">
+              <Link href="/auth/login">
                 <Button label="Sign In" onClick={() => {}} />
               </Link>
             </div>
@@ -80,7 +77,7 @@ export default function ProfilePage() {
       <div className="h-screen flex items-center justify-center">
         <div className="w-full max-w-lg mx-auto px-6 sm:px-8">
           {/* Profile Header */}
-            <ProfileHeader name={activeUser.name} picture={activeUser.picture} />
+          <ProfileHeader name={activeUser.name} picture={activeUser.picture} />
 
           {/* Profile Information */}
           <div className="space-y-4">
@@ -89,12 +86,10 @@ export default function ProfilePage() {
 
             {/* Email Section */}
             <ProfileEmail email={activeUser.email} />
-
-
           </div>
 
           {/* Action Buttons */}
-            <ProfileSignOutButton />
+          <ProfileSignOutButton />
         </div>
       </div>
     </ResponsiveImage>

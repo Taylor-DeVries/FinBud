@@ -8,15 +8,12 @@ import {
   isPrevAvailable,
   setHistoryFunction,
 } from '../../_utils/quiz-functions';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import { Tooltip } from 'react-tooltip';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import Textbox from '@/_components/Textbox-Component/Textbox';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import TfsaCalculatorComponent from '../Calculator-Component/TFSA/TfsaCalculatorComponent';
 import React from 'react';
-// import FhsaCalculatorButton from '../Calculator-Component/FhsaCalculatorComponent';
 import { useRouter } from 'next/navigation';
 import TfsaCalculatorButton from '../Calculator-Component/TFSA/TfsaCalculatorButton';
 import { HistoryState, Node } from '@/_data/types/types';
@@ -32,11 +29,6 @@ export default function QuizPage({ data }) {
   const router = useRouter();
   const [historyState, setHistoryState] = React.useState<HistoryState>(
     getInitialState(data)
-  );
-
-  sessionStorage.setItem(
-    'userHistory',
-    JSON.stringify(historyState.historyArray)
   );
 
   const rootNode: Node = buildQuizData();
@@ -186,7 +178,7 @@ export default function QuizPage({ data }) {
               className="w-auto h-auto"
               priority
               unoptimized
-              onLoadingComplete={() => setLoading(false)}
+              onLoad={() => setLoading(false)}
             />
           </div>
 
