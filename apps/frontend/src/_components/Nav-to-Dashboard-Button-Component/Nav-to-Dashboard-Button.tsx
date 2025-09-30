@@ -1,10 +1,8 @@
 'use client';
-// import { FaLink } from 'react-icons/fa';
 import { IconChartBar } from '@tabler/icons-react';
 import { Tooltip } from 'react-tooltip';
 
 function NavToDashboard() {
-  // const navigate = useNavigate();
   return (
     <>
       <button
