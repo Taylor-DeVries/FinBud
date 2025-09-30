@@ -24,7 +24,6 @@ export const Navigation = ({
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <></>;
-  // if (error) return <div>{error.message}</div>;
 
   const isActive = (href: string) => pathname === href;
 

@@ -20,8 +20,6 @@ export default function Achievements({ historyArray }: AchievementProps) {
     }
   }
 
-  // console.log(historyArray);
-  // console.log(completed);
   return (
     <div className="bg-light_blue  sm:px-8 px-6 py-4 flex flex-col gap-y-2 rounded-xl">
       <p className=" drop-shadow-lg text-2xl dark:text-[#333]">
