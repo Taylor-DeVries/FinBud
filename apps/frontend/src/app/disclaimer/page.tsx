@@ -35,8 +35,9 @@ export default function DisclaimerPage() {
                 <div className="relative lg:w-2/3 sm:w-full justify-center mx-auto">
                   <Textbox
                     label="Disclaimer"
+
                     secondaryLabel={
-                      <div>
+                      <div  className="text-sm leading-tight mt-1">
                         This website is strictly for Canadian users and is for
                         educational and entertainment purposes only. We are not
                         financial advisors, and the content should not be
@@ -48,7 +49,7 @@ export default function DisclaimerPage() {
                         financial decisions.
                       </div>
                     }
-                    paddingBetween={true}
+                    paddingBetween={false}
                     centerAlignment={true}
                   />
                   <div className="mt-4 flex flex-col">

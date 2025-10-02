@@ -1,41 +1,36 @@
 import React from 'react';
 
-interface TextBoxProps {
+interface ChatBubbleProps {
   label?: React.ReactNode;
   secondaryLabel?: React.ReactNode;
   paddingBetween?: boolean;
-  chatBubble?: boolean;
   centerAlignment?: boolean;
-  dashboard?: boolean;
+  align?: 'start' | 'end';
 }
 
-const Textbox: React.FC<TextBoxProps> = ({
+const ChatBubble: React.FC<ChatBubbleProps> = ({
   label,
   secondaryLabel,
   paddingBetween,
-  chatBubble,
   centerAlignment,
-  dashboard = false,
+  align = 'start',
 }) => {
   return (
     <div
-      className={`text-left ${
-        chatBubble ? 'sm:chat sm:chat-start sm:ml-0 ml-7' : ''
-      }`}
+      className={`chat chat-${align} w-full !max-w-none !p-0`}
+      // override DaisyUI chat limits
     >
       <div
         className={`
-          ${dashboard ? 'bg-light_blue text-white sm:px-8 px-6 py-4 rounded-xl' : 'bg-blue text-white sm:px-8 px-6 py-4 rounded-xl'}
-          ${chatBubble ? 'chat-bubble w-[calc(100%+2rem)] -ml-4 sm:w-auto sm:ml-0' : ''}
+          chat-bubble bg-blue text-white
+          sm:px-8 px-6 py-4 rounded-xl
+          w-[calc(100%+2rem)]   /* make it overflow both sides */
+          -ml-1                 /* pull it left */
           ${centerAlignment ? 'text-center' : ''}
         `}
       >
         {label && (
-          <div
-            className={`font-bold ${
-              dashboard ? 'text-base sm:text-base' : 'text-xl sm:text-2xl'
-            } dark:text-[#333]`}
-          >
+          <div className="font-bold text-xl sm:text-2xl dark:text-[#333]">
             {label}
           </div>
         )}
@@ -54,4 +49,4 @@ const Textbox: React.FC<TextBoxProps> = ({
   );
 };
 
-export default Textbox;
+export default ChatBubble;

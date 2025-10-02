@@ -11,6 +11,7 @@ import {
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import Textbox from '@/_components/Textbox-Component/Textbox';
+import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import TfsaCalculatorComponent from '../Calculator-Component/TFSA/TfsaCalculatorComponent';
 import React from 'react';
@@ -219,12 +220,11 @@ export default function QuizPage({ data }) {
               </div>
             </div>
 
-            {/* TextBox */}
+            {/* ChatBubble */}
             <div className="relative w-full">
-              <div className="w-full rounded-xl px-1 py-2 relative">
-                <div className="max-h-64">
-                  <Textbox
-                    chatBubble
+              <div className="w-[117%] -ml-6 rounded-xl px-3 py-4 relative">
+                <div className="w-full relative before:content-[''] before:absolute before:-left-2 before:top-4 before:border-8 before:border-transparent before:border-r-blue-500">
+                  <ChatBubble
                     secondaryLabel={
                       <TypeAnimation
                         key={`${currentNode.id}-${currentTextIndex}`}
