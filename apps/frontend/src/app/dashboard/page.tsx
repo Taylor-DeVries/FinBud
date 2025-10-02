@@ -13,7 +13,7 @@ export default async function Page() {
     return (
       <>
         <ThemeProvider>
-          <div className="h-screen w-full flex justify-center bg-dashboard_blue_bg dark:bg-dark_blue p-8">
+          <div className="h-screen w-full flex justify-center bg-dashboard_blue_bg dark:bg-[#2C3E50] p-8">
             <div className="w-full">
               <Dashboard historyData={data} />
             </div>

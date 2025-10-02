@@ -1,5 +1,6 @@
 'use client';
 import Textbox from '@/_components/Textbox-Component/Textbox';
+import DashboardTextbox from './DashboardTextbox/DashboardTextbox';
 import Image from 'next/image';
 import { useState } from 'react';
 import Goal from '@/_components/Dashboard-Component/Goal/Goal';
@@ -42,7 +43,29 @@ function Dashboard({ historyData }: DashboardProps) {
     }
   }
 
-  console.log(historyArray);
+  // Calculate quiz progress
+  const totalGoals = goals.length;
+  const completedGoals = historyArray.length - 1; // Subtract 1 for starting node
+  const progressPercentage = Math.min(100, Math.round((completedGoals / totalGoals) * 100));
+
+  // Generate encouraging message based on progress
+  const getEncouragingMessage = () => {
+    if (progressPercentage === 0) {
+      return { text: "Let's get started!", emoji: "🚀" };
+    } else if (progressPercentage < 25) {
+      return { text: "Great start!", emoji: "🌟" };
+    } else if (progressPercentage < 50) {
+      return { text: "You're doing amazing!", emoji: "💪" };
+    } else if (progressPercentage < 75) {
+      return { text: "Finance bro incoming!", emoji: "🔥" };
+    } else if (progressPercentage < 100) {
+      return { text: "You totally Rock!", emoji: "⭐" };
+    } else {
+      return { text: "You did it!", emoji: "🎉" };
+    }
+  };
+
+  const encouragement = getEncouragingMessage();
 
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
   const quizText: QuizText[] = extendedtext.extendedTexts as QuizText[];
@@ -71,66 +94,89 @@ function Dashboard({ historyData }: DashboardProps) {
   }
 
   return (
-    <div className="flex flex-col gap-y-8 m-8 dark:text-[#333] text-white">
-      <div className="flex flex-col md:flex-row justify-between">
-        <p className="font-bold text-xl sm:text-2xl  drop-shadow-lg dark:text-shadow-none dark:text-[#333]">
+    <div className="flex flex-col gap-y-4 sm:gap-y-6 max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
+      {/* Header with Encouragement */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl text-white dark:text-gray-800 drop-shadow-md">
           {welcomeMessage}
-        </p>
+        </h1>
+        
+        {/* Encouraging Message Badge */}
+        <div className="flex items-center gap-2 bg-light_blue dark:bg-[#333] backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-md">
+          <span className="text-2xl" role="img" aria-label="encouragement">
+            {encouragement.emoji}
+          </span>
+          <span className="font-semibold text-sm sm:text-base text-white dark:text-blue">
+            {encouragement.text}
+          </span>
+        </div>
       </div>
 
+      {/* Current Goal */}
       <div className="w-full">
-        <Goal goal={goalText} percentage={78} />
+        <Goal goal={goalText} percentage={progressPercentage} />
       </div>
 
-      <div className="flex flex-col md:flex-row lg:flex-row w-full justify-between items-start gap-x-5 md:gap-y-5 lg:gap-y-5 gap-y-5 ">
-        <div className="flex flex-col gap-y-8 w-full md:w-2/3">
-          <div className="w-full">
-            {/* <Textbox label="current acheivements"></Textbox> */}
-            <Acheivements historyArray={historyArray} />
-          </div>
-
-          <div>
-            <Toolbox historyArray={historyArray} />
-          </div>
+      {/* Main Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+        {/* Left Column - Achievements & Toolbox */}
+        <div className="lg:col-span-2 flex flex-col gap-y-4 sm:gap-y-6">
+          <Acheivements historyArray={historyArray} />
+          <Toolbox historyArray={historyArray} />
         </div>
 
-        <div className="flex flex-col justify-end items-center lg:items-between md:items-between h-full md:w-1/2 gap-y-8">
-          <div className="w-80 flex flex-col gap-y-3 ">
-            <Textbox
+        {/* Right Column - Fin & Tips */}
+        <div className="flex flex-col items-center gap-y-4 sm:gap-y-6">
+          {/* Financial Tips */}
+          <div className="w-full max-w-sm ">
+            <DashboardTextbox
               label={
                 extendedText.length > 0
                   ? extendedText[currentTextIndex]
                   : 'Complete your goal to progress!'
               }
               paddingBetween={false}
-              chatBubble={false}
               centerAlignment={false}
-              dashboard={true}
             />
 
-            <div className="flex flex-row justify-end items-center gap-x-3 dark:text-[#333]">
-              {showPrevText() && (
-                <button className=" text-xl p-2 bg-light_blue rounded-lg">
-                  <FaAngleLeft onClick={() => moveTextIndex(-1)} />
-                </button>
-              )}
-              {showNextText() && (
-                <button className=" text-xl p-2 bg-light_blue rounded-lg">
-                  <FaAngleRight onClick={() => moveTextIndex(1)} />
-                </button>
-              )}
-            </div>
+            {/* Tip Navigation */}
+            {extendedText.length > 1 && (
+              <div className="flex justify-end items-center gap-2 mt-3">
+                {showPrevText() && (
+                  <button 
+                    onClick={() => moveTextIndex(-1)}
+                    className="p-2 sm:p-2.5 bg-light_blue hover:bg-blue-400 dark:bg-[#333] dark:hover:bg-gray-600 text-white rounded-lg transition-colors shadow-sm active:scale-95"
+                    aria-label="Previous tip"
+                  >
+                    <FaAngleLeft className="text-base sm:text-lg" />
+                  </button>
+                )}
+                {showNextText() && (
+                  <button 
+                    onClick={() => moveTextIndex(1)}
+                    className="p-2 sm:p-2.5 bg-light_blue hover:bg-blue-400 dark:bg-[#333] dark:hover:bg-gray-600 text-white rounded-lg transition-colors shadow-sm active:scale-95"
+                    aria-label="Next tip"
+                  >
+                    <FaAngleRight className="text-base sm:text-lg" />
+                  </button>
+                )}
+              </div>
+            )}
           </div>
-          <Image
-            src="/images/Fin.png"
-            alt="Logo"
-            width={250}
-            height={250}
-            className=""
-            priority
-            unoptimized
-            onLoad={() => setLoading(false)}
-          />
+
+          {/* Fin Character */}
+          <div className="mt-2 sm:mt-4">
+            <Image
+              src="/images/Fin.png"
+              alt="Fin the Financial Buddy"
+              width={200}
+              height={200}
+              className="drop-shadow-lg w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56"
+              priority
+              unoptimized
+              onLoad={() => setLoading(false)}
+            />
+          </div>
         </div>
       </div>
     </div>
