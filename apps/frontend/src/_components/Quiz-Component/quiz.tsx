@@ -222,9 +222,9 @@ export default function QuizPage({ data }) {
 
             {/* ChatBubble */}
             <div className="relative w-full">
-              <div className="w-[117%] -ml-6 rounded-xl px-3 py-4 relative">
-                <div className="w-full relative before:content-[''] before:absolute before:-left-2 before:top-4 before:border-8 before:border-transparent before:border-r-blue-500">
+                <div className="max-h-64 mt-2">
                   <ChatBubble
+                    align="start"
                     secondaryLabel={
                       <TypeAnimation
                         key={`${currentNode.id}-${currentTextIndex}`}
@@ -238,7 +238,6 @@ export default function QuizPage({ data }) {
                     }
                   />
                 </div>
-              </div>
 
               {/* MoreInfo Buttons */}
               <MoreInfoButtons

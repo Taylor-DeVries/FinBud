@@ -17,15 +17,15 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
 }) => {
   return (
     <div
-      className={`chat chat-${align} w-full !max-w-none !p-0`}
+      className={`chat-${align} w-full !max-w-none !p-0`}
       // override DaisyUI chat limits
     >
       <div
         className={`
           chat-bubble bg-blue text-white
           sm:px-8 px-6 py-4 rounded-xl
-          w-[calc(100%+2rem)]   /* make it overflow both sides */
-          -ml-1                 /* pull it left */
+          w-full !max-w-none block  /* force full width, override DaisyUI cap */
+          -ml-0
           ${centerAlignment ? 'text-center' : ''}
         `}
       >
