@@ -22,6 +22,8 @@ import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
 import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
+import AllocationCalculatorComponent from '../Calculator-Component/Allocation/AllocationCalculatorComponent';
+import AllocationCalculatorButton from '../Calculator-Component/Allocation/AllocationCalculatorButton';
 import LinkButton from '../Link-Component/LinkComponent';
 import NavToDashboard from '../Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
 import MoreInfoButtons from '../MoreInfo-Component/MoreInfoButtons';
@@ -42,6 +44,7 @@ export default function QuizPage({ data }) {
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
+  const [showAllocationCalculator, setShowAllocationCalculator] = React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
   const [showDashboard, setShowDashboard] = React.useState(false);
 
@@ -122,13 +125,44 @@ export default function QuizPage({ data }) {
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
 
-    if (currentNode.id == 4 || currentNode.id == 23) {
-      setshowTfsaCalculator(true);
-    } else setshowTfsaCalculator(false);
-
-    if (currentNode.id == 14 || currentNode.id == 31) {
-      setshowFhsaCalculator(true);
-    } else setshowFhsaCalculator(false);
+    switch (currentNode.id) {
+      case 4:
+        setshowTfsaCalculator(true);
+        setShowAllocationCalculator(true);
+        break;
+      case 23:
+        setshowTfsaCalculator(true);
+        setShowAllocationCalculator(true);
+        break;
+      case 14:
+        setshowFhsaCalculator(true);
+        setShowAllocationCalculator(true);
+        break;
+      case 31:
+        setshowFhsaCalculator(true);
+        setShowAllocationCalculator(true);
+        break;
+      case 8:
+        setShowAllocationCalculator(true);
+        break;
+      case 17:
+        setShowAllocationCalculator(true);
+        break;
+      case 9:
+        setShowAllocationCalculator(true);
+        break;
+      case 28:
+        setShowAllocationCalculator(true);
+        break;
+      case 7:
+        setShowAllocationCalculator(true);
+        break;
+      default:
+        setShowAllocationCalculator(false);
+        setshowTfsaCalculator(false);
+        setshowFhsaCalculator(false);
+        break;
+    }
 
     if (currentNode.link) {
       setShowLink(true);
@@ -217,6 +251,12 @@ export default function QuizPage({ data }) {
                     <FhsaCalculatorButton />
                   </div>
                 )}
+
+                {showAllocationCalculator && (
+                  <div className="flex flex-wrap justify-center items-center gap-0">
+                    <AllocationCalculatorButton />
+                  </div>
+                )}
               </div>
             </div>
 
@@ -272,6 +312,7 @@ export default function QuizPage({ data }) {
 
             <TfsaCalculatorComponent />
             <FhsaCalculatorComponent />
+            <AllocationCalculatorComponent />
           </div>
         </div>
       </div>

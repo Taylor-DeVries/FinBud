@@ -1,10 +1,11 @@
-import { FaCalculator, FaWrench, FaLink } from 'react-icons/fa';
+import { FaCalculator, FaWrench, FaLink, FaBullseye } from 'react-icons/fa';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import TfsaCalculatorComponent from '@/_components/Calculator-Component/TFSA/TfsaCalculatorComponent';
 import FhsaCalculatorComponent from '@/_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
+import AllocationCalculatorComponent from '@/_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
 import LinkButton from '@/_components/Link-Component/LinkComponent';
 import links from '@/_data/constants/links.json';
 import { QuizLink } from '@/_data/types/types';
@@ -73,6 +74,11 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
       icon: <FaCalculator size={45} className="" />,
       name: 'FHSA Calculator',
       onClickModal: 'FHSA_modal',
+    },
+    {
+      icon: <FaBullseye size={45} className="" />,
+      name: 'Allocation Calculator',
+      onClickModal: 'Allocation_modal',
     },
     {
       icon: <FaLink size={45} className="" />,
@@ -150,6 +156,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
       <TfsaCalculatorComponent />
       <FhsaCalculatorComponent />
+      <AllocationCalculatorComponent />
     </div>
   );
 }
