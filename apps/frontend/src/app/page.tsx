@@ -55,6 +55,8 @@ const HomePage: React.FC = () => {
 
             {/* Text Area */}
             <div className="sm:w-2/3 sm:mr-10 text-left rounded-xl mt-12">
+
+              <div className ="flex flex-col items-center w-fit mx-auto">
               <Textbox
                 label={
                   <Title />
@@ -62,11 +64,12 @@ const HomePage: React.FC = () => {
                 chatBubble
               />
 
-              <div className="mt-4 flex justify-center">
+              <div className="mt-4">
                 <Button
                   label={isLoggedIn() ? 'Resume My Journey' : 'Start My Journey'  }
                   onClick={() => router.push('/disclaimer')}
                 />
+              </div>
               </div>
             </div>
           </div>

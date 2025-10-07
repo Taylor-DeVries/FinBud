@@ -18,7 +18,7 @@ function LinkButton({ dashboard = false, url }: LinkButtonProps) {
       >
         <FaLink
           className={`${
-            dashboard ? 'text-white' : 'text-blue hover:text-gray-500'
+            dashboard ? 'text-white' : 'text-blue'
           } m-0 p-0`}
           size={`${dashboard ? 35 : 20}`}
         ></FaLink>

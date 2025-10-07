@@ -5,18 +5,20 @@ import { Tooltip } from 'react-tooltip';
 function NavToDashboard() {
   return (
     <>
+    <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">
       <button
-        className={`sm:flex shadow-none m-0 px-3 btn border-none rounded-xl bg-light_blue_bg dark:bg-[#333] inline-block text-blue hover:text-gray-500 `}
+        className={`sm:flex shadow-none btn border-none`}
         id="NavToDashboard"
       >
         <a href="/dashboard">
-          <IconChartBar />
+          <IconChartBar className="text-blue" size={25} />
         </a>
       </button>
 
       <Tooltip anchorSelect="#NavToDashboard" place="top">
         Dashboard
       </Tooltip>
+      </div>
     </>
   );
 }
