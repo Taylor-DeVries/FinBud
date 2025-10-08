@@ -8,7 +8,10 @@ export default async function Page() {
   const session = await auth0.getSession();
 
   if (session) {
-    const data = await getHistoryFunction();
+    const histTest = await getHistoryFunction();
+    console.log('histTest:', histTest);
+
+    const data = histTest;
 
     return (
       <>
