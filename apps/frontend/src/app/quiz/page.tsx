@@ -5,7 +5,6 @@ import { getHistoryFunction } from '@/_utils/quiz-functions';
 export default async function Page() {
 
   try {  
-  // const data = await getHistoryFunction();
   const data = await getHistoryFunction();
     return (
       <ResponsiveImage>

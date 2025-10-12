@@ -67,36 +67,13 @@ export function historyStringToHistoryArray(historyString: string): number[] {
   return historyArray;
 }
 
-// export async function getHistoryFunction(): Promise<HistoryState> {
-//   try {
-//     const historyString = await getHistoryApi();
-
-//     const historyArray = historyStringToHistoryArray(historyString);
-
-//     return { loading: true, historyArray: historyArray, error: '', initialState: false };
-//   } catch (error) {
-//     let account = { loading: true, historyArray: [0], error: error.toString(), initialState:false };
-
-//     if (account.error == 'AxiosError: Request failed with status code 404') {
-//       account = await setHistoryFunction([0]);
-//       account.initialState = true;
-//     }
-
-//     return account;
-//   }
-// }
-
 export async function getHistoryFunction(): Promise<HistoryState> {
   try {
     const historyArray = await getHistoryApi();
-    console.log("quizfunction:", historyArray);
-    // const historyArray = historyStringToHistoryArray(historyString);
-
     return { loading: true, historyArray: historyArray, error: '', initialState: false };
   } catch (error) {
     let account = { loading: true, historyArray: [0], error: error.toString(), initialState:false };  
     if (account.error == 'AxiosError: Request failed with status code 404') {
-      // account = await setHistoryFunction([0]);
       account = await createHistoryFunction([0]);
       account.initialState = true;
     }
@@ -107,10 +84,7 @@ export async function getHistoryFunction(): Promise<HistoryState> {
 export async function setHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
-  try {
-    // const historyString = historyArrayToHistoryString(historyArray);
-    
-    console.log("setting history qf: ", historyArray);
+  try {    
     await setHistoryApi(historyArray);
     
     return { loading: true, historyArray: historyArray, error: '', initialState:false };
@@ -131,9 +105,6 @@ export async function createHistoryFunction(
   try {
     const historyString = historyArrayToHistoryString(historyArray);
     
-    
-    // await setHistoryApi(historyString);
-    console.log("creating history qf: ", historyArray);
     await createHistoryApi(historyArray);
     
     return { loading: true, historyArray: historyArray, error: '', initialState:false };
