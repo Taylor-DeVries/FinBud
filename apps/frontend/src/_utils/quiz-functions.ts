@@ -1,4 +1,4 @@
-import { getHistoryApi, setHistoryApi } from '@/_services/callApi';
+import { getHistoryApi, setHistoryApi, createHistoryApi } from '@/_services/callApi';
 import { Node, HistoryState } from '@/_data/types/types';
 
 export function findNodeTest(
@@ -69,19 +69,14 @@ export function historyStringToHistoryArray(historyString: string): number[] {
 
 export async function getHistoryFunction(): Promise<HistoryState> {
   try {
-    const historyString = await getHistoryApi();
-
-    const historyArray = historyStringToHistoryArray(historyString);
-
+    const historyArray = await getHistoryApi();
     return { loading: true, historyArray: historyArray, error: '', initialState: false };
   } catch (error) {
-    let account = { loading: true, historyArray: [0], error: error.toString(), initialState:false };
-
+    let account = { loading: true, historyArray: [0], error: error.toString(), initialState:false };  
     if (account.error == 'AxiosError: Request failed with status code 404') {
-      account = await setHistoryFunction([0]);
+      account = await createHistoryFunction([0]);
       account.initialState = true;
     }
-
     return account;
   }
 }
@@ -89,10 +84,28 @@ export async function getHistoryFunction(): Promise<HistoryState> {
 export async function setHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
+  try {    
+    await setHistoryApi(historyArray);
+    
+    return { loading: true, historyArray: historyArray, error: '', initialState:false };
+  } catch (error) {
+    return {
+      loading: true,
+      historyArray: historyArray,
+      error: error.toString(),
+      initialState: false
+    };
+  }
+}
+
+
+export async function createHistoryFunction(
+  historyArray: number[]
+): Promise<HistoryState> {
   try {
     const historyString = historyArrayToHistoryString(historyArray);
     
-    await setHistoryApi(historyString);
+    await createHistoryApi(historyArray);
     
     return { loading: true, historyArray: historyArray, error: '', initialState:false };
   } catch (error) {
