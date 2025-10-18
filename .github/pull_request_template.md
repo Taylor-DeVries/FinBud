@@ -1,12 +1,12 @@
 ## Describe your changes
 
-#### What/Why/Dependencies
+#### What/Why/Dependencies:
 
 -
 
-## Issue ticket number and link
+## Jira story link
 
-Link:
+[Story Link](link)
 
 ## Verification of changes
 
@@ -16,4 +16,3 @@ Screenshots/Links:
 
 - [] I have performed a self-review of my code
 - [] I have tested my code with current main branch
-- [] This will require a Vercel update
