@@ -38,10 +38,6 @@ const eslintConfig = [
         "error",
         {
           "src/**/": "KEBAB_CASE",
-          "app/**/": "KEBAB_CASE",
-          "components/**/": "KEBAB_CASE",
-          "lib/**/": "KEBAB_CASE",
-          "utils/**/": "KEBAB_CASE",
         },
       ],
       // Enforce camelCase for variables
