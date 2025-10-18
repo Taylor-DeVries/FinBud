@@ -26,7 +26,7 @@ jobs:
       - name: Send Discord PR Notification
         uses: fjogeleit/http-request-action@v1
         with:
-          url: 'https://discord.com/api/webhooks/1429192394041196697/x-Z8oo70os93viaWYFTDlhzmS1898hvvpExQgsCpYCHv5DhTxq1qXrR0PBhA2S7Y_n-k'
+          url: 'https://discord.com/api/webhooks/1429193082058047550/7Bm9iMlUgdhdyua-UDzFARPXF6_XIAKRc3MqKyriGKi2_BXmSOCuniutRszhH-W-2U17'
           method: 'POST'
           customHeaders: '{"Content-Type": "application/json"}'
           data: '{"content": "# NEW PR OPEN
