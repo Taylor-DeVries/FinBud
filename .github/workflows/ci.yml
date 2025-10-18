@@ -5,6 +5,9 @@ on:
     types: [opened, reopened]
     branches:
       - main
+  push:
+    branches:
+      - '**'
 
 permissions:
   actions: read
