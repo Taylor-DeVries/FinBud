@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Formatting PR Body
         run: |
-          echo "PR_BODY_FORMATTED=$(echo "" >> $GITHUB_ENV
+          echo "PR_BODY_FORMATTED=$(echo "" >> $GITHUB_ENV)"
 
       - name: Send Discord PR Notification
         uses: fjogeleit/http-request-action@v1
