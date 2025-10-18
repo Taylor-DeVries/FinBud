@@ -1,7 +1,5 @@
 ## Describe your changes
 
-#### What/Why/Dependencies:
-
 -
 
 ## Jira story link
@@ -11,6 +9,10 @@
 ## Verification of changes
 
 Screenshots/Links:
+
+## Dependencies
+
+-
 
 ## Checklist before requesting a review
 
