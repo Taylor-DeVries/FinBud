@@ -1,8 +1,8 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-import checkFile from "eslint-plugin-check-file";
-import tseslint from "@typescript-eslint/eslint-plugin";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import checkFile from 'eslint-plugin-check-file';
+import tseslint from '@typescript-eslint/eslint-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -12,70 +12,70 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
-    ignores: ["**/.next/**", "**/out/**", "**/build/**"],
+    ignores: ['**/.next/**', '**/out/**', '**/build/**'],
   },
   {
-    files: ["src/**/*.{ts,tsx,js,jsx}"],
+    files: ['src/**/*.{ts,tsx,js,jsx}'],
     plugins: {
-      "check-file": checkFile,
-      "@typescript-eslint": tseslint,
+      'check-file': checkFile,
+      '@typescript-eslint': tseslint,
     },
     rules: {
       // Enforce kebab-case for file names
-      "check-file/filename-naming-convention": [
-        "error",
+      'check-file/filename-naming-convention': [
+        'error',
         {
-          "**/*.{ts,tsx,js,jsx}": "KEBAB_CASE",
+          '**/*.{ts,tsx,js,jsx}': 'KEBAB_CASE',
         },
         {
           ignoreMiddleExtensions: true,
         },
       ],
       // Enforce kebab-case for folder names
-      "check-file/folder-naming-convention": [
-        "error",
+      'check-file/folder-naming-convention': [
+        'error',
         {
-          "src/**/": "KEBAB_CASE",
+          'src/**/': 'KEBAB_CASE',
         },
       ],
       // Enforce camelCase for variables
-      "camelcase": [
-        "error",
+      camelcase: [
+        'error',
         {
-          properties: "always",
+          properties: 'always',
           ignoreDestructuring: false,
           ignoreImports: false,
         },
       ],
       // TypeScript naming conventions
-      "@typescript-eslint/naming-convention": [
-        "error",
+      '@typescript-eslint/naming-convention': [
+        'error',
         // allow ALL_CAPS_WITH_UNDERSCORE for constants
         {
-          selector: "variable",
-          modifiers: ["const"],
-          format: ["UPPER_CASE", "camelCase", "PascalCase"],
-          leadingUnderscore: "allow",
+          selector: 'variable',
+          modifiers: ['const'],
+          format: ['UPPER_CASE', 'camelCase', 'PascalCase'],
+          leadingUnderscore: 'allow',
         },
         {
-          selector: "variable",
-          format: ["camelCase", "UPPER_CASE", "PascalCase"],
-          leadingUnderscore: "allow",
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+          leadingUnderscore: 'allow',
         },
         {
-          selector: "function",
-          format: ["camelCase", "PascalCase"],
+          selector: 'function',
+          format: ['camelCase', 'PascalCase'],
         },
         {
-          selector: "typeLike",
-          format: ["PascalCase"],
+          selector: 'typeLike',
+          format: ['PascalCase'],
         },
         {
-          selector: "parameter",
-          format: ["camelCase"],
-          leadingUnderscore: "allow",
+          selector: 'parameter',
+          format: ['camelCase'],
+          leadingUnderscore: 'allow',
         },
       ],
     },
