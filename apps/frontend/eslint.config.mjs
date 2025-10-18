@@ -1,0 +1,95 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { FlatCompat } from "@eslint/eslintrc";
+import checkFile from "eslint-plugin-check-file";
+import tseslint from "@typescript-eslint/eslint-plugin";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "eslint.config.mjs",
+    ],
+  },
+  {
+    plugins: {
+      "check-file": checkFile,
+      "@typescript-eslint": tseslint,
+    },
+    rules: {
+      // Enforce kebab-case for file names
+      "check-file/filename-naming-convention": [
+        "error",
+        {
+          "**/*.{ts,tsx,js,jsx}": "KEBAB_CASE",
+        },
+        {
+          ignoreMiddleExtensions: true,
+        },
+      ],
+      // Enforce kebab-case for folder names
+      "check-file/folder-naming-convention": [
+        "error",
+        {
+          "src/**/": "KEBAB_CASE",
+          "app/**/": "KEBAB_CASE",
+          "components/**/": "KEBAB_CASE",
+          "lib/**/": "KEBAB_CASE",
+          "utils/**/": "KEBAB_CASE",
+        },
+      ],
+      // Enforce camelCase for variables
+      "camelcase": [
+        "error",
+        {
+          properties: "always",
+          ignoreDestructuring: false,
+          ignoreImports: false,
+        },
+      ],
+      // TypeScript naming conventions
+      "@typescript-eslint/naming-convention": [
+        "error",
+        // allow ALL_CAPS_WITH_UNDERSCORE for constants
+        {
+          selector: "variable",
+          modifiers: ["const"],
+          format: ["UPPER_CASE", "camelCase", "PascalCase"],
+          leadingUnderscore: "allow",
+        },
+        {
+          selector: "variable",
+          format: ["camelCase", "UPPER_CASE", "PascalCase"],
+          leadingUnderscore: "allow",
+        },
+        {
+          selector: "function",
+          format: ["camelCase", "PascalCase"],
+        },
+        {
+          selector: "typeLike",
+          format: ["PascalCase"],
+        },
+        {
+          selector: "parameter",
+          format: ["camelCase"],
+          leadingUnderscore: "allow",
+        },
+      ],
+    },
+  },
+];
+
+export default eslintConfig;
