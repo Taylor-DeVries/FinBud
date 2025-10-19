@@ -37,7 +37,11 @@ const eslintConfig = [
       'check-file/folder-naming-convention': [
         'error',
         {
-          'src/**/': 'KEBAB_CASE',
+          'src/**/': '?(_)+([a-z])*(-+([a-z0-9]))',
+        },
+        {
+          errorMessage:
+            'The folder "{{ target }}" does not match the kebab-case or _underscore-kebab-case naming convention',
         },
       ],
       // Enforce camelCase for variables
