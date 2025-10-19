@@ -1,4 +1,4 @@
-name: PR branch updated
+name: Pull Request Branch Updated
 
 on:
   pull_request:
