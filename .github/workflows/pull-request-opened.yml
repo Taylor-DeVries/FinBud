@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Formatting PR Body
         run: |
-          echo "PR_BODY_FORMATTED=$(echo 'Hey @everyone, could I get a review please' >> $GITHUB_ENV)"
+          echo "PR_BODY_FORMATTED=Hey @everyone, could I get a review please" >> $GITHUB_ENV
 
       - name: Send Discord PR Notification
         uses: tsickert/discord-webhook@v6.0.0
