@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   send-pr-review-request-discord:
-    environment: ci pipeline
     runs-on: ubuntu-latest
 
     steps:
