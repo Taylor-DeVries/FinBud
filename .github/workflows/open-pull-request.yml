@@ -19,6 +19,7 @@ jobs:
       - name: Formatting PR Body
         run: |
           echo "PR_BODY_FORMATTED=$(echo "" >> $GITHUB_ENV)"
+          echo "test ${{ secrets.DISCORD_WEBHOOK }}"
 
       - name: Send Discord PR Notification
         uses: tsickert/discord-webhook@v6.0.0
