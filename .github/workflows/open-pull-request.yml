@@ -20,6 +20,16 @@ jobs:
           echo "PR_BODY_FORMATTED=$(echo "" >> $GITHUB_ENV)"
           echo "test ${{ secrets.DISCORD_WEBHOOK }}"
 
+      - name: Check if secret exists
+        run: |
+          if [ -z "${{ secrets.DISCORD_WEBHOOK }}" ]; then
+            echo "❌ Secret is empty or doesn't exist"
+          else
+            echo "✅ Secret exists (length: ${#DISCORD_WEBHOOK})"
+          fi
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
       - name: Send Discord PR Notification
         uses: tsickert/discord-webhook@v6.0.0
         with:
