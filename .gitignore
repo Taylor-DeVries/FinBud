@@ -1,100 +1,20 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-FinBud-Frontend/node_modules
-FinBud-Frontend/.pnp
-FinBud-Frontend.pnp.js
-FinBud-Frontend.yarn/install-state.gz
-
-# testing
-FinBud-Frontend/coverage
-
-# next.js
-FinBud-Frontend/.next/
-FinBud-Frontend/out/
-
-# production
-FinBud-Frontend/build
-
-# misc
-FinBud-Frontend/.DS_Store
-FinBud-Frontend/*.pem
-
-# debug
-FinBud-Frontend/npm-debug.log*
-FinBud-Frontend/yarn-debug.log*
-FinBud-Frontend/yarn-error.log*
-
 # local env files
 .env.local
-appsettings.json
-
-# typescript
-FinBud-Frontend/*.tsbuildinfo
-FinBud-Frontend/next-env.d.ts
-
-
-FinBud-Backend/obj
-FinBud-Backend/bin
-
-FinBud-Backend/appsettings.*
-
-# Nx ignores
-# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# compiled output
-dist
-tmp
-out-tsc
 
 # dependencies
 node_modules
 
-# IDEs and editors
-/.idea
-.vs
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
 # IDE - VSCode
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
-.DS_Store
-Thumbs.db
-
-.nx/cache
-.nx/workspace-data
 
 # Next.js
 .next
-out
 
-# ASP.NET
-bin
-obj
+# production
+/build
 
-test-output
+# typescript
+*.tsbuildinfo
+next-env.d.ts
 
-.fake
-
-#Docker
-dynamodb
+test/
