@@ -23,19 +23,18 @@ const eslintConfig = [
       '@typescript-eslint': tseslint,
     },
     rules: {
-      // Enforce kebab-case for file names
+      // Enforce file names
       'check-file/filename-naming-convention': [
         'error',
         {
-          '**/*.{jsx,tsx}': 'PASCAL_CASE',
-          '**/*.{js,ts}': 'KEBAB_CASE',
+          '**/*.{ts,tsx}': 'KEBAB_CASE',
         },
         {
           errorMessage:
-            'The file "{{ target }}" does not match the PascalCase or kebab-case naming convention',
+            'The file "{{ target }}" does not match the kebab-case naming convention',
         },
       ],
-      // Enforce kebab-case for folder names
+      // Enforce folder names
       'check-file/folder-naming-convention': [
         'error',
         {
