@@ -27,7 +27,7 @@ const eslintConfig = [
       'check-file/filename-naming-convention': [
         'error',
         {
-          '**/*.{ts,tsx}': 'KEBAB_CASE',
+          'src/**/*.{ts,tsx}': 'KEBAB_CASE',
         },
         {
           errorMessage:
