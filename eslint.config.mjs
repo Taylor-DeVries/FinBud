@@ -27,10 +27,12 @@ const eslintConfig = [
       'check-file/filename-naming-convention': [
         'error',
         {
-          '**/*.{ts,tsx,js,jsx}': 'KEBAB_CASE|PascalCase',
+          '**/*.{jsx,tsx}': 'PASCAL_CASE',
+          '**/*.{js,ts}': 'KEBAB_CASE',
         },
         {
-          ignoreMiddleExtensions: true,
+          errorMessage:
+            'The file "{{ target }}" does not match the PascalCase or kebab-case naming convention',
         },
       ],
       // Enforce kebab-case for folder names
