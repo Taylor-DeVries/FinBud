@@ -22,11 +22,13 @@ export interface Node {
   answer: string;
   text: string[];
   link?: string;
+  additionalButtons?: string[];
   responses: Node[];
 }
 
 export interface QuizPath {
   answer: string;
+  additionalButtons?: string[];
   connectId?: number;
   id: number;
   mainText?: string;

@@ -92,69 +92,32 @@ export function Quiz({ rootNode }) {
     return false;
   }
 
-  async function setHistoryAsync() {
-    // eslint-disable-next-line prefer-const
-    let localHistoryState: HistoryState = await historyState;
-    console.log('run set history');
-    setHistoryFunction(localHistoryState.historyArray);
-  }
-
   useEffect(() => {
     setCurrentTextIndex(0);
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
 
-    switch (currentNode.id) {
-      case 4:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 23:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 14:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 31:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 8:
-        setShowAllocationCalculator(true);
-        break;
-      case 17:
-        setShowAllocationCalculator(true);
-        break;
-      case 9:
-        setShowAllocationCalculator(true);
-        break;
-      case 28:
-        setShowAllocationCalculator(true);
-        break;
-      case 7:
-        setShowAllocationCalculator(true);
-        break;
-      default:
-        setShowAllocationCalculator(false);
-        setshowTfsaCalculator(false);
-        setshowFhsaCalculator(false);
-        break;
-    }
-
     if (currentNode.link) {
       setShowLink(true);
     } else setShowLink(false);
 
-    setHistoryAsync();
+    setShowAllocationCalculator(false);
+    setshowTfsaCalculator(false);
+    setshowFhsaCalculator(false);
 
-    if (historyState.error == 'Not logged in') {
-      sessionStorage.setItem(
-        'userHistory',
-        JSON.stringify(historyState.historyArray)
-      );
+    if (currentNode.additionalButtons) {
+      if (currentNode.additionalButtons.includes('TFSA')) {
+        setshowTfsaCalculator(true);
+      }
+      if (currentNode.additionalButtons.includes('FHSA')) {
+        setshowFhsaCalculator(true);
+      }
+      if (currentNode.additionalButtons.includes('ALLOCATION')) {
+        setShowAllocationCalculator(true);
+      }
     }
+
+    setHistoryFunction(historyState.historyArray);
 
     setShowDashboard(false);
     for (let i = 0; i < dashboardGoals.goals.length; i++) {

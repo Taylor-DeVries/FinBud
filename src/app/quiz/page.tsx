@@ -1,7 +1,7 @@
 import { Quiz } from './_ui';
 import { findNodeRoot, QuizContextProvider, getHistoryFunction } from './_lib';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
-import { buildQuizData } from '@/_services/buildQuizData';
+import { buildQuizData } from '@/_services/build-quiz-data';
 import { Node } from '@/_data/types/types';
 
 export default async function Page() {

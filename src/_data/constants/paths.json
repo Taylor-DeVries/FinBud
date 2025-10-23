@@ -33,6 +33,7 @@
               "responses": [
                 {
                   "answer": "Yes, my first home is within the next 5 years",
+                  "additionalButtons": ["FHSA", "ALLOCATION"],
                   "id": 14,
                   "mainText": "Calculate your FHSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them.",
                   "responses": [
@@ -57,6 +58,7 @@
                   "responses": [
                     {
                       "answer": "Yes",
+                      "additionalButtons": ["ALLOCATION"],
                       "id": 7,
                       "mainText": "I'd match your employers contribution and invest into medium risk ETFs.",
                       "responses": [
@@ -75,6 +77,7 @@
                       "responses": [
                         {
                           "answer": "Yes",
+                          "additionalButtons": ["FHSA", "ALLOCATION"],
                           "id": 31,
                           "mainText": "Calculate your FHSA contribution room, if you have room I would buy medium risk ETFs.",
                           "responses": [
@@ -88,6 +91,7 @@
                         },
                         {
                           "answer": "No, I'm looking to invest for other future goals more than 5 years from now",
+                          "additionalButtons": ["TFSA", "ALLOCATION"],
                           "id": 23,
                           "mainText": "Calculate your TFSA contribution room, if you have room then I would buy medium risk ETFs and continue investing into them",
                           "responses": [
@@ -98,6 +102,7 @@
                               "responses": [
                                 {
                                   "answer": "My child's education",
+                                  "additionalButtons": ["ALLOCATION"],
                                   "id": 8,
                                   "mainText": "Calculate your RESP contribution room. If you have room, then I would buy medium risk ETFs and continue investing in them.",
                                   "responses": [
@@ -111,6 +116,7 @@
                                 },
                                 {
                                   "answer": "My retirement",
+                                  "additionalButtons": ["ALLOCATION"],
                                   "id": 17,
                                   "mainText": "You can check your RRSP contribution limit online by setting up an account with the CRA. You can also call the CRA at 1-800-267-6999. If you have room, then I would buy a few different ETFs and continue investing in them.",
                                   "responses": [
@@ -124,6 +130,7 @@
                                 },
                                 {
                                   "answer": "I just want more money",
+                                  "additionalButtons": ["ALLOCATION"],
                                   "id": 9,
                                   "mainText": "I think you're ready to open a non-registered investment account to continue investing in ETFs.",
                                   "responses": [
@@ -145,6 +152,7 @@
                 },
                 {
                   "answer": "Yes, something other than my first home",
+                  "additionalButtons": ["TFSA", "ALLOCATION"],
                   "id": 4,
                   "mainText": "Calculate your TFSA contribution room, if you have room then I would buy low risk ETFs and continue investing into them",
                   "responses": [
@@ -166,6 +174,7 @@
             },
             {
               "answer": "No",
+              "additionalButtons": ["ALLOCATION"],
               "id": 28,
               "mainText": "I would save up 6 months worth of living expenses before putting money towards other goals",
               "responses": [
