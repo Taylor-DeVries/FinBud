@@ -1,34 +1,33 @@
 'use client';
 import { buildQuizData } from '@/_services/buildQuizData';
-import dashboard_goals from '@/_data/constants/dashboard-goals.json';
+import dashboardGoals from '@/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
   isNextAvailable,
   isPrevAvailable,
   setHistoryFunction,
-} from '../../_utils/quiz-functions';
+} from '@/_utils/quiz-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
-import Textbox from '@/_components/Textbox-Component/Textbox';
 import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
 import { IoIosArrowRoundBack } from 'react-icons/io';
-import TfsaCalculatorComponent from '../Calculator-Component/TFSA/TfsaCalculatorComponent';
+import TfsaCalculatorComponent from '@/_components/Calculator-Component/TFSA/TfsaCalculatorComponent';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import TfsaCalculatorButton from '../Calculator-Component/TFSA/TfsaCalculatorButton';
+import TfsaCalculatorButton from '@/_components/Calculator-Component/TFSA/TfsaCalculatorButton';
 import { HistoryState, Node } from '@/_data/types/types';
 import { TypeAnimation } from 'react-type-animation';
-import Loader from '../Loader-Component/Loader';
-import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
-import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
-import AllocationCalculatorComponent from '../Calculator-Component/Allocation/AllocationCalculatorComponent';
-import AllocationCalculatorButton from '../Calculator-Component/Allocation/AllocationCalculatorButton';
-import LinkButton from '../Link-Component/LinkComponent';
-import NavToDashboard from '../Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
-import MoreInfoButtons from '../MoreInfo-Component/MoreInfoButtons';
+import Loader from '@/_components/Loader-Component/Loader';
+import FhsaCalculatorComponent from '@/_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
+import FhsaCalculatorButton from '@/_components/Calculator-Component/FHSA/FhsaCalculatorButton';
+import AllocationCalculatorComponent from '@/_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
+import AllocationCalculatorButton from '@/_components/Calculator-Component/Allocation/AllocationCalculatorButton';
+import LinkButton from '@/_components/Link-Component/LinkComponent';
+import NavToDashboard from '@/_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
+import MoreInfoButtons from '@/_components/MoreInfo-Component/MoreInfoButtons';
 
-export default function QuizPage({ data }) {
+export function QuizPage({ data }) {
   const router = useRouter();
   const [historyState, setHistoryState] = React.useState<HistoryState>(
     getInitialState(data)
@@ -180,8 +179,8 @@ export default function QuizPage({ data }) {
     }
 
     setShowDashboard(false);
-    for (let i = 0; i < dashboard_goals.goals.length; i++) {
-      if (dashboard_goals.goals[i].id == currentNode.id) {
+    for (let i = 0; i < dashboardGoals.goals.length; i++) {
+      if (dashboardGoals.goals[i].id == currentNode.id) {
         setShowDashboard(true);
         break;
       }
@@ -292,7 +291,7 @@ export default function QuizPage({ data }) {
               <div className="flex flex-col space-y-2">
                 {currentNode.responses
                   .filter((response) => {
-                    let id = response.connectId ?? response.id;
+                    const id = response.connectId ?? response.id;
                     if (id == 8 || id == 17 || id == 9) {
                       return !checkNodeVisited(id);
                     }

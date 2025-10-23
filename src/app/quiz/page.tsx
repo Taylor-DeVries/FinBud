@@ -1,6 +1,6 @@
-import QuizPage from '@/_components/Quiz-Component/quiz';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import { QuizPage } from './_ui';
 import { getHistoryFunction } from '@/_utils/quiz-functions';
+import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 export default async function Page() {
 
