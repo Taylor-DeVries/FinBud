@@ -1,4 +1,26 @@
-import { HistoryState } from '@/_data/types/types';
+import { HistoryState, Node } from '@/_data/types/types';
+
+/*
+    Helper functions for quiz logic
+*/
+
+export function isPrevAvailable(currentNode: Node, index: number): boolean {
+  if (currentNode?.text?.[index - 1] !== undefined) {
+    return true;
+  }
+  return false;
+}
+
+export function isNextAvailable(currentNode: Node, index: number): boolean {
+  if (currentNode?.text?.[index + 1] !== undefined) {
+    return true;
+  }
+  return false;
+}
+
+/*
+    Quiz logic functions
+*/
 
 function getInitialState(data: HistoryState): HistoryState {
   let hist: HistoryState = data;

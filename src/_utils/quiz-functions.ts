@@ -1,4 +1,8 @@
-import { getHistoryApi, setHistoryApi, createHistoryApi } from '@/_services/callApi';
+import {
+  getHistoryApi,
+  setHistoryApi,
+  createHistoryApi,
+} from '@/_services/callApi';
 import { Node, HistoryState } from '@/_data/types/types';
 
 export function findNodeTest(
@@ -19,7 +23,7 @@ export function findNodeTest(
 //Recursive find node from root
 function findNodeRoot(id: number, currentNode: Node): Node | null {
   let returnNode: Node | null = null;
-  
+
   if (currentNode.id == id) {
     returnNode = currentNode;
   } else {
@@ -59,7 +63,6 @@ export function historyStringToHistoryArray(historyString: string): number[] {
   const historyArray = historyString
     .split(',')
     .filter((id) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       id != null;
       return id;
     })
@@ -70,9 +73,19 @@ export function historyStringToHistoryArray(historyString: string): number[] {
 export async function getHistoryFunction(): Promise<HistoryState> {
   try {
     const historyArray = await getHistoryApi();
-    return { loading: true, historyArray: historyArray, error: '', initialState: false };
+    return {
+      loading: true,
+      historyArray: historyArray,
+      error: '',
+      initialState: false,
+    };
   } catch (error) {
-    let account = { loading: true, historyArray: [0], error: error.toString(), initialState:false };  
+    let account = {
+      loading: true,
+      historyArray: [0],
+      error: error.toString(),
+      initialState: false,
+    };
     if (account.error == 'AxiosError: Request failed with status code 404') {
       account = await createHistoryFunction([0]);
       account.initialState = true;
@@ -84,36 +97,45 @@ export async function getHistoryFunction(): Promise<HistoryState> {
 export async function setHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
-  try {    
+  try {
     await setHistoryApi(historyArray);
-    
-    return { loading: true, historyArray: historyArray, error: '', initialState:false };
+
+    return {
+      loading: true,
+      historyArray: historyArray,
+      error: '',
+      initialState: false,
+    };
   } catch (error) {
     return {
       loading: true,
       historyArray: historyArray,
       error: error.toString(),
-      initialState: false
+      initialState: false,
     };
   }
 }
-
 
 export async function createHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
   try {
     const historyString = historyArrayToHistoryString(historyArray);
-    
+
     await createHistoryApi(historyArray);
-    
-    return { loading: true, historyArray: historyArray, error: '', initialState:false };
+
+    return {
+      loading: true,
+      historyArray: historyArray,
+      error: '',
+      initialState: false,
+    };
   } catch (error) {
     return {
       loading: true,
       historyArray: historyArray,
       error: error.toString(),
-      initialState: false
+      initialState: false,
     };
   }
 }

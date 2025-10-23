@@ -2,12 +2,7 @@
 import { buildQuizData } from '@/_services/buildQuizData';
 import dashboardGoals from '@/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
-import {
-  findNodeTest,
-  isNextAvailable,
-  isPrevAvailable,
-  setHistoryFunction,
-} from '@/_utils/quiz-functions';
+import { findNodeTest, setHistoryFunction } from '@/_utils/quiz-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
@@ -25,7 +20,7 @@ import AllocationCalculatorButton from '@/_components/Calculator-Component/Alloc
 import LinkButton from '@/_components/Link-Component/LinkComponent';
 import NavToDashboard from '@/_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
 import MoreInfoButtons from '@/_components/MoreInfo-Component/MoreInfoButtons';
-import { useQuizContext } from '../_lib';
+import { useQuizContext, isNextAvailable, isPrevAvailable } from '../_lib';
 
 export function Quiz() {
   const router = useRouter();
