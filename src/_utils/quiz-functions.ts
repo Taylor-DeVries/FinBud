@@ -74,14 +74,12 @@ export async function getHistoryFunction(): Promise<HistoryState> {
   try {
     const historyArray = await getHistoryApi();
     return {
-      loading: true,
       historyArray: historyArray,
       error: '',
       initialState: false,
     };
   } catch (error) {
     let account = {
-      loading: true,
       historyArray: [0],
       error: error.toString(),
       initialState: false,
@@ -101,14 +99,12 @@ export async function setHistoryFunction(
     await setHistoryApi(historyArray);
 
     return {
-      loading: true,
       historyArray: historyArray,
       error: '',
       initialState: false,
     };
   } catch (error) {
     return {
-      loading: true,
       historyArray: historyArray,
       error: error.toString(),
       initialState: false,
@@ -120,19 +116,15 @@ export async function createHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
   try {
-    const historyString = historyArrayToHistoryString(historyArray);
-
     await createHistoryApi(historyArray);
 
     return {
-      loading: true,
       historyArray: historyArray,
       error: '',
       initialState: false,
     };
   } catch (error) {
     return {
-      loading: true,
       historyArray: historyArray,
       error: error.toString(),
       initialState: false,

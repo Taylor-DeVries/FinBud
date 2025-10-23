@@ -11,7 +11,6 @@ export interface Question {
 }
 
 export interface HistoryState {
-  loading: boolean;
   historyArray: number[];
   error: string;
   initialState: boolean;

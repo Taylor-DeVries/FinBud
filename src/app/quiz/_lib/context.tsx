@@ -1,23 +1,55 @@
 'use client'; // Required for Next.js 13+ App Router
 
-import { HistoryState } from '@/_data/types/types';
+import { HistoryState, Node } from '@/_data/types/types';
 import { createContext, useContext, useState } from 'react';
-import { getInitialState } from './utils';
+import { getInitialState } from './quiz-handler';
+import { findNode } from '.';
+import { buildQuizData } from '@/_services/buildQuizData';
 
 const QuizContext = createContext(null);
 
 // Actual provider component
-export function QuizContextProvider({ children, data }) {
-  const [state, setState] = useState('initial value');
-  const [historyState, setHistoryState] = useState<HistoryState>(
-    getInitialState(data)
-  );
+export function QuizContextProvider({
+  children,
+  initialHistoryState,
+  initialStartingNode,
+}) {
+  const [historyState, setHistoryState] =
+    useState<HistoryState>(initialHistoryState);
+  const [showNextText, setShowNextText] = useState<boolean>(false);
+  const [showPrevText, setShowPrevText] = useState<boolean>(false);
+  const [currentNode, setCurrentNode] = useState<Node>(initialStartingNode);
+
+  const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
+
+  const [showTfsaCalculator, setshowTfsaCalculator] = useState(false);
+  const [showFhsaCalculator, setshowFhsaCalculator] = useState(false);
+  const [showAllocationCalculator, setShowAllocationCalculator] =
+    useState(false);
+  const [showLink, setShowLink] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
 
   const value = {
-    state,
-    setState,
     historyState,
     setHistoryState,
+    currentTextIndex,
+    setCurrentTextIndex,
+    showNextText,
+    setShowNextText,
+    showPrevText,
+    setShowPrevText,
+    currentNode,
+    setCurrentNode,
+    showTfsaCalculator,
+    setshowTfsaCalculator,
+    showFhsaCalculator,
+    setshowFhsaCalculator,
+    showAllocationCalculator,
+    setShowAllocationCalculator,
+    showLink,
+    setShowLink,
+    showDashboard,
+    setShowDashboard,
   };
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;

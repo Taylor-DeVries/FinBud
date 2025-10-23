@@ -2,7 +2,7 @@
 import { buildQuizData } from '@/_services/buildQuizData';
 import dashboardGoals from '@/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
-import { findNodeTest, setHistoryFunction } from '@/_utils/quiz-functions';
+import { setHistoryFunction } from '@/_utils/quiz-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
@@ -20,31 +20,42 @@ import AllocationCalculatorButton from '@/_components/Calculator-Component/Alloc
 import LinkButton from '@/_components/Link-Component/LinkComponent';
 import NavToDashboard from '@/_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
 import MoreInfoButtons from '@/_components/MoreInfo-Component/MoreInfoButtons';
-import { useQuizContext, isNextAvailable, isPrevAvailable } from '../_lib';
+import {
+  useQuizContext,
+  isNextAvailable,
+  isPrevAvailable,
+  findNode,
+} from '../_lib';
 
-export function Quiz() {
+export function Quiz({ rootNode }) {
   const router = useRouter();
 
-  const { historyState, setHistoryState } = useQuizContext();
-
-  const rootNode: Node = buildQuizData();
-  const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
-  const [showNextText, setShowNextText] = useState<boolean>(false);
-  const [showPrevText, setShowPrevText] = useState<boolean>(false);
-  const [currentNode, setCurrentNode] = useState<Node>(
-    findNodeTest(historyState.historyArray.at(-1), rootNode, rootNode)
-  );
-  const [loading, setLoading] = useState(true);
-  const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
-  const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
-  const [showAllocationCalculator, setShowAllocationCalculator] =
-    React.useState(false);
-  const [showLink, setShowLink] = React.useState(false);
-  const [showDashboard, setShowDashboard] = React.useState(false);
+  const {
+    historyState,
+    setHistoryState,
+    currentNode,
+    setCurrentNode,
+    currentTextIndex,
+    setCurrentTextIndex,
+    showNextText,
+    setShowNextText,
+    showPrevText,
+    setShowPrevText,
+    showTfsaCalculator,
+    setshowTfsaCalculator,
+    showFhsaCalculator,
+    setshowFhsaCalculator,
+    showAllocationCalculator,
+    setShowAllocationCalculator,
+    showLink,
+    setShowLink,
+    showDashboard,
+    setShowDashboard,
+  } = useQuizContext();
 
   function nextNode(id: number) {
     // eslint-disable-next-line prefer-const
-    let tempNode = findNodeTest(id, currentNode, rootNode);
+    let tempNode = findNode(id, currentNode, rootNode);
     setCurrentNode(tempNode);
     setHistoryState({
       ...historyState,
@@ -71,7 +82,7 @@ export function Quiz() {
         historyArray: historyState.historyArray.slice(0, -1),
       });
       // eslint-disable-next-line prefer-const
-      let tempNode = findNodeTest(id, currentNode, rootNode);
+      let tempNode = findNode(id, currentNode, rootNode);
       setCurrentNode(tempNode);
     }
   }
@@ -139,9 +150,7 @@ export function Quiz() {
       setShowLink(true);
     } else setShowLink(false);
 
-    if (historyState.loading) {
-      setHistoryAsync();
-    }
+    setHistoryAsync();
 
     if (historyState.error == 'Not logged in') {
       sessionStorage.setItem(
@@ -168,11 +177,7 @@ export function Quiz() {
     <>
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
-        <div
-          className={`flex flex-col-reverse sm:flex-row items-center ${
-            loading ? 'hidden' : ''
-          }`}
-        >
+        <div className={`flex flex-col-reverse sm:flex-row items-center`}>
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
             <Image
@@ -183,7 +188,6 @@ export function Quiz() {
               className="w-auto h-auto"
               priority
               unoptimized
-              onLoad={() => setLoading(false)}
             />
           </div>
 
