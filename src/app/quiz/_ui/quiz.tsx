@@ -1,8 +1,6 @@
 'use client';
-import { buildQuizData } from '@/_services/buildQuizData';
 import dashboardGoals from '@/_data/constants/dashboard-goals.json';
-import { useEffect, useState } from 'react';
-import { setHistoryFunction } from '@/_utils/quiz-functions';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
 import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
@@ -25,6 +23,7 @@ import {
   isNextAvailable,
   isPrevAvailable,
   findNode,
+  setHistoryFunction,
 } from '../_lib';
 
 export function Quiz({ rootNode }) {
@@ -54,13 +53,26 @@ export function Quiz({ rootNode }) {
   } = useQuizContext();
 
   function nextNode(id: number) {
-    // eslint-disable-next-line prefer-const
-    let tempNode = findNode(id, currentNode, rootNode);
-    setCurrentNode(tempNode);
+    const nextNode = findNode(id, currentNode, rootNode);
+    setCurrentNode(nextNode);
     setHistoryState({
       ...historyState,
       historyArray: [...historyState.historyArray, id],
     });
+  }
+
+  function previousNode() {
+    if (historyState.historyArray.length <= 1) {
+      router.push('/');
+    } else {
+      const id = historyState.historyArray.at(-2);
+      setHistoryState({
+        ...historyState,
+        historyArray: historyState.historyArray.slice(0, -1),
+      });
+      const nextNode = findNode(id, currentNode, rootNode);
+      setCurrentNode(nextNode);
+    }
   }
 
   function moveTextIndex(forward: number) {
@@ -68,22 +80,6 @@ export function Quiz({ rootNode }) {
       setCurrentTextIndex(currentTextIndex + 1);
     } else if (isPrevAvailable(currentNode, currentTextIndex)) {
       setCurrentTextIndex(currentTextIndex - 1);
-    }
-  }
-
-  function goBack() {
-    if (historyState.historyArray.length == 1) {
-      router.push('/');
-    } else {
-      // eslint-disable-next-line prefer-const
-      let id = historyState.historyArray.at(-2);
-      setHistoryState({
-        ...historyState,
-        historyArray: historyState.historyArray.slice(0, -1),
-      });
-      // eslint-disable-next-line prefer-const
-      let tempNode = findNode(id, currentNode, rootNode);
-      setCurrentNode(tempNode);
     }
   }
 
@@ -99,6 +95,7 @@ export function Quiz({ rootNode }) {
   async function setHistoryAsync() {
     // eslint-disable-next-line prefer-const
     let localHistoryState: HistoryState = await historyState;
+    console.log('run set history');
     setHistoryFunction(localHistoryState.historyArray);
   }
 
@@ -198,7 +195,7 @@ export function Quiz({ rootNode }) {
               {/* Back button */}
               <div className="rounded-xl bg-light_blue_bg dark:bg-[#333] p-2 inline-block">
                 <IoIosArrowRoundBack
-                  onClick={goBack}
+                  onClick={previousNode}
                   className="text-blue h-8 w-8 hover:cursor-pointer"
                 />
               </div>

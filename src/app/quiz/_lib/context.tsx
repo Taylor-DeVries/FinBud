@@ -2,9 +2,6 @@
 
 import { HistoryState, Node } from '@/_data/types/types';
 import { createContext, useContext, useState } from 'react';
-import { getInitialState } from './quiz-handler';
-import { findNode } from '.';
-import { buildQuizData } from '@/_services/buildQuizData';
 
 const QuizContext = createContext(null);
 
@@ -19,7 +16,6 @@ export function QuizContextProvider({
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);
   const [currentNode, setCurrentNode] = useState<Node>(initialStartingNode);
-
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
 
   const [showTfsaCalculator, setshowTfsaCalculator] = useState(false);

@@ -1,3 +1,5 @@
+'use server';
+
 import { auth0 } from '@/lib/auth0';
 import axios from 'axios';
 
