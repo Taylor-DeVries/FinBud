@@ -1,32 +1,15 @@
-import { QuizPage } from './_ui';
+import { Quiz } from './_ui';
 import { getHistoryFunction } from '@/_utils/quiz-functions';
+import { QuizContextProvider } from './_lib';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 export default async function Page() {
-
-  try {  
   const data = await getHistoryFunction();
-    return (
+  return (
+    <QuizContextProvider data={data}>
       <ResponsiveImage>
-        <QuizPage data={data}></QuizPage>
+        <Quiz></Quiz>
       </ResponsiveImage>
-    );
-  }
-  catch (error) {
-return (
-    <ResponsiveImage>
-      <QuizPage
-        data={{
-          loading: false,
-          historyArray: [0],
-          error: 'Not logged in',
-          initialState: false,
-        }}
-      ></QuizPage>
-    </ResponsiveImage>
+    </QuizContextProvider>
   );
-  }
 }
-
-  
-

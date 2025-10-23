@@ -1,1 +1,1 @@
-export { QuizPage } from './quiz';
+export { Quiz } from './quiz';

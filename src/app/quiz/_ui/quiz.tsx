@@ -18,7 +18,6 @@ import { useRouter } from 'next/navigation';
 import TfsaCalculatorButton from '@/_components/Calculator-Component/TFSA/TfsaCalculatorButton';
 import { HistoryState, Node } from '@/_data/types/types';
 import { TypeAnimation } from 'react-type-animation';
-import Loader from '@/_components/Loader-Component/Loader';
 import FhsaCalculatorComponent from '@/_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
 import FhsaCalculatorButton from '@/_components/Calculator-Component/FHSA/FhsaCalculatorButton';
 import AllocationCalculatorComponent from '@/_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
@@ -26,12 +25,12 @@ import AllocationCalculatorButton from '@/_components/Calculator-Component/Alloc
 import LinkButton from '@/_components/Link-Component/LinkComponent';
 import NavToDashboard from '@/_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
 import MoreInfoButtons from '@/_components/MoreInfo-Component/MoreInfoButtons';
+import { useQuizContext } from '../_lib';
 
-export function QuizPage({ data }) {
+export function Quiz() {
   const router = useRouter();
-  const [historyState, setHistoryState] = React.useState<HistoryState>(
-    getInitialState(data)
-  );
+
+  const { historyState, setHistoryState } = useQuizContext();
 
   const rootNode: Node = buildQuizData();
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
@@ -43,32 +42,10 @@ export function QuizPage({ data }) {
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
-  const [showAllocationCalculator, setShowAllocationCalculator] = React.useState(false);
+  const [showAllocationCalculator, setShowAllocationCalculator] =
+    React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
   const [showDashboard, setShowDashboard] = React.useState(false);
-
-  function getInitialState(data: HistoryState): HistoryState {
-    let hist: HistoryState = data;
-    if (data.initialState) {
-      if (sessionStorage.getItem('userHistory')) {
-        hist = {
-          loading: data.loading,
-          historyArray: JSON.parse(sessionStorage.getItem('userHistory')),
-          error: data.error,
-          initialState: false,
-        };
-        sessionStorage.removeItem('userHistory');
-      } else {
-        hist = {
-          loading: data.loading,
-          historyArray: [0],
-          error: data.error,
-          initialState: false,
-        };
-      }
-    }
-    return hist;
-  }
 
   function nextNode(id: number) {
     // eslint-disable-next-line prefer-const
@@ -194,7 +171,6 @@ export function QuizPage({ data }) {
 
   return (
     <>
-      {loading && <Loader />}
       <div className="h-screen flex items-center justify-center">
         {/* Parent container for image and text */}
         <div
@@ -261,22 +237,22 @@ export function QuizPage({ data }) {
 
             {/* ChatBubble */}
             <div className="relative w-full">
-                <div className="max-h-64 mt-2">
-                  <ChatBubble
-                    align="start"
-                    secondaryLabel={
-                      <TypeAnimation
-                        key={`${currentNode.id}-${currentTextIndex}`}
-                        sequence={[currentNode.text[currentTextIndex] + '\n']}
-                        wrapper="p"
-                        speed={80}
-                        cursor={false}
-                        repeat={0}
-                        preRenderFirstString={false}
-                      />
-                    }
-                  />
-                </div>
+              <div className="max-h-64 mt-2">
+                <ChatBubble
+                  align="start"
+                  secondaryLabel={
+                    <TypeAnimation
+                      key={`${currentNode.id}-${currentTextIndex}`}
+                      sequence={[currentNode.text[currentTextIndex] + '\n']}
+                      wrapper="p"
+                      speed={80}
+                      cursor={false}
+                      repeat={0}
+                      preRenderFirstString={false}
+                    />
+                  }
+                />
+              </div>
 
               {/* MoreInfo Buttons */}
               <MoreInfoButtons
