@@ -1,0 +1,33 @@
+name: Pull Request Opened
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - main
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  send-pr-review-request-discord:
+    name: Send PR Review Request to Discord
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Formatting PR Body
+        run: |
+          echo "PR_BODY_FORMATTED=Hey @everyone, could I get a review please" >> $GITHUB_ENV
+
+      - name: Send Discord PR Notification
+        uses: tsickert/discord-webhook@v6.0.0
+        with:
+          webhook-url: '${{ secrets.DISCORD_WEBHOOK }}'
+          content: |
+            # NEW PR OPEN
+            ## [PR#${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }}) : ${{github.event.pull_request.title}}
+
+            By ${{ github.event.pull_request.user.login }}
+            ${{ env.PR_BODY_FORMATTED }}
+            ## ------------------------------
