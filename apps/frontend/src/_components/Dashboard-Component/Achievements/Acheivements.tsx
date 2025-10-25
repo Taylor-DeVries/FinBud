@@ -1,11 +1,12 @@
 import AchievementEntry from './AchievementEntry';
-import { DashboardAchievement } from '@/_data/types/types';
+import { DashboardAchievement, UserAchievementEntry } from '@/_data/types/types';
 import dashboardacheivements from '@/_data/constants/dashboard-achievements.json';
 type AchievementProps = {
   historyArray: number[];
+  userAchievements?: UserAchievementEntry[]
 };
 
-export default function Achievements({ historyArray }: AchievementProps) {
+export default function Achievements({ historyArray, userAchievements }: AchievementProps) {
   let completed = [];
   const DashboardAchievements: DashboardAchievement[] =
     dashboardacheivements.achievements as DashboardAchievement[];
@@ -15,7 +16,13 @@ export default function Achievements({ historyArray }: AchievementProps) {
 
     for (let j = 0; j < DashboardAchievements.length; j++) {
       if (DashboardAchievements[j].id == id) {
-        completed.push(DashboardAchievements[j]);
+        let userAchievementInfo = userAchievements?.find(ua => ua.achievementId == id);
+        console.log("user achievement info for id ", id, ": ", userAchievementInfo); 
+        completed.push({
+          dashboardAchievement: DashboardAchievements[j],
+          userAchievement : userAchievementInfo
+        }
+        );
       }
     }
   }
@@ -45,11 +52,13 @@ export default function Achievements({ historyArray }: AchievementProps) {
         ) : (
           completed.map((achievement) => (
             <AchievementEntry
-              key={achievement.id}
-              achievementName={achievement.achievementText}
+              key={achievement.dashboardAchievement.id}
+              // achievementName={achievement.userAchievement ? achievement.userAchievement.userAchievementStatus : "NOT FOUND"}
+              achievementName={achievement.dashboardAchievement.achievementText}
               status="Completed"
               buttonText="View Details"
             />
+            
           ))
         )}
       </div>

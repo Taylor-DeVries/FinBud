@@ -54,3 +54,22 @@ export interface DashboardAchievement {
   id: number;
   achievementText: string;
 }
+
+
+export interface UserAchievementEntry{
+  
+achievementId: number;
+userAchievementBoolean: number;
+userAchievementGoalValue: number;
+userAchievementId: number;
+userAchievementProgressValue: number;
+userAchievementStatus: string;
+
+}
+
+export interface UserAchievements {
+  error: string;
+  userAchievements: UserAchievementEntry[];
+}
+
+

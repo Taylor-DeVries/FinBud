@@ -1,4 +1,6 @@
 'use server';
+import { UserAchievementEntry } from '@/_data/types/types';
+import { UserAchievementStatus } from '@/_data/types/status';
 import { auth0 } from '@/lib/auth0';
 import { getAccessToken } from '@auth0/nextjs-auth0';
 import axios from 'axios';
@@ -50,5 +52,60 @@ export async function createHistoryApi(history: number[]): Promise<void> {
     }
   );
 
+  return;
+}
+
+
+export async function getUserAchievementsApi(): Promise<UserAchievementEntry[]> {
+  const { token } = await auth0.getAccessToken()
+  const response = await axios.get(
+    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+
+  return response.data;
+}
+
+export async function createUserAchievementDefaultApi(achievementId: number, userAcheivementStatus: UserAchievementStatus): Promise<void> {
+  const { token } = await auth0.getAccessToken()
+  const response = await axios.post(
+    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
+    {"achievementId": achievementId,
+      "userAchievementStatus": userAcheivementStatus,
+      "userAchievementProgressValue": 0,
+      "userAchievementGoalValue": 1,// Default goal value set to 1
+      "userAchievementBoolean": 1 // Default boolean value set to 1
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+
+    }
+  );
+
+  return;
+}
+
+export async function updateUserAchievementStatusApi(achievementId: number, userAchievementStatus: UserAchievementStatus): Promise<void> {
+  const { token } = await auth0.getAccessToken()
+  const response = await axios.put(
+    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
+    {"userAchievementStatus": userAchievementStatus,
+      "achievementId": achievementId,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
   return;
 }

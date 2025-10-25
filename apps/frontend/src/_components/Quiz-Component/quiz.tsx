@@ -7,6 +7,9 @@ import {
   isNextAvailable,
   isPrevAvailable,
   setHistoryFunction,
+  updateUserAchievementStatusFunction,
+  syncUserAchievementFunction,
+  isAchievementNode
 } from '../../_utils/quiz-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
@@ -18,6 +21,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import TfsaCalculatorButton from '../Calculator-Component/TFSA/TfsaCalculatorButton';
 import { HistoryState, Node } from '@/_data/types/types';
+import { UserAchievementStatus } from '@/_data/types/status';
 import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
@@ -73,6 +77,18 @@ export default function QuizPage({ data }) {
 
   function nextNode(id: number) {
     // eslint-disable-next-line prefer-const
+    
+    if(isAchievementNode(currentNode.id)){
+      updateUserAchievementStatusFunction(currentNode.id, UserAchievementStatus.COMPLETED);
+      console.log("update achievement", currentNode.id, UserAchievementStatus.COMPLETED);
+    }
+
+    if(isAchievementNode(id)){
+      updateUserAchievementStatusFunction(id, UserAchievementStatus.INPROGRESS);
+      console.log("update achievement", id, UserAchievementStatus.INPROGRESS);
+    }
+
+  
     let tempNode = findNodeTest(id, currentNode, rootNode);
     setCurrentNode(tempNode);
     setHistoryState({
@@ -100,8 +116,18 @@ export default function QuizPage({ data }) {
         historyArray: historyState.historyArray.slice(0, -1),
       });
       // eslint-disable-next-line prefer-const
+      // console.log("before:", currentNode.id);
       let tempNode = findNodeTest(id, currentNode, rootNode);
       setCurrentNode(tempNode);
+      // console.log("after temp:", tempNode.id);
+      // console.log("after current:", currentNode.id);
+      if(isAchievementNode(tempNode.id)){
+        updateUserAchievementStatusFunction(tempNode.id, UserAchievementStatus.INPROGRESS);
+      }
+      if(isAchievementNode(currentNode.id)){
+        updateUserAchievementStatusFunction(currentNode.id, UserAchievementStatus.NOTSTARTED);
+      }
+      
     }
   }
 
@@ -170,6 +196,7 @@ export default function QuizPage({ data }) {
 
     if (historyState.loading) {
       setHistoryAsync();
+      syncUserAchievementFunction();
     }
 
     if (historyState.error == 'Not logged in') {
