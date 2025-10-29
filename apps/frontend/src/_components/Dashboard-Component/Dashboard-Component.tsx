@@ -24,12 +24,12 @@ type DashboardProps = {
 };
 
 function Dashboard({ historyData, userAchievements }: DashboardProps) {
+
+  console.log("user achievements:", userAchievements);
   const [loading, setLoading] = useState(true);
 
   const historyArray = historyData.historyArray;
-
-  // console.log("dashboard user achievements: ", userAchievements);
-
+  
   const { user, isLoading } = useUser();
   const welcomeMessage = user?.name
     ? `Welcome to your dashboard ${user.name}!`

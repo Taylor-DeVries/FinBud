@@ -67,6 +67,11 @@ userAchievementStatus: string;
 
 }
 
+export interface UserAchievement{
+  error: string;
+  userAchievement: UserAchievementEntry;
+}
+
 export interface UserAchievements {
   error: string;
   userAchievements: UserAchievementEntry[];

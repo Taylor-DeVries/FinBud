@@ -1,5 +1,5 @@
-import { getHistoryApi, setHistoryApi, createHistoryApi, getUserAchievementsApi, createUserAchievementDefaultApi, updateUserAchievementStatusApi } from '@/_services/callApi';
-import { Node, HistoryState, UserAchievements} from '@/_data/types/types';
+import { getHistoryApi, setHistoryApi, createHistoryApi, getUserAchievementsApi, createUserAchievementDefaultApi, updateUserAchievementStatusApi , updateUserAchievementInfoApi, getUserAchievementEntryByAchievementIdApi} from '@/_services/callApi';
+import { Node, HistoryState, UserAchievements, UserAchievement} from '@/_data/types/types';
 import {UserAchievementStatus} from '@/_data/types/status';
 import dashboardacheivements from '@/_data/constants/dashboard-achievements.json';
 
@@ -158,11 +158,11 @@ export async function getSyncedUserAchievementFunction(): Promise<UserAchievemen
 
 }
 
-export async function syncUserAchievementFunction(): Promise<void>{
+export async function syncUserAchievementFunction(): Promise<void> {
   const storedUserAchievements = await getUserAchievementFunction();
   const userHistory = await getHistoryFunction();
   const userHistoryArray = userHistory.historyArray;
-  const currentNode = userHistoryArray[userHistoryArray.length -1];
+  const currentNode = userHistoryArray[userHistoryArray.length - 1];
 
   for (let i = 0; i < userHistoryArray.length; i++) {
     const achievementId = userHistoryArray[i];
@@ -170,14 +170,25 @@ export async function syncUserAchievementFunction(): Promise<void>{
       (ua) => ua.achievementId == achievementId
     );
 
-
-    if(!userAchievementEntry && isAchievementNode(achievementId)){
-      console.log("Creating default achievement for id: ", achievementId);
-      // create one for the achievement 
-      if(achievementId == currentNode){
-        await createUserAchievementDefaultApi(achievementId, UserAchievementStatus.INPROGRESS);
-      }else{
-        await createUserAchievementDefaultApi(achievementId, UserAchievementStatus.COMPLETED);
+    if (!userAchievementEntry && isAchievementNode(achievementId)) {
+      try {
+        if (achievementId == currentNode) {
+          await createUserAchievementDefaultApi(
+            achievementId,
+            UserAchievementStatus.INPROGRESS
+          );
+        } else {
+          await createUserAchievementDefaultApi(
+            achievementId,
+            UserAchievementStatus.COMPLETED
+          );
+        }
+      } catch (error) {
+        console.error(
+          'Error when creating default user acheivement for id:',
+          achievementId,
+          error
+        );
       }
     }
   }
@@ -204,4 +215,22 @@ export function isAchievementNode(nodeId: number): boolean {
     }
   }
   return false;
+}
+
+export async function updateUserAchievementInfoFunction(achievementId: number, progressValue: number, goalValue: number, booleanValue: number): Promise<UserAchievement>{
+  try{
+    await updateUserAchievementInfoApi(achievementId, progressValue, goalValue, booleanValue);
+    const entry = await getUserAchievementEntryByAchievementIdApi(achievementId);
+    return {
+      error: '',
+      userAchievement: entry
+    }
+
+  }
+  catch (error){
+    return {
+      error: error.toString(),
+      userAchievement: null
+    }
+  }
 }
