@@ -17,7 +17,7 @@ export default function Achievements({ historyArray, userAchievements }: Achieve
     for (let j = 0; j < DashboardAchievements.length; j++) {
       if (DashboardAchievements[j].id == id) {
         let userAchievementInfo = userAchievements?.find(ua => ua.achievementId == id);
-        console.log("user achievement info for id ", id, ": ", userAchievementInfo); 
+        // console.log("user achievement info for id ", id, ": ", userAchievementInfo); 
         completed.push({
           dashboardAchievement: DashboardAchievements[j],
           userAchievement : userAchievementInfo

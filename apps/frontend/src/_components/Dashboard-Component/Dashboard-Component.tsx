@@ -24,8 +24,6 @@ type DashboardProps = {
 };
 
 function Dashboard({ historyData, userAchievements }: DashboardProps) {
-
-  console.log("user achievements:", userAchievements);
   const [loading, setLoading] = useState(true);
 
   const historyArray = historyData.historyArray;

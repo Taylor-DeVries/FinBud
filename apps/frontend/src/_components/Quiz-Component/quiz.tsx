@@ -80,12 +80,10 @@ export default function QuizPage({ data }) {
     
     if(isAchievementNode(currentNode.id)){
       updateUserAchievementStatusFunction(currentNode.id, UserAchievementStatus.COMPLETED);
-      console.log("update achievement", currentNode.id, UserAchievementStatus.COMPLETED);
     }
 
     if(isAchievementNode(id)){
       updateUserAchievementStatusFunction(id, UserAchievementStatus.INPROGRESS);
-      console.log("update achievement", id, UserAchievementStatus.INPROGRESS);
     }
 
   
@@ -116,11 +114,8 @@ export default function QuizPage({ data }) {
         historyArray: historyState.historyArray.slice(0, -1),
       });
       // eslint-disable-next-line prefer-const
-      // console.log("before:", currentNode.id);
       let tempNode = findNodeTest(id, currentNode, rootNode);
       setCurrentNode(tempNode);
-      // console.log("after temp:", tempNode.id);
-      // console.log("after current:", currentNode.id);
       if(isAchievementNode(tempNode.id)){
         updateUserAchievementStatusFunction(tempNode.id, UserAchievementStatus.INPROGRESS);
       }
