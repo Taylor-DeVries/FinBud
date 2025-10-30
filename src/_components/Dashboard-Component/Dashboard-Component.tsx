@@ -8,7 +8,7 @@ import Acheivements from '@/_components/Dashboard-Component/Achievements/Acheive
 import Toolbox from './Toolbox/Toolbox';
 import { useUser } from '@auth0/nextjs-auth0';
 import dashboardgoals from '@/_data/constants/dashboard-goals.json';
-import { DashboardGoal } from '@/_data/types/types';
+import { DashboardGoal, UserAchievementEntry } from '@/_data/types/types';
 import extendedtext from '@/_data/constants/extendedTexts.json';
 import { QuizText } from '@/_data/types/types';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
@@ -19,14 +19,15 @@ type DashboardProps = {
     historyArray: number[];
     error: string;
     initialState: boolean;
-  };
+  },
+  userAchievements?: UserAchievementEntry[]
 };
 
-function Dashboard({ historyData }: DashboardProps) {
+function Dashboard({ historyData, userAchievements }: DashboardProps) {
   const [loading, setLoading] = useState(true);
 
   const historyArray = historyData.historyArray;
-
+  
   const { user, isLoading } = useUser();
   const welcomeMessage = user?.name
     ? `Welcome to your dashboard ${user.name}!`
@@ -121,7 +122,7 @@ function Dashboard({ historyData }: DashboardProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Left Column - Achievements & Toolbox */}
         <div className="lg:col-span-2 flex flex-col gap-y-4 sm:gap-y-6">
-          <Acheivements historyArray={historyArray} />
+          <Acheivements historyArray={historyArray} userAchievements={userAchievements} />
           <Toolbox historyArray={historyArray} />
         </div>
 
