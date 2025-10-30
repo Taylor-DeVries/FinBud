@@ -27,6 +27,8 @@ export default function Achievements({ historyArray, userAchievements }: Achieve
     }
   }
 
+  completed.reverse();
+
   return (
     <div className="bg-light_blue dark:bg-[#333] px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col gap-y-3 rounded-xl shadow-md">
       <div className="flex items-center justify-between flex-wrap gap-2">
