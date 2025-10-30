@@ -35,7 +35,7 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
 
   const goals: DashboardGoal[] = dashboardgoals.goals as DashboardGoal[];
   let goalText = 'Continue in the Quiz';
-  let currentNodeId = historyArray[historyArray.length - 1];
+  const currentNodeId = historyArray[historyArray.length - 1];
 
   for (let i = 0; i < goals.length; i++) {
     if (goals[i].id == currentNodeId) {

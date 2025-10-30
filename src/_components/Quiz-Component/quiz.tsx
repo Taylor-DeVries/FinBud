@@ -1,6 +1,6 @@
 'use client';
 import { buildQuizData } from '@/_services/buildQuizData';
-import dashboard_goals from '@/_data/constants/dashboard-goals.json';
+import dashboardGoals from '@/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -202,8 +202,8 @@ export default function QuizPage({ data }) {
     }
 
     setShowDashboard(false);
-    for (let i = 0; i < dashboard_goals.goals.length; i++) {
-      if (dashboard_goals.goals[i].id == currentNode.id) {
+    for (let i = 0; i < dashboardGoals.goals.length; i++) {
+      if (dashboardGoals.goals[i].id == currentNode.id) {
         setShowDashboard(true);
         break;
       }

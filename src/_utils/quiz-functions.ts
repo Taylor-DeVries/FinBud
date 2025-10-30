@@ -104,9 +104,7 @@ export async function setHistoryFunction(
 export async function createHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
-  try {
-    const historyString = historyArrayToHistoryString(historyArray);
-    
+  try {    
     await createHistoryApi(historyArray);
     
     return { loading: true, historyArray: historyArray, error: '', initialState:false };

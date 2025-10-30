@@ -1,5 +1,5 @@
 import Dashboard from '@/_components/Dashboard-Component/Dashboard-Component';
-import { getHistoryFunction, getSyncedUserAchievementFunction, updateUserAchievementInfoFunction } from '@/_utils/quiz-functions';
+import { getHistoryFunction, getSyncedUserAchievementFunction } from '@/_utils/quiz-functions';
 import { ThemeProvider } from '@/app/settings/providers';
 import { auth0 } from '@/lib/auth0';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';

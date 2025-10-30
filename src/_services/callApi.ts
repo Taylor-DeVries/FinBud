@@ -116,19 +116,19 @@ export async function updateUserAchievementInfoApi(
   goalValue?: number,
   booleanValue?: number
 ): Promise<void> {
-  let progressUpdate =
+  const progressUpdate =
     progressValue != undefined
       ? {
           userAchievementProgressValue: progressValue,
         }
       : {};
-  let goalUpdate =
+  const goalUpdate =
     goalValue != undefined
       ? {
           userAchievementGoalValue: goalValue,
         }
       : {};
-  let booleanUpdate =
+  const booleanUpdate =
     booleanValue != undefined
       ? {
           userAchievementBoolean: booleanValue,

@@ -7,16 +7,16 @@ type AchievementProps = {
 };
 
 export default function Achievements({ historyArray, userAchievements }: AchievementProps) {
-  let completed = [];
+  const completed = [];
   const DashboardAchievements: DashboardAchievement[] =
     dashboardacheivements.achievements as DashboardAchievement[];
 
   for (let i = 0; i < historyArray.length - 1; i++) {
-    let id = historyArray[i];
+    const id = historyArray[i];
 
     for (let j = 0; j < DashboardAchievements.length; j++) {
       if (DashboardAchievements[j].id == id) {
-        let userAchievementInfo = userAchievements?.find(ua => ua.achievementId == id);
+        const userAchievementInfo = userAchievements?.find(ua => ua.achievementId == id);
         // console.log("user achievement info for id ", id, ": ", userAchievementInfo); 
         completed.push({
           dashboardAchievement: DashboardAchievements[j],
