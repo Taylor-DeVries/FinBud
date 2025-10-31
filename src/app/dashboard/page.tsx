@@ -7,9 +7,6 @@ import ResponsiveImage from '@/_components/Responsive-Image-Component/Responsive
 export default async function Page() {
   const session = await auth0.getSession();
 
-  // Example on how to update achievement data in db
-  // await updateUserAchievementInfoFunction(9,undefined, undefined,1); //--> update achievement 9 to be boolean (give undefined for unchanged values)
-  
   if (session) {
     const historyData = await getHistoryFunction();
 
