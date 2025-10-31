@@ -8,8 +8,6 @@ export function buildQuizData(): Node {
   const extendedtexts: QuizText[] = quizTexts.extendedTexts as QuizText[];
   const links: QuizLink[] = quizLinks.links as QuizLink[];
 
-  const extendedtexts_n = extendedtexts.length;
-
   return generateNode(paths);
 
   function generateNode(current: QuizPath): Node {
@@ -46,11 +44,11 @@ export function buildQuizData(): Node {
     return newNode;
   }
 
-  function getTextById(ID: number): string[] {
-    return extendedtexts.find((text) => text.id == ID)?.extendedText ?? ['Error: Quiz ID does not exist'];
+  function getTextById(id: number): string[] {
+    return extendedtexts.find((text) => text.id == id)?.extendedText ?? ['Error: Quiz ID does not exist'];
   }
 
-  function getLinkById(ID: number): string {
-    return links.find((link) => link.id == ID)?.link;
+  function getLinkById(id: number): string {
+    return links.find((link) => link.id == id)?.link;
   }
 }

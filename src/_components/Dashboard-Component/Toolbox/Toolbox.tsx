@@ -35,7 +35,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
   const currentNodeId = historyArray[historyArray.length - 1];
   const Links = links.links as QuizLink[];
 
-  let currentActions = [];
+  const currentActions = [];
 
   if (currentNodeId == 4 || currentNodeId == 23) {
     currentActions.push({

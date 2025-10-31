@@ -1,12 +1,15 @@
 'use client';
 import { buildQuizData } from '@/_services/buildQuizData';
-import dashboard_goals from '@/_data/constants/dashboard-goals.json';
+import dashboardGoals from '@/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
   isNextAvailable,
   isPrevAvailable,
   setHistoryFunction,
+  updateUserAchievementStatusFunction,
+  syncUserAchievementFunction,
+  isAchievementNode
 } from '../../_utils/quiz-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
@@ -18,6 +21,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import TfsaCalculatorButton from '../Calculator-Component/TFSA/TfsaCalculatorButton';
 import { HistoryState, Node } from '@/_data/types/types';
+import { UserAchievementStatus } from '@/_data/types/status';
 import { TypeAnimation } from 'react-type-animation';
 import Loader from '../Loader-Component/Loader';
 import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
@@ -73,6 +77,16 @@ export default function QuizPage({ data }) {
 
   function nextNode(id: number) {
     // eslint-disable-next-line prefer-const
+    
+    if(isAchievementNode(currentNode.id)){
+      updateUserAchievementStatusFunction(currentNode.id, UserAchievementStatus.COMPLETED);
+    }
+
+    if(isAchievementNode(id)){
+      updateUserAchievementStatusFunction(id, UserAchievementStatus.INPROGRESS);
+    }
+
+  
     let tempNode = findNodeTest(id, currentNode, rootNode);
     setCurrentNode(tempNode);
     setHistoryState({
@@ -102,6 +116,13 @@ export default function QuizPage({ data }) {
       // eslint-disable-next-line prefer-const
       let tempNode = findNodeTest(id, currentNode, rootNode);
       setCurrentNode(tempNode);
+      if(isAchievementNode(tempNode.id)){
+        updateUserAchievementStatusFunction(tempNode.id, UserAchievementStatus.INPROGRESS);
+      }
+      if(isAchievementNode(currentNode.id)){
+        updateUserAchievementStatusFunction(currentNode.id, UserAchievementStatus.NOTSTARTED);
+      }
+      
     }
   }
 
@@ -170,6 +191,7 @@ export default function QuizPage({ data }) {
 
     if (historyState.loading) {
       setHistoryAsync();
+      syncUserAchievementFunction();
     }
 
     if (historyState.error == 'Not logged in') {
@@ -180,8 +202,8 @@ export default function QuizPage({ data }) {
     }
 
     setShowDashboard(false);
-    for (let i = 0; i < dashboard_goals.goals.length; i++) {
-      if (dashboard_goals.goals[i].id == currentNode.id) {
+    for (let i = 0; i < dashboardGoals.goals.length; i++) {
+      if (dashboardGoals.goals[i].id == currentNode.id) {
         setShowDashboard(true);
         break;
       }
