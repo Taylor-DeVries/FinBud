@@ -1,24 +1,33 @@
 import AchievementEntry from './AchievementEntry';
-import { DashboardAchievement } from '@/_data/types/types';
+import { DashboardAchievement, UserAchievementEntry } from '@/_data/types/types';
 import dashboardacheivements from '@/_data/constants/dashboard-achievements.json';
 type AchievementProps = {
   historyArray: number[];
+  userAchievements?: UserAchievementEntry[]
 };
 
-export default function Achievements({ historyArray }: AchievementProps) {
-  let completed = [];
+export default function Achievements({ historyArray, userAchievements }: AchievementProps) {
+  const completed = [];
   const DashboardAchievements: DashboardAchievement[] =
     dashboardacheivements.achievements as DashboardAchievement[];
 
   for (let i = 0; i < historyArray.length - 1; i++) {
-    let id = historyArray[i];
+    const id = historyArray[i];
 
     for (let j = 0; j < DashboardAchievements.length; j++) {
       if (DashboardAchievements[j].id == id) {
-        completed.push(DashboardAchievements[j]);
+        const userAchievementInfo = userAchievements?.find(ua => ua.achievementId == id);
+        // console.log("user achievement info for id ", id, ": ", userAchievementInfo); 
+        completed.push({
+          dashboardAchievement: DashboardAchievements[j],
+          userAchievement : userAchievementInfo
+        }
+        );
       }
     }
   }
+
+  completed.reverse();
 
   return (
     <div className="bg-light_blue dark:bg-[#333] px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col gap-y-3 rounded-xl shadow-md">
@@ -45,11 +54,13 @@ export default function Achievements({ historyArray }: AchievementProps) {
         ) : (
           completed.map((achievement) => (
             <AchievementEntry
-              key={achievement.id}
-              achievementName={achievement.achievementText}
+              key={achievement.dashboardAchievement.id}
+              // achievementName={achievement.userAchievement ? achievement.userAchievement.userAchievementStatus : "NOT FOUND"}
+              achievementName={achievement.dashboardAchievement.achievementText}
               status="Completed"
               buttonText="View Details"
             />
+            
           ))
         )}
       </div>
