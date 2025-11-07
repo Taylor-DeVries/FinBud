@@ -1,8 +1,8 @@
 import Dashboard from '@/_components/Dashboard-Component/Dashboard-Component';
-import { getHistoryFunction } from '@/_utils/quiz-functions';
 import { ThemeProvider } from '@/app/settings/providers';
-import { auth0 } from '@/lib/auth0';
+import { auth0 } from '@/_lib/auth0';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import { getHistoryFunction } from '@/_lib/services/history-functions';
 
 export default async function Page() {
   const session = await auth0.getSession();

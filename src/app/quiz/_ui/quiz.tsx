@@ -1,32 +1,31 @@
 'use client';
-import { buildQuizData } from '@/_services/buildQuizData';
-import dashboard_goals from '@/_data/constants/dashboard-goals.json';
+import { buildQuizData } from '@/_lib/services/buildQuizData';
+import dashboardGoals from '@/_lib/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
-import {
-  findNodeTest,
-  isNextAvailable,
-  isPrevAvailable,
-  setHistoryFunction,
-} from '../../_utils/quiz-functions';
+import { setHistoryFunction } from '../../../_lib/services/history-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
-import Textbox from '@/_components/Textbox-Component/Textbox';
 import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
 import { IoIosArrowRoundBack } from 'react-icons/io';
-import TfsaCalculatorComponent from '../Calculator-Component/TFSA/TfsaCalculatorComponent';
+import TfsaCalculatorComponent from '../../../_components/Calculator-Component/TFSA/TfsaCalculatorComponent';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import TfsaCalculatorButton from '../Calculator-Component/TFSA/TfsaCalculatorButton';
-import { HistoryState, Node } from '@/_data/types/types';
+import TfsaCalculatorButton from '../../../_components/Calculator-Component/TFSA/TfsaCalculatorButton';
+import { HistoryState, Node } from '@/_lib/types/types';
 import { TypeAnimation } from 'react-type-animation';
-import Loader from '../Loader-Component/Loader';
-import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
-import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
-import AllocationCalculatorComponent from '../Calculator-Component/Allocation/AllocationCalculatorComponent';
-import AllocationCalculatorButton from '../Calculator-Component/Allocation/AllocationCalculatorButton';
-import LinkButton from '../Link-Component/LinkComponent';
-import NavToDashboard from '../Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
-import MoreInfoButtons from '../MoreInfo-Component/MoreInfoButtons';
+import Loader from '../../../_components/Loader-Component/Loader';
+import FhsaCalculatorComponent from '../../../_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
+import FhsaCalculatorButton from '../../../_components/Calculator-Component/FHSA/FhsaCalculatorButton';
+import AllocationCalculatorComponent from '../../../_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
+import AllocationCalculatorButton from '../../../_components/Calculator-Component/Allocation/AllocationCalculatorButton';
+import LinkButton from '../../../_components/Link-Component/LinkComponent';
+import NavToDashboard from '../../../_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
+import MoreInfoButtons from '../../../_components/MoreInfo-Component/MoreInfoButtons';
+import {
+  findNode,
+  isNextAvailable,
+  isPrevAvailable,
+} from '../_lib/quiz-functions';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -39,12 +38,13 @@ export default function QuizPage({ data }) {
   const [showNextText, setShowNextText] = useState<boolean>(false);
   const [showPrevText, setShowPrevText] = useState<boolean>(false);
   const [currentNode, setCurrentNode] = useState<Node>(
-    findNodeTest(historyState.historyArray.at(-1), rootNode, rootNode)
+    findNode(historyState.historyArray.at(-1), rootNode, rootNode)
   );
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
-  const [showAllocationCalculator, setShowAllocationCalculator] = React.useState(false);
+  const [showAllocationCalculator, setShowAllocationCalculator] =
+    React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
   const [showDashboard, setShowDashboard] = React.useState(false);
 
@@ -72,8 +72,7 @@ export default function QuizPage({ data }) {
   }
 
   function nextNode(id: number) {
-    // eslint-disable-next-line prefer-const
-    let tempNode = findNodeTest(id, currentNode, rootNode);
+    const tempNode = findNode(id, currentNode, rootNode);
     setCurrentNode(tempNode);
     setHistoryState({
       ...historyState,
@@ -93,14 +92,12 @@ export default function QuizPage({ data }) {
     if (historyState.historyArray.length == 1) {
       router.push('/');
     } else {
-      // eslint-disable-next-line prefer-const
-      let id = historyState.historyArray.at(-2);
+      const id = historyState.historyArray.at(-2);
       setHistoryState({
         ...historyState,
         historyArray: historyState.historyArray.slice(0, -1),
       });
-      // eslint-disable-next-line prefer-const
-      let tempNode = findNodeTest(id, currentNode, rootNode);
+      const tempNode = findNode(id, currentNode, rootNode);
       setCurrentNode(tempNode);
     }
   }
@@ -180,8 +177,8 @@ export default function QuizPage({ data }) {
     }
 
     setShowDashboard(false);
-    for (let i = 0; i < dashboard_goals.goals.length; i++) {
-      if (dashboard_goals.goals[i].id == currentNode.id) {
+    for (let i = 0; i < dashboardGoals.goals.length; i++) {
+      if (dashboardGoals.goals[i].id == currentNode.id) {
         setShowDashboard(true);
         break;
       }
@@ -262,22 +259,22 @@ export default function QuizPage({ data }) {
 
             {/* ChatBubble */}
             <div className="relative w-full">
-                <div className="max-h-64 mt-2">
-                  <ChatBubble
-                    align="start"
-                    secondaryLabel={
-                      <TypeAnimation
-                        key={`${currentNode.id}-${currentTextIndex}`}
-                        sequence={[currentNode.text[currentTextIndex] + '\n']}
-                        wrapper="p"
-                        speed={80}
-                        cursor={false}
-                        repeat={0}
-                        preRenderFirstString={false}
-                      />
-                    }
-                  />
-                </div>
+              <div className="max-h-64 mt-2">
+                <ChatBubble
+                  align="start"
+                  secondaryLabel={
+                    <TypeAnimation
+                      key={`${currentNode.id}-${currentTextIndex}`}
+                      sequence={[currentNode.text[currentTextIndex] + '\n']}
+                      wrapper="p"
+                      speed={80}
+                      cursor={false}
+                      repeat={0}
+                      preRenderFirstString={false}
+                    />
+                  }
+                />
+              </div>
 
               {/* MoreInfo Buttons */}
               <MoreInfoButtons
@@ -292,7 +289,7 @@ export default function QuizPage({ data }) {
               <div className="flex flex-col space-y-2">
                 {currentNode.responses
                   .filter((response) => {
-                    let id = response.connectId ?? response.id;
+                    const id = response.connectId ?? response.id;
                     if (id == 8 || id == 17 || id == 9) {
                       return !checkNodeVisited(id);
                     }

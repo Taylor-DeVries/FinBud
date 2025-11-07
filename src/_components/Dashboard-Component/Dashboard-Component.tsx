@@ -7,10 +7,10 @@ import Goal from '@/_components/Dashboard-Component/Goal/Goal';
 import Acheivements from '@/_components/Dashboard-Component/Achievements/Acheivements';
 import Toolbox from './Toolbox/Toolbox';
 import { useUser } from '@auth0/nextjs-auth0';
-import dashboardgoals from '@/_data/constants/dashboard-goals.json';
-import { DashboardGoal } from '@/_data/types/types';
-import extendedtext from '@/_data/constants/extendedTexts.json';
-import { QuizText } from '@/_data/types/types';
+import dashboardgoals from '@/_lib/constants/dashboard-goals.json';
+import { DashboardGoal } from '@/_lib/types/types';
+import extendedtext from '@/_lib/constants/extendedTexts.json';
+import { QuizText } from '@/_lib/types/types';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 type DashboardProps = {
@@ -46,22 +46,25 @@ function Dashboard({ historyData }: DashboardProps) {
   // Calculate quiz progress
   const totalGoals = goals.length;
   const completedGoals = historyArray.length - 1; // Subtract 1 for starting node
-  const progressPercentage = Math.min(100, Math.round((completedGoals / totalGoals) * 100));
+  const progressPercentage = Math.min(
+    100,
+    Math.round((completedGoals / totalGoals) * 100)
+  );
 
   // Generate encouraging message based on progress
   const getEncouragingMessage = () => {
     if (progressPercentage === 0) {
-      return { text: "Let's get started!", emoji: "🚀" };
+      return { text: "Let's get started!", emoji: '🚀' };
     } else if (progressPercentage < 25) {
-      return { text: "Great start!", emoji: "🌟" };
+      return { text: 'Great start!', emoji: '🌟' };
     } else if (progressPercentage < 50) {
-      return { text: "You're doing amazing!", emoji: "💪" };
+      return { text: "You're doing amazing!", emoji: '💪' };
     } else if (progressPercentage < 75) {
-      return { text: "Finance bro incoming!", emoji: "🔥" };
+      return { text: 'Finance bro incoming!', emoji: '🔥' };
     } else if (progressPercentage < 100) {
-      return { text: "You totally Rock!", emoji: "⭐" };
+      return { text: 'You totally Rock!', emoji: '⭐' };
     } else {
-      return { text: "You did it!", emoji: "🎉" };
+      return { text: 'You did it!', emoji: '🎉' };
     }
   };
 
@@ -100,7 +103,7 @@ function Dashboard({ historyData }: DashboardProps) {
         <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl text-white dark:text-gray-800 drop-shadow-md">
           {welcomeMessage}
         </h1>
-        
+
         {/* Encouraging Message Badge */}
         <div className="flex items-center gap-2 bg-light_blue dark:bg-[#333] backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-md">
           <span className="text-2xl" role="img" aria-label="encouragement">
@@ -143,7 +146,7 @@ function Dashboard({ historyData }: DashboardProps) {
             {extendedText.length > 1 && (
               <div className="flex justify-end items-center gap-2 mt-3">
                 {showPrevText() && (
-                  <button 
+                  <button
                     onClick={() => moveTextIndex(-1)}
                     className="p-2 sm:p-2.5 bg-light_blue hover:bg-blue-400 dark:bg-[#333] dark:hover:bg-gray-600 text-white rounded-lg transition-colors shadow-sm active:scale-95"
                     aria-label="Previous tip"
@@ -152,7 +155,7 @@ function Dashboard({ historyData }: DashboardProps) {
                   </button>
                 )}
                 {showNextText() && (
-                  <button 
+                  <button
                     onClick={() => moveTextIndex(1)}
                     className="p-2 sm:p-2.5 bg-light_blue hover:bg-blue-400 dark:bg-[#333] dark:hover:bg-gray-600 text-white rounded-lg transition-colors shadow-sm active:scale-95"
                     aria-label="Next tip"

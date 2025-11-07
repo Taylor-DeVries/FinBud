@@ -1,32 +1,27 @@
-import QuizPage from '@/_components/Quiz-Component/quiz';
+import QuizPage from './_ui/quiz';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
-import { getHistoryFunction } from '@/_utils/quiz-functions';
+import { getHistoryFunction } from '../../_lib/services/history-functions';
 
 export default async function Page() {
-
-  try {  
-  const data = await getHistoryFunction();
+  try {
+    const data = await getHistoryFunction();
     return (
       <ResponsiveImage>
         <QuizPage data={data}></QuizPage>
       </ResponsiveImage>
     );
-  }
-  catch (error) {
-return (
-    <ResponsiveImage>
-      <QuizPage
-        data={{
-          loading: false,
-          historyArray: [0],
-          error: 'Not logged in',
-          initialState: false,
-        }}
-      ></QuizPage>
-    </ResponsiveImage>
-  );
+  } catch (error) {
+    return (
+      <ResponsiveImage>
+        <QuizPage
+          data={{
+            loading: false,
+            historyArray: [0],
+            error: 'Not logged in',
+            initialState: false,
+          }}
+        ></QuizPage>
+      </ResponsiveImage>
+    );
   }
 }
-
-  
-

@@ -7,8 +7,8 @@ import TfsaCalculatorComponent from '@/_components/Calculator-Component/TFSA/Tfs
 import FhsaCalculatorComponent from '@/_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
 import AllocationCalculatorComponent from '@/_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
 import LinkButton from '@/_components/Link-Component/LinkComponent';
-import links from '@/_data/constants/links.json';
-import { QuizLink } from '@/_data/types/types';
+import links from '@/_lib/constants/links.json';
+import { QuizLink } from '@/_lib/types/types';
 type ToolboxProps = {
   historyArray: number[];
 };

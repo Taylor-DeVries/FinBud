@@ -1,6 +1,6 @@
 import AchievementEntry from './AchievementEntry';
-import { DashboardAchievement } from '@/_data/types/types';
-import dashboardacheivements from '@/_data/constants/dashboard-achievements.json';
+import { DashboardAchievement } from '@/_lib/types/types';
+import dashboardacheivements from '@/_lib/constants/dashboard-achievements.json';
 type AchievementProps = {
   historyArray: number[];
 };
@@ -32,10 +32,12 @@ export default function Achievements({ historyArray }: AchievementProps) {
           </span>
         )}
       </div>
-      
+
       <div
         className={`flex flex-col gap-y-2 ${
-          completed.length > 3 ? 'overflow-y-auto max-h-48 sm:max-h-56 lg:max-h-64 pr-1 scrollbar-thin scrollbar-thumb-white/30 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent' : ''
+          completed.length > 3
+            ? 'overflow-y-auto max-h-48 sm:max-h-56 lg:max-h-64 pr-1 scrollbar-thin scrollbar-thumb-white/30 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent'
+            : ''
         }`}
       >
         {completed.length === 0 ? (

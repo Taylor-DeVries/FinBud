@@ -1,7 +1,7 @@
-import quizPaths from '@/_data/constants/paths.json';
-import quizTexts from '@/_data/constants/extendedTexts.json';
-import quizLinks from '@/_data/constants/links.json';
-import { QuizPath, QuizText, Node, QuizLink } from '@/_data/types/types';
+import quizPaths from '@/_lib/constants/paths.json';
+import quizTexts from '@/_lib/constants/extendedTexts.json';
+import quizLinks from '@/_lib/constants/links.json';
+import { QuizPath, QuizText, Node, QuizLink } from '@/_lib/types/types';
 
 export function buildQuizData(): Node {
   const paths: QuizPath = quizPaths as QuizPath;
@@ -39,15 +39,18 @@ export function buildQuizData(): Node {
       id: current.id,
       text: nodeText,
       link: nodeLink,
-      responses: nodeResponses
-
+      responses: nodeResponses,
     };
 
     return newNode;
   }
 
   function getTextById(ID: number): string[] {
-    return extendedtexts.find((text) => text.id == ID)?.extendedText ?? ['Error: Quiz ID does not exist'];
+    return (
+      extendedtexts.find((text) => text.id == ID)?.extendedText ?? [
+        'Error: Quiz ID does not exist',
+      ]
+    );
   }
 
   function getLinkById(ID: number): string {
