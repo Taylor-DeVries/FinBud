@@ -1,5 +1,5 @@
 'use client';
-import { buildQuizData } from '@/_lib/services/buildQuizData';
+import { buildQuizData } from '@/app/quiz/_lib/build-quiz-data';
 import dashboardGoals from '@/_lib/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
 import { setHistoryFunction } from '../../../_lib/services/history-functions';
