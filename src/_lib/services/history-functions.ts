@@ -30,14 +30,14 @@ export async function getHistoryFunction(): Promise<HistoryState> {
   try {
     const historyArray = await getHistoryApi();
     return {
-      loading: true,
+      loading: false,
       historyArray: historyArray,
       error: '',
       initialState: false,
     };
   } catch (error) {
     let account = {
-      loading: true,
+      loading: false,
       historyArray: [0],
       error: error.toString(),
       initialState: false,
@@ -45,6 +45,7 @@ export async function getHistoryFunction(): Promise<HistoryState> {
     if (account.error == 'AxiosError: Request failed with status code 404') {
       account = await createHistoryFunction([0]);
       account.initialState = true;
+      account.error = '';
     }
     return account;
   }
