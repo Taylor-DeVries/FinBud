@@ -10,27 +10,26 @@ import {
   updateUserAchievementStatusFunction,
   syncUserAchievementFunction,
   isAchievementNode,
-} from '../../../_lib/_services/quiz-functions';
+} from '@/_lib/_services/quiz-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
-import Textbox from '@/_components/Textbox-Component/Textbox';
 import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
 import { IoIosArrowRoundBack } from 'react-icons/io';
-import TfsaCalculatorComponent from '../../../_components/Calculator-Component/TFSA/TfsaCalculatorComponent';
+import TfsaCalculatorComponent from '@/_components/Calculator-Component/TFSA/TfsaCalculatorComponent';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import TfsaCalculatorButton from '../../../_components/Calculator-Component/TFSA/TfsaCalculatorButton';
+import TfsaCalculatorButton from '@/_components/Calculator-Component/TFSA/TfsaCalculatorButton';
 import { HistoryState, Node } from '@/_lib/_data/types/types';
 import { UserAchievementStatus } from '@/_lib/_data/types/status';
 import { TypeAnimation } from 'react-type-animation';
-import Loader from '../../../_components/Loader-Component/Loader';
-import FhsaCalculatorComponent from '../../../_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
-import FhsaCalculatorButton from '../../../_components/Calculator-Component/FHSA/FhsaCalculatorButton';
-import AllocationCalculatorComponent from '../../../_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
-import AllocationCalculatorButton from '../../../_components/Calculator-Component/Allocation/AllocationCalculatorButton';
-import LinkButton from '../../../_components/Link-Component/LinkComponent';
-import NavToDashboard from '../../../_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
-import MoreInfoButtons from '../../../_components/MoreInfo-Component/MoreInfoButtons';
+import Loader from '@/_components/Loader-Component/Loader';
+import FhsaCalculatorComponent from '@/_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
+import FhsaCalculatorButton from '@/_components/Calculator-Component/FHSA/FhsaCalculatorButton';
+import AllocationCalculatorComponent from '@/_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
+import AllocationCalculatorButton from '@/_components/Calculator-Component/Allocation/AllocationCalculatorButton';
+import LinkButton from '@/_components/Link-Component/LinkComponent';
+import NavToDashboard from '@/_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
+import MoreInfoButtons from '@/_components/MoreInfo-Component/MoreInfoButtons';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
