@@ -1,12 +1,18 @@
 import AchievementEntry from './AchievementEntry';
-import { DashboardAchievement, UserAchievementEntry } from '@/_data/types/types';
-import dashboardacheivements from '@/_data/constants/dashboard-achievements.json';
+import {
+  DashboardAchievement,
+  UserAchievementEntry,
+} from '@/_lib/_data/types/types';
+import dashboardacheivements from '@/_lib/_data/constants/dashboard-achievements.json';
 type AchievementProps = {
   historyArray: number[];
-  userAchievements?: UserAchievementEntry[]
+  userAchievements?: UserAchievementEntry[];
 };
 
-export default function Achievements({ historyArray, userAchievements }: AchievementProps) {
+export default function Achievements({
+  historyArray,
+  userAchievements,
+}: AchievementProps) {
   const completed = [];
   const DashboardAchievements: DashboardAchievement[] =
     dashboardacheivements.achievements as DashboardAchievement[];
@@ -16,13 +22,14 @@ export default function Achievements({ historyArray, userAchievements }: Achieve
 
     for (let j = 0; j < DashboardAchievements.length; j++) {
       if (DashboardAchievements[j].id == id) {
-        const userAchievementInfo = userAchievements?.find(ua => ua.achievementId == id);
-        // console.log("user achievement info for id ", id, ": ", userAchievementInfo); 
+        const userAchievementInfo = userAchievements?.find(
+          (ua) => ua.achievementId == id
+        );
+        // console.log("user achievement info for id ", id, ": ", userAchievementInfo);
         completed.push({
           dashboardAchievement: DashboardAchievements[j],
-          userAchievement : userAchievementInfo
-        }
-        );
+          userAchievement: userAchievementInfo,
+        });
       }
     }
   }
@@ -41,10 +48,12 @@ export default function Achievements({ historyArray, userAchievements }: Achieve
           </span>
         )}
       </div>
-      
+
       <div
         className={`flex flex-col gap-y-2 ${
-          completed.length > 3 ? 'overflow-y-auto max-h-48 sm:max-h-56 lg:max-h-64 pr-1 scrollbar-thin scrollbar-thumb-white/30 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent' : ''
+          completed.length > 3
+            ? 'overflow-y-auto max-h-48 sm:max-h-56 lg:max-h-64 pr-1 scrollbar-thin scrollbar-thumb-white/30 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent'
+            : ''
         }`}
       >
         {completed.length === 0 ? (
@@ -60,7 +69,6 @@ export default function Achievements({ historyArray, userAchievements }: Achieve
               status="Completed"
               buttonText="View Details"
             />
-            
           ))
         )}
       </div>

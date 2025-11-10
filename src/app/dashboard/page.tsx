@@ -1,7 +1,10 @@
 import Dashboard from '@/_components/Dashboard-Component/Dashboard-Component';
-import { getHistoryFunction, getSyncedUserAchievementFunction } from '@/_utils/quiz-functions';
+import {
+  getHistoryFunction,
+  getSyncedUserAchievementFunction,
+} from '@/_lib/_services/quiz-functions';
 import { ThemeProvider } from '@/app/settings/providers';
-import { auth0 } from '@/lib/auth0';
+import { auth0 } from '@/_lib/auth0';
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
 export default async function Page() {
@@ -11,16 +14,18 @@ export default async function Page() {
     const historyData = await getHistoryFunction();
 
     const userAchievementResponse = await getSyncedUserAchievementFunction();
-    
+
     const userAchievementData = userAchievementResponse.userAchievements;
-    
 
     return (
       <>
         <ThemeProvider>
           <div className="h-screen w-full flex justify-center bg-dashboard_blue_bg dark:bg-[#2C3E50] p-8">
             <div className="w-full">
-              <Dashboard historyData={historyData} userAchievements={userAchievementData} />
+              <Dashboard
+                historyData={historyData}
+                userAchievements={userAchievementData}
+              />
             </div>
           </div>
         </ThemeProvider>

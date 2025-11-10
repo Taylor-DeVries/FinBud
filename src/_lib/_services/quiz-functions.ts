@@ -1,7 +1,21 @@
-import { getHistoryApi, setHistoryApi, createHistoryApi, getUserAchievementsApi, createUserAchievementDefaultApi, updateUserAchievementStatusApi , updateUserAchievementInfoApi, getUserAchievementEntryByAchievementIdApi} from '@/_services/callApi';
-import { Node, HistoryState, UserAchievements, UserAchievement} from '@/_data/types/types';
-import {UserAchievementStatus} from '@/_data/types/status';
-import dashboardacheivements from '@/_data/constants/dashboard-achievements.json';
+import {
+  getHistoryApi,
+  setHistoryApi,
+  createHistoryApi,
+  getUserAchievementsApi,
+  createUserAchievementDefaultApi,
+  updateUserAchievementStatusApi,
+  updateUserAchievementInfoApi,
+  getUserAchievementEntryByAchievementIdApi,
+} from '@/_lib/_services/callApi';
+import {
+  Node,
+  HistoryState,
+  UserAchievements,
+  UserAchievement,
+} from '@/_lib/_data/types/types';
+import { UserAchievementStatus } from '@/_lib/_data/types/status';
+import dashboardacheivements from '@/_lib/_data/constants/dashboard-achievements.json';
 
 export function findNodeTest(
   id: number,
@@ -21,7 +35,7 @@ export function findNodeTest(
 //Recursive find node from root
 function findNodeRoot(id: number, currentNode: Node): Node | null {
   let returnNode: Node | null = null;
-  
+
   if (currentNode.id == id) {
     returnNode = currentNode;
   } else {
@@ -72,9 +86,19 @@ export function historyStringToHistoryArray(historyString: string): number[] {
 export async function getHistoryFunction(): Promise<HistoryState> {
   try {
     const historyArray = await getHistoryApi();
-    return { loading: true, historyArray: historyArray, error: '', initialState: false };
+    return {
+      loading: true,
+      historyArray: historyArray,
+      error: '',
+      initialState: false,
+    };
   } catch (error) {
-    let account = { loading: true, historyArray: [0], error: error.toString(), initialState:false };  
+    let account = {
+      loading: true,
+      historyArray: [0],
+      error: error.toString(),
+      initialState: false,
+    };
     if (account.error == 'AxiosError: Request failed with status code 404') {
       account = await createHistoryFunction([0]);
       account.initialState = true;
@@ -86,74 +110,81 @@ export async function getHistoryFunction(): Promise<HistoryState> {
 export async function setHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
-  try {    
+  try {
     await setHistoryApi(historyArray);
-    
-    return { loading: true, historyArray: historyArray, error: '', initialState:false };
+
+    return {
+      loading: true,
+      historyArray: historyArray,
+      error: '',
+      initialState: false,
+    };
   } catch (error) {
     return {
       loading: true,
       historyArray: historyArray,
       error: error.toString(),
-      initialState: false
+      initialState: false,
     };
   }
 }
 
-
 export async function createHistoryFunction(
   historyArray: number[]
 ): Promise<HistoryState> {
-  try {    
+  try {
     await createHistoryApi(historyArray);
-    
-    return { loading: true, historyArray: historyArray, error: '', initialState:false };
+
+    return {
+      loading: true,
+      historyArray: historyArray,
+      error: '',
+      initialState: false,
+    };
   } catch (error) {
     return {
       loading: true,
       historyArray: historyArray,
       error: error.toString(),
-      initialState: false
+      initialState: false,
     };
   }
 }
 
 async function getUserAchievementFunction(): Promise<UserAchievements> {
-
-  try{
+  try {
     const userAchievementEntries = await getUserAchievementsApi();
     return {
       error: '',
-      userAchievements: userAchievementEntries    }
-  }
-  catch (error){
+      userAchievements: userAchievementEntries,
+    };
+  } catch (error) {
     return {
       error: error.toString(),
-      userAchievements: []
-    }
+      userAchievements: [],
+    };
   }
 }
 
-export async function createUserAchievementDefaultFunction(achievementId: number, achievementStatus): Promise<UserAchievements> {
-  try{
+export async function createUserAchievementDefaultFunction(
+  achievementId: number,
+  achievementStatus
+): Promise<UserAchievements> {
+  try {
     await createUserAchievementDefaultApi(achievementId, achievementStatus);
     return await getUserAchievementFunction();
-  }
-  catch (error){
+  } catch (error) {
     return {
       error: error.toString(),
-      userAchievements: []
-    }
+      userAchievements: [],
+    };
   }
-
 }
 
 export async function getSyncedUserAchievementFunction(): Promise<UserAchievements> {
-  
   await syncUserAchievementFunction();
 
   return await getUserAchievementFunction();
-
 }
 
 export async function syncUserAchievementFunction(): Promise<void> {
@@ -192,43 +223,55 @@ export async function syncUserAchievementFunction(): Promise<void> {
   }
 }
 
-export async function updateUserAchievementStatusFunction(achievementId: number, newStatus: UserAchievementStatus): Promise<UserAchievements> {
-  try{
+export async function updateUserAchievementStatusFunction(
+  achievementId: number,
+  newStatus: UserAchievementStatus
+): Promise<UserAchievements> {
+  try {
     await updateUserAchievementStatusApi(achievementId, newStatus);
     return await getUserAchievementFunction();
-  }
-  catch (error){
+  } catch (error) {
     return {
       error: error.toString(),
-      userAchievements: []
-    }
+      userAchievements: [],
+    };
   }
 }
 
 export function isAchievementNode(nodeId: number): boolean {
   for (let i = 0; i < dashboardacheivements.achievements.length; i++) {
     const achievement = dashboardacheivements.achievements[i];
-    if(achievement.id == nodeId){
+    if (achievement.id == nodeId) {
       return true;
     }
   }
   return false;
 }
 
-export async function updateUserAchievementInfoFunction(achievementId: number, progressValue: number, goalValue: number, booleanValue: number): Promise<UserAchievement>{
-  try{
-    await updateUserAchievementInfoApi(achievementId, progressValue, goalValue, booleanValue);
-    const entry = await getUserAchievementEntryByAchievementIdApi(achievementId);
+export async function updateUserAchievementInfoFunction(
+  achievementId: number,
+  progressValue: number,
+  goalValue: number,
+  booleanValue: number
+): Promise<UserAchievement> {
+  try {
+    await updateUserAchievementInfoApi(
+      achievementId,
+      progressValue,
+      goalValue,
+      booleanValue
+    );
+    const entry = await getUserAchievementEntryByAchievementIdApi(
+      achievementId
+    );
     return {
       error: '',
-      userAchievement: entry
-    }
-
-  }
-  catch (error){
+      userAchievement: entry,
+    };
+  } catch (error) {
     return {
       error: error.toString(),
-      userAchievement: null
-    }
+      userAchievement: null,
+    };
   }
 }
