@@ -2,7 +2,7 @@ name: Pull Request Opened
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, ready_for_review]
     branches:
       - main
 
@@ -14,6 +14,7 @@ jobs:
   send-pr-review-request-discord:
     name: Send PR Review Request to Discord
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
 
     steps:
       - name: Formatting PR Body
