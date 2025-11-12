@@ -1,7 +1,7 @@
 'use server';
-import { UserAchievementEntry } from '@/_data/types/types';
-import { UserAchievementStatus } from '@/_data/types/status';
-import { auth0 } from '@/lib/auth0';
+import { UserAchievementEntry } from '@/_lib/_data/types/types';
+import { UserAchievementStatus } from '@/_lib/_data/types/status';
+import { auth0 } from '@/_lib/auth0';
 import axios from 'axios';
 
 export async function getHistoryApi(): Promise<number[]> {

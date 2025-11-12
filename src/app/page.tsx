@@ -8,8 +8,8 @@ import Textbox from '@/_components/Textbox-Component/Textbox';
 import Loader from '@/_components/Loader-Component/Loader';
 import Button from '@/_components/Button-Component/Button';
 import { redirect } from 'next/navigation';
-import { isLoggedIn } from  '@/_services/LoginHelper';
-import Title from '@/_services/TitleHelper';
+import { isLoggedIn } from '@/_lib/_services/LoginHelper';
+import Title from '@/_lib/_services/TitleHelper';
 
 import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
 
@@ -30,14 +30,14 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-
       <ResponsiveImage>
         {loading && <Loader />}
         <div className="h-screen flex items-center justify-center">
           {/* Parent container for image and text */}
           <div
-            className={`flex flex-col-reverse sm:flex-row items-center ${loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
-              }`}
+            className={`flex flex-col-reverse sm:flex-row items-center ${
+              loading ? 'hidden' : '' // If isLoading, hide everything, else show loading screen
+            }`}
           >
             {/* Image container */}
             <div className="sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
@@ -55,21 +55,17 @@ const HomePage: React.FC = () => {
 
             {/* Text Area */}
             <div className="sm:w-2/3 sm:mr-10 text-left rounded-xl mt-12">
+              <div className="flex flex-col items-center w-fit mx-auto">
+                <Textbox label={<Title />} chatBubble />
 
-              <div className ="flex flex-col items-center w-fit mx-auto">
-              <Textbox
-                label={
-                  <Title />
-                }
-                chatBubble
-              />
-
-              <div className="mt-4">
-                <Button
-                  label={isLoggedIn() ? 'Resume My Journey' : 'Start My Journey'  }
-                  onClick={() => router.push('/disclaimer')}
-                />
-              </div>
+                <div className="mt-4">
+                  <Button
+                    label={
+                      isLoggedIn() ? 'Resume My Journey' : 'Start My Journey'
+                    }
+                    onClick={() => router.push('/disclaimer')}
+                  />
+                </div>
               </div>
             </div>
           </div>

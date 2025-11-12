@@ -1,6 +1,6 @@
 'use client';
-import { buildQuizData } from '@/_services/buildQuizData';
-import dashboardGoals from '@/_data/constants/dashboard-goals.json';
+import { buildQuizData } from '@/_lib/_services/buildQuizData';
+import dashboardGoals from '@/_lib/_data/constants/dashboard-goals.json';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -9,28 +9,27 @@ import {
   setHistoryFunction,
   updateUserAchievementStatusFunction,
   syncUserAchievementFunction,
-  isAchievementNode
-} from '../../_utils/quiz-functions';
+  isAchievementNode,
+} from '@/_lib/_services/quiz-functions';
 import Image from 'next/image';
 import Button from '@/_components/Button-Component/Button';
-import Textbox from '@/_components/Textbox-Component/Textbox';
 import ChatBubble from '@/_components/Textbox-Component/ChatBubble';
 import { IoIosArrowRoundBack } from 'react-icons/io';
-import TfsaCalculatorComponent from '../Calculator-Component/TFSA/TfsaCalculatorComponent';
+import TfsaCalculatorComponent from '@/_components/Calculator-Component/TFSA/TfsaCalculatorComponent';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import TfsaCalculatorButton from '../Calculator-Component/TFSA/TfsaCalculatorButton';
-import { HistoryState, Node } from '@/_data/types/types';
-import { UserAchievementStatus } from '@/_data/types/status';
+import TfsaCalculatorButton from '@/_components/Calculator-Component/TFSA/TfsaCalculatorButton';
+import { HistoryState, Node } from '@/_lib/_data/types/types';
+import { UserAchievementStatus } from '@/_lib/_data/types/status';
 import { TypeAnimation } from 'react-type-animation';
-import Loader from '../Loader-Component/Loader';
-import FhsaCalculatorComponent from '../Calculator-Component/FHSA/FhsaCalculatorComponent';
-import FhsaCalculatorButton from '../Calculator-Component/FHSA/FhsaCalculatorButton';
-import AllocationCalculatorComponent from '../Calculator-Component/Allocation/AllocationCalculatorComponent';
-import AllocationCalculatorButton from '../Calculator-Component/Allocation/AllocationCalculatorButton';
-import LinkButton from '../Link-Component/LinkComponent';
-import NavToDashboard from '../Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
-import MoreInfoButtons from '../MoreInfo-Component/MoreInfoButtons';
+import Loader from '@/_components/Loader-Component/Loader';
+import FhsaCalculatorComponent from '@/_components/Calculator-Component/FHSA/FhsaCalculatorComponent';
+import FhsaCalculatorButton from '@/_components/Calculator-Component/FHSA/FhsaCalculatorButton';
+import AllocationCalculatorComponent from '@/_components/Calculator-Component/Allocation/AllocationCalculatorComponent';
+import AllocationCalculatorButton from '@/_components/Calculator-Component/Allocation/AllocationCalculatorButton';
+import LinkButton from '@/_components/Link-Component/LinkComponent';
+import NavToDashboard from '@/_components/Nav-to-Dashboard-Button-Component/Nav-to-Dashboard-Button';
+import MoreInfoButtons from '@/_components/MoreInfo-Component/MoreInfoButtons';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -48,7 +47,8 @@ export default function QuizPage({ data }) {
   const [loading, setLoading] = useState(true);
   const [showTfsaCalculator, setshowTfsaCalculator] = React.useState(false);
   const [showFhsaCalculator, setshowFhsaCalculator] = React.useState(false);
-  const [showAllocationCalculator, setShowAllocationCalculator] = React.useState(false);
+  const [showAllocationCalculator, setShowAllocationCalculator] =
+    React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
   const [showDashboard, setShowDashboard] = React.useState(false);
 
@@ -77,16 +77,18 @@ export default function QuizPage({ data }) {
 
   function nextNode(id: number) {
     // eslint-disable-next-line prefer-const
-    
-    if(isAchievementNode(currentNode.id)){
-      updateUserAchievementStatusFunction(currentNode.id, UserAchievementStatus.COMPLETED);
+
+    if (isAchievementNode(currentNode.id)) {
+      updateUserAchievementStatusFunction(
+        currentNode.id,
+        UserAchievementStatus.COMPLETED
+      );
     }
 
-    if(isAchievementNode(id)){
+    if (isAchievementNode(id)) {
       updateUserAchievementStatusFunction(id, UserAchievementStatus.INPROGRESS);
     }
 
-  
     let tempNode = findNodeTest(id, currentNode, rootNode);
     setCurrentNode(tempNode);
     setHistoryState({
@@ -116,13 +118,18 @@ export default function QuizPage({ data }) {
       // eslint-disable-next-line prefer-const
       let tempNode = findNodeTest(id, currentNode, rootNode);
       setCurrentNode(tempNode);
-      if(isAchievementNode(tempNode.id)){
-        updateUserAchievementStatusFunction(tempNode.id, UserAchievementStatus.INPROGRESS);
+      if (isAchievementNode(tempNode.id)) {
+        updateUserAchievementStatusFunction(
+          tempNode.id,
+          UserAchievementStatus.INPROGRESS
+        );
       }
-      if(isAchievementNode(currentNode.id)){
-        updateUserAchievementStatusFunction(currentNode.id, UserAchievementStatus.NOTSTARTED);
+      if (isAchievementNode(currentNode.id)) {
+        updateUserAchievementStatusFunction(
+          currentNode.id,
+          UserAchievementStatus.NOTSTARTED
+        );
       }
-      
     }
   }
 
@@ -284,22 +291,22 @@ export default function QuizPage({ data }) {
 
             {/* ChatBubble */}
             <div className="relative w-full">
-                <div className="max-h-64 mt-2">
-                  <ChatBubble
-                    align="start"
-                    secondaryLabel={
-                      <TypeAnimation
-                        key={`${currentNode.id}-${currentTextIndex}`}
-                        sequence={[currentNode.text[currentTextIndex] + '\n']}
-                        wrapper="p"
-                        speed={80}
-                        cursor={false}
-                        repeat={0}
-                        preRenderFirstString={false}
-                      />
-                    }
-                  />
-                </div>
+              <div className="max-h-64 mt-2">
+                <ChatBubble
+                  align="start"
+                  secondaryLabel={
+                    <TypeAnimation
+                      key={`${currentNode.id}-${currentTextIndex}`}
+                      sequence={[currentNode.text[currentTextIndex] + '\n']}
+                      wrapper="p"
+                      speed={80}
+                      cursor={false}
+                      repeat={0}
+                      preRenderFirstString={false}
+                    />
+                  }
+                />
+              </div>
 
               {/* MoreInfo Buttons */}
               <MoreInfoButtons
