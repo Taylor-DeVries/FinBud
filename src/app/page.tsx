@@ -11,7 +11,7 @@ import { redirect } from 'next/navigation';
 import { isLoggedIn } from '@/_lib/_services/login-helper';
 import Title from '@/_lib/_services/title-helper';
 
-import ResponsiveImage from '@/_components/Responsive-Image-Component/responsive-image';
+import ResponsiveImage from '@/_components/responsive-image-component/responsive-image';
 
 const HomePage: React.FC = () => {
   const router = useRouter();

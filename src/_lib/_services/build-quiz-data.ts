@@ -1,5 +1,5 @@
 import quizPaths from '@/_lib/_data/constants/paths.json';
-import quizTexts from '@/_lib/_data/constants/extendedTexts.json';
+import quizTexts from '@/_lib/_data/constants/extended-texts.json';
 import quizLinks from '@/_lib/_data/constants/links.json';
 import { QuizPath, QuizText, Node, QuizLink } from '@/_lib/_data/types/types';
 

@@ -1,4 +1,4 @@
-import DashboardButton from '@/_components/dashboard-component/Button/dashboard-button';
+import DashboardButton from '@/_components/dashboard-component/button/dashboard-button';
 import { FaCheckCircle } from 'react-icons/fa';
 
 export default function AchievementEntry({

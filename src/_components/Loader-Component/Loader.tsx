@@ -1,6 +1,6 @@
 "use client";
 import { SyncLoader } from "react-spinners";
-import ResponsiveImage from "../Responsive-Image-Component/responsive-image";
+import ResponsiveImage from "../responsive-image-component/responsive-image";
 
 const Loader = () => {
     return (

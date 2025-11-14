@@ -5,7 +5,7 @@ import {
 } from '@/_lib/_services/quiz-functions';
 import { ThemeProvider } from '@/app/settings/providers';
 import { auth0 } from '@/_lib/auth0';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/responsive-image';
+import ResponsiveImage from '@/_components/responsive-image-component/responsive-image';
 
 export default async function Page() {
   const session = await auth0.getSession();
