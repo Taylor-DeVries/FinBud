@@ -7,7 +7,7 @@ import {
   updateUserAchievementStatusApi,
   updateUserAchievementInfoApi,
   getUserAchievementEntryByAchievementIdApi,
-} from '@/_lib/_services/callApi';
+} from '@/_lib/_services/call-api';
 import {
   Node,
   HistoryState,

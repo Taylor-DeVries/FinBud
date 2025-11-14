@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { IconMenu2, IconUser } from '@tabler/icons-react';
+import { IconMenu2 } from '@tabler/icons-react';
 import {
   IconHome,
   IconPaw,
@@ -9,8 +9,8 @@ import {
   IconQuestionMark,
   IconChartBar,
 } from '@tabler/icons-react';
-import { Navigation } from './Navigation';
-import { SidebarHeader } from './SidebarHeader';
+import { Navigation } from './navigation';
+import { SidebarHeader } from './sidebar-header';
 
 const isMobile = () => {
   if (typeof window === 'undefined') return false;

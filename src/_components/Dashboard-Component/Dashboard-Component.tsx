@@ -1,15 +1,14 @@
 'use client';
-import Textbox from '@/_components/Textbox-Component/Textbox';
-import DashboardTextbox from './DashboardTextbox/DashboardTextbox';
+import DashboardTextbox from './dashboard-textbox/dashboard-textbox';
 import Image from 'next/image';
 import { useState } from 'react';
-import Goal from '@/_components/Dashboard-Component/Goal/Goal';
-import Acheivements from '@/_components/Dashboard-Component/Achievements/Acheivements';
-import Toolbox from './Toolbox/Toolbox';
+import Goal from '@/_components/dashboard-component/goal/goal';
+import Acheivements from '@/_components/dashboard-component/achievements/acheivements';
+import Toolbox from './toolbox/toolbox';
 import { useUser } from '@auth0/nextjs-auth0';
 import dashboardgoals from '@/_lib/_data/constants/dashboard-goals.json';
 import { DashboardGoal, UserAchievementEntry } from '@/_lib/_data/types/types';
-import extendedtext from '@/_lib/_data/constants/extendedTexts.json';
+import extendedtext from '@/_lib/_data/constants/extended-texts.json';
 import { QuizText } from '@/_lib/_data/types/types';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 

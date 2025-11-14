@@ -105,7 +105,7 @@ export default function privacy() {
                
                 <hr className="border-gray-50 dark:border-[#333] border-2 my-4"/>
                 <li> Changes to This Policy</li>
-                <p className="text-base">We may update this Privacy Policy from time to time. We'll notify users of material changes by posting an updated policy and adjusting the “Effective Date” above.</p>
+                <p className="text-base">We may update this Privacy Policy from time to time. We&apos;ll notify users of material changes by posting an updated policy and adjusting the “Effective Date” above.</p>
 
                 <hr className="border-gray-50 dark:border-[#333] border-2 my-4"/>
                 <li> Contact Us</li>

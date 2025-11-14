@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
+import { FaBullseye } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
-import { FaCalculator } from 'react-icons/fa';
 
-interface FHSAButtonProps {
+interface AllocationButtonProps {
   dashboard?: boolean; // optional boolean prop
 }
 
-const CalculatorButton: React.FC<FHSAButtonProps> = ({ dashboard = false }) => {
+const AllocationCalculatorButton: React.FC<AllocationButtonProps> = () => {
   return (
     <>
       <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">
@@ -16,21 +16,21 @@ const CalculatorButton: React.FC<FHSAButtonProps> = ({ dashboard = false }) => {
           className={`sm:flex shadow-none btn border-none`}
           onClick={() =>
             (
-              document.getElementById('FHSA_modal')! as HTMLDialogElement
+              document.getElementById('Allocation_modal')! as HTMLDialogElement
             ).showModal()
           }
-          data-tooltip-id="fhsaCalculatorButton"
+          data-tooltip-id="allocationCalculatorButton"
         >
           {' '}
-          <FaCalculator className="text-blue" size={25}></FaCalculator>
+          <FaBullseye className="text-blue" size={25}></FaBullseye>
         </button>
 
-        <Tooltip id="fhsaCalculatorButton" place="top">
-          {`FHSA Calculator`}
+        <Tooltip id="allocationCalculatorButton" place="top">
+          {`Allocation Calculator`}
         </Tooltip>
       </div>
     </>
   );
 };
 
-export default CalculatorButton;
+export default AllocationCalculatorButton;

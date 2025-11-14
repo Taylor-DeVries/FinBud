@@ -1,4 +1,4 @@
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import ResponsiveImage from '@/_components/responsive-image-component/responsive-image';
 import Image from 'next/image';
 
 export default function AboutPage() {

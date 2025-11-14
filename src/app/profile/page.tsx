@@ -3,13 +3,13 @@
 import { useUser } from '@auth0/nextjs-auth0';
 import Image from 'next/image';
 import Link from 'next/link';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
-import Textbox from '@/_components/Textbox-Component/Textbox';
-import Button from '@/_components/Button-Component/Button';
-import ProfileName from '@/_components/Profile-Components/Profile-Name-Component/ProfileName';
-import ProfileEmail from '@/_components/Profile-Components/Profile-Email-Component/ProfileEmail';
-import ProfileHeader from '@/_components/Profile-Components/Profile-Header-Component/ProfileHeader';
-import ProfileSignOutButton from '@/_components/Profile-Components/Profile-Signout_Component/ProfileSignOutButton';
+import ResponsiveImage from '@/_components/responsive-image-component/responsive-image';
+import Textbox from '@/_components/textbox-component/textbox';
+import Button from '@/_components/button-component/button';
+import ProfileName from '@/_components/profile-components/profile-name-component/profile-name';
+import ProfileEmail from '@/_components/profile-components/profile-email-component/profile-email';
+import ProfileHeader from '@/_components/profile-components/profile-header-component/profile-header';
+import ProfileSignOutButton from '@/_components/profile-components/profile-signout-component/profile-sign-out-button';
 
 const mockUser = {
   name: 'Test User',

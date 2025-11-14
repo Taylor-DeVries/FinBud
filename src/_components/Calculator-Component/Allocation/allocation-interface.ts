@@ -1,5 +1,5 @@
 'use client';
-import RefInput from '../Reference';
+import RefInput from '../reference';
 
 export interface AllocationInputs {
   targetAmount: RefInput;

@@ -1,4 +1,4 @@
-import AchievementEntry from './AchievementEntry';
+import AchievementEntry from './achievement-entry';
 import {
   DashboardAchievement,
   UserAchievementEntry,

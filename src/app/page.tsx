@@ -4,21 +4,21 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { TypeAnimation } from 'react-type-animation';
-import Textbox from '@/_components/Textbox-Component/Textbox';
-import Loader from '@/_components/Loader-Component/Loader';
-import Button from '@/_components/Button-Component/Button';
+import Textbox from '@/_components/textbox-component/textbox';
+import Loader from '@/_components/loader-component/loader';
+import Button from '@/_components/button-component/button';
 import { redirect } from 'next/navigation';
-import { isLoggedIn } from '@/_lib/_services/LoginHelper';
-import Title from '@/_lib/_services/TitleHelper';
+import { useIsLoggedIn } from '@/_lib/_services/login-helper';
+import Title from '@/_lib/_services/title-helper';
 
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import ResponsiveImage from '@/_components/responsive-image-component/responsive-image';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   function redirectAfterLogin() {
     if (sessionStorage?.getItem('url')) {
-      var redirectURL = sessionStorage.getItem('url').toString();
+      const redirectURL = sessionStorage.getItem('url').toString();
       sessionStorage.removeItem('url');
       redirect(redirectURL);
     }
@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
                 <div className="mt-4">
                   <Button
                     label={
-                      isLoggedIn() ? 'Resume My Journey' : 'Start My Journey'
+                      useIsLoggedIn() ? 'Resume My Journey' : 'Start My Journey'
                     }
                     onClick={() => router.push('/disclaimer')}
                   />

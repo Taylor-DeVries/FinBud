@@ -1,4 +1,4 @@
-import { AllocationResults } from './allocationInterface';
+import { AllocationResults } from './allocation-interface';
 
 /**
  * Calculate total months from years and months

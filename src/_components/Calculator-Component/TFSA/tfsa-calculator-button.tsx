@@ -4,11 +4,7 @@ import React from 'react';
 import { FaCalculator } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
-interface TFSAButtonProps {
-  dashboard?: boolean; // optional boolean prop
-}
-
-const CalculatorButton: React.FC<TFSAButtonProps> = ({ dashboard = false }) => {
+const CalculatorButton: React.FC = () => {
   return (
     <>
       <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">
