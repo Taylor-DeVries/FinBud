@@ -6,7 +6,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TfsaCalculatorComponent from '@/_components/calculator-component/tfsa/tfsa-calculator-component';
 import FhsaCalculatorComponent from '@/_components/calculator-component/fhsa/fhsa-calculator-component';
 import AllocationCalculatorComponent from '@/_components/calculator-component/allocation/allocation-calculator-component';
-import LinkButton from '@/_components/link-component/link-component';
 import links from '@/_lib/_data/constants/links.json';
 import { QuizLink } from '@/_lib/_data/types/types';
 type ToolboxProps = {

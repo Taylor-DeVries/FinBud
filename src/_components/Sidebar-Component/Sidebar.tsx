@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { IconMenu2, IconUser } from '@tabler/icons-react';
+import { IconMenu2 } from '@tabler/icons-react';
 import {
   IconHome,
   IconPaw,

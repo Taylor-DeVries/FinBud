@@ -4,9 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { 
   FaBullseye, 
   FaCalendar, 
-  FaDollarSign, 
-  FaExclamationTriangle,
-  FaInfoCircle 
+  FaDollarSign,
 } from 'react-icons/fa';
 import AllocationInputVars, { AllocationResults } from './allocation-interface';
 import { generateAllocationResults } from './allocation-math';

@@ -1,5 +1,4 @@
 'use client';
-import Textbox from '@/_components/textbox-component/textbox';
 import DashboardTextbox from './dashboard-textbox/dashboard-textbox';
 import Image from 'next/image';
 import { useState } from 'react';

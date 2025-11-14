@@ -89,7 +89,7 @@ export default function QuizPage({ data }) {
       updateUserAchievementStatusFunction(id, UserAchievementStatus.INPROGRESS);
     }
 
-    let tempNode = findNodeTest(id, currentNode, rootNode);
+    const tempNode = findNodeTest(id, currentNode, rootNode);
     setCurrentNode(tempNode);
     setHistoryState({
       ...historyState,
@@ -321,7 +321,7 @@ export default function QuizPage({ data }) {
               <div className="flex flex-col space-y-2">
                 {currentNode.responses
                   .filter((response) => {
-                    let id = response.connectId ?? response.id;
+                    const id = response.connectId ?? response.id;
                     if (id == 8 || id == 17 || id == 9) {
                       return !checkNodeVisited(id);
                     }
