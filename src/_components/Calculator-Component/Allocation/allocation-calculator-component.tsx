@@ -8,9 +8,9 @@ import {
   FaExclamationTriangle,
   FaInfoCircle 
 } from 'react-icons/fa';
-import AllocationInputVars, { AllocationResults } from './allocationInterface';
-import { generateAllocationResults } from './allocationMath';
-import AllocationResultComponent from './AllocationResultComponent';
+import AllocationInputVars, { AllocationResults } from './allocation-interface';
+import { generateAllocationResults } from './allocation-math';
+import AllocationResultComponent from './allocation-result-component';
 
 export default function AllocationCalculatorComponent() {
   const input = new AllocationInputVars();

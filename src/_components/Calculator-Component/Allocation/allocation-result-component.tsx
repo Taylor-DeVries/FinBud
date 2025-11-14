@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { AllocationResults } from './allocationInterface';
+import { AllocationResults } from './allocation-interface';
 import { FaExclamationTriangle, FaBullseye, FaCalendar, FaDollarSign, FaInfoCircle } from 'react-icons/fa';
 
 interface AllocationResultComponentProps {

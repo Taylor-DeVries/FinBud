@@ -1,6 +1,6 @@
 'use client';
 
-import Textbox from '@/_components/Textbox-Component/Textbox';
+import Textbox from '@/_components/textbox-component/textbox';
 
 interface ProfileHeaderProps {
   name: string;

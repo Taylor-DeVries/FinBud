@@ -9,8 +9,8 @@ import {
   IconQuestionMark,
   IconChartBar,
 } from '@tabler/icons-react';
-import { Navigation } from './Navigation';
-import { SidebarHeader } from './SidebarHeader';
+import { Navigation } from './navigation';
+import { SidebarHeader } from './sidebar-header';
 
 const isMobile = () => {
   if (typeof window === 'undefined') return false;

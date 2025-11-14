@@ -1,11 +1,11 @@
-import Dashboard from '@/_components/Dashboard-Component/Dashboard-Component';
+import Dashboard from '@/_components/dashboard-component/dashboard-component';
 import {
   getHistoryFunction,
   getSyncedUserAchievementFunction,
 } from '@/_lib/_services/quiz-functions';
 import { ThemeProvider } from '@/app/settings/providers';
 import { auth0 } from '@/_lib/auth0';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import ResponsiveImage from '@/_components/Responsive-Image-Component/responsive-image';
 
 export default async function Page() {
   const session = await auth0.getSession();

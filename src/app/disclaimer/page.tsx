@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Textbox from '@/_components/Textbox-Component/Textbox';
-import Button from '@/_components/Button-Component/Button';
+import Textbox from '@/_components/textbox-component/textbox';
+import Button from '@/_components/button-component/button';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import ResponsiveImage from '@/_components/Responsive-Image-Component/responsive-image';
 
 export default function DisclaimerPage() {
   const router = useRouter();

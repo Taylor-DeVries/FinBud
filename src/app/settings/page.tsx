@@ -1,5 +1,5 @@
 'use client';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import ResponsiveImage from '@/_components/Responsive-Image-Component/responsive-image';
 import React from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useTheme } from './providers';

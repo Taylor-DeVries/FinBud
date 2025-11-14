@@ -1,4 +1,4 @@
-import Meter from '@/_components/Dashboard-Component/Goal/Meter';
+import Meter from '@/_components/dashboard-component/Goal/meter';
 
 export default function Goal({ goal, percentage }) {
   return (

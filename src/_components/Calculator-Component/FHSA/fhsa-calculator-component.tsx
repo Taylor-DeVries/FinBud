@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React from 'react';
-import FHSAvars from './fhsaInterface';
-import FhsaResultComponent from './FhsaResultComponent';
+import FHSAvars from './fhsa-interface';
+import FhsaResultComponent from './fhsa-result-component';
 
 export default function FhsaCalculatorComponent() {
   const [AgeChecked, setAgeChecked] = React.useState(false);

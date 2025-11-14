@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React from 'react';
-import TFSAvars from './tfsaInterface';
-import tfsaMath from './tfsaMath';
+import TFSAvars from './tfsa-interface';
+import tfsaMath from './tfsa-math';
 
 function TfsaCalculatorComponent() {
   const input = new TFSAvars();

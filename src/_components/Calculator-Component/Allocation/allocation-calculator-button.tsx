@@ -8,7 +8,7 @@ interface AllocationButtonProps {
   dashboard?: boolean; // optional boolean prop
 }
 
-const AllocationCalculatorButton: React.FC<AllocationButtonProps> = ({ dashboard = false }) => {
+const AllocationCalculatorButton: React.FC<AllocationButtonProps> = () => {
   return (
     <>
       <div className="w-12 h-12 rounded-xl bg-light_blue_bg dark:bg-[#333] m-1 flex items-center justify-center">

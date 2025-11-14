@@ -1,5 +1,5 @@
-import Loader from '@/_components/Loader-Component/Loader';
-import ResponsiveImage from '@/_components/Responsive-Image-Component/ResponsiveImage';
+import Loader from '@/_components/loader-component/loader';
+import ResponsiveImage from '@/_components/Responsive-Image-Component/responsive-image';
 
 const Loading = () => {
   return

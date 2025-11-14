@@ -1,11 +1,11 @@
 'use client';
-import Textbox from '@/_components/Textbox-Component/Textbox';
-import DashboardTextbox from './DashboardTextbox/DashboardTextbox';
+import Textbox from '@/_components/textbox-component/textbox';
+import DashboardTextbox from './DashboardTextbox/dashboard-textbox';
 import Image from 'next/image';
 import { useState } from 'react';
-import Goal from '@/_components/Dashboard-Component/Goal/Goal';
-import Acheivements from '@/_components/Dashboard-Component/Achievements/Acheivements';
-import Toolbox from './Toolbox/Toolbox';
+import Goal from '@/_components/dashboard-component/Goal/goal';
+import Acheivements from '@/_components/dashboard-component/Achievements/acheivements';
+import Toolbox from './Toolbox/toolbox';
 import { useUser } from '@auth0/nextjs-auth0';
 import dashboardgoals from '@/_lib/_data/constants/dashboard-goals.json';
 import { DashboardGoal, UserAchievementEntry } from '@/_lib/_data/types/types';
