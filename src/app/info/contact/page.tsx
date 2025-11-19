@@ -8,7 +8,7 @@ export default function contactUs() {
           Our Socials
         </h2>
         <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm">
-          Instagram:{'  '}
+          Instagram:&nbsp;
           <a
             href="https://www.instagram.com/fin_bud_/"
             target="_blank"
@@ -18,7 +18,7 @@ export default function contactUs() {
             Instagram.com/fin_bud_
           </a>
           <br />
-          LinkedIn:{' '}
+          LinkedIn:&nbsp;
           <a
             href="https://www.linkedin.com/company/fin-bud/"
             target="_blank"
@@ -32,7 +32,7 @@ export default function contactUs() {
           Our Email
         </h2>
         <p className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm">
-          Any questions or concerns:{' '}
+          Any questions or concerns:&nbsp;
           <a
             href="mailto:finbud.team@gmail.com"
             className="text-link_color hover:text-dark_blue"

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
 import { Montserrat } from 'next/font/google';
 import { Metadata } from 'next';
-import { Sidebar } from '@/_components/Sidebar-Component/Sidebar';
+import { Sidebar } from '@/_components/sidebar-component/sidebar';
 import { ThemeProvider } from './settings/providers';
 
 const font = Montserrat({ subsets: ['latin'], weight: ['700'] });

@@ -9,7 +9,7 @@ export default function terms() {
         </p>
         <br/>
 
-        <p className="lg:text-lg md:text-lg sm:text-md text-sm">Welcome to FinBud! These Terms of Service ("Terms") govern your use of our website, app, and related services (“Services”). By using FinBud, you agree to these Terms. If you don’t agree, please don’t use our platform.</p>
+        <p className="lg:text-lg md:text-lg sm:text-md text-sm">Welcome to FinBud! These Terms of Service (&quot;Terms&quot;) govern your use of our website, app, and related services (&quot;Services&quot;). By using FinBud, you agree to these Terms. If you don&apos;t agree, please don&apos;t use our platform.</p>
         <hr className="border-gray-50 dark:border-[#333] border-2 my-4" />
 
         <ol className="list-decimal list-inside lg:text-2xl md:text-4xl text-3xl font-bold">
@@ -60,7 +60,7 @@ export default function terms() {
             <hr className="border-gray-50 dark:border-[#333] border-2 my-4" />
 
             <li>Disclaimer of Warranties</li>
-            <p className="text-base">FinBud is provided “as is” and “as available.” We make no guarantees that the platform will be error-free, secure, or accurate. We disclaim all warranties to the maximum extent allowed by law.</p>
+            <p className="text-base">FinBud is provided &quot;as is&quot; and &quot;as available.&quot; We make no guarantees that the platform will be error-free, secure, or accurate. We disclaim all warranties to the maximum extent allowed by law.</p>
             <hr className="border-gray-50 dark:border-[#333] border-2 my-4" />
 
             <li>Limitation of Liability</li>
@@ -68,7 +68,7 @@ export default function terms() {
             <hr className="border-gray-50 dark:border-[#333] border-2 my-4" />
         
             <li>Changes to Terms</li>
-            <p className="text-base">We may update these Terms at any time. If changes are significant, we’ll notify users. Your continued use of FinBud means you accept the new Terms.</p>
+            <p className="text-base">We may update these Terms at any time. If changes are significant, we&apos;ll notify users. Your continued use of FinBud means you accept the new Terms.</p>
             <hr className="border-gray-50 dark:border-[#333] border-2 my-4" />
         
             <li>Contact Us</li>
