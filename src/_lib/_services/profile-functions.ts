@@ -1,7 +1,7 @@
 'use server'
 import {put,head} from '@vercel/blob';
 import {auth0} from '@/_lib/auth0';
-import { getUserInfoApi, updateUserInfoUserProfilePictureApi } from '@/_lib/_services/call-api';
+import { getUserInfoApi, updateUserInfoUserProfilePictureApi,updateUserInfoUserNameApi } from '@/_lib/_services/call-api';
 
 export async function exportToBlob(file:Blob) {
     try{
@@ -47,4 +47,22 @@ export async function generateProfilePictureUrl():Promise<string> {
     const date = new Date();
     const dateTimeString = date.toISOString(); 
     return `${authid}/profile-picture.jpg_${dateTimeString}`;
+}
+
+
+export async function getUserName():Promise<string | null> {
+    try{
+        const userInfo = await getUserInfoApi();
+        return userInfo?.userName || null;
+    }catch{
+        return null;
+    }
+}
+
+export async function updateUserName(newName:string):Promise<void> {
+    try{
+        await updateUserInfoUserNameApi(newName);
+    }catch(error){
+        console.error('Error updating user name:',error);
+    }
 }

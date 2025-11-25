@@ -10,8 +10,9 @@ import ProfileName from '@/_components/profile-components/profile-name-component
 import ProfileEmail from '@/_components/profile-components/profile-email-component/profile-email';
 import ProfileHeader from '@/_components/profile-components/profile-header-component/profile-header';
 import ProfileSignOutButton from '@/_components/profile-components/profile-signout-component/profile-sign-out-button';
-import { importFromBlob, exportToBlob } from '@/_lib/_services/profile-functions';
+import { importFromBlob, exportToBlob, getUserName} from '@/_lib/_services/profile-functions';
 import { useEffect, useState } from 'react';
+import { get } from 'http';
 const mockUser = {
   name: 'Test User',
   email: 'test@example.com',
@@ -22,6 +23,7 @@ const mockUser = {
 export default function ProfilePage() {
   const { user, isLoading, error } = useUser();
   const [profilePicture, setProfilePicture] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
  
   const activeUser =
     !user && process.env.NODE_ENV === 'development' ? mockUser : user;
@@ -38,6 +40,18 @@ export default function ProfilePage() {
 
     fetchProfilePicture(activeUser.picture);
   }, [activeUser.picture]);
+
+  useEffect(() => {
+    const fetchUserName = async (activeUserName:string) => {
+      const storedUserName = await getUserName();
+      const name = storedUserName == null ? activeUserName : storedUserName;
+      setUserName(name);
+    };
+
+    fetchUserName(activeUser.name);
+  }, [activeUser.name]);
+
+
 
   if (isLoading) {
     return (
@@ -92,12 +106,12 @@ export default function ProfilePage() {
       <div className="h-screen flex items-center justify-center">
         <div className="w-full max-w-lg mx-auto px-6 sm:px-8">
           {/* Profile Header */}
-          <ProfileHeader name={activeUser.name} picture={profilePicture} />
+          <ProfileHeader name={userName} picture={profilePicture} />
 
           {/* Profile Information */}
           <div className="space-y-4">
             {/* Name Section */}
-            <ProfileName name={activeUser.name} />
+            <ProfileName name={userName} />
 
             {/* Email Section */}
             <ProfileEmail email={activeUser.email} />

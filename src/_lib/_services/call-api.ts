@@ -205,7 +205,7 @@ export async function updateUserInfoUserProfilePictureApi(
 
 }
 
-export async function upderUserInfoUserNameApi(userName: string): Promise<void> {
+export async function updateUserInfoUserNameApi(userName: string): Promise<void> {
   const { token } = await auth0.getAccessToken();
   const body = {
     userName: userName,
