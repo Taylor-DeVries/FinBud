@@ -1,39 +1,50 @@
 'use server'
-import {put,head, HeadBlobResult} from '@vercel/blob';
+import {put,head} from '@vercel/blob';
 import {auth0} from '@/_lib/auth0';
+import { getUserInfoApi, updateUserInfoUserProfilePictureApi } from '@/_lib/_services/call-api';
 
-export async function exportToBlob(file:Blob, fileName:string) {
+export async function exportToBlob(file:Blob) {
+    try{
+        const fileName = await generateProfilePictureUrl();
     // upload file name to db
-
+        await updateUserInfoUserProfilePictureApi(fileName);
 
     // upload to blob storage
   const blob = await put(`${fileName}`, file,{
           access:'public',
           token: `${process.env.BLOB_READ_WRITE_TOKEN}`
         })
+    }catch(error){
+        console.error('Error uploading to blob storage:', error);
+    }
 }
 
 
-export async function importFromBlob(fileUrl:string):Promise<HeadBlobResult> {
-    const response = await head(fileUrl, {
-        token: `${process.env.BLOB_READ_WRITE_TOKEN}`
-      });
-
-    return response;
-}
-
-export async function getBlobUrl(fileName:string):Promise<string | null> {
+export async function importFromBlob():Promise<string> {
     try{
-    const response = await importFromBlob(fileName);
-    return response.url;
+
+        const userInfo = await getUserInfoApi();
+        const fileName = userInfo?.userProfilePicture;
+
+        if(!fileName){
+            return null;
+        }
+
+        const response = await head(fileName, {
+            token: `${process.env.BLOB_READ_WRITE_TOKEN}`
+        });
+
+        return response.url;
     }catch{
         return null;
     }
-    
 }
+
 
 export async function generateProfilePictureUrl():Promise<string> {
      const session = await auth0.getSession();
     const authid= session.user.sub;
-    return `${authid}_profile-picture.jpg`;
+    const date = new Date();
+    const dateTimeString = date.toISOString(); 
+    return `${authid}/profile-picture.jpg_${dateTimeString}`;
 }

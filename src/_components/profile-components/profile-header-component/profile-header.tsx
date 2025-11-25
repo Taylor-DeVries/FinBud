@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Textbox from '@/_components/textbox-component/textbox';
-import { exportToBlob, importFromBlob, generateProfilePictureUrl } from '@/_lib/_services/profile-functions';
+import { exportToBlob } from '@/_lib/_services/profile-functions';
 
 interface ProfileHeaderProps {
   name: string;
@@ -31,8 +31,7 @@ export default function ProfileHeader({ name, picture }: ProfileHeaderProps) {
   const handleSubmit = async () => {
     console.log('submit clicked');
     
-    const fileName = await generateProfilePictureUrl();
-    exportToBlob(fileObject, fileName);
+    exportToBlob(fileObject);
   };
 
   return (

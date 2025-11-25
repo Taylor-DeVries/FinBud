@@ -10,7 +10,7 @@ import ProfileName from '@/_components/profile-components/profile-name-component
 import ProfileEmail from '@/_components/profile-components/profile-email-component/profile-email';
 import ProfileHeader from '@/_components/profile-components/profile-header-component/profile-header';
 import ProfileSignOutButton from '@/_components/profile-components/profile-signout-component/profile-sign-out-button';
-import { getBlobUrl, importFromBlob, exportToBlob } from '@/_lib/_services/profile-functions';
+import { importFromBlob, exportToBlob } from '@/_lib/_services/profile-functions';
 import { useEffect, useState } from 'react';
 const mockUser = {
   name: 'Test User',
@@ -29,13 +29,11 @@ export default function ProfilePage() {
     useEffect(() => {
     const fetchProfilePicture = async (userPicture:string) => {
      
-      try {
-        const url = await getBlobUrl('profile-picture.jpg'); // use db string
-        setProfilePicture(url);
-      } catch (err) {
-        console.error('Error fetching profile picture:', err);
-        setProfilePicture(userPicture);
-      }
+      
+        const url = await importFromBlob();
+        const profilePic = url == null ? userPicture : url;
+        setProfilePicture(profilePic);
+      
     };
 
     fetchProfilePicture(activeUser.picture);
