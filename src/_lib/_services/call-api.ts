@@ -1,5 +1,5 @@
 'use server';
-import { UserAchievementEntry } from '@/_lib/_data/types/types';
+import { UserAchievementEntry, UserInfo } from '@/_lib/_data/types/types';
 import { UserAchievementStatus } from '@/_lib/_data/types/status';
 import { auth0 } from '@/_lib/auth0';
 import axios from 'axios';
@@ -171,4 +171,49 @@ export async function getUserAchievementEntryByAchievementIdApi(
   );
 
   return response.data;
+}
+
+export async function getUserInfoApi(): Promise<UserInfo> {
+  const { token } = await auth0.getAccessToken();
+  const response = await axios.get(`${process.env.USER_INFO_API_URL}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return response.data as UserInfo;
+}
+
+export async function updateUserInfoUserProfilePictureApi(
+  userProfilePicture: string
+): Promise<void> {
+  const { token } = await auth0.getAccessToken();
+  const body = {
+    userProfilePicture: userProfilePicture,
+  };
+  await axios.put(
+    `${process.env.USER_INFO_API_URL}/userprofilepicture`,
+    body,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+
+}
+
+export async function upderUserInfoUserNameApi(userName: string): Promise<void> {
+  const { token } = await auth0.getAccessToken();
+  const body = {
+    userName: userName,
+  };
+  await axios.put(`${process.env.USER_INFO_API_URL}/username`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
 }

@@ -73,3 +73,9 @@ export interface UserAchievements {
   error: string;
   userAchievements: UserAchievementEntry[];
 }
+
+export interface UserInfo {
+  userName?: string;
+  userProfilePicture?: string;
+  createdAt?: string;
+}
