@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export async function getHistoryApi(): Promise<number[]> {
   const { token } = await auth0.getAccessToken();
-  const response = await axios.get(`${process.env.USER_HISTORY_API_URL}`, {
+  const response = await axios.get(`${process.env.FINBUD_API_URL}/api/UserHistory`, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export async function setHistoryApi(history: number[]): Promise<void> {
   const { token } = await auth0.getAccessToken();
 
   await axios.put(
-    `${process.env.USER_HISTORY_API_URL}`,
+    `${process.env.FINBUD_API_URL}/api/UserHistory`,
     { userHistory: history },
     {
       headers: {
@@ -37,7 +37,7 @@ export async function createHistoryApi(history: number[]): Promise<void> {
   const { token } = await auth0.getAccessToken();
 
   await axios.post(
-    `${process.env.USER_HISTORY_API_URL}`,
+    `${process.env.FINBUD_API_URL}/api/UserHistory`,
     { userHistory: history },
     {
       headers: {
@@ -54,7 +54,7 @@ export async function getUserAchievementsApi(): Promise<
   UserAchievementEntry[]
 > {
   const { token } = await auth0.getAccessToken();
-  const response = await axios.get(`${process.env.USER_ACHIEVEMENTS_API_URL}`, {
+  const response = await axios.get(`${process.env.FINBUD_API_URL}/api/UserAchievement`, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export async function createUserAchievementDefaultApi(
 ): Promise<void> {
   const { token } = await auth0.getAccessToken();
   const response = await axios.post(
-    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
+    `${process.env.FINBUD_API_URL}/api/UserAchievement`,
     {
       achievementId: achievementId,
       userAchievementStatus: userAcheivementStatus,
@@ -94,7 +94,7 @@ export async function updateUserAchievementStatusApi(
 ): Promise<void> {
   const { token } = await auth0.getAccessToken();
   const response = await axios.put(
-    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
+    `${process.env.FINBUD_API_URL}/api/UserAchievement`,
     {
       userAchievementStatus: userAchievementStatus,
       achievementId: achievementId,
@@ -144,7 +144,7 @@ export async function updateUserAchievementInfoApi(
 
   const { token } = await auth0.getAccessToken();
   const response = await axios.put(
-    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
+    `${process.env.FINBUD_API_URL}/api/UserAchievement`,
     updateBody,
     {
       headers: {
@@ -161,7 +161,7 @@ export async function getUserAchievementEntryByAchievementIdApi(
 ): Promise<UserAchievementEntry | null> {
   const { token } = await auth0.getAccessToken();
   const response = await axios.get(
-    `${process.env.USER_ACHIEVEMENTS_API_URL}/${achievementId}`,
+    `${process.env.FINBUD_API_URL}/api/UserAchievement/${achievementId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -175,7 +175,7 @@ export async function getUserAchievementEntryByAchievementIdApi(
 
 export async function getUserInfoApi(): Promise<UserInfo> {
   const { token } = await auth0.getAccessToken();
-  const response = await axios.get(`${process.env.USER_INFO_API_URL}`, {
+  const response = await axios.get(`${process.env.FINBUD_API_URL}/api/UserInfo`, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -193,7 +193,7 @@ export async function updateUserInfoUserProfilePictureApi(
     userProfilePicture: userProfilePicture,
   };
   await axios.put(
-    `${process.env.USER_INFO_API_URL}/userprofilepicture`,
+    `${process.env.FINBUD_API_URL}/api/UserInfo/userprofilepicture`,
     body,
     {
       headers: {
@@ -210,7 +210,7 @@ export async function updateUserInfoUserNameApi(userName: string): Promise<void>
   const body = {
     userName: userName,
   };
-  await axios.put(`${process.env.USER_INFO_API_URL}/username`, body, {
+  await axios.put(`${process.env.FINBUD_API_URL}/api/UserInfo/username`, body, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
