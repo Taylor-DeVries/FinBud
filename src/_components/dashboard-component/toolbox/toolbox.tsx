@@ -52,6 +52,14 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
     });
   }
 
+  if(currentNodeId in [4,23,14,31,8,17,9,28,7]){
+    currentActions.push({
+      icon: <FaBullseye size={45} className="" />,
+      name: 'Allocation Calculator',
+      onClickModal: 'Allocation_modal',
+    });
+  }
+
   for (let i = 0; i < Links.length; i++) {
     if (Links[i].id == currentNodeId) {
       currentActions.push({
