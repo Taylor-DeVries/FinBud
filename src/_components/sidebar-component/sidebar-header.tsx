@@ -14,7 +14,7 @@ export const SidebarHeader = () => {
         className="object-cover object-top flex-shrink-0 hover:cursor-pointer"
         onClick={() => router.push('/')}
         priority
-        unoptimized
+        quality={85}
       />
     </div>
   );

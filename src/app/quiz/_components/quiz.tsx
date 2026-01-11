@@ -241,7 +241,7 @@ export default function QuizPage({ data }) {
               height={300}
               className="w-auto h-auto"
               priority
-              unoptimized
+              quality={85}
               onLoad={() => setLoading(false)}
             />
           </div>

@@ -109,13 +109,11 @@ export default function FhsaCalculatorComponent() {
 
   const resetContributed = () => {
     if (input.contributed.textInput.current) {
-      console.log('resetContributed');
       document.getElementById('contributed')!.textContent = null;
       input.contributed.textInput.current.value = null;
     }
   };
   const handleContributedChange = () => {
-    console.log(OpenedInputFlag);
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     input.contributed.focusTextInput;
     const element = document.getElementById('contributed')!;
@@ -123,7 +121,6 @@ export default function FhsaCalculatorComponent() {
       const contributedVal = Math.floor(
         Number(input.contributed.textInput.current.value)
       );
-      console.log(OpenedInputFlag);
 
       if (
         contributedVal <=

@@ -1,4 +1,4 @@
-export default function contactUs() {
+export default function DisclaimerPage() {
   return (
     <div className="flex-1 bg-light_blue_infoPage overflow-y-auto">
       <div className="flex flex-col items-left h-screen mt-10 ml-10 mr-10 text-gray-50 dark:text-[#333]">
