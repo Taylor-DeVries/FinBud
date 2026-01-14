@@ -87,9 +87,27 @@ export default function aboutUs() {
           everything else falls into place.
           <br />
           <br />
-          <br />
-          <br />
         </p>
+        <h2 className="mt-4 lg:text-2xl md:text-xl sm:text-lg text-lg font-bold">
+          Our Team
+        </h2>
+        <div className="mt-2 lg:text-lg md:text-lg sm:text-md text-sm">
+          <p className="mb-4">
+            <span className="font-bold">Zarek Ting:</span> As one of our founders, Zarek leads product development, strategy, and marketing. Finance and marketing student at the University of Windsor, Zarek is passionate about personal finance and strives to help as many people as he can to take control of their finances.
+          </p>
+          <p className="mb-4">
+            <span className="font-bold">Taylor DeVries:</span> As one of our founders, Taylor leads software development and operations. Software engineering student at the University of Waterloo, Taylor specializes in combining financial education and technological innovation, making her a strong leader for a FinTech organization.
+          </p>
+          <p className="mb-4">
+            <span className="font-bold">Aiden Asprakis:</span> As one of our founders, Aiden is crucial to FinBud's construction. Computer science student at the University of Windsor, Aiden specializes in setting up and engineering our backend code.
+          </p>
+          <p className="mb-4">
+            <span className="font-bold">Michelle Chen:</span> As a software developer, Michelle has a diverse skillset that is responsible for many aspects of FinBud's code. Computer engineering student at the University of Waterloo, Michelle is a key contributor to FinBud.
+          </p>
+          <p className="mb-4">
+            At FinBud, we're not just a team, we're a group of passionate individuals united by the goal of making finance accessible for everyone. Together, we work toward a future where financial literacy and confidence are within everyone's reach.
+          </p>
+        </div>
       </div>
     </div>
   );
