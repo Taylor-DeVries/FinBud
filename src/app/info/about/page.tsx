@@ -2,8 +2,8 @@ export default function aboutUs() {
   return (
     <div className="flex-1 bg-light_blue_infoPage overflow-y-auto h-screen">
       <div className="flex flex-col items-left h-screen my-10 mx-10 text-gray-50 dark:text-[#333] max-w-4xl">
-        <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold mb-2">About Us</h1>
-        <hr className="border-gray-50 dark:border-[#333] border-2 my-6 w-20" />
+        <h1 className="lg:text-4xl md:text-4xl text-3xl font-bold">About Us</h1>
+        <hr className="border-gray-50 dark:border-[#333] border-4 my-4" />
         
         <section className="mb-8">
           <h2 className="lg:text-3xl md:text-2xl sm:text-xl text-xl font-bold mb-3">
