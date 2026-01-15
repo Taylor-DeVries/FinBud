@@ -6,6 +6,8 @@ import React from 'react';
 import TFSAvars from './tfsa-interface';
 import tfsaMath from './tfsa-math';
 
+const currentYear = new Date().getFullYear();
+
 function TfsaCalculatorComponent() {
   const input = new TFSAvars();
   const [checked, setChecked] = React.useState(false);
@@ -59,9 +61,9 @@ function TfsaCalculatorComponent() {
       input.contributed.textInput.current
     ) {
       const temp = Number(input.born.textInput.current.value);
-      if (temp >= 1900 && temp < 2026) {
+      if (temp >= 1900 && temp <= currentYear) {
         element.textContent = null;
-        if (temp == 2007) {
+        if (temp == currentYear - 18) {
           setShowSwitch(true);
         } else setShowSwitch(false);
         setBornInputFlag(false);
@@ -71,7 +73,7 @@ function TfsaCalculatorComponent() {
       }
       setBornInputFlag(true);
     }
-    element.textContent = 'Oops! Please enter a number between 1900-2025';
+    element.textContent = `Oops! Please enter a number between 1900-${currentYear}`;
   }
 
   const handleResidentChange = () => {
@@ -84,7 +86,10 @@ function TfsaCalculatorComponent() {
         return;
       }
       const temp = Number(input.resident.textInput.current.value);
-      if (temp >= Number(input.born.textInput.current.value) && temp < 2026) {
+      if (
+        temp >= Number(input.born.textInput.current.value) &&
+        temp <= currentYear
+      ) {
         setResidentInputFlag(false);
         element.textContent = null;
 
