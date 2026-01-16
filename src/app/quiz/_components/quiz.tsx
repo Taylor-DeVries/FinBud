@@ -30,6 +30,7 @@ import AllocationCalculatorButton from '@/_components/calculator-component/alloc
 import LinkButton from '@/_components/link-component/link-component';
 import NavToDashboard from '@/_components/nav-to-dashboard-button-component/nav-to-dashboard-button';
 import MoreInfoButtons from '@/_components/more-info-component/more-info-buttons';
+import { toolboxShow } from '@/_lib/_services/tools-functions';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -153,48 +154,12 @@ export default function QuizPage({ data }) {
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
 
-    switch (currentNode.id) {
-      case 4:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 23:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 14:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 31:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 8:
-        setShowAllocationCalculator(true);
-        break;
-      case 17:
-        setShowAllocationCalculator(true);
-        break;
-      case 9:
-        setShowAllocationCalculator(true);
-        break;
-      case 28:
-        setShowAllocationCalculator(true);
-        break;
-      case 7:
-        setShowAllocationCalculator(true);
-        break;
-      default:
-        setShowAllocationCalculator(false);
-        setshowTfsaCalculator(false);
-        setshowFhsaCalculator(false);
-        break;
-    }
+    const toolboxShowList = toolboxShow(currentNode.id, currentNode.link);
 
-    if (currentNode.link) {
-      setShowLink(true);
-    } else setShowLink(false);
+    setShowAllocationCalculator(toolboxShowList.showAllocationCalculator);
+    setshowTfsaCalculator(toolboxShowList.showTfsaCalculator);
+    setshowFhsaCalculator(toolboxShowList.showFhsaCalculator);
+    setShowLink(toolboxShowList.showLink);
 
     if (historyState.loading) {
       setHistoryAsync();
