@@ -23,6 +23,7 @@ const eslintConfig = [
       '@typescript-eslint': tseslint,
     },
     rules: {
+      'react/no-unescaped-entities': 'off',
       // Enforce file names
       'check-file/filename-naming-convention': [
         'error',
