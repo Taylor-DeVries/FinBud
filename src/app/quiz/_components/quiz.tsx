@@ -31,6 +31,7 @@ import LinkButton from '@/_components/link-component/link-component';
 import NavToDashboard from '@/_components/nav-to-dashboard-button-component/nav-to-dashboard-button';
 import MoreInfoButtons from '@/_components/more-info-component/more-info-buttons';
 import { toolboxShow } from '@/_lib/_services/tools-functions';
+import { Tooltip } from 'react-tooltip';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -220,7 +221,11 @@ export default function QuizPage({ data }) {
                 <IoIosArrowRoundBack
                   onClick={goBack}
                   className="text-blue h-8 w-8 hover:cursor-pointer"
+                  data-tooltip-id="backButton"
                 />
+                <Tooltip id="backButton" place="top">
+                  {`Back`}
+                </Tooltip>
               </div>
 
               {/* Calculator Buttons */}
