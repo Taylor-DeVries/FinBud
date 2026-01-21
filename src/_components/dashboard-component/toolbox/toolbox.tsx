@@ -8,6 +8,7 @@ import FhsaCalculatorComponent from '@/_components/calculator-component/fhsa/fhs
 import AllocationCalculatorComponent from '@/_components/calculator-component/allocation/allocation-calculator-component';
 import links from '@/_lib/_data/constants/links.json';
 import { QuizLink } from '@/_lib/_data/types/types';
+import { toolboxShow } from '@/_lib/_services/tools-functions';
 type ToolboxProps = {
   historyArray: number[];
 };
@@ -33,10 +34,11 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   const currentNodeId = historyArray[historyArray.length - 1];
   const Links = links.links as QuizLink[];
+  const toolboxShowList = toolboxShow(currentNodeId);
 
   const currentActions = [];
 
-  if (currentNodeId == 4 || currentNodeId == 23) {
+  if (toolboxShowList.showTfsaCalculator) {
     currentActions.push({
       icon: <FaCalculator size={45} className="" />,
       name: 'TFSA Calculator',
@@ -44,11 +46,19 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
     });
   }
 
-  if (currentNodeId == 14 || currentNodeId == 31) {
+  if (toolboxShowList.showFhsaCalculator) {
     currentActions.push({
       icon: <FaCalculator size={45} className="" />,
       name: 'FHSA Calculator',
       onClickModal: 'FHSA_modal',
+    });
+  }
+
+  if (toolboxShowList.showAllocationCalculator) {
+    currentActions.push({
+      icon: <FaBullseye size={45} className="" />,
+      name: 'Allocation Calculator',
+      onClickModal: 'Allocation_modal',
     });
   }
 
@@ -81,13 +91,8 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
     },
     {
       icon: <FaLink size={45} className="" />,
-      name: 'https://www.wealthsimple.com/en-ca/spend',
-      onClickLink: 'https://www.wealthsimple.com/en-ca/spend',
-    },
-    {
-      icon: <FaLink size={45} className="" />,
-      name: 'https://www.wealthsimple.com/en-ca/self-directed-investing',
-      onClickLink: 'https://www.wealthsimple.com/en-ca/self-directed-investing',
+      name: 'https://www.wealthsimple.com/en-ca/learn',
+      onClickLink: 'https://www.wealthsimple.com/en-ca/learn',
     },
   ];
 

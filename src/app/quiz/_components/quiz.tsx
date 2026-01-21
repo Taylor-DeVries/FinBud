@@ -30,6 +30,8 @@ import AllocationCalculatorButton from '@/_components/calculator-component/alloc
 import LinkButton from '@/_components/link-component/link-component';
 import MoreInfoButtons from '@/_components/more-info-component/more-info-buttons';
 import NavToPage from '@/_components/nav-to-page-button-component/nav-to-page-button';
+import { toolboxShow } from '@/_lib/_services/tools-functions';
+import { Tooltip } from 'react-tooltip';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -153,48 +155,12 @@ export default function QuizPage({ data }) {
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
 
-    switch (currentNode.id) {
-      case 4:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 23:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 14:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 31:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 8:
-        setShowAllocationCalculator(true);
-        break;
-      case 17:
-        setShowAllocationCalculator(true);
-        break;
-      case 9:
-        setShowAllocationCalculator(true);
-        break;
-      case 28:
-        setShowAllocationCalculator(true);
-        break;
-      case 7:
-        setShowAllocationCalculator(true);
-        break;
-      default:
-        setShowAllocationCalculator(false);
-        setshowTfsaCalculator(false);
-        setshowFhsaCalculator(false);
-        break;
-    }
+    const toolboxShowList = toolboxShow(currentNode.id, currentNode.link);
 
-    if (currentNode.link) {
-      setShowLink(true);
-    } else setShowLink(false);
+    setShowAllocationCalculator(toolboxShowList.showAllocationCalculator);
+    setshowTfsaCalculator(toolboxShowList.showTfsaCalculator);
+    setshowFhsaCalculator(toolboxShowList.showFhsaCalculator);
+    setShowLink(toolboxShowList.showLink);
 
     if (historyState.loading) {
       setHistoryAsync();
@@ -241,7 +207,7 @@ export default function QuizPage({ data }) {
               height={300}
               className="w-auto h-auto"
               priority
-              unoptimized
+              quality={85}
               onLoad={() => setLoading(false)}
             />
           </div>
@@ -255,7 +221,11 @@ export default function QuizPage({ data }) {
                 <IoIosArrowRoundBack
                   onClick={goBack}
                   className="text-blue h-8 w-8 hover:cursor-pointer"
+                  data-tooltip-id="backButton"
                 />
+                <Tooltip id="backButton" place="top">
+                  {`Back`}
+                </Tooltip>
               </div>
 
               {/* Calculator Buttons */}

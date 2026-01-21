@@ -7,7 +7,6 @@ import { TypeAnimation } from 'react-type-animation';
 import Textbox from '@/_components/textbox-component/textbox';
 import Loader from '@/_components/loader-component/loader';
 import Button from '@/_components/button-component/button';
-import { redirect } from 'next/navigation';
 import { useIsLoggedIn } from '@/_lib/_services/login-helper';
 import Title from '@/_lib/_services/title-helper';
 
@@ -16,17 +15,16 @@ import ResponsiveImage from '@/_components/responsive-image-component/responsive
 const HomePage: React.FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  function redirectAfterLogin() {
-    if (sessionStorage?.getItem('url')) {
-      const redirectURL = sessionStorage.getItem('url').toString();
-      sessionStorage.removeItem('url');
-      redirect(redirectURL);
-    }
-  }
-
+  
   useEffect(() => {
-    redirectAfterLogin();
-  });
+    if (typeof window !== 'undefined' && sessionStorage?.getItem('url')) {
+      const redirectURL = sessionStorage.getItem('url')?.toString();
+      if (redirectURL) {
+        sessionStorage.removeItem('url');
+        router.push(redirectURL);
+      }
+    }
+  }, [router]);
 
   return (
     <>
@@ -48,7 +46,7 @@ const HomePage: React.FC = () => {
                 height={300}
                 className="w-auto h-auto"
                 priority
-                unoptimized
+                quality={85}
                 onLoad={() => setLoading(false)}
               />
             </div>

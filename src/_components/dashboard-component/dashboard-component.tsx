@@ -3,7 +3,7 @@ import DashboardTextbox from './dashboard-textbox/dashboard-textbox';
 import Image from 'next/image';
 import { useState } from 'react';
 import Goal from '@/_components/dashboard-component/goal/goal';
-import Acheivements from '@/_components/dashboard-component/achievements/acheivements';
+import Achievements from '@/_components/dashboard-component/achievements/achievements';
 import Toolbox from './toolbox/toolbox';
 import { useUser } from '@auth0/nextjs-auth0';
 import dashboardgoals from '@/_lib/_data/constants/dashboard-goals.json';
@@ -117,7 +117,7 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Left Column - Achievements & Toolbox */}
         <div className="lg:col-span-2 flex flex-col gap-y-4 sm:gap-y-6">
-          <Acheivements
+          <Achievements
             historyArray={historyArray}
             userAchievements={userAchievements}
           />
@@ -171,8 +171,8 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
               width={200}
               height={200}
               className="drop-shadow-lg w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56"
-              priority
-              unoptimized
+              loading="lazy"
+              quality={85}
               onLoad={() => setLoading(false)}
             />
           </div>

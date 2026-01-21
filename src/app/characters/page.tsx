@@ -14,7 +14,8 @@ export default function AboutPage() {
           width={400}
           height={400}
           className="w-[300px] h-auto sm:w-[400px] sm:h-auto object-contain"
-          unoptimized={true}
+          loading="lazy"
+          quality={85}
         />
       </div>
     </ResponsiveImage>
