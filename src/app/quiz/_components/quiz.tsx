@@ -28,8 +28,8 @@ import FhsaCalculatorButton from '@/_components/calculator-component/fhsa/fhsa-c
 import AllocationCalculatorComponent from '@/_components/calculator-component/allocation/allocation-calculator-component';
 import AllocationCalculatorButton from '@/_components/calculator-component/allocation/allocation-calculator-button';
 import LinkButton from '@/_components/link-component/link-component';
-import NavToDashboard from '@/_components/nav-to-dashboard-button-component/nav-to-dashboard-button';
 import MoreInfoButtons from '@/_components/more-info-component/more-info-buttons';
+import NavToPage from '@/_components/nav-to-page-button-component/nav-to-page-button';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -266,7 +266,7 @@ export default function QuizPage({ data }) {
 
                 {showDashboard && (
                   <div className="flex flex-wrap justify-center items-center gap-0">
-                    <NavToDashboard />
+                    <NavToPage destinationPage="Dashboard" tooltipText='Dashboard'/>
                   </div>
                 )}
                 {showTfsaCalculator && (
