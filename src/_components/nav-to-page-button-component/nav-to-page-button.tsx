@@ -10,9 +10,9 @@ import {
 
 function NavToPage({destinationPage, tooltipText=""}) {
 
-  let buttonId = `NavTo${destinationPage}`;
+  const buttonId = `NavTo${destinationPage}`;
   let destinationUrl; 
-  let tooltip = tooltipText || `Back to ${destinationPage}`;
+  const tooltip = tooltipText || `Back to ${destinationPage}`;
 
   switch(destinationPage) {
     case "Dashboard":
