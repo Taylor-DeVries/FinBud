@@ -11,6 +11,7 @@ import { DashboardGoal, UserAchievementEntry } from '@/_lib/_data/types/types';
 import extendedtext from '@/_lib/_data/constants/extended-texts.json';
 import { QuizText } from '@/_lib/_data/types/types';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import NavToPage from '../nav-to-page-button-component/nav-to-page-button';
 
 type DashboardProps = {
   historyData: {
@@ -104,15 +105,7 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
           {welcomeMessage}
         </h1>
 
-        {/* Encouraging Message Badge */}
-        <div className="flex items-center gap-2 bg-light_blue dark:bg-[#333] backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-md">
-          <span className="text-2xl" role="img" aria-label="encouragement">
-            {encouragement.emoji}
-          </span>
-          <span className="font-semibold text-sm sm:text-base text-white dark:text-blue">
-            {encouragement.text}
-          </span>
-        </div>
+        <NavToPage destinationPage="Quiz" />
       </div>
 
       {/* Current Goal */}

@@ -2,6 +2,8 @@
 import { IconChartBar } from '@tabler/icons-react';
 import { Tooltip } from 'react-tooltip';
 
+// Deprecated: Use NavToPage with destinationPage="Dashboard" instead
+
 function NavToDashboard() {
   return (
     <>
