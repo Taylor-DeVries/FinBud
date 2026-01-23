@@ -1,7 +1,7 @@
 'use client';
 import DashboardTextbox from './dashboard-textbox/dashboard-textbox';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Goal from '@/_components/dashboard-component/goal/goal';
 import Achievements from '@/_components/dashboard-component/achievements/achievements';
 import Toolbox from './toolbox/toolbox';
@@ -97,8 +97,13 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
     return currentTextIndex > 0 ? true : false;
   }
 
-  const darkmode = localStorage.getItem('theme') == 'dark' ? true : false;
 
+  const [darkmode, setDarkmode] = useState<boolean | null>(null);
+
+  useEffect(() => {
+      const theme_darkmode = localStorage.getItem('theme') == 'dark' ? true : false;
+      setDarkmode (theme_darkmode);
+  }, []);
 
   return (
     <div className="flex flex-col gap-y-4 sm:gap-y-6 max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
