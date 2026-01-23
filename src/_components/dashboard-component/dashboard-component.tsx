@@ -97,6 +97,9 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
     return currentTextIndex > 0 ? true : false;
   }
 
+  const darkmode = localStorage.getItem('theme') == 'dark' ? true : false;
+
+
   return (
     <div className="flex flex-col gap-y-4 sm:gap-y-6 max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
       {/* Header with Encouragement */}
@@ -121,7 +124,7 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
             historyArray={historyArray}
             userAchievements={userAchievements}
           />
-          <Toolbox historyArray={historyArray} />
+          <Toolbox historyArray={historyArray} darkmode={darkmode} />
         </div>
 
         {/* Right Column - Fin & Tips */}
