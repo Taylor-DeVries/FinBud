@@ -101,8 +101,8 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
   const [darkmode, setDarkmode] = useState<boolean | null>(null);
 
   useEffect(() => {
-      const theme_darkmode = localStorage.getItem('theme') == 'dark' ? true : false;
-      setDarkmode (theme_darkmode);
+      const themeDarkmode = localStorage.getItem('theme') == 'dark' ? true : false;
+      setDarkmode (themeDarkmode);
   }, []);
 
   return (
