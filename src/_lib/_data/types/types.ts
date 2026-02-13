@@ -73,3 +73,13 @@ export interface UserAchievements {
   error: string;
   userAchievements: UserAchievementEntry[];
 }
+
+export interface NodeCharacterImageMapping {
+  nodeId: number;
+  image: string;
+}
+
+export interface NodeCharacterImageConfig {
+  defaultImage: string;
+  mappings: NodeCharacterImageMapping[];
+}

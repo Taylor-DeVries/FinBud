@@ -1,6 +1,8 @@
 'use client';
 import { buildQuizData } from '@/_lib/_services/build-quiz-data';
 import dashboardGoals from '@/_lib/_data/constants/dashboard-goals.json';
+import nodeCharacterImages from '@/_lib/_data/constants/node-character-images.json';
+import { NodeCharacterImageConfig } from '@/_lib/_data/types/types';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -53,6 +55,12 @@ export default function QuizPage({ data }) {
     React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
   const [showDashboard, setShowDashboard] = React.useState(false);
+
+  const characterConfig = nodeCharacterImages as NodeCharacterImageConfig;
+  function getCharacterImageForNode(nodeId: number): string {
+    const mapping = characterConfig.mappings.find((m) => m.nodeId === nodeId);
+    return mapping ? mapping.image : characterConfig.defaultImage;
+  }
 
   function getInitialState(data: HistoryState): HistoryState {
     let hist: HistoryState = data;
@@ -200,16 +208,19 @@ export default function QuizPage({ data }) {
         >
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
-            <Image
-              src="/images/Fin.png"
-              alt="Logo"
-              width={300}
-              height={300}
-              className="w-auto h-auto"
-              priority
-              quality={85}
-              onLoad={() => setLoading(false)}
-            />
+            <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] flex items-center justify-center flex-shrink-0">
+              <Image
+                key={currentNode.id}
+                src={getCharacterImageForNode(currentNode.id)}
+                alt="Character"
+                width={300}
+                height={300}
+                className="w-full h-full object-contain"
+                priority={currentNode.id === historyState.historyArray[0]}
+                quality={85}
+                onLoad={() => setLoading(false)}
+              />
+            </div>
           </div>
 
           {/* Text Area */}

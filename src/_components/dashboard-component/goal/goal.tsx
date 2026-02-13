@@ -1,4 +1,4 @@
-import Meter from '@/_components/dashboard-component/goal/meter';
+import Link from 'next/link';
 
 export default function Goal({ goal, percentage }) {
   return (
@@ -6,20 +6,31 @@ export default function Goal({ goal, percentage }) {
       <p className="text-white dark:text-blue drop-shadow-md text-base sm:text-xl lg:text-2xl font-bold leading-snug">
         Your goal: {goal}
       </p>
-      
+
       {/* Progress Bar */}
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between items-center text-xs sm:text-sm">
-          <span className="text-white/90 dark:text-gray-300 font-medium">Quiz Progress</span>
-          <span className="text-white dark:text-blue font-bold text-sm sm:text-base">{percentage}%</span>
+          <span className="text-white/90 dark:text-gray-300 font-medium">
+            Quiz Progress
+          </span>
+          <span className="text-white dark:text-blue font-bold text-sm sm:text-base">
+            {percentage}%
+          </span>
         </div>
         <div className="w-full bg-white/25 dark:bg-gray-300 rounded-full h-2.5 sm:h-3 overflow-hidden shadow-inner">
-          <div 
+          <div
             className="bg-emerald-400 dark:bg-emerald-400 h-full rounded-full transition-all duration-700 ease-out shadow-sm"
             style={{ width: `${percentage}%` }}
           />
         </div>
       </div>
+
+      <Link
+        href="/quiz"
+        className="mt-2 w-fit px-4 py-2 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 text-white dark:text-blue font-semibold rounded-lg transition-colors text-sm sm:text-base"
+      >
+        Resume Quiz
+      </Link>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+{
+  "_comment": "Assign character images per quiz node. defaultImage is used when no mapping exists. Add mappings with nodeId (see paths.json) and image path (e.g. /images/Fin.png).",
+  "defaultImage": "/images/Fin.png",
+  "mappings": [
+    { "nodeId": 0, "image": "/images/Fin.png" },
+    { "nodeId": 11, "image": "/images/FinSad.png" },
+    { "nodeId": 3, "image": "/images/FinHappy.png" },
+    { "nodeId": 5, "image": "/images/FinHappy.png" },
+    { "nodeId": 10, "image": "/images/FinHappy.png" }
+  ]
+}
