@@ -2,7 +2,7 @@ import { FaCalculator, FaWrench, FaLink, FaBullseye } from 'react-icons/fa';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { styled } from '@mui/material/styles'
 import TfsaCalculatorComponent from '@/_components/calculator-component/tfsa/tfsa-calculator-component';
 import FhsaCalculatorComponent from '@/_components/calculator-component/fhsa/fhsa-calculator-component';
 import AllocationCalculatorComponent from '@/_components/calculator-component/allocation/allocation-calculator-component';
@@ -11,9 +11,10 @@ import { QuizLink } from '@/_lib/_data/types/types';
 import { toolboxShow } from '@/_lib/_services/tools-functions';
 type ToolboxProps = {
   historyArray: number[];
+  darkmode?: boolean;
 };
 
-export default function Toolbox({ historyArray }: ToolboxProps) {
+export default function Toolbox({ historyArray, darkmode }: ToolboxProps) {
   const theme = createTheme({
     components: {
       MuiTooltip: {
@@ -32,6 +33,15 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
     },
   });
 
+  const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
+   '& .MuiSpeedDial-actions': {
+    gap: '8px',                 
+  },
+
+  
+}))
+
+
   const currentNodeId = historyArray[historyArray.length - 1];
   const Links = links.links as QuizLink[];
   const toolboxShowList = toolboxShow(currentNodeId);
@@ -40,7 +50,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   if (toolboxShowList.showTfsaCalculator) {
     currentActions.push({
-      icon: <FaCalculator size={45} className="" />,
+      icon: <FaCalculator size={45} className="text-blue" />,
       name: 'TFSA Calculator',
       onClickModal: 'TFSA_modal',
     });
@@ -48,7 +58,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   if (toolboxShowList.showFhsaCalculator) {
     currentActions.push({
-      icon: <FaCalculator size={45} className="" />,
+      icon: <FaCalculator size={45} className="text-blue" />,
       name: 'FHSA Calculator',
       onClickModal: 'FHSA_modal',
     });
@@ -56,7 +66,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   if (toolboxShowList.showAllocationCalculator) {
     currentActions.push({
-      icon: <FaBullseye size={45} className="" />,
+      icon: <FaBullseye size={45} className="text-blue" />,
       name: 'Allocation Calculator',
       onClickModal: 'Allocation_modal',
     });
@@ -65,7 +75,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
   for (let i = 0; i < Links.length; i++) {
     if (Links[i].id == currentNodeId) {
       currentActions.push({
-        icon: <FaLink size={45} className="" />,
+        icon: <FaLink size={45} className="text-blue" />,
         name: Links[i].link,
         onClickLink: Links[i].link,
       });
@@ -75,31 +85,33 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
 
   const Defaultactions = [
     {
-      icon: <FaCalculator size={45} className="" />,
+      icon: <FaCalculator className="text-blue" size={45} />,
       name: 'TFSA Calculator',
       onClickModal: 'TFSA_modal',
     },
     {
-      icon: <FaCalculator size={45} className="" />,
+      icon: <FaCalculator className="text-blue" size={45} />,
       name: 'FHSA Calculator',
       onClickModal: 'FHSA_modal',
     },
     {
-      icon: <FaBullseye size={45} className="" />,
+      icon: <FaBullseye className="text-blue" size={45} />,
       name: 'Allocation Calculator',
       onClickModal: 'Allocation_modal',
     },
     {
-      icon: <FaLink size={45} className="" />,
+      icon: <FaLink className="text-blue" size={45} />,
       name: 'https://www.wealthsimple.com/en-ca/learn',
       onClickLink: 'https://www.wealthsimple.com/en-ca/learn',
     },
   ];
 
+  const toolboxBackground = darkmode? '#333' : '#f8fafc';
+
   return (
     <div className=" sm:px-8 p-2 flex flex-row justify-start items-center gap-x-10 rounded-xl ">
       <ThemeProvider theme={theme}>
-        <SpeedDial
+        <StyledSpeedDial
           ariaLabel="Toolbox SpeedDial"
           sx={{ zIndex: 1 }}
           FabProps={{
@@ -107,13 +119,13 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
               width: 60, // change to your desired size
               height: 60,
               borderRadius: '12px',
-              backgroundColor: '#639db8',
+              backgroundColor: toolboxBackground,
               '&:hover': {
-                backgroundColor: '#4a7f9e', // darker shade on hover
+                backgroundColor: toolboxBackground, // darker shade on hover
               },
             },
           }}
-          icon={<FaWrench size={45} className="text-[#283F4A]" />}
+          icon={<FaWrench size={45} className="text-blue" />}
           direction="right"
         >
           {(currentActions.length == 0 ? Defaultactions : currentActions).map(
@@ -138,11 +150,10 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
                       width: 60, // smaller child button size
                       height: 60,
                       borderRadius: '12px',
-                      backgroundColor: '#639db8',
+                      backgroundColor: toolboxBackground,
                       '&:hover': {
-                        backgroundColor: '#4a7f9e', // darker shade on hover
+                        backgroundColor: toolboxBackground, // darker shade on hover
                       },
-                      margin: '0 4px', // spacing between buttons
                     },
                   },
                   tooltip: {
@@ -155,7 +166,7 @@ export default function Toolbox({ historyArray }: ToolboxProps) {
               />
             )
           )}
-        </SpeedDial>
+        </StyledSpeedDial>
       </ThemeProvider>
 
       <TfsaCalculatorComponent />
