@@ -25,14 +25,12 @@ export default function Goal({ goal, percentage, showButton = true }) {
         </div>
       </div>
 
-      {showButton && (
-        <Link
-          href="/quiz"
-          className="mt-2 w-fit px-4 py-2 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 text-white dark:text-blue font-semibold rounded-lg transition-colors text-sm sm:text-base"
-        >
-          Resume Quiz
-        </Link>
-      )}
+      <Link
+        href="/quiz"
+        className="mt-2 w-fit px-4 py-2 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 text-white dark:text-blue font-semibold rounded-lg transition-colors text-sm sm:text-base"
+      >
+        Resume Quiz
+      </Link>
     </div>
   );
 }
