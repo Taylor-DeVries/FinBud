@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Goal({ goal, percentage }) {
+export default function Goal({ goal, percentage, showButton = true }) {
   return (
     <div className="bg-light_blue dark:bg-[#333] px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col gap-y-3 rounded-xl shadow-md">
       <p className="text-white dark:text-blue drop-shadow-md text-base sm:text-xl lg:text-2xl font-bold leading-snug">
@@ -25,12 +25,14 @@ export default function Goal({ goal, percentage }) {
         </div>
       </div>
 
-      <Link
-        href="/quiz"
-        className="mt-2 w-fit px-4 py-2 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 text-white dark:text-blue font-semibold rounded-lg transition-colors text-sm sm:text-base"
-      >
-        Resume Quiz
-      </Link>
+      {showButton && (
+        <Link
+          href="/quiz"
+          className="mt-2 w-fit px-4 py-2 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 text-white dark:text-blue font-semibold rounded-lg transition-colors text-sm sm:text-base"
+        >
+          Resume Quiz
+        </Link>
+      )}
     </div>
   );
 }
