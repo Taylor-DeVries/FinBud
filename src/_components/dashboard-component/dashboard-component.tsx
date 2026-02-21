@@ -11,7 +11,7 @@ import { DashboardGoal, UserAchievementEntry } from '@/_lib/_data/types/types';
 import extendedtext from '@/_lib/_data/constants/extended-texts.json';
 import { QuizText } from '@/_lib/_data/types/types';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import NavToPage from '../nav-to-page-button-component/nav-to-page-button';
+import Link from 'next/link';
 
 type DashboardProps = {
   historyData: {
@@ -49,7 +49,7 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
   const completedGoals = historyArray.length - 1; // Subtract 1 for starting node
   const progressPercentage = Math.min(
     100,
-    Math.round((completedGoals / totalGoals) * 100)
+    Math.round((completedGoals / totalGoals) * 100),
   );
 
   // Generate encouraging message based on progress
@@ -97,12 +97,12 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
     return currentTextIndex > 0 ? true : false;
   }
 
-
   const [darkmode, setDarkmode] = useState<boolean | null>(null);
 
   useEffect(() => {
-      const themeDarkmode = localStorage.getItem('theme') == 'dark' ? true : false;
-      setDarkmode (themeDarkmode);
+    const themeDarkmode =
+      localStorage.getItem('theme') == 'dark' ? true : false;
+    setDarkmode(themeDarkmode);
   }, []);
 
   return (
@@ -113,12 +113,21 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
           {welcomeMessage}
         </h1>
 
-        <NavToPage destinationPage="Quiz" />
+        <Link
+          href="/quiz"
+          className="px-4 py-2 bg-light_blue_bg dark:bg-[#333] hover:bg-light_blue dark:hover:bg-slate-700 text-white dark:text-blue font-semibold rounded-lg transition-colors text-sm sm:text-base shadow-md"
+        >
+          Resume Quiz
+        </Link>
       </div>
 
       {/* Current Goal */}
       <div className="w-full">
-        <Goal goal={goalText} percentage={progressPercentage} />
+        <Goal
+          goal={goalText}
+          percentage={progressPercentage}
+          showButton={false}
+        />
       </div>
 
       {/* Main Content Grid */}

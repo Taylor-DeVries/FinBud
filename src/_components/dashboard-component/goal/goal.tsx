@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Goal({ goal, percentage }) {
+export default function Goal({ goal, percentage, showButton = true }) {
   return (
     <div className="bg-light_blue dark:bg-[#333] px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col gap-y-3 rounded-xl shadow-md">
       <p className="text-white dark:text-blue drop-shadow-md text-base sm:text-xl lg:text-2xl font-bold leading-snug">
