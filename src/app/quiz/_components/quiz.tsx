@@ -216,7 +216,7 @@ export default function QuizPage({ data }) {
                 width={300}
                 height={300}
                 className="w-full h-full object-contain"
-                priority={currentNode.id === historyState.historyArray[0]}
+                priority
                 quality={85}
                 onLoad={() => setLoading(false)}
               />
