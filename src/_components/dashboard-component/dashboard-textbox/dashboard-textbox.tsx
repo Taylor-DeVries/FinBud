@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { TypeAnimation } from 'react-type-animation';
 interface DashboardTextboxProps {
   label?: React.ReactNode;
   secondaryLabel?: React.ReactNode;
@@ -13,6 +13,11 @@ const DashboardTextbox: React.FC<DashboardTextboxProps> = ({
   paddingBetween,
   centerAlignment,
 }) => {
+  const animatedLabelText =
+    typeof label === 'string' || typeof label === 'number'
+      ? String(label)
+      : null;
+
   return (
     <div className="text-left">
       <div
@@ -21,7 +26,19 @@ const DashboardTextbox: React.FC<DashboardTextboxProps> = ({
         }`}
       >
         <div className="font-bold text-base sm:text-base">
-          {label}
+          {animatedLabelText ? (
+            <TypeAnimation
+              key={animatedLabelText}
+              sequence={[animatedLabelText]}
+              wrapper="p"
+              speed={80}
+              cursor={false}
+              repeat={0}
+              preRenderFirstString={false}
+            />
+          ) : (
+            label
+          )}
         </div>
         <div
           className={`font-semibold text-lg sm:text-xl ${
