@@ -2,7 +2,7 @@ import InfoPageLayout, {
   INFO_BODY,
   INFO_SECTION,
   INFO_SECTION_CONTENT,
-} from "@/_components/info-page-layout/InfoPageLayout";
+} from "@/_components/info-page-layout/info-page-layout";
 
 export default function DisclaimerPage() {
   return (
