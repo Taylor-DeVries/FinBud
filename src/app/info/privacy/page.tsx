@@ -3,7 +3,7 @@ import InfoPageLayout, {
   INFO_SECTION,
   INFO_SECTION_CONTENT,
   INFO_SECTION_HEADING,
-} from "@/_components/info-page-layout/InfoPageLayout";
+} from "@/_components/info-page-layout/info-page-layout";
 
 const linkClass = "text-link_color hover:text-dark_blue";
 const contentClass = `${INFO_SECTION_CONTENT} ${INFO_BODY} [&>p]:mb-3 [&>ul]:list-disc [&>ul]:list-inside [&>ul]:mb-3 [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:mb-3`;

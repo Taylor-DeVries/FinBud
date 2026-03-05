@@ -3,7 +3,7 @@ import InfoPageLayout, {
   INFO_SECTION,
   INFO_SECTION_CONTENT,
   INFO_SECTION_HEADING,
-} from "@/_components/info-page-layout/InfoPageLayout";
+} from "@/_components/info-page-layout/info-page-layout";
 
 export default function AboutUs() {
   return (
