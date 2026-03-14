@@ -74,6 +74,12 @@ export interface UserAchievements {
   userAchievements: UserAchievementEntry[];
 }
 
+export interface UserInfo {
+  userName?: string;
+  userProfilePicture?: string;
+  createdAt?: string;
+}
+
 export interface NodeCharacterImageMapping {
   nodeId: number;
   image: string;
