@@ -64,14 +64,8 @@ export const Navigation = ({
             )}
           >
             <div className="flex flex-row my-2">
-              <div className="flex flex-row">
-                <Image
-                  src={user.picture}
-                  width={30}
-                  height={30}
-                  className="rounded-full"
-                  alt="User avatar"
-                />
+              <div className="flex flex-row items-center">
+                <IconUser />
                 <span className="ml-2 mt-2">Profile</span>
               </div>
             </div>
