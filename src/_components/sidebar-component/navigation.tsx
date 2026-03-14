@@ -83,7 +83,7 @@ export const Navigation = ({
             }
           >
             <div className="flex flex-row my-2">
-              <div className="flex flex-row">
+              <div className="flex flex-row items-center">
                 <IconUser />
                 <span className="ml-2 mt-2">Sign in</span>
               </div>
