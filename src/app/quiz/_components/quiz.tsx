@@ -1,6 +1,8 @@
 'use client';
 import { buildQuizData } from '@/_lib/_services/build-quiz-data';
 import dashboardGoals from '@/_lib/_data/constants/dashboard-goals.json';
+import nodeCharacterImages from '@/_lib/_data/constants/node-character-images.json';
+import { NodeCharacterImageConfig } from '@/_lib/_data/types/types';
 import { useEffect, useState } from 'react';
 import {
   findNodeTest,
@@ -28,8 +30,10 @@ import FhsaCalculatorButton from '@/_components/calculator-component/fhsa/fhsa-c
 import AllocationCalculatorComponent from '@/_components/calculator-component/allocation/allocation-calculator-component';
 import AllocationCalculatorButton from '@/_components/calculator-component/allocation/allocation-calculator-button';
 import LinkButton from '@/_components/link-component/link-component';
-import NavToDashboard from '@/_components/nav-to-dashboard-button-component/nav-to-dashboard-button';
 import MoreInfoButtons from '@/_components/more-info-component/more-info-buttons';
+import NavToPage from '@/_components/nav-to-page-button-component/nav-to-page-button';
+import { toolboxShow } from '@/_lib/_services/tools-functions';
+import { Tooltip } from 'react-tooltip';
 
 export default function QuizPage({ data }) {
   const router = useRouter();
@@ -51,6 +55,12 @@ export default function QuizPage({ data }) {
     React.useState(false);
   const [showLink, setShowLink] = React.useState(false);
   const [showDashboard, setShowDashboard] = React.useState(false);
+
+  const characterConfig = nodeCharacterImages as NodeCharacterImageConfig;
+  function getCharacterImageForNode(nodeId: number): string {
+    const mapping = characterConfig.mappings.find((m) => m.nodeId === nodeId);
+    return mapping ? mapping.image : characterConfig.defaultImage;
+  }
 
   function getInitialState(data: HistoryState): HistoryState {
     let hist: HistoryState = data;
@@ -153,48 +163,12 @@ export default function QuizPage({ data }) {
     setShowNextText(isNextAvailable(currentNode, currentTextIndex));
     setShowPrevText(isPrevAvailable(currentNode, currentTextIndex));
 
-    switch (currentNode.id) {
-      case 4:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 23:
-        setshowTfsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 14:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 31:
-        setshowFhsaCalculator(true);
-        setShowAllocationCalculator(true);
-        break;
-      case 8:
-        setShowAllocationCalculator(true);
-        break;
-      case 17:
-        setShowAllocationCalculator(true);
-        break;
-      case 9:
-        setShowAllocationCalculator(true);
-        break;
-      case 28:
-        setShowAllocationCalculator(true);
-        break;
-      case 7:
-        setShowAllocationCalculator(true);
-        break;
-      default:
-        setShowAllocationCalculator(false);
-        setshowTfsaCalculator(false);
-        setshowFhsaCalculator(false);
-        break;
-    }
+    const toolboxShowList = toolboxShow(currentNode.id, currentNode.link);
 
-    if (currentNode.link) {
-      setShowLink(true);
-    } else setShowLink(false);
+    setShowAllocationCalculator(toolboxShowList.showAllocationCalculator);
+    setshowTfsaCalculator(toolboxShowList.showTfsaCalculator);
+    setshowFhsaCalculator(toolboxShowList.showFhsaCalculator);
+    setShowLink(toolboxShowList.showLink);
 
     if (historyState.loading) {
       setHistoryAsync();
@@ -234,16 +208,19 @@ export default function QuizPage({ data }) {
         >
           {/* Image container */}
           <div className="w-2/3 sm:w-1/3 flex justify-center sm:justify-start sm:mt-64 pt-10">
-            <Image
-              src="/images/Fin.png"
-              alt="Logo"
-              width={300}
-              height={300}
-              className="w-auto h-auto"
-              priority
-              unoptimized
-              onLoad={() => setLoading(false)}
-            />
+            <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] flex items-center justify-center flex-shrink-0">
+              <Image
+                key={currentNode.id}
+                src={getCharacterImageForNode(currentNode.id)}
+                alt="Character"
+                width={300}
+                height={300}
+                className="w-full h-full object-contain"
+                priority
+                quality={85}
+                onLoad={() => setLoading(false)}
+              />
+            </div>
           </div>
 
           {/* Text Area */}
@@ -255,7 +232,11 @@ export default function QuizPage({ data }) {
                 <IoIosArrowRoundBack
                   onClick={goBack}
                   className="text-blue h-8 w-8 hover:cursor-pointer"
+                  data-tooltip-id="backButton"
                 />
+                <Tooltip id="backButton" place="top">
+                  {`Back`}
+                </Tooltip>
               </div>
 
               {/* Calculator Buttons */}
@@ -266,7 +247,7 @@ export default function QuizPage({ data }) {
 
                 {showDashboard && (
                   <div className="flex flex-wrap justify-center items-center gap-0">
-                    <NavToDashboard />
+                    <NavToPage destinationPage="Dashboard" tooltipText='Dashboard'/>
                   </div>
                 )}
                 {showTfsaCalculator && (

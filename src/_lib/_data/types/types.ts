@@ -79,3 +79,13 @@ export interface UserInfo {
   userProfilePicture?: string;
   createdAt?: string;
 }
+
+export interface NodeCharacterImageMapping {
+  nodeId: number;
+  image: string;
+}
+
+export interface NodeCharacterImageConfig {
+  defaultImage: string;
+  mappings: NodeCharacterImageMapping[];
+}

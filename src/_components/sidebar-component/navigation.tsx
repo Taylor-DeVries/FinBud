@@ -60,7 +60,9 @@ export const Navigation = ({
           <Link
             href="/profile"
             className={twMerge(
-              'text-slate-500 dark:text-blue hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md'
+              'text-slate-500 dark:text-blue hover:text-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-md',
+              isActive('/profile') &&
+                'bg-slate-50 dark:bg-blue shadow-slate-300 dark:shadow-slate-800 shadow-xl text-blue dark:text-[#333]'
             )}
           >
             <div className="flex flex-row my-2">

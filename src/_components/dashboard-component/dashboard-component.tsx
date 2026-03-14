@@ -1,9 +1,9 @@
 'use client';
 import DashboardTextbox from './dashboard-textbox/dashboard-textbox';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Goal from '@/_components/dashboard-component/goal/goal';
-import Acheivements from '@/_components/dashboard-component/achievements/acheivements';
+import Achievements from '@/_components/dashboard-component/achievements/achievements';
 import Toolbox from './toolbox/toolbox';
 import { useUser } from '@auth0/nextjs-auth0';
 import dashboardgoals from '@/_lib/_data/constants/dashboard-goals.json';
@@ -11,6 +11,7 @@ import { DashboardGoal, UserAchievementEntry } from '@/_lib/_data/types/types';
 import extendedtext from '@/_lib/_data/constants/extended-texts.json';
 import { QuizText } from '@/_lib/_data/types/types';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import Link from 'next/link';
 
 type DashboardProps = {
   historyData: {
@@ -48,7 +49,7 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
   const completedGoals = historyArray.length - 1; // Subtract 1 for starting node
   const progressPercentage = Math.min(
     100,
-    Math.round((completedGoals / totalGoals) * 100)
+    Math.round((completedGoals / totalGoals) * 100),
   );
 
   // Generate encouraging message based on progress
@@ -96,6 +97,14 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
     return currentTextIndex > 0 ? true : false;
   }
 
+  const [darkmode, setDarkmode] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const themeDarkmode =
+      localStorage.getItem('theme') == 'dark' ? true : false;
+    setDarkmode(themeDarkmode);
+  }, []);
+
   return (
     <div className="flex flex-col gap-y-4 sm:gap-y-6 max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
       {/* Header with Encouragement */}
@@ -104,31 +113,32 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
           {welcomeMessage}
         </h1>
 
-        {/* Encouraging Message Badge */}
-        <div className="flex items-center gap-2 bg-light_blue dark:bg-[#333] backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-md">
-          <span className="text-2xl" role="img" aria-label="encouragement">
-            {encouragement.emoji}
-          </span>
-          <span className="font-semibold text-sm sm:text-base text-white dark:text-blue">
-            {encouragement.text}
-          </span>
-        </div>
+        <Link
+          href="/quiz"
+          className="px-4 py-2 bg-light_blue_bg dark:bg-[#333] hover:bg-light_blue dark:hover:bg-slate-700 text-white dark:text-blue font-semibold rounded-lg transition-colors text-sm sm:text-base shadow-md"
+        >
+          Resume Quiz
+        </Link>
       </div>
 
       {/* Current Goal */}
       <div className="w-full">
-        <Goal goal={goalText} percentage={progressPercentage} />
+        <Goal
+          goal={goalText}
+          percentage={progressPercentage}
+          showButton={false}
+        />
       </div>
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Left Column - Achievements & Toolbox */}
         <div className="lg:col-span-2 flex flex-col gap-y-4 sm:gap-y-6">
-          <Acheivements
+          <Achievements
             historyArray={historyArray}
             userAchievements={userAchievements}
           />
-          <Toolbox historyArray={historyArray} />
+          <Toolbox historyArray={historyArray} darkmode={darkmode} />
         </div>
 
         {/* Right Column - Fin & Tips */}
@@ -178,8 +188,8 @@ function Dashboard({ historyData, userAchievements }: DashboardProps) {
               width={200}
               height={200}
               className="drop-shadow-lg w-48 h-48 sm:w-52 sm:h-52 lg:w-56 lg:h-56"
-              priority
-              unoptimized
+              loading="lazy"
+              quality={85}
               onLoad={() => setLoading(false)}
             />
           </div>

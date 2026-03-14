@@ -7,6 +7,8 @@ import React from 'react';
 import FHSAvars from './fhsa-interface';
 import FhsaResultComponent from './fhsa-result-component';
 
+const currentYear = new Date().getFullYear();
+
 export default function FhsaCalculatorComponent() {
   const [AgeChecked, setAgeChecked] = React.useState(false);
   const [HouseChecked, setHouseChecked] = React.useState(false);
@@ -92,7 +94,7 @@ export default function FhsaCalculatorComponent() {
     const element = document.getElementById('openedError')!;
     if (input.opened.textInput.current) {
       if (
-        Number(input.opened.textInput.current.value) <= 2025 &&
+        Number(input.opened.textInput.current.value) <= currentYear &&
         Number(input.opened.textInput.current.value) >= 2023
       ) {
         setOpenedInputFlag(false);
@@ -101,21 +103,18 @@ export default function FhsaCalculatorComponent() {
         return;
       }
     }
-    element.textContent =
-      'Error: your FHSA must be opened on a valid date. Please enter a valid date (2023-2025).';
+    element.textContent = `Error: your FHSA must be opened on a valid date. Please enter a valid date (2023-${currentYear}).`;
     setOpenedInputFlag(true);
     resetContributed();
   };
 
   const resetContributed = () => {
     if (input.contributed.textInput.current) {
-      console.log('resetContributed');
       document.getElementById('contributed')!.textContent = null;
       input.contributed.textInput.current.value = null;
     }
   };
   const handleContributedChange = () => {
-    console.log(OpenedInputFlag);
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     input.contributed.focusTextInput;
     const element = document.getElementById('contributed')!;
@@ -123,7 +122,6 @@ export default function FhsaCalculatorComponent() {
       const contributedVal = Math.floor(
         Number(input.contributed.textInput.current.value)
       );
-      console.log(OpenedInputFlag);
 
       if (
         contributedVal <=
@@ -171,7 +169,7 @@ export default function FhsaCalculatorComponent() {
     }
     if (!AccountChecked) {
       errorMsg.textContent = null;
-      FhsaResultComponent([2025, 0]);
+      FhsaResultComponent([currentYear, 0]);
       setShowCalculation(true);
       return;
     }
@@ -274,9 +272,7 @@ export default function FhsaCalculatorComponent() {
                 Your contribution limit for this year is:
               </div>
               <div id="contributionRoom"></div>
-              <div>
-                Your total lifetime contribution room after this year is:
-              </div>
+              <div>Your total lifetime contribution room left is:</div>
               <div id="totalRemaining"></div>
             </div>{' '}
           </div>

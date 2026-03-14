@@ -15,7 +15,7 @@ import {
   UserAchievement,
 } from '@/_lib/_data/types/types';
 import { UserAchievementStatus } from '@/_lib/_data/types/status';
-import dashboardacheivements from '@/_lib/_data/constants/dashboard-achievements.json';
+import dashboardAchievements from '@/_lib/_data/constants/dashboard-achievements.json';
 
 export function findNodeTest(
   id: number,
@@ -239,8 +239,8 @@ export async function updateUserAchievementStatusFunction(
 }
 
 export function isAchievementNode(nodeId: number): boolean {
-  for (let i = 0; i < dashboardacheivements.achievements.length; i++) {
-    const achievement = dashboardacheivements.achievements[i];
+  for (let i = 0; i < dashboardAchievements.achievements.length; i++) {
+    const achievement = dashboardAchievements.achievements[i];
     if (achievement.id == nodeId) {
       return true;
     }

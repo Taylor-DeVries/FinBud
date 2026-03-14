@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
 import { Montserrat } from 'next/font/google';
 import { Metadata } from 'next';
 import { Sidebar } from '@/_components/sidebar-component/sidebar';
 import { ThemeProvider } from './settings/providers';
+import { AudioProvider } from '@/_components/audio/audio-context';
+import AudioToggle from '@/_components/audio/audio-toggle';
 
 const font = Montserrat({ subsets: ['latin'], weight: ['700'] });
 
@@ -24,15 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-      <ThemeProvider>
+    <ThemeProvider>
+      <AudioProvider>
         <html lang="en">
           <body className={font.className}>
             <div className="flex h-screen  bg-slate-50 dark:bg-[#333] ">
+              <AudioToggle />
               <Sidebar />
               <div className="flex-1 overflow-y-hidden">{children}</div>
             </div>
           </body>
         </html>
-      </ThemeProvider>
+      </AudioProvider>
+    </ThemeProvider>
   );
 }
