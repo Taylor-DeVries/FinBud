@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export async function getHistoryApi(): Promise<number[]> {
   const { token } = await auth0.getAccessToken();
-  const response = await axios.get(`${process.env.FINBUD_API_URL}/api/UserHistory`, {
+  const response = await axios.get(`${process.env.USER_HISTORY_API_URL}`, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export async function setHistoryApi(history: number[]): Promise<void> {
   const { token } = await auth0.getAccessToken();
 
   await axios.put(
-    `${process.env.FINBUD_API_URL}/api/UserHistory`,
+    `${process.env.USER_HISTORY_API_URL}`,
     { userHistory: history },
     {
       headers: {
@@ -37,7 +37,7 @@ export async function createHistoryApi(history: number[]): Promise<void> {
   const { token } = await auth0.getAccessToken();
 
   await axios.post(
-    `${process.env.FINBUD_API_URL}/api/UserHistory`,
+    `${process.env.USER_HISTORY_API_URL}`,
     { userHistory: history },
     {
       headers: {
@@ -54,7 +54,7 @@ export async function getUserAchievementsApi(): Promise<
   UserAchievementEntry[]
 > {
   const { token } = await auth0.getAccessToken();
-  const response = await axios.get(`${process.env.FINBUD_API_URL}/api/UserAchievement`, {
+  const response = await axios.get(`${process.env.USER_ACHIEVEMENTS_API_URL}`, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export async function createUserAchievementDefaultApi(
 ): Promise<void> {
   const { token } = await auth0.getAccessToken();
   const response = await axios.post(
-    `${process.env.FINBUD_API_URL}/api/UserAchievement`,
+    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
     {
       achievementId: achievementId,
       userAchievementStatus: userAcheivementStatus,
@@ -94,7 +94,7 @@ export async function updateUserAchievementStatusApi(
 ): Promise<void> {
   const { token } = await auth0.getAccessToken();
   const response = await axios.put(
-    `${process.env.FINBUD_API_URL}/api/UserAchievement`,
+    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
     {
       userAchievementStatus: userAchievementStatus,
       achievementId: achievementId,
@@ -144,7 +144,7 @@ export async function updateUserAchievementInfoApi(
 
   const { token } = await auth0.getAccessToken();
   const response = await axios.put(
-    `${process.env.FINBUD_API_URL}/api/UserAchievement`,
+    `${process.env.USER_ACHIEVEMENTS_API_URL}`,
     updateBody,
     {
       headers: {
@@ -161,7 +161,7 @@ export async function getUserAchievementEntryByAchievementIdApi(
 ): Promise<UserAchievementEntry | null> {
   const { token } = await auth0.getAccessToken();
   const response = await axios.get(
-    `${process.env.FINBUD_API_URL}/api/UserAchievement/${achievementId}`,
+    `${process.env.USER_ACHIEVEMENTS_API_URL}/${achievementId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
